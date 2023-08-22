@@ -1,8 +1,9 @@
 import {
-  AppRegistration,
+  Adb,
+  FormatListBulleted,
+  HelpOutline,
+  LocationOn,
   Login,
-  MonetizationOn,
-  Web,
 } from "@mui/icons-material";
 import { Box } from "@mui/material";
 import React, { Fragment } from "react";
@@ -11,14 +12,24 @@ import NavMobile from "./NavMobile";
 
 const linksLeft = [
   {
-    label: "Plantillas",
+    label: "¿Necesitas ayuda?",
     href: "/plantillas",
-    icon: <Web />,
+    icon: <HelpOutline/>,
   },
   {
-    label: "Precios",
+    label: "Espacios de la facultad",
     href: "/planes",
-    icon: <MonetizationOn />,
+    icon: <LocationOn />,
+  },
+  {
+    label: "Plan de estudios - IPlan",
+    href: "/plantillas",
+    icon: <FormatListBulleted />,
+  },
+  {
+    label: "Comunidad Discord",
+    href: "/planes",
+    icon: <Adb />,
   },
 ];
 
@@ -27,11 +38,6 @@ const linksRight = [
     label: "Iniciar sesión",
     href: "/login",
     icon: <Login />,
-  },
-  {
-    label: "Registrarse",
-    href: "/register",
-    icon: <AppRegistration />,
   },
 ];
 
