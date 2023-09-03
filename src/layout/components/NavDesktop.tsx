@@ -1,4 +1,4 @@
-import { Breadcrumbs, Container, Link, Stack, Typography} from "@mui/material";
+import { Box, Breadcrumbs, Container, Link, Stack, Typography} from "@mui/material";
 import { ReactNode } from "react";
 
 const NavDesktop = ({
@@ -8,7 +8,7 @@ const NavDesktop = ({
   linksLeft: { label: string; href: string; icon: ReactNode }[];
   linksRight: { label: string; href: string; icon: ReactNode }[];
 }) => (
-  <Container sx={{ height: "8vh",marginLeft:"12vw",padding:"0px" }}>
+  <Container sx={{ height: "8vh",padding:"0px" }}>
     <Stack
       height="100%"
       width="100%"
@@ -38,16 +38,12 @@ const NavDesktop = ({
       </Breadcrumbs>
       <Breadcrumbs separator={" "}>
         {linksRight.map((item, index) => (
-          <Stack border={"solid 2.5px"} color={"#3728b7"} borderRadius={"10px"} borderColor={"#3728b7"} padding={"10px 30px"} marginRight={"-10vw"} key={index} spacing={1} alignItems="center" direction="row">
-            {item.icon}
-            <Link
-              href={item.href}
-              underline="none"
-              color="inherit"
-              fontWeight="bold"
-            >
-              <Typography variant="inherit">{item.label}</Typography>
-            </Link>
+          <Stack key={index} spacing={1} alignItems="center" direction="row">
+            <Box  sx={{display:"flex", justifyContent:"space-between", color:"#3728b7",border:"solid 2.5px",borderRadius:"10px",borderColor:"#3728b7",padding:"10px 20px",underline:"none",fontWeight:"bold"}}>
+              {item.icon}
+              <Link href={item.href}></Link>
+              <Typography marginLeft={"10px"} variant="inherit">{item.label}</Typography>
+            </Box>
           </Stack>
         ))}
       </Breadcrumbs>

@@ -47,7 +47,7 @@ const Header = () => (
       <Box
         display={{
           xs: "none",
-          md: "block",
+          lg: "block",
         }}
       >
         <NavDesktop linksLeft={linksLeft} linksRight={linksRight} />
@@ -56,7 +56,7 @@ const Header = () => (
       <Box
         display={{
           xs: "block",
-          md: "none",
+          lg: "none",
         }}
       >
         <NavMobile linksLeft={linksLeft} linksRight={linksRight} />
