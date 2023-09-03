@@ -1,6 +1,5 @@
-import { Box, Breadcrumbs, Container, Link, Stack, Typography} from "@mui/material";
+import { Box, Breadcrumbs, Container, Link, Stack, Typography, useTheme} from "@mui/material";
 import { ReactNode } from "react";
-
 const NavDesktop = ({
   linksLeft,
   linksRight,
@@ -8,7 +7,7 @@ const NavDesktop = ({
   linksLeft: { label: string; href: string; icon: ReactNode }[];
   linksRight: { label: string; href: string; icon: ReactNode }[];
 }) => (
-  <Container sx={{ height: "8vh",padding:"0px" }}>
+  <Container sx={{height: "8vh",padding:"0px" }}>
     <Stack
       height="100%"
       width="100%"

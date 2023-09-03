@@ -19,7 +19,7 @@ const MainSection = () => {
   const md = useMediaQuery("min-width(900px)");
 
   return (
-    <Box style={{backgroundColor:theme.palette.primary.light}}>
+    <Box>
       <Container>
         <Box display={"grid"} gridTemplateColumns={{ xs: "1fr", md: "1fr 1fr", }} gridTemplateRows="auto" gridTemplateAreas={{ xs: "'img' 'img' 'img' 'img' 'img' 'img' 'title' 'subtitle' 'ls' 'btn' '.' ", md: "'title img' 'subtitle img' 'ls img' 'btn img''. .' ", }} columnGap={{ xs: 0, md: 2, }} height={{md:"92vh",xs:"93vh"}} >
 
@@ -35,15 +35,15 @@ const MainSection = () => {
             <List sx={{display:"flex",flexDirection:"column",alignItems:"center"}}>
               <ListItem sx={{ paddingLeft: "0px",maxWidth:"85vw"}}>
                 <ListItemIcon><CheckCircle sx={{ color: theme.palette.secondary.main }} /></ListItemIcon>
-                <ListItemText sx={{ marginLeft: "-1rem",display:"contents" }}>Crea un camino de aprendizaje adaptado a tu estilo y ritmo</ListItemText>
+                <ListItemText sx={{ marginLeft: "-1rem",display:"contents" }}>Crea un camino de aprendizaje adaptado a tu estilo y ritmo.</ListItemText>
               </ListItem>
               <ListItem sx={{ paddingLeft: "0px",maxWidth:"85vw" }}>
                 <ListItemIcon><CheckCircle sx={{ color: theme.palette.secondary.main }} /></ListItemIcon>
-                <ListItemText sx={{ marginLeft: "-1rem",display:"contents" }}>Colabora con nuestro equipo de tutores altamente calificados</ListItemText>
+                <ListItemText sx={{ marginLeft: "-1rem",display:"contents" }}>Colabora con nuestro equipo de tutores altamente calificados.</ListItemText>
               </ListItem>
               <ListItem sx={{ paddingLeft: "0px",maxWidth:"85vw" }}>
                 <ListItemIcon><CheckCircle sx={{ color: theme.palette.secondary.main }} /></ListItemIcon>
-                <ListItemText sx={{ marginLeft: "-1rem",display:"contents" }}>Resuelve tus dudas y transita tu camino por los estudios universitarios</ListItemText>
+                <ListItemText sx={{ marginLeft: "-1rem",display:"contents" }}>Resuelve tus dudas y transita tu camino por los estudios universitarios.</ListItemText>
               </ListItem>
             </List>
           </Box>
