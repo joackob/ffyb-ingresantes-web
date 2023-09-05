@@ -13,8 +13,8 @@ import NavMobile from "./NavMobile";
 const linksLeft = [
   {
     label: "¿Necesitas ayuda?",
-    href: "/plantillas",
-    icon: <HelpOutline/>,
+    href: "/help",
+    icon: <HelpOutline />,
   },
   {
     label: "Espacios de la facultad",
