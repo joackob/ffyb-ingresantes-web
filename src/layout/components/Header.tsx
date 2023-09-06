@@ -18,17 +18,17 @@ const linksLeft = [
   },
   {
     label: "Espacios de la facultad",
-    href: "/planes",
+    href: "/",
     icon: <LocationOn />,
   },
   {
     label: "Plan de estudios - IPlan",
-    href: "/planmaterias",
+    href: "/plan",
     icon: <FormatListBulleted />,
   },
   {
     label: "Comunidad Discord",
-    href: "/planes",
+    href: "/",
     icon: <Adb />,
   },
 ];
