@@ -33,8 +33,7 @@ const Help = () => {
             <Typography variant={md ? "h2" : "h3"} fontWeight="bold">{title}</Typography>
           </Box>
           <Box textAlign={{ xs: "center", md: "left", }} gridArea={"subtitle"} alignSelf={{ xs: "center", }}>
-              <Card>Intento de card</Card>
-              <AccordionList></AccordionList>
+            <AccordionList></AccordionList>
           </Box>
         </Box>
       </Container>
