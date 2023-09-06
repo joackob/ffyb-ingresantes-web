@@ -14,8 +14,8 @@ import {
 
 const PlanMaterias = () => {
   const theme = useTheme();
-  const title = "Bienvenidos a las tutorías.\n ";
-  const subtitle = "Estamos aquí para brindarte el apoyo y la orientación personalizada que necesitas para alcanzar tus metas educativas con confianza.";
+  const title = "Esto NO lo hizo José.\n ";
+  const subtitle = "Lolazo";
   const md = useMediaQuery("min-width(900px)");
 
   return (

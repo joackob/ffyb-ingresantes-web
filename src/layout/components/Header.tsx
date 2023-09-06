@@ -23,7 +23,7 @@ const linksLeft = [
   },
   {
     label: "Plan de estudios - IPlan",
-    href: "/plantillas",
+    href: "/planmaterias",
     icon: <FormatListBulleted />,
   },
   {
