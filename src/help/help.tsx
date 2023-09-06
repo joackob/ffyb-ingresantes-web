@@ -1,14 +1,8 @@
 import { CheckCircle } from "@mui/icons-material";
 import {
   Box,
-  Button,
   Card,
   Container,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  Typography,
   useMediaQuery,
   useTheme,
 } from "@mui/material";
