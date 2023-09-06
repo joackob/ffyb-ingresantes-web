@@ -1,15 +1,16 @@
-import { CheckCircle } from "@mui/icons-material";
+import AccordionList from "@/src/help/componets/Accordion";
 import {
   Box,
   Card,
   Container,
   useMediaQuery,
+  Typography,
   useTheme,
 } from "@mui/material";
 
 const Help = () => {
   const theme = useTheme();
-  const title = "Bienvenidos a las tutorías.\n ";
+  const title = "Quizá te podamos ayudar.\n ";
   const subtitle =
     "Estamos aquí para brindarte el apoyo y la orientación personalizada que necesitas para alcanzar tus metas educativas con confianza.";
   const md = useMediaQuery("min-width(900px)");
@@ -28,8 +29,12 @@ const Help = () => {
           columnGap={{ xs: 0, md: 2 }}
           height={{ md: "92vh", xs: "93vh" }}
         >
-          <Box>
+          <Box gridArea={"title"} alignSelf={{ xs: "center", md: "end", }} textAlign={{ xs: "center", md: "left", }}>
+            <Typography variant={md ? "h2" : "h3"} fontWeight="bold">{title}</Typography>
+          </Box>
+          <Box textAlign={{ xs: "center", md: "left", }} gridArea={"subtitle"} alignSelf={{ xs: "center", }}>
               <Card>Intento de card</Card>
+              <AccordionList></AccordionList>
           </Box>
         </Box>
       </Container>
