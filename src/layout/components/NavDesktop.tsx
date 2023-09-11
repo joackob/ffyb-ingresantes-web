@@ -38,11 +38,10 @@ const NavDesktop = ({
       <Breadcrumbs separator={" "}>
         {linksRight.map((item, index) => (
           <Stack key={index} spacing={1} alignItems="center" direction="row">
-            <Box  sx={{display:"flex", justifyContent:"space-between", color:"#3728b7",border:"solid 2.5px",borderRadius:"10px",borderColor:"#3728b7",padding:"10px 20px",underline:"none",fontWeight:"bold"}}>
+            <Link href={item.href} display={"flex"} justifyContent={"space-between"} color={"#3728b7"} border={"solid 2.5px"}borderRadius={"10px"} borderColor={"#3728b7"} padding={"10px 20px"} underline="none" fontWeight={"bold"}>
               {item.icon}
-              <Link href={item.href}></Link>
               <Typography marginLeft={"10px"} variant="inherit">{item.label}</Typography>
-            </Box>
+            </Link>
           </Stack>
         ))}
       </Breadcrumbs>
