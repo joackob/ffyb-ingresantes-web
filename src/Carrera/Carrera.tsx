@@ -21,7 +21,7 @@ import React from "react";
 import Theme from "../theme/Theme";
 
 
-const Carrera = ({title,subjects}:{title:string;subjects:string[][];}) => {
+const Carrera = ({title,subjects}:{title:string;subjects:(string | boolean) [][][];}) => {
 
   const [page, setPage] = React.useState(1);
 
@@ -54,7 +54,7 @@ const Carrera = ({title,subjects}:{title:string;subjects:string[][];}) => {
                 <ListItem sx={{paddingLeft: "0px"}}>
                   <ListItemIcon><RadioButtonChecked sx={{fontSize:"30px"}} /> <RadioButtonUnchecked sx={{fontSize:"30px"}}/></ListItemIcon>
                   <ListItemText>
-                      <Typography paddingLeft={"10px"} fontSize={"20px"}>{item}</Typography>
+                      <Typography paddingLeft={"10px"} fontSize={"20px"}>{item[0]}</Typography>
                   </ListItemText>
                 </ListItem>
               ))}

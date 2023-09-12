@@ -1,6 +1,6 @@
 import Carrera from "@/src/Carrera/Carrera";
 import { useRouter } from "next/router";
-import { carreras } from "@/src/Plan/Plan";
+import { carreras } from "@/src/basedata/basedata";
 
 const carrera = () => {
   const router = useRouter();
