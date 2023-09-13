@@ -9,9 +9,9 @@ function ingresarDatos(pregunta:string,respuesta:string,panel:string) {
   return {pregunta,respuesta,panel}
 }
 const dataBase =[
-  ingresarDatos("¿Tenes problemas economicos?","Lorem, ipsum dolor sit amet consectetur adipisicing elit.Lorem, ipsum dolor sit amet consectetur adipisicing elit.","panel1"),
-  ingresarDatos("¿Tenes problemas para gestionar tus horarios?","Lorem, ipsum dolor sit amet consectetur adipisicing elit.Lorem, ipsum dolor sit amet consectetur adipisicing elit.","panel2"),
-  ingresarDatos("¿Sufris de violencia domestica?","Lorem, ipsum dolor sit amet consectetur adipisicing elit.Lorem, ipsum dolor sit amet consectetur adipisicing elit.","panel3"),
+  ingresarDatos("¿Tenés problemas económicos?","Lorem, ipsum dolor sit amet consectetur adipisicing elit.Lorem, ipsum dolor sit amet consectetur adipisicing elit.","panel1"),
+  ingresarDatos("¿Tenés problemas para gestionar tus horarios?","Lorem, ipsum dolor sit amet consectetur adipisicing elit.Lorem, ipsum dolor sit amet consectetur adipisicing elit.","panel2"),
+  ingresarDatos("¿Sufrís de violencia doméstica?","Lorem, ipsum dolor sit amet consectetur adipisicing elit.Lorem, ipsum dolor sit amet consectetur adipisicing elit.","panel3"),
   ingresarDatos("Contactos Administrativos","Lorem, ipsum dolor sit amet consectetur adipisicing elit.Lorem, ipsum dolor sit amet consectetur adipisicing elit.","panel4")
 ]
 
