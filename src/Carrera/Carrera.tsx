@@ -1,10 +1,8 @@
-import {BorderColor, RadioButtonChecked, RadioButtonUnchecked} from "@mui/icons-material";
+import { RadioButtonChecked, RadioButtonUnchecked} from "@mui/icons-material";
 import {
   Box,
-  Button,
   CircularProgress,
   Container,
-  LinearProgress,
   List,
   ListItem,
   ListItemIcon,
@@ -15,16 +13,30 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import { count } from "console";
-
 import React from "react";
 import Theme from "../theme/Theme";
 
 
+
+
 const Carrera = ({title,subjects}:{title:string;subjects:(string | boolean) [][][];}) => {
 
-  const [page, setPage] = React.useState(1);
+  let aprobadas = 0;
+  let totales = 0;
+  let porcentaje = 0;
+  subjects.forEach(anio => {
+    anio.forEach(materia =>{
+      if (materia[2] == true) {
+        aprobadas = aprobadas + 1
+      }
+      totales = totales +1
+    });
+  });
+  porcentaje = (aprobadas * 100) / totales;
+  porcentaje = Math.round(porcentaje)
 
+
+  const [page, setPage] = React.useState(1);
   const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
     setPage(value);
   }
@@ -52,7 +64,11 @@ const Carrera = ({title,subjects}:{title:string;subjects:(string | boolean) [][]
               <List sx={{display:"flex",flexDirection:"column",alignItems:"center"}}>
               {subjects[page-1].map((item) => (
                 <ListItem sx={{paddingLeft: "0px"}}>
-                  <ListItemIcon><RadioButtonChecked sx={{fontSize:"30px"}} /> <RadioButtonUnchecked sx={{fontSize:"30px"}}/></ListItemIcon>
+                  <ListItemIcon>
+                    {item[1] == true ? <RadioButtonChecked sx={{fontSize:"30px"}}/>: ""}
+                    {item[2] == true ? <RadioButtonChecked sx={{ color:theme.palette.secondary.main,fontSize:"30px"}}/>: ""}
+                    {item[1] == false && item[2] == false ? <RadioButtonUnchecked sx={{fontSize:"30px"}}/>:""}
+                  </ListItemIcon>
                   <ListItemText>
                       <Typography paddingLeft={"10px"} fontSize={"20px"}>{item[0]}</Typography>
                   </ListItemText>
@@ -66,15 +82,17 @@ const Carrera = ({title,subjects}:{title:string;subjects:(string | boolean) [][]
           <Box display={{xs:"none",md:"block"}} gridArea={"paragraph"} textAlign={"left"}>
               <Typography variant="h5">{"Si necesitas ayuda, no dudes en consultarnos"}</Typography>
           </Box>
+      
+                
 
           <Box paddingRight={"100px"} paddingBottom={"100px"} gridArea={"percentage"} display={{md:"flex",xs:"none"}} sx={{justifyContent:"center",alignItems:"center"}}>
-              <CircularProgress style={{width:"450px", height:"450px"}} thickness={3.6} variant="determinate" value={100}/>
-              <Typography fontSize={"100px"} position={"absolute"} variant="caption" component="div" color="text.secondary">{`100%`}</Typography>
+              <CircularProgress style={{width:"450px", height:"450px"}} thickness={3.6} variant="determinate" value={porcentaje}/>
+              <Typography fontSize={"100px"} position={"absolute"} variant="caption" component="div" color="text.secondary">{`${porcentaje}%`}</Typography>
           </Box>
 
           <Box marginTop={"20px"} gridArea={"percentageMobile"} display={{md:"none",xs:"flex"}} sx={{justifyContent:"center",alignItems:"center"}}>
-              <CircularProgress style={{width:"300px", height:"300px"}} thickness={3.6} variant="determinate" value={100}/>
-              <Typography fontSize={"50px"} position={"absolute"} variant="caption" component="div" color="text.secondary">{`100%`}</Typography>
+              <CircularProgress style={{width:"300px", height:"300px"}} thickness={3.6} variant="determinate" value={porcentaje}/>
+              <Typography fontSize={"50px"} position={"absolute"} variant="caption" component="div" color="text.secondary">{`${porcentaje}%`}</Typography>
           </Box>
 
         </Box>

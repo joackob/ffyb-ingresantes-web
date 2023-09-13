@@ -1,4 +1,4 @@
-import { carreras } from "../basedata/basedata";
+import { carreras } from "../database/database";
 import {
   Box,
   Container,
