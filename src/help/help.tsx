@@ -3,6 +3,7 @@ import { Box, Container, useMediaQuery, Typography } from "@mui/material";
 
 const Help = () => {
   const title = "Quizá te podamos ayudar.\n ";
+  const subtitle ="Aca hay algunas preguntas frecuentes de otros usuarios que te podrian sevir. Si tenes algun otra pregunta no dudes en consultar a los foros correspndientes";
   const md = useMediaQuery("min-width(900px)");
 
   return (
@@ -10,22 +11,31 @@ const Help = () => {
       <Container>
         <Box
           display={"grid"}
-          gridTemplateColumns={{ xs: "1fr", md: "1fr 1fr" }}
+          gridTemplateColumns={{ xs: "1fr", md: "1fr 1fr 1fr" }}
           gridTemplateRows="auto"
           gridTemplateAreas={{
             xs: "'img' 'img' 'img' 'img' 'img' 'img' 'title' 'subtitle' 'ls' 'btn' '.' ",
-            md: "'title .' 'list img' '. .' ",
+            md: "'title title .' 'subtitle subtitle .' 'list list img' '. . .' ",
           }}
-          columnGap={{ xs: 0, md: 2 }}
+          columnGap={{ xs: 0, md: 20}}
           height={{ md: "92vh", xs: "93vh" }}
         >
           <Box
             gridArea={"title"}
-            alignSelf={{ xs: "center", md: "end" }}
+            alignSelf={{ xs: "center", md: "center" }}
             textAlign={{ xs: "center", md: "left" }}
           >
             <Typography variant={md ? "h2" : "h3"} fontWeight="bold">
               {title}
+            </Typography>
+          </Box>
+          <Box
+            gridArea={"subtitle"}
+            alignSelf={{ xs: "center", md: "center" }}
+            textAlign={{ xs: "center", md: "left" }}
+          >
+            <Typography variant={md ? "h4" : "h5"}>
+              {subtitle}
             </Typography>
           </Box>
           <Box
@@ -35,7 +45,7 @@ const Help = () => {
               backgroundSize: "contain",
               backgroundPosition: "center",
               backgroundRepeat: "no-repeat",
-              minHeight: "200px",
+              maxWidth:"300px",
             }}
           ></Box>
           <Box

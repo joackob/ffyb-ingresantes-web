@@ -5,27 +5,30 @@ import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
-let id = 0;
-function ingresarDatos(pregunta:string,respuesta:string) {
-  id += 1;
-  return {id,pregunta,respuesta}
+function ingresarDatos(pregunta:string,respuesta:string,panel:string) {
+  return {pregunta,respuesta,panel}
 }
 const dataBase =[
-  ingresarDatos("¿Tenes problemas economicos?","Lorem, ipsum dolor sit amet consectetur adipisicing elit.Lorem, ipsum dolor sit amet consectetur adipisicing elit."),
-  ingresarDatos("¿Tenes problemas para gestionar tus horarios?","Lorem, ipsum dolor sit amet consectetur adipisicing elit.Lorem, ipsum dolor sit amet consectetur adipisicing elit."),
-  ingresarDatos("¿Sufris de violencia domestica?","Lorem, ipsum dolor sit amet consectetur adipisicing elit.Lorem, ipsum dolor sit amet consectetur adipisicing elit."),
-  ingresarDatos("Contactos Administrativos","Lorem, ipsum dolor sit amet consectetur adipisicing elit.Lorem, ipsum dolor sit amet consectetur adipisicing elit.")
+  ingresarDatos("¿Tenes problemas economicos?","Lorem, ipsum dolor sit amet consectetur adipisicing elit.Lorem, ipsum dolor sit amet consectetur adipisicing elit.","panel1"),
+  ingresarDatos("¿Tenes problemas para gestionar tus horarios?","Lorem, ipsum dolor sit amet consectetur adipisicing elit.Lorem, ipsum dolor sit amet consectetur adipisicing elit.","panel2"),
+  ingresarDatos("¿Sufris de violencia domestica?","Lorem, ipsum dolor sit amet consectetur adipisicing elit.Lorem, ipsum dolor sit amet consectetur adipisicing elit.","panel3"),
+  ingresarDatos("Contactos Administrativos","Lorem, ipsum dolor sit amet consectetur adipisicing elit.Lorem, ipsum dolor sit amet consectetur adipisicing elit.","panel4")
 ]
 
 const AccordionList = () =>{
+  const [expanded, setExpanded] = React.useState<string | false>(false);
+  const handleChange =
+    (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
+      setExpanded(isExpanded ? panel : false);
+    };
   return (
     <>
         {dataBase.map(data=>(
-          <Accordion TransitionProps={{ unmountOnExit: true }}>
-            <AccordionSummary key ={data.id} expandIcon={<ExpandMoreIcon />}aria-controls="panel1a-content"id="panel1a-header">
+          <Accordion className='s-accordion' TransitionProps={{ unmountOnExit: true }} expanded={expanded === `${data.panel}`} onChange={handleChange(`${data.panel}`)}>
+            <AccordionSummary expandIcon={<ExpandMoreIcon className='s-accordion-icons'/>}id="panel-header" >
               <Typography fontWeight={"bold"}>{data.pregunta}</Typography>
             </AccordionSummary>
-            <AccordionDetails>
+            <AccordionDetails className='s-accordion-items'>
               <Typography>{data.respuesta}</Typography>
             </AccordionDetails>
           </Accordion>
