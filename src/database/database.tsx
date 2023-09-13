@@ -65,11 +65,11 @@ export const carreras = [
     descripcion: "Son profesionales de la salud competentes para realizar, bajo supervisión del médico, procedimientos diagnósticos y terapéuticos en pacientes mediante la utilización de radiofármacos",
     materias: [
       [
-        ["energia nuclear", false, false],
+        ["energia nuclear", false, true],
         ["radiologia", true, false],
         ["algebra", true, false],
         ["matematica", true, false],
-        ["analisis matematico", false, false]
+        ["analisis matematico", false, true]
       ], 
       [
         ["filosofia", false, false],
