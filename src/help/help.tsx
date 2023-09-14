@@ -14,16 +14,17 @@ const Help = () => {
           gridTemplateColumns={{ xs: "1fr", md: "1fr 1fr 1fr" }}
           gridTemplateRows="auto"
           gridTemplateAreas={{
-            xs: "'img' 'img' 'img' 'img' 'img' 'img' 'title' 'subtitle' 'ls' 'btn' '.' ",
+            xs: "'img' '.' '.' 'title' '.' '.' 'subtitle' '.' '.' 'list' '.' '.' ",
             md: "'title title .' 'subtitle subtitle img' 'list list img' '. . .' ",
           }}
-          columnGap={{ xs: 0, md: 10}}
+          columnGap={{ xs: 4, md: 10}}
           height={{ md: "92vh", xs: "93vh" }}
         >
           <Box
             gridArea={"title"}
             alignSelf={{ xs: "center", md: "center" }}
             textAlign={{ xs: "center", md: "left" }}
+            marginTop={{xs:"20px",md:"0px"}}
           >
             <Typography variant={md ? "h2" : "h3"} fontWeight="bold">
               {title}
@@ -33,6 +34,7 @@ const Help = () => {
             gridArea={"subtitle"}
             alignSelf={{ xs: "center", md: "center" }}
             textAlign={{ xs: "center", md: "left" }}
+            marginTop={{xs:"20px",md:"0px"}}
           >
             <Typography variant={md ? "h4" : "h5"}>
               {subtitle}
@@ -45,13 +47,15 @@ const Help = () => {
               backgroundSize: "contain",
               backgroundPosition: "center",
               backgroundRepeat: "no-repeat",
-              minWidth:"500px",
+              minHeight:"200px",
             }}
+            marginTop={{xs:"20px",md:"0px"}}
           ></Box>
           <Box
             textAlign={{ xs: "center", md: "left" }}
             gridArea={"list"}
             alignSelf={{ xs: "center" }}
+            marginTop={{xs:"20px",md:"0px"}}
           >
             <AccordionList></AccordionList>
           </Box>
