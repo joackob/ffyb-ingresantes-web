@@ -50,7 +50,7 @@ export const carreras = [
         ["fisiologia", false, true],
         ["cardiologia", false, true],
         ["biologia", true, false],
-        ["farmacologia", false, false]
+        ["farmacologia", false, true]
       ], 
       [
         ["agronomia", false, false], 

@@ -14,7 +14,7 @@ import {
   useTheme,
 } from "@mui/material";
 import React from "react";
-import Theme from "../theme/Theme";
+import Link from "next/link";
 
 
 
@@ -48,9 +48,9 @@ const Carrera = ({title,subjects}:{title:string;subjects:(string | boolean) [][]
   return (
     <Box marginTop={{xs:"40px",md:"0px"}}>
       <Container>
-        <Box display={"grid"} gridTemplateColumns={{ xs: "1fr", md: "1fr 1fr", }} gridTemplateRows="auto" gridTemplateAreas={{ xs: "'title' 'subtitle' 'percentageMobile' 'subjects'", md: "'title percentage' 'subtitle percentage' 'subjects percentage''paragraph percentage'", }} columnGap={{ xs: 0, md: 0, }} height={{md:"92vh",xs:"93vh"}} >
+        <Box display={"grid"} gridTemplateColumns={{ xs: "1fr", md: "1fr 1fr", }} gridTemplateRows="auto" gridTemplateAreas={{ xs: "'title' 'subtitle' 'percentageMobile' 'personaliza' 'subjects' 'paragraph' ", md: "'title percentage' 'subtitle percentage' 'subjects percentage' 'personaliza paragraph'", }} columnGap={{ xs: 0, md: 0, }} height={{md:"92vh",xs:"93vh"}} >
 
-          <Box marginBottom={{md:"0px",xs:"20px"}} gridArea={"title"} alignSelf={{ xs: "center", md: "end", }} textAlign={{ xs: "center", md: "left", }}>
+          <Box marginBottom={{md:"0px",xs:"20px"}} marginTop={{md:"30px",xs:"20px"}} gridArea={"title"} alignSelf={{ xs: "center", md: "end", }} textAlign={{ xs: "center", md: "left", }}>
             <Typography variant={md ? "h2" : "h3"} fontWeight="bold">{title}</Typography>
           </Box>
 
@@ -59,14 +59,14 @@ const Carrera = ({title,subjects}:{title:string;subjects:(string | boolean) [][]
           </Box>
 
 
-          <Stack paddingBottom={{md:"0px",xs:"40px"}} display={"flex"} alignItems={{md:"start",xs:"center"}} gridArea={"subjects"} spacing={2}>
+          <Stack paddingBottom={{md:"0px",xs:"40px"}} marginBottom={{md:"20px",xs:"0px"}} display={"flex"} alignItems={{md:"start",xs:"center"}} gridArea={"subjects"} spacing={2}>
             <Box>
               <List sx={{display:"flex",flexDirection:"column",alignItems:"center"}}>
               {subjects[page-1].map((item) => (
                 <ListItem sx={{paddingLeft: "0px"}}>
                   <ListItemIcon>
                     {item[1] == true ? <RadioButtonChecked sx={{fontSize:"30px"}}/>: ""}
-                    {item[2] == true ? <RadioButtonChecked sx={{ color:theme.palette.secondary.main,fontSize:"30px"}}/>: ""}
+                    {item[2] == true ? <RadioButtonChecked sx={{ color:theme.palette.primary.main,fontSize:"30px"}}/>: ""}
                     {item[1] == false && item[2] == false ? <RadioButtonUnchecked sx={{fontSize:"30px"}}/>:""}
                   </ListItemIcon>
                   <ListItemText>
@@ -78,19 +78,26 @@ const Carrera = ({title,subjects}:{title:string;subjects:(string | boolean) [][]
             </Box>
             <Pagination size="large" count={subjects.length} page={page} onChange={handleChange}/>
           </Stack>
+          
+          <Box marginBottom={{md:"20px",xs:"20px"}} textAlign={{xs:"center",md:"center"}} display={"flex"} justifyContent={{md:"start",xs:"center"}} alignItems={"center"} gridArea={"personaliza"}>
+            <Link  style={{display:"flex", justifyContent:"center", alignItems:"center", height:"60px",width:"230px", borderRadius:"10px", backgroundColor:theme.palette.primary.main}} href={"/"} >
+              <Typography color={"white"} variant="h6">Personalizá tu carrera</Typography>
+            </Link>
+          </Box>
+          
 
-          <Box display={{xs:"none",md:"block"}} gridArea={"paragraph"} textAlign={"left"}>
+          <Box gridArea={"paragraph"} textAlign={{xs:"center",md:"left"}}>
               <Typography variant="h5">{"Si necesitas ayuda, no dudes en consultarnos"}</Typography>
           </Box>
       
                 
 
-          <Box paddingRight={"100px"} paddingBottom={"100px"} gridArea={"percentage"} display={{md:"flex",xs:"none"}} sx={{justifyContent:"center",alignItems:"center"}}>
+          <Box paddingRight={"100px"} gridArea={"percentage"} display={{md:"flex",xs:"none"}} sx={{justifyContent:"center",alignItems:"center"}}>
               <CircularProgress style={{width:"450px", height:"450px"}} thickness={3.6} variant="determinate" value={porcentaje}/>
               <Typography fontSize={"100px"} position={"absolute"} variant="caption" component="div" color="text.secondary">{`${porcentaje}%`}</Typography>
           </Box>
 
-          <Box marginBottom={"20px"} gridArea={"percentageMobile"} display={{md:"none",xs:"flex"}} sx={{justifyContent:"center",alignItems:"center"}}>
+          <Box marginBottom={"40px"} gridArea={"percentageMobile"} display={{md:"none",xs:"flex"}} sx={{justifyContent:"center",alignItems:"center"}}>
               <CircularProgress style={{width:"300px", height:"300px"}} thickness={3.6} variant="determinate" value={porcentaje}/>
               <Typography fontSize={"50px"} position={"absolute"} variant="caption" component="div" color="text.secondary">{`${porcentaje}%`}</Typography>
           </Box>
