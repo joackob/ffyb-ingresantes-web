@@ -18,7 +18,7 @@ const linksLeft = [
   },
   {
     label: "Espacios de la facultad",
-    href: "/",
+    href: "/espacio",
     icon: <LocationOn />,
   },
   {
