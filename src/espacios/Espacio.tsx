@@ -1,4 +1,4 @@
-import "./Espacio.module.css";
+{/*import "./Espacio.module.css";
 import { Box, Container, useMediaQuery, Typography } from "@mui/material";
 const Espacio = () => {
   const md = useMediaQuery("min-width(900px)");
@@ -25,3 +25,4 @@ const Espacio = () => {
 };
 
 export default Espacio;
+*/}

@@ -15,11 +15,15 @@ import {
 } from "@mui/material";
 import React from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 
 
 
 const Carrera = ({title,subjects}:{title:string;subjects:(string | boolean) [][][];}) => {
+
+  const router = useRouter();
+  const id = router.query.id != undefined ? Number(router.query.id): 0;
 
   let aprobadas = 0;
   let totales = 0;
@@ -64,7 +68,7 @@ const Carrera = ({title,subjects}:{title:string;subjects:(string | boolean) [][]
               <List sx={{display:"flex",flexDirection:"column",alignItems:"center"}}>
               {subjects[page-1].map((item) => (
                 <ListItem sx={{paddingLeft: "0px"}}>
-                  <ListItemIcon>
+                  <ListItemIcon sx={{justifyContent:"center"}}>
                     {item[1] == true ? <RadioButtonChecked sx={{fontSize:"30px"}}/>: ""}
                     {item[2] == true ? <RadioButtonChecked sx={{ color:theme.palette.primary.main,fontSize:"30px"}}/>: ""}
                     {item[1] == false && item[2] == false ? <RadioButtonUnchecked sx={{fontSize:"30px"}}/>:""}
@@ -80,13 +84,13 @@ const Carrera = ({title,subjects}:{title:string;subjects:(string | boolean) [][]
           </Stack>
           
           <Box marginBottom={{md:"20px",xs:"20px"}} textAlign={{xs:"center",md:"center"}} display={"flex"} justifyContent={{md:"start",xs:"center"}} alignItems={"center"} gridArea={"personaliza"}>
-            <Link  style={{display:"flex", justifyContent:"center", alignItems:"center", height:"60px",width:"230px", borderRadius:"10px", backgroundColor:theme.palette.primary.main}} href={"/"} >
+            <Link  style={{display:"flex", justifyContent:"center", alignItems:"center", height:"60px",width:"230px", borderRadius:"10px", backgroundColor:theme.palette.primary.main}} href={`/personaliza/${id}`} >
               <Typography color={"white"} variant="h6">Personalizá tu carrera</Typography>
             </Link>
           </Box>
           
 
-          <Box gridArea={"paragraph"} textAlign={{xs:"center",md:"left"}}>
+          <Box gridArea={"paragraph"} display={"flex"} alignItems={"center"} justifyContent={"center"} textAlign={{xs:"center",md:"left"}}>
               <Typography variant="h5">{"Si necesitas ayuda, no dudes en consultarnos"}</Typography>
           </Box>
       

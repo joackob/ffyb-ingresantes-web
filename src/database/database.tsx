@@ -10,14 +10,34 @@ export const carreras = [
         ["biologia", false, true],
         ["Quimica", false, false],
         ["bioquimica", false, true],
-        ["farmacologia", false, true]
+        ["farmacologia", false, true],
+        ["bioquimica", false, true],        
+        ["Fisica", false, false],
+        ["Microbiologia", false, false],
       ],
       [
         ["matematica", true, false],
         ["DDHH", false, true],
+      ],
+      [
+        ["Quimica general e inorgánica", true, false],
+        ["biologia", false, true],
+        ["Quimica", false, false],
+      ],
+      [
+        ["Quimica general e inorgánica", true, false],
+        ["biologia", false, true],
+        ["Quimica", false, false],
+        ["bioquimica", false, true],
+      ],
+      [
+        ["Quimica general e inorgánica", true, false],
+        ["biologia", false, true],
+        ["Quimica", false, false],
+        ["bioquimica", false, true],
         ["Fisica", false, false],
         ["Microbiologia", false, false],
-      ]
+      ],
     ]
   },
   {
