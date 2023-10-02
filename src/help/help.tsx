@@ -1,4 +1,5 @@
 import AccordionList from "@/src/help/componets/Accordion";
+import Cartas from "@/src/help/componets/Cards"
 import { Box, Container, useMediaQuery, Typography } from "@mui/material";
 
 const Help = () => {
@@ -14,8 +15,8 @@ const Help = () => {
           gridTemplateColumns={{ xs: "1fr", md: "1fr 1fr 1fr" }}
           gridTemplateRows="auto"
           gridTemplateAreas={{
-            xs: "'img' '.' '.' 'title' '.' '.' 'subtitle' '.' '.' 'list' '.' '.' ",
-            md: "'title title img' 'subtitle subtitle img' 'list list .' '. . .' ",
+            xs: "'img' 'title' 'subtitle' 'list' ",
+            md: "'title title img' 'subtitle subtitle img' 'carta1 carta2 carta3' 'carta4 carta5 carta6' ",
           }}
           height={{ md: "92vh", xs: "93vh" }}
         >
@@ -35,7 +36,7 @@ const Help = () => {
             textAlign={{ xs: "center", md: "left" }}
             marginTop={{xs:"20px",md:"0px"}}
           >
-            <Typography variant={md ? "h4": "h6"}>
+            <Typography variant={md ? "h4" : "h6"}>
               {subtitle}
             </Typography>
           </Box>
@@ -50,12 +51,13 @@ const Help = () => {
             }}
             marginTop={{xs:"20px",md:"0px"}}
           ></Box>
+          <Cartas gridKeys={["carta1","carta2","carta3","carta4","carta5","carta6"]}></Cartas>
           <Box
             textAlign={{ xs: "center", md: "left" }}
             gridArea={"list"}
             alignSelf={{ xs: "center" }}
             marginTop={{xs:"20px",md:"0px"}}
-            display={{md:"none"}}
+            display={{md:"none",xs:"block"}}
           >
             <AccordionList></AccordionList>
           </Box>

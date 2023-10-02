@@ -12,7 +12,9 @@ const dataBase =[
   ingresarDatos("¿Tenés problemas económicos?","Lorem, ipsum dolor sit amet consectetur adipisicing elit.Lorem, ipsum dolor sit amet consectetur adipisicing elit.","panel1"),
   ingresarDatos("¿Tenés problemas para gestionar tus horarios?","Lorem, ipsum dolor sit amet consectetur adipisicing elit.Lorem, ipsum dolor sit amet consectetur adipisicing elit.","panel2"),
   ingresarDatos("¿Sufrís de violencia doméstica?","Lorem, ipsum dolor sit amet consectetur adipisicing elit.Lorem, ipsum dolor sit amet consectetur adipisicing elit.","panel3"),
-  ingresarDatos("Contactos Administrativos","Lorem, ipsum dolor sit amet consectetur adipisicing elit.Lorem, ipsum dolor sit amet consectetur adipisicing elit.","panel4")
+  ingresarDatos("Contactos Administrativos","Lorem, ipsum dolor sit amet consectetur adipisicing elit.Lorem, ipsum dolor sit amet consectetur adipisicing elit.","panel4"),
+  ingresarDatos("¿Tenés problemas de concetividad?","Lorem, ipsum dolor sit amet consectetur adipisicing elit.Lorem, ipsum dolor sit amet consectetur adipisicing elit.","panel5"),
+  ingresarDatos("¿Tenés problemas con el transporte?","Lorem, ipsum dolor sit amet consectetur adipisicing elit.Lorem, ipsum dolor sit amet consectetur adipisicing elit.","panel6")
 ]
 
 const AccordionList = () =>{
