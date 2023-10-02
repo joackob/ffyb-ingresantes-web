@@ -24,11 +24,11 @@ const AccordionList = () =>{
   return (
     <>
         {dataBase.map(data=>(
-          <Accordion className='s-accordion' TransitionProps={{ unmountOnExit: true }} expanded={expanded === `${data.panel}`} onChange={handleChange(`${data.panel}`)}>
-            <AccordionSummary expandIcon={<ExpandMoreIcon className='s-accordion-icons'/>}id="panel-header" >
+          <Accordion sx={{border:"1px solid black", margin:"1px"}} TransitionProps={{ unmountOnExit: true }} expanded={expanded === `${data.panel}`} onChange={handleChange(`${data.panel}`)}>
+            <AccordionSummary expandIcon={<ExpandMoreIcon sx={{color:"white"}}/>}sx={{backgroundColor:"#3728b7", color:"white"}}>
               <Typography fontWeight={"bold"}>{data.pregunta}</Typography>
             </AccordionSummary>
-            <AccordionDetails className='s-accordion-items'>
+            <AccordionDetails sx={{backgroundColor:"#3728b7",color:"white"}}>
               <Typography>{data.respuesta}</Typography>
             </AccordionDetails>
           </Accordion>

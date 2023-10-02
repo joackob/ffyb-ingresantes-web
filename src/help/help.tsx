@@ -15,9 +15,8 @@ const Help = () => {
           gridTemplateRows="auto"
           gridTemplateAreas={{
             xs: "'img' '.' '.' 'title' '.' '.' 'subtitle' '.' '.' 'list' '.' '.' ",
-            md: "'title title .' 'subtitle subtitle img' 'list list img' '. . .' ",
+            md: "'title title img' 'subtitle subtitle img' 'list list .' '. . .' ",
           }}
-          columnGap={{ xs: 4, md: 10}}
           height={{ md: "92vh", xs: "93vh" }}
         >
           <Box
@@ -26,7 +25,7 @@ const Help = () => {
             textAlign={{ xs: "center", md: "left" }}
             marginTop={{xs:"20px",md:"0px"}}
           >
-            <Typography variant={md ? "h2" : "h3"} fontWeight="bold">
+            <Typography variant={md ? "h3" : "h5"} fontWeight="bold">
               {title}
             </Typography>
           </Box>
@@ -36,7 +35,7 @@ const Help = () => {
             textAlign={{ xs: "center", md: "left" }}
             marginTop={{xs:"20px",md:"0px"}}
           >
-            <Typography variant={md ? "h4" : "h5"}>
+            <Typography variant={md ? "h4": "h6"}>
               {subtitle}
             </Typography>
           </Box>
@@ -56,6 +55,7 @@ const Help = () => {
             gridArea={"list"}
             alignSelf={{ xs: "center" }}
             marginTop={{xs:"20px",md:"0px"}}
+            display={{md:"none"}}
           >
             <AccordionList></AccordionList>
           </Box>

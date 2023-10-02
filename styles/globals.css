@@ -14,10 +14,3 @@ a {
 * {
   box-sizing: border-box;
 }
-.s-accordion{
-  border: 1px solid black;
-  margin: 1px;
-}
-#panel-header:hover{
-  color: rgb(170, 167, 167)
-}
