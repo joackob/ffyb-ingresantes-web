@@ -12,21 +12,23 @@ const Help = () => {
       <Container>
         <Box
           display={"grid"}
-          gridTemplateColumns={{ xs: "1fr", md: "1fr 1fr 1fr" }}
+          gridTemplateColumns={{ xs: "1fr", md: "1fr 1fr 1fr 1fr" }}
           gridTemplateRows="auto"
           gridTemplateAreas={{
             xs: "'img' 'title' 'subtitle' 'list' ",
-            md: "'title title img' 'subtitle subtitle img' 'carta1 carta2 carta3' 'carta4 carta5 carta6' ",
+            md: "'title title title img' 'subtitle subtitle subtitle img' 'carta1 carta2 carta3 carta4' 'carta5 carta6 carta7 carta8' ",
           }}
           height={{ md: "92vh", xs: "93vh" }}
+          columnGap={{ xs: 0, md: 2 }}
+          rowGap={{xs:0,md:2}}
         >
           <Box
             gridArea={"title"}
             alignSelf={{ xs: "center", md: "center" }}
             textAlign={{ xs: "center", md: "left" }}
-            marginTop={{xs:"20px",md:"0px"}}
+            marginTop={"20px"}
           >
-            <Typography variant={md ? "h3" : "h5"} fontWeight="bold">
+            <Typography variant={"h3"} fontWeight="bold">
               {title}
             </Typography>
           </Box>
@@ -34,9 +36,9 @@ const Help = () => {
             gridArea={"subtitle"}
             alignSelf={{ xs: "center", md: "center" }}
             textAlign={{ xs: "center", md: "left" }}
-            marginTop={{xs:"20px",md:"0px"}}
+            marginTop={"20px"}
           >
-            <Typography variant={md ? "h4" : "h6"}>
+            <Typography variant={"h5"}>
               {subtitle}
             </Typography>
           </Box>
@@ -49,14 +51,14 @@ const Help = () => {
               backgroundRepeat: "no-repeat",
               minHeight:"200px",
             }}
-            marginTop={{xs:"20px",md:"0px"}}
+            marginTop={"20px"}
           ></Box>
-          <Cartas gridKeys={["carta1","carta2","carta3","carta4","carta5","carta6"]}></Cartas>
+          <Cartas gridKeys={["carta1","carta2","carta3","carta4","carta5","carta6","carta7","carta8"]}></Cartas>
           <Box
             textAlign={{ xs: "center", md: "left" }}
             gridArea={"list"}
             alignSelf={{ xs: "center" }}
-            marginTop={{xs:"20px",md:"0px"}}
+            marginTop={"20px"}
             display={{md:"none",xs:"block"}}
           >
             <AccordionList></AccordionList>
