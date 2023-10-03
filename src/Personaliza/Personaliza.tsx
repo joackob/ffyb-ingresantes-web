@@ -46,11 +46,10 @@ const Personaliza = ({ subjects }: { subjects: (string | boolean)[][][]; }) => {
 
 
                     <div>
-                        <Button onClick={handleOpen}>Open modal</Button>
                         <Modal open={open} onClose={handleClose}>
                             <Box>
                                 <Typography id="modal-modal-title" variant="h6" component="h2">
-                                    Hola
+                                    modal
                                 </Typography>
                                 <Typography id="modal-modal-description" sx={{ mt: 2 }}>
                                     modal
