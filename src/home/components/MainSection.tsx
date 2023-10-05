@@ -27,7 +27,7 @@ const MainSection = () => {
           <Typography variant={"h3"} fontWeight="bold" display={{md:"block",xs:"none"}}>
               {title}
             </Typography>
-            <Typography variant={"h5"} fontWeight="bold" display={{md:"none",xs:"block"}}>
+            <Typography variant={"h4"} fontWeight="bold" display={{md:"none",xs:"block"}}>
               {title}
             </Typography>
           </Box>
