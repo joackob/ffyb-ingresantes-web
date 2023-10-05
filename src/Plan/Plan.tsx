@@ -4,12 +4,10 @@ import {
   Container,
   Link,
   Typography,
-  useMediaQuery,
 } from "@mui/material";
 
 const Plan = () => {
   const title = "Personaliza tu plan de estudios a tu medida.\n";
-  const md = useMediaQuery("min-width(900px)");
 
   return (
       <Container>

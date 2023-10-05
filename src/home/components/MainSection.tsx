@@ -8,7 +8,6 @@ import {
   ListItemIcon,
   ListItemText,
   Typography,
-  useMediaQuery,
   useTheme,
 } from "@mui/material";
 
@@ -16,7 +15,6 @@ const MainSection = () => {
   const theme = useTheme();
   const title = "Bienvenidos a las tutorías.\n ";
   const subtitle = "Estamos aquí para brindarte el apoyo y la orientación personalizada que necesitas para alcanzar tus metas educativas con confianza.";
-  const md = useMediaQuery("min-width(900px)");
 
   return (
     <Box>
