@@ -28,7 +28,10 @@ const Help = () => {
             textAlign={{ xs: "center", md: "left" }}
             marginTop={"20px"}
           >
-            <Typography variant={"h3"} fontWeight="bold">
+            <Typography variant={"h3"} fontWeight="bold" display={{md:"block",xs:"none"}}>
+              {title}
+            </Typography>
+            <Typography variant={"h5"} fontWeight="bold" display={{md:"none",xs:"block"}}>
               {title}
             </Typography>
           </Box>
@@ -38,7 +41,10 @@ const Help = () => {
             textAlign={{ xs: "center", md: "left" }}
             marginTop={"20px"}
           >
-            <Typography variant={"h5"}>
+            <Typography variant={"h5"} display={{md:"block",xs:"none"}}>
+              {subtitle}
+            </Typography>
+            <Typography variant={"h6"} display={{md:"none",xs:"block"}}>
               {subtitle}
             </Typography>
           </Box>
