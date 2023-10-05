@@ -1,12 +1,10 @@
 import AccordionList from "@/src/help/componets/Accordion";
 import Cartas from "@/src/help/componets/Cards"
-import { Box, Container, useMediaQuery, Typography } from "@mui/material";
+import { Box, Container, Typography } from "@mui/material";
 
 const Help = () => {
   const title = "Quizá te podamos ayudar.\n ";
   const subtitle ="Acá hay algunas preguntas frecuentes de otros usuarios que te podrían servir. Si tenes algún otra pregunta no dudes en consultar a los foros correspondientes";
-  const md = useMediaQuery("min-width(900px)");
-
   return (
     <Box>
       <Container>
@@ -24,7 +22,7 @@ const Help = () => {
         >
           <Box
             gridArea={"title"}
-            alignSelf={{ xs: "center", md: "center" }}
+            alignSelf={"end"}
             textAlign={{ xs: "center", md: "left" }}
             marginTop={"20px"}
           >
@@ -37,14 +35,14 @@ const Help = () => {
           </Box>
           <Box
             gridArea={"subtitle"}
-            alignSelf={{ xs: "center", md: "center" }}
+            alignSelf={"center"}
             textAlign={{ xs: "center", md: "left" }}
             marginTop={"20px"}
           >
             <Typography variant={"h5"} display={{md:"block",xs:"none"}}>
               {subtitle}
             </Typography>
-            <Typography variant={"h6"} display={{md:"none",xs:"block"}}>
+            <Typography variant={"subtitle1"} display={{md:"none",xs:"block"}}>
               {subtitle}
             </Typography>
           </Box>
@@ -61,11 +59,11 @@ const Help = () => {
           ></Box>
           <Cartas gridKeys={["carta1","carta2","carta3","carta4","carta5","carta6"]}></Cartas>
           <Box
-            textAlign={{ xs: "center", md: "left" }}
+            textAlign={"center"}
             gridArea={"list"}
-            alignSelf={{ xs: "center" }}
             marginTop={"20px"}
-            display={{md:"none",xs:"block"}}
+            justifyContent={"center"}
+            display={{md:"none",xs:"grid"}}
           >
             <AccordionList></AccordionList>
           </Box>

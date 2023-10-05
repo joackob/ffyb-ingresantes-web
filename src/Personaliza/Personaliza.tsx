@@ -15,9 +15,9 @@ const Personaliza = ({ subjects }: { subjects: (string | boolean)[][][]; }) => {
     return (
         <Box>
             <Container>
-                <Box justifyItems={"center"} display={"grid"} gridTemplateColumns={{ xs: "1fr", md: "1fr 1fr", }} gridTemplateRows={{ xs: "80px", md: "130px" }} gridTemplateAreas={{ xs: "'title' 'subjects' 'footer' ", md: "'title title' 'subjects subjects'" }} columnGap={{ xs: 0, md: 0, }} height={{ md: "92vh", xs: "93vh" }} >
+                <Box justifyItems={"center"} display={"grid"} gridTemplateColumns={{ xs: "1fr", md: "1fr 1fr", }} gridTemplateRows={{ xs: "80px", md: "130px" }} gridTemplateAreas={{ xs: "'title' 'subjects' 'footer' ", md: "'title title' 'subjects subjects'" }} height={{ md: "92vh", xs: "93vh" }} >
 
-                    <Box height={"75px"} paddingTop={{ xs: "10px", md: "30px" }} gridArea={"title"} alignSelf={{ xs: "start", md: "start", }} textAlign={{ xs: "center", md: "center", }}>
+                    <Box height={"75px"} paddingTop={{ xs: "10px", md: "30px" }} gridArea={"title"} alignSelf={"start"} textAlign={"center"}>
                         <Typography fontSize={{ xs: "40px", md: "55px" }} fontWeight="bold">Personaliza</Typography>
                     </Box>
 

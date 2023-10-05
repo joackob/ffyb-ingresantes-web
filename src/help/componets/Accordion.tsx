@@ -26,7 +26,7 @@ const AccordionList = () =>{
   return (
     <>
         {dataBase.map(data=>(
-          <Accordion sx={{border:"1px solid black", margin:"1px"}} TransitionProps={{ unmountOnExit: true }} expanded={expanded === `${data.panel}`} onChange={handleChange(`${data.panel}`)}>
+          <Accordion sx={{border:"1px solid black", margin:"1px",width:"250px"}} TransitionProps={{ unmountOnExit: true }} expanded={expanded === `${data.panel}`} onChange={handleChange(`${data.panel}`)}>
             <AccordionSummary expandIcon={<ExpandMoreIcon/>}>
               <Typography fontWeight={"bold"}>{data.pregunta}</Typography>
             </AccordionSummary>

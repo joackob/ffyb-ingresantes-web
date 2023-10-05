@@ -6,7 +6,7 @@ import CardContent from '@mui/material/CardContent';
 const Cartas = ({gridKeys}:{gridKeys:string[]}) => {
     return (
         <>
-            <Box gridArea={gridKeys[0]} display={{xs:"none",md:"block"}} margin={"5px"}>
+            <Box gridArea={gridKeys[0]} display={{xs:"none",md:"grid"}} margin={"5px"} justifyContent={"center"}>
                 <Card sx={{maxWidth: 300 ,border:"2px solid black",borderRadius:"20px"}}>
                     <CardContent>
                         <Typography variant="h5" sx={{padding:"10px"}}>
@@ -18,7 +18,7 @@ const Cartas = ({gridKeys}:{gridKeys:string[]}) => {
                     </CardContent>
                 </Card>
             </Box>
-            <Box gridArea={gridKeys[1]} display={{xs:"none",md:"block"}} margin={"5px"}>
+            <Box gridArea={gridKeys[1]} display={{xs:"none",md:"grid"}} margin={"5px"} justifyContent={"center"}>
                 <Card sx={{maxWidth: 300 ,border:"2px solid black",borderRadius:"20px"}}>
                     <CardContent>
                         <Typography variant="h5" sx={{padding:"10px"}}>
@@ -30,7 +30,7 @@ const Cartas = ({gridKeys}:{gridKeys:string[]}) => {
                     </CardContent>
                 </Card>
             </Box>
-            <Box gridArea={gridKeys[2]} display={{xs:"none",md:"block"}} margin={"5px"}>
+            <Box gridArea={gridKeys[2]} display={{xs:"none",md:"grid"}} margin={"5px"} justifyContent={"center"}>
                 <Card sx={{maxWidth: 300 ,border:"2px solid black",borderRadius:"20px"}}>
                     <CardContent>
                         <Typography variant="h5" sx={{padding:"10px"}}>
@@ -42,7 +42,7 @@ const Cartas = ({gridKeys}:{gridKeys:string[]}) => {
                     </CardContent>
                 </Card>
             </Box>
-            <Box gridArea={gridKeys[3]} display={{xs:"none",md:"block"}} margin={"5px"}>
+            <Box gridArea={gridKeys[3]} display={{xs:"none",md:"grid"}} margin={"5px"} justifyContent={"center"}>
                 <Card sx={{maxWidth: 300 ,border:"2px solid black",borderRadius:"20px"}}>
                     <CardContent>
                         <Typography variant="h5" sx={{padding:"10px"}}>
@@ -54,7 +54,7 @@ const Cartas = ({gridKeys}:{gridKeys:string[]}) => {
                     </CardContent>
                 </Card>
             </Box>
-            <Box gridArea={gridKeys[4]} display={{xs:"none",md:"block"}} margin={"5px"}>
+            <Box gridArea={gridKeys[4]} display={{xs:"none",md:"grid"}} margin={"5px"} justifyContent={"center"}>
                 <Card sx={{maxWidth: 300 ,border:"2px solid black",borderRadius:"20px"}}>
                     <CardContent>
                         <Typography variant="h5" sx={{padding:"10px"}}>
@@ -66,7 +66,7 @@ const Cartas = ({gridKeys}:{gridKeys:string[]}) => {
                     </CardContent>
                 </Card>
             </Box>
-            <Box gridArea={gridKeys[5]} display={{xs:"none",md:"block"}} margin={"5px"}>
+            <Box gridArea={gridKeys[5]} display={{xs:"none",md:"grid"}} margin={"5px"} justifyContent={"center"}>
                 <Card sx={{maxWidth: 300 ,border:"2px solid black",borderRadius:"20px"}}>
                     <CardContent>
                         <Typography variant="h5" sx={{padding:"10px"}}>

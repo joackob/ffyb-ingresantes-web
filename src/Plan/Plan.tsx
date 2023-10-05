@@ -5,11 +5,9 @@ import {
   Link,
   Typography,
   useMediaQuery,
-  useTheme,
 } from "@mui/material";
 
 const Plan = () => {
-  const theme = useTheme();
   const title = "Personaliza tu plan de estudios a tu medida.\n";
   const md = useMediaQuery("min-width(900px)");
 

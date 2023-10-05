@@ -52,13 +52,13 @@ const Carrera = ({title,subjects}:{title:string;subjects:(string | boolean) [][]
   return (
     <Box marginTop={{xs:"40px",md:"0px"}}>
       <Container>
-        <Box display={"grid"} gridTemplateColumns={{ xs: "1fr", md: "1fr 1fr", }} gridTemplateRows="auto" gridTemplateAreas={{ xs: "'title' 'subtitle' 'percentageMobile' 'personaliza' 'subjects' 'paragraph' ", md: "'title percentage' 'subtitle percentage' 'subjects percentage' 'personaliza paragraph'", }} columnGap={{ xs: 0, md: 0, }} height={{md:"92vh",xs:"93vh"}} >
+        <Box display={"grid"} gridTemplateColumns={{ xs: "1fr", md: "1fr 1fr", }} gridTemplateRows="auto" gridTemplateAreas={{ xs: "'title' 'subtitle' 'percentageMobile' 'personaliza' 'subjects' 'paragraph' ", md: "'title percentage' 'subtitle percentage' 'subjects percentage' 'personaliza paragraph'", }} height={{md:"92vh",xs:"93vh"}} >
 
           <Box marginBottom={{md:"0px",xs:"20px"}} marginTop={{md:"30px",xs:"20px"}} gridArea={"title"} alignSelf={{ xs: "center", md: "end", }} textAlign={{ xs: "center", md: "left", }}>
             <Typography variant={md ? "h2" : "h3"} fontWeight="bold">{title}</Typography>
           </Box>
 
-          <Box marginBottom={{md:"0px",xs:"50px"}} gridArea={"subtitle"} textAlign={{ xs: "center", md: "left", }} alignSelf={{ xs: "center",md: "center" }}>
+          <Box marginBottom={{md:"0px",xs:"50px"}} gridArea={"subtitle"} textAlign={{ xs: "center", md: "left", }} alignSelf={"center"}>
             <Typography variant="h5">{subtitle}</Typography>
           </Box>
 
@@ -83,7 +83,7 @@ const Carrera = ({title,subjects}:{title:string;subjects:(string | boolean) [][]
             <Pagination size="large" count={subjects.length} page={page} onChange={handleChange}/>
           </Stack>
           
-          <Box marginBottom={{md:"20px",xs:"20px"}} textAlign={{xs:"center",md:"center"}} display={"flex"} justifyContent={{md:"start",xs:"center"}} alignItems={"center"} gridArea={"personaliza"}>
+          <Box marginBottom={{md:"20px",xs:"20px"}} textAlign={"center"} display={"flex"} justifyContent={{md:"start",xs:"center"}} alignItems={"center"} gridArea={"personaliza"}>
             <Link  style={{display:"flex", justifyContent:"center", alignItems:"center", height:"60px",width:"230px", borderRadius:"10px", backgroundColor:theme.palette.primary.main}} href={`/personaliza/${id}`} >
               <Typography color={"white"} variant="h6">Personalizá tu carrera</Typography>
             </Link>
