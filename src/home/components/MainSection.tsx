@@ -24,11 +24,21 @@ const MainSection = () => {
         <Box display={"grid"} gridTemplateColumns={{ xs: "1fr", md: "1fr 1fr", }} gridTemplateRows="auto" gridTemplateAreas={{ xs: "'img' 'title' 'subtitle' 'ls' 'btn'", md: "'title img' 'subtitle img' 'ls img' 'btn img'", }} columnGap={{ xs: 0, md: 2, }} height={{md:"92vh",xs:"93vh"}} >
 
           <Box gridArea={"title"} alignSelf={{ md: "end", }} textAlign={{ xs: "center", md: "left", }}>
-            <Typography variant={md ? "h2" : "h3"} fontWeight="bold">{title}</Typography>
+          <Typography variant={"h3"} fontWeight="bold" display={{md:"block",xs:"none"}}>
+              {title}
+            </Typography>
+            <Typography variant={"h5"} fontWeight="bold" display={{md:"none",xs:"block"}}>
+              {title}
+            </Typography>
           </Box>
 
           <Box textAlign={{ xs: "center", md: "left", }} gridArea={"subtitle"} alignSelf={{ xs: "center", }}>
-            <Typography variant="h5">{subtitle}</Typography>
+            <Typography variant={"h5"} display={{md:"block",xs:"none"}}>
+              {subtitle}
+            </Typography>
+            <Typography variant={"h6"} display={{md:"none",xs:"block"}}>
+              {subtitle}
+            </Typography>
           </Box>
 
           <Box textAlign={{xs:"center", md:"left"}} gridArea={"ls"}>
