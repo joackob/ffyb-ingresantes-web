@@ -12,11 +12,11 @@ const Help = () => {
       <Container>
         <Box
           display={"grid"}
-          gridTemplateColumns={{ xs: "1fr", md: "1fr 1fr 1fr 1fr" }}
+          gridTemplateColumns={{ xs: "1fr", md: "1fr 1fr 1fr" }}
           gridTemplateRows="auto"
           gridTemplateAreas={{
             xs: "'img' 'title' 'subtitle' 'list' ",
-            md: "'title title title img' 'subtitle subtitle subtitle img' 'carta1 carta2 carta3 carta4' 'carta5 carta6 carta7 carta8' ",
+            md: "'title title img' 'subtitle subtitle img' 'carta1 carta2 carta3' 'carta4 carta5 carta6' ",
           }}
           height={{ md: "92vh", xs: "93vh" }}
           columnGap={{ xs: 0, md: 2 }}
@@ -53,7 +53,7 @@ const Help = () => {
             }}
             marginTop={"20px"}
           ></Box>
-          <Cartas gridKeys={["carta1","carta2","carta3","carta4","carta5","carta6","carta7","carta8"]}></Cartas>
+          <Cartas gridKeys={["carta1","carta2","carta3","carta4","carta5","carta6"]}></Cartas>
           <Box
             textAlign={{ xs: "center", md: "left" }}
             gridArea={"list"}

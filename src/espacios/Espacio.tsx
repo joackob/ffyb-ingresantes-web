@@ -1,4 +1,4 @@
-{/*import "./Espacio.module.css";
+import "./Espacio.module.css";
 import { Box, Container, useMediaQuery, Typography } from "@mui/material";
 const Espacio = () => {
   const md = useMediaQuery("min-width(900px)");
@@ -7,8 +7,8 @@ const Espacio = () => {
     <Box>
       <Container>
         <Box>
-          <div>
-            <iframe  id="iframe">
+          {/*<div>
+            <iframe  id="iframe"
               width="560"
               height="315"
               src="https://www.youtube.com/embed/qag1N2TaV7o?si=fXyPbmamljUNOOsZ"
@@ -17,7 +17,7 @@ const Espacio = () => {
               allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowfullscreen
             ></iframe>
-          </div>
+          </div>*/}
         </Box>
       </Container>
     </Box>
@@ -25,4 +25,3 @@ const Espacio = () => {
 };
 
 export default Espacio;
-*/}
