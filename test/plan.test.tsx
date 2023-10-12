@@ -9,12 +9,13 @@ const carreras = [
   "Tecnicatura Universitaria en Medicina Nuclear",
 ];
 
+const casos = carreras.map((carrera) => ({
+  carrera: carrera,
+  descripcion: `${carrera} deberia poder visualizarse`,
+}));
+
 describe("Interfaz para la selección de carreras a personalizar", () => {
-  const datosParaTests = carreras.map((carrera) => ({
-    carrera: carrera,
-    descripcion: `${carrera} deberia poder visualizarse`,
-  }));
-  datosParaTests.forEach(({ carrera, descripcion }) => {
+  casos.forEach(({ carrera, descripcion }) => {
     test(descripcion, async () => {
       render(<Plan />);
       const elementos = await screen.findAllByText(carrera);
