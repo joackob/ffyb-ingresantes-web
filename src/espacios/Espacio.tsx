@@ -5,21 +5,27 @@ const Espacio = () => {
 
   return (
     <Box>
-      <Container>
-        <Box>
-          {/*<div>
-            <iframe  id="iframe"
-              width="560"
-              height="315"
-              src="https://www.youtube.com/embed/qag1N2TaV7o?si=fXyPbmamljUNOOsZ"
-              title="YouTube video player"
-              frameborder="0"
-              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen
-            ></iframe>
-          </div>*/}
-        </Box>
-      </Container>
+      <div id="contenedor-general">
+        <div id="paneles-superiores">
+          <div id="elegir-videos">
+            <form action="">
+              <select name="menu-video" id="menu-video">
+                <option value="video-general">Video General</option>
+                <option value="primer-piso">Primer Piso</option>
+                <option value="segundo-piso">Segundo Piso</option>
+              </select>
+            </form>
+          </div>
+        </div>
+        <div id="videos">
+          <video
+            width="100%"
+            id="video-space"
+            src="https://sharedby.blomp.com/kzv6mK"
+            controls
+          ></video>
+        </div>
+      </div>
     </Box>
   );
 };
