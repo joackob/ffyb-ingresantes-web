@@ -7,8 +7,8 @@ const Espacio = () => {
     <Box>
       <div id="contenedor-general">
         <div id="paneles-superiores">
-          <div id="elegir-videos">
-            <form action="">
+          <div id="contenedor-elegir-videos">
+            <form action="" id="elegir-videos">
               <select name="menu-video" id="menu-video">
                 <option value="video-general">Video General</option>
                 <option value="primer-piso">Primer Piso</option>
