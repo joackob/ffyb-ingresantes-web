@@ -42,7 +42,7 @@ const Carrera = ({
   porcentaje = Math.round(porcentaje);
 
   const [page, setPage] = React.useState(1);
-  const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
+  const handleChange = (_: React.ChangeEvent<unknown>, value: number) => {
     setPage(value);
   };
 
@@ -100,8 +100,8 @@ const Carrera = ({
                   alignItems: "center",
                 }}
               >
-                {subjects[page - 1].map((item) => (
-                  <ListItem sx={{ paddingLeft: "0px" }}>
+                {subjects[page - 1].map((item, index) => (
+                  <ListItem key={index} sx={{ paddingLeft: "0px" }}>
                     <ListItemIcon sx={{ justifyContent: "center" }}>
                       {item[1] == true ? (
                         <RadioButtonChecked sx={{ fontSize: "30px" }} />
