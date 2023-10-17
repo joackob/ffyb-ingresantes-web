@@ -16,14 +16,12 @@ const mockPlan = (carrera: Carrera) => {
     Cursada.APROBADA,
     Cursada.CURSANDO,
     Cursada.PENDIENTE,
+    Cursada.DISPONIBLE,
   ];
 
-  const mockCursada = () =>
-    posiblesCursadas[Math.floor(Math.random() * posiblesCursadas.length)];
-
   carrera.plan.forEach((cuatrimestre) => {
-    cuatrimestre.materias.forEach((materia) => {
-      materia.cursada = mockCursada();
+    cuatrimestre.materias.forEach((materia, index) => {
+      materia.cursada = posiblesCursadas[index % posiblesCursadas.length];
     });
   });
 };

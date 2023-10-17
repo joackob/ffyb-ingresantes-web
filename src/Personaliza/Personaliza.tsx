@@ -12,6 +12,7 @@ import {
   useTheme,
 } from "@mui/material";
 import React from "react";
+import { Carrera, Cursada, Materia } from "../database/interfaces";
 
 const style = {
   position: "absolute",
@@ -24,12 +25,14 @@ const style = {
   p: 4,
 };
 
-const Personaliza = ({ subjects }: { subjects: (string | boolean)[][][] }) => {
+const Personaliza = ({ carrera }: { carrera: Carrera }) => {
   const [open, setOpen] = React.useState(false);
-  const [idMateria, setIdMateria] = React.useState(0);
-  const setHandleOpen = (id: number) => {
+  const [materiaSelecionada, setMateriaSeleccionada] = React.useState<Materia>(
+    carrera.plan[0].materias[0],
+  );
+  const setHandleOpen = (materia: Materia) => {
     const handleOpen = () => {
-      setIdMateria(id);
+      setMateriaSeleccionada(materia);
       setOpen(true);
     };
     return handleOpen;
@@ -76,8 +79,9 @@ const Personaliza = ({ subjects }: { subjects: (string | boolean)[][][] }) => {
             gridAutoColumns={"1fr"}
             gridAutoRows={"auto"}
           >
-            {subjects.map((elem) => (
+            {carrera.plan.map((cuatrimestre, index) => (
               <List
+                key={index}
                 sx={{
                   width: "100%",
                   display: "flex",
@@ -87,37 +91,30 @@ const Personaliza = ({ subjects }: { subjects: (string | boolean)[][][] }) => {
                   borderColor: theme.palette.primary.main,
                 }}
               >
-                {elem.map((item, index) => (
-                  <ListItem key={index} sx={{ padding: "2px" }}>
+                {cuatrimestre.materias.map((materia) => (
+                  <ListItem key={materia.id} sx={{ padding: "2px" }}>
                     <ListItemIcon sx={{ justifyContent: "center" }}>
-                      {item[1] == true ? (
-                        <RadioButtonChecked
-                          sx={{ fontSize: { md: "30px", xs: "20px" } }}
-                        />
-                      ) : (
-                        ""
+                      {materia.cursada === Cursada.CURSANDO && (
+                        <RadioButtonChecked sx={{ fontSize: "30px" }} />
                       )}
-                      {item[2] == true ? (
+                      {materia.cursada === Cursada.DISPONIBLE && (
+                        <RadioButtonChecked sx={{ fontSize: "30px" }} />
+                      )}
+                      {materia.cursada === Cursada.APROBADA && (
                         <RadioButtonChecked
                           sx={{
                             color: theme.palette.primary.main,
-                            fontSize: { md: "30px", xs: "20px" },
+                            fontSize: "30px",
                           }}
                         />
-                      ) : (
-                        ""
                       )}
-                      {item[1] == false && item[2] == false ? (
-                        <RadioButtonUnchecked
-                          sx={{ fontSize: { md: "30px", xs: "20px" } }}
-                        />
-                      ) : (
-                        ""
+                      {materia.cursada === Cursada.PENDIENTE && (
+                        <RadioButtonUnchecked sx={{ fontSize: "30px" }} />
                       )}
                     </ListItemIcon>
                     <ListItemText>
                       <Button
-                        onClick={setHandleOpen(index)}
+                        onClick={setHandleOpen(materia)}
                         sx={{
                           padding: { xs: "1px", md: "4px" },
                           display: "block",
@@ -131,7 +128,7 @@ const Personaliza = ({ subjects }: { subjects: (string | boolean)[][][] }) => {
                           fontSize: { xs: "15px", md: "20px" },
                         }}
                       >
-                        {item[0]}
+                        {materia.nombre}
                       </Button>
                     </ListItemText>
                     <Modal
@@ -146,10 +143,10 @@ const Personaliza = ({ subjects }: { subjects: (string | boolean)[][][] }) => {
                           variant="h6"
                           component="h2"
                         >
-                          {elem[idMateria]}
+                          {materiaSelecionada.nombre}
                         </Typography>
                         <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                          {elem[idMateria]}
+                          {materiaSelecionada.nombre}
                         </Typography>
                       </Box>
                     </Modal>

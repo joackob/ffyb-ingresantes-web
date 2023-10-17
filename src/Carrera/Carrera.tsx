@@ -15,31 +15,10 @@ import {
 } from "@mui/material";
 import React from "react";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { Carrera, Cursada } from "../database/interfaces";
 
-const Carrera = ({
-  title,
-  subjects,
-}: {
-  title: string;
-  subjects: (string | boolean)[][][];
-}) => {
-  const router = useRouter();
-  const id = router.query.id != undefined ? Number(router.query.id) : 0;
-
-  let aprobadas = 0;
-  let totales = 0;
-  let porcentaje = 0;
-  subjects.forEach((anio) => {
-    anio.forEach((materia) => {
-      if (materia[2] == true) {
-        aprobadas = aprobadas + 1;
-      }
-      totales = totales + 1;
-    });
-  });
-  porcentaje = (aprobadas * 100) / totales;
-  porcentaje = Math.round(porcentaje);
+const CarreraComponent = ({ carrera }: { carrera: Carrera }) => {
+  const porcentaje = carrera.porcentajeDeMateriasAprobadas();
 
   const [page, setPage] = React.useState(1);
   const handleChange = (_: React.ChangeEvent<unknown>, value: number) => {
@@ -71,7 +50,7 @@ const Carrera = ({
             textAlign={{ xs: "center", md: "left" }}
           >
             <Typography variant={md ? "h2" : "h3"} fontWeight="bold">
-              {title}
+              {carrera.nombre}
             </Typography>
           </Box>
 
@@ -100,33 +79,30 @@ const Carrera = ({
                   alignItems: "center",
                 }}
               >
-                {subjects[page - 1].map((item, index) => (
-                  <ListItem key={index} sx={{ paddingLeft: "0px" }}>
+                {carrera.plan[page - 1].materias.map((materia) => (
+                  <ListItem key={materia.id} sx={{ paddingLeft: "0px" }}>
                     <ListItemIcon sx={{ justifyContent: "center" }}>
-                      {item[1] == true ? (
+                      {materia.cursada === Cursada.CURSANDO && (
                         <RadioButtonChecked sx={{ fontSize: "30px" }} />
-                      ) : (
-                        ""
                       )}
-                      {item[2] == true ? (
+                      {materia.cursada === Cursada.DISPONIBLE && (
+                        <RadioButtonChecked sx={{ fontSize: "30px" }} />
+                      )}
+                      {materia.cursada === Cursada.APROBADA && (
                         <RadioButtonChecked
                           sx={{
                             color: theme.palette.primary.main,
                             fontSize: "30px",
                           }}
                         />
-                      ) : (
-                        ""
                       )}
-                      {item[1] == false && item[2] == false ? (
+                      {materia.cursada === Cursada.PENDIENTE && (
                         <RadioButtonUnchecked sx={{ fontSize: "30px" }} />
-                      ) : (
-                        ""
                       )}
                     </ListItemIcon>
                     <ListItemText>
                       <Typography paddingLeft={"10px"} fontSize={"20px"}>
-                        {item[0]}
+                        {materia.nombre}
                       </Typography>
                     </ListItemText>
                   </ListItem>
@@ -135,7 +111,7 @@ const Carrera = ({
             </Box>
             <Pagination
               size="large"
-              count={subjects.length}
+              count={carrera.plan.length}
               page={page}
               onChange={handleChange}
             />
@@ -159,7 +135,9 @@ const Carrera = ({
                 borderRadius: "10px",
                 backgroundColor: theme.palette.primary.main,
               }}
-              href={`/personaliza/${id}`}
+              href={`/personaliza/${carrera.nombre
+                .toLowerCase()
+                .replaceAll(" ", "-")}`}
             >
               <Typography color={"white"} variant="h6">
                 Personalizá tu carrera
@@ -226,4 +204,4 @@ const Carrera = ({
   );
 };
 
-export default Carrera;
+export default CarreraComponent;

@@ -22,7 +22,7 @@ export class Farmacia extends Carrera {
         });
         const ddhh = new Materia({
           id: "ddhh",
-          nombre: "Matematica",
+          nombre: "Derechos Humanos",
           correlativas: [biol1],
         });
         //tercer cuatrimestre
