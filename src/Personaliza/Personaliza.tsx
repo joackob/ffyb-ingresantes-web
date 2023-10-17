@@ -28,7 +28,7 @@ const style = {
 const Personaliza = ({ carrera }: { carrera: Carrera }) => {
   const [open, setOpen] = React.useState(false);
   const [materiaSelecionada, setMateriaSeleccionada] = React.useState<Materia>(
-    carrera.plan[0].materias[0],
+    carrera.plan[0].materias[0]
   );
   const setHandleOpen = (materia: Materia) => {
     const handleOpen = () => {
@@ -51,7 +51,7 @@ const Personaliza = ({ carrera }: { carrera: Carrera }) => {
           gridTemplateRows={{ xs: "80px", md: "130px" }}
           gridTemplateAreas={{
             xs: "'title' 'subjects' 'footer' ",
-            md: "'title title' 'subjects subjects'",
+            md: "'title title' 'subjects subjects' 'footer footer'",
           }}
           height={{ md: "92vh", xs: "93vh" }}
         >
@@ -131,30 +131,22 @@ const Personaliza = ({ carrera }: { carrera: Carrera }) => {
                         {materia.nombre}
                       </Button>
                     </ListItemText>
-                    <Modal
-                      open={open}
-                      onClose={handleClose}
-                      aria-labelledby="modal-modal-title"
-                      aria-describedby="modal-modal-description"
-                    >
-                      <Box sx={style}>
-                        <Typography
-                          id="modal-modal-title"
-                          variant="h6"
-                          component="h2"
-                        >
-                          {materiaSelecionada.nombre}
-                        </Typography>
-                        <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                          {materiaSelecionada.nombre}
-                        </Typography>
-                      </Box>
-                    </Modal>
                   </ListItem>
                 ))}
               </List>
             ))}
           </Box>
+
+          <Modal open={open} onClose={handleClose}>
+            <Box sx={style}>
+              <Typography id="modal-modal-title" variant="h6" component="h2">
+                {materiaSelecionada.nombre}
+              </Typography>
+              <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                {materiaSelecionada.nombre}
+              </Typography>
+            </Box>
+          </Modal>
           <Box gridArea={"footer"} height={"40px"} width={"100%"}></Box>
         </Box>
       </Container>
