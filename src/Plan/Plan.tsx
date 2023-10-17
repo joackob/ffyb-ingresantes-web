@@ -1,5 +1,5 @@
-import { carreras } from "../database/database";
 import { Box, Container, Link, Typography } from "@mui/material";
+import { carreras } from "./data";
 
 const Plan = () => {
   const title = "Personaliza tu plan de estudios a tu medida.\n";
