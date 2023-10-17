@@ -17,7 +17,7 @@ import React from "react";
 import Link from "next/link";
 import { Carrera, Cursada } from "../database/interfaces";
 
-const CarreraComponent = ({ carrera }: { carrera: Carrera }) => {
+const CCarrera = ({ carrera }: { carrera: Carrera }) => {
   const porcentaje = carrera.porcentajeDeMateriasAprobadas();
 
   const [page, setPage] = React.useState(1);
@@ -204,4 +204,4 @@ const CarreraComponent = ({ carrera }: { carrera: Carrera }) => {
   );
 };
 
-export default CarreraComponent;
+export default CCarrera;

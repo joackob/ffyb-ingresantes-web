@@ -1,8 +1,8 @@
-import CarreraComponent from "@/src/Carrera/Carrera";
+import Carrera from "@/src/Carrera/Carrera";
 import { lctDeAlimentosMock } from "@/src/database/mocks";
 
-const lct_de_alimentos = () => {
-  return <CarreraComponent carrera={lctDeAlimentosMock} />;
+const plan = () => {
+  return <Carrera carrera={lctDeAlimentosMock} />;
 };
 
-export default lct_de_alimentos;
+export default plan;

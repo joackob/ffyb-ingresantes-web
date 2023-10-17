@@ -1,8 +1,8 @@
-import CarreraComponent from "@/src/Carrera/Carrera";
+import Carrera from "@/src/Carrera/Carrera";
 import { farmaciaMock } from "@/src/database/mocks";
 
-const farmacia = () => {
-  return <CarreraComponent carrera={farmaciaMock} />;
+const plan = () => {
+  return <Carrera carrera={farmaciaMock} />;
 };
 
-export default farmacia;
+export default plan;
