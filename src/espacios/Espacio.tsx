@@ -41,7 +41,10 @@ const Espacio = () => {
           </Container>
           <Container id="planos" sx={{ marginBottom: "20px" }}>
             <FormControl fullWidth /*sx={{ width: "50%" }}*/>
-              <InputLabel id="demo-simple-select-label"> Planos</InputLabel>
+              <InputLabel id="demo-simple-select-label">
+                {" "}
+                Abrir Plano
+              </InputLabel>
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
