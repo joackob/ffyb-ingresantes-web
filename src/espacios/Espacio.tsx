@@ -1,5 +1,4 @@
 //https://mui.com/material-ui/ materiales pantillas etc etc
-
 import "./Espacio.module.css";
 import {
   Box,
@@ -15,13 +14,19 @@ const Espacio = () => {
   const md = useMediaQuery("min-width(900px)");
 
   return (
-    <Box>
-      <div id="contenedor-general">
-        <div id="paneles-superiores">
-          <div>
-            <FormControl fullWidth>
+    <Box id="contenedor-supremo" sx={{ marginTop: "20px" }}>
+      <Box id="contenedor-general">
+        <Box
+          id="paneles-superiores"
+          display={"flex"}
+          justifyContent={"center"}
+          flexDirection={"row"}
+        >
+          <Container id="elegir-video" sx={{ marginBottom: "20px" }}>
+            <FormControl fullWidth /*sx={{ width: "50%" }}*/>
               <InputLabel id="demo-simple-select-label">
-                Video General
+                {" "}
+                Select Video
               </InputLabel>
               <Select
                 labelId="demo-simple-select-label"
@@ -33,17 +38,31 @@ const Espacio = () => {
                 <MenuItem value="segundo-piso">Segundo Piso</MenuItem>
               </Select>
             </FormControl>
-          </div>
-        </div>
-        <div id="videos">
+          </Container>
+          <Container id="planos" sx={{ marginBottom: "20px" }}>
+            <FormControl fullWidth /*sx={{ width: "50%" }}*/>
+              <InputLabel id="demo-simple-select-label"> Planos</InputLabel>
+              <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                label="Video General"
+              >
+                <MenuItem value="video-general">Video General</MenuItem>
+                <MenuItem value="primer-piso">Primer Piso</MenuItem>
+                <MenuItem value="segundo-piso">Segundo Piso</MenuItem>
+              </Select>
+            </FormControl>
+          </Container>
+        </Box>
+        <Container id="videos">
           <video
             width="100%"
             id="video-space"
             src="https://sharedby.blomp.com/kzv6mK"
             controls
           ></video>
-        </div>
-      </div>
+        </Container>
+      </Box>
     </Box>
   );
 };
