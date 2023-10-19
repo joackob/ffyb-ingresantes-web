@@ -1,11 +1,17 @@
 //https://mui.com/material-ui/ materiales pantillas etc etc
 import "./Espacio.module.css";
-import * as React from "react";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
-import { Box, Container, useMediaQuery, Typography } from "@mui/material";
+import {
+  Box,
+  Container,
+  useMediaQuery,
+  Typography,
+  Button,
+  Skeleton,
+} from "@mui/material";
 const Espacio = () => {
   const md = useMediaQuery("min-width(900px)");
 
@@ -36,21 +42,14 @@ const Espacio = () => {
             </FormControl>
           </Container>
           <Container id="planos" sx={{ marginBottom: "20px" }}>
-            <FormControl fullWidth disabled>
-              <InputLabel id="demo-simple-select-label">
-                {" "}
-                Abrir Plano
-              </InputLabel>
-              <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                label="Video General"
-              >
-                <MenuItem value="video-general">Video General</MenuItem>
-                <MenuItem value="primer-piso">Primer Piso</MenuItem>
-                <MenuItem value="segundo-piso">Segundo Piso</MenuItem>
-              </Select>
-            </FormControl>
+            <Button
+              variant="outlined"
+              size="large"
+              fullWidth
+              sx={{ height: "100%" }}
+            >
+              Ver Plano
+            </Button>
           </Container>
         </Box>
         <Container id="videos">
