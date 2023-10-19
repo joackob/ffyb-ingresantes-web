@@ -1,15 +1,11 @@
 //https://mui.com/material-ui/ materiales pantillas etc etc
 import "./Espacio.module.css";
-import {
-  Box,
-  Container,
-  useMediaQuery,
-  Typography,
-  Select,
-  FormControl,
-  MenuItem,
-  InputLabel,
-} from "@mui/material";
+import * as React from "react";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
+import { Box, Container, useMediaQuery, Typography } from "@mui/material";
 const Espacio = () => {
   const md = useMediaQuery("min-width(900px)");
 
@@ -23,7 +19,7 @@ const Espacio = () => {
           flexDirection={"row"}
         >
           <Container id="elegir-video" sx={{ marginBottom: "20px" }}>
-            <FormControl fullWidth /*sx={{ width: "50%" }}*/>
+            <FormControl fullWidth>
               <InputLabel id="demo-simple-select-label">
                 {" "}
                 Select Video
@@ -31,7 +27,7 @@ const Espacio = () => {
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
-                label="Video General"
+                defaultValue={"video-general"}
               >
                 <MenuItem value="video-general">Video General</MenuItem>
                 <MenuItem value="primer-piso">Primer Piso</MenuItem>
@@ -40,7 +36,7 @@ const Espacio = () => {
             </FormControl>
           </Container>
           <Container id="planos" sx={{ marginBottom: "20px" }}>
-            <FormControl fullWidth /*sx={{ width: "50%" }}*/>
+            <FormControl fullWidth disabled>
               <InputLabel id="demo-simple-select-label">
                 {" "}
                 Abrir Plano
@@ -69,5 +65,4 @@ const Espacio = () => {
     </Box>
   );
 };
-
 export default Espacio;
