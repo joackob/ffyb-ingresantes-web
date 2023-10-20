@@ -79,22 +79,17 @@ const Espacio = () => {
             src="https://sharedby.blomp.com/kzv6mK"
             ref={refVideo}
           />
-          <Box
-            className="play-pause-button"
-            sx={{ display: "flex", justifyContent: "center" }}
-          >
-            {!reproduciendo && (
-              <IconButton onClick={handlePressPlay}>
-                <PlayCircleIcon />
-              </IconButton>
-            )}
+          {!reproduciendo && (
+            <IconButton onClick={handlePressPlay}>
+              <PlayCircleIcon />
+            </IconButton>
+          )}
 
-            {reproduciendo && (
-              <IconButton onClick={handlePressPause}>
-                <PauseCircleIcon />
-              </IconButton>
-            )}
-          </Box>
+          {reproduciendo && (
+            <IconButton onClick={handlePressPause}>
+              <PauseCircleIcon />
+            </IconButton>
+          )}
         </Container>
       </Box>
     </Box>
