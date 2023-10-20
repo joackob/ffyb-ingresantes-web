@@ -1,19 +1,38 @@
 //https://mui.com/material-ui/ materiales pantillas etc etc
+import * as React from "react";
 import "./Espacio.module.css";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
+import PlayCircleIcon from "@mui/icons-material/PlayCircle";
+import PauseCircleIcon from "@mui/icons-material/PauseCircle";
 import {
   Box,
+  IconButton,
   Container,
   useMediaQuery,
   Typography,
   Button,
   Skeleton,
 } from "@mui/material";
+import { useState } from "react";
+import { useRef, refVideo } from "react";
+
 const Espacio = () => {
   const md = useMediaQuery("min-width(900px)");
+
+  const [reproduciendo, setReproduciendo] = useState(false);
+  const refVideo = useRef<HTMLVideoElement>(null);
+
+  const handlePressPlay = () => {
+    refVideo?.current?.play();
+    setReproduciendo(true);
+  };
+  const handlePressPause = () => {
+    refVideo?.current?.pause();
+    setReproduciendo(false);
+  };
 
   return (
     <Box id="contenedor-supremo" sx={{ marginTop: "20px" }}>
@@ -52,13 +71,26 @@ const Espacio = () => {
             </Button>
           </Container>
         </Box>
+
         <Container id="videos">
           <video
             width="100%"
             id="video-space"
             src="https://sharedby.blomp.com/kzv6mK"
-            controls
-          ></video>
+            ref={refVideo}
+          />
+
+          {!reproduciendo && (
+            <IconButton onClick={handlePressPlay}>
+              <PlayCircleIcon />
+            </IconButton>
+          )}
+
+          {reproduciendo && (
+            <IconButton onClick={handlePressPause}>
+              <PauseCircleIcon />
+            </IconButton>
+          )}
         </Container>
       </Box>
     </Box>
