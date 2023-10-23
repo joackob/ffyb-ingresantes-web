@@ -13,6 +13,7 @@ import {
 } from "@mui/material";
 import React from "react";
 import { Carrera, Cursada, Materia } from "../database/interfaces";
+import {DragDropContext,Draggable,Droppable} from "react-beautiful-dnd";
 
 const style = {
   position: "absolute",
@@ -138,14 +139,35 @@ const Personaliza = ({ carrera }: { carrera: Carrera }) => {
           </Box>
 
           <Modal open={open} onClose={handleClose}>
-            <Box sx={style}>
-              <Typography id="modal-modal-title" variant="h6" component="h2">
-                {materiaSelecionada.nombre}
-              </Typography>
-              <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                {materiaSelecionada.nombre}
-              </Typography>
-            </Box>
+            <DragDropContext onDragEnd={(result => {
+              const {source,destination}=result;
+              if (!destination) {
+                return;
+              }
+              if (source.index === destination.index && source.droppableId === destination.droppableId) {
+                return;
+              }
+              })}>
+              <Droppable droppableId="">
+                {(droppableProvided)=>(
+                  <Box sx={style}{...droppableProvided.droppableProps} ref={droppableProvided.innerRef}>
+                    <Draggable draggableId="" index={0}>
+                      {(draggableProvided)=>(
+                        <Box {...draggableProvided.draggableProps} ref={draggableProvided.innerRef} {...draggableProvided.dragHandleProps} sx={style}>
+                          <Typography id="modal-modal-title" variant="h6" component="h2">
+                            {materiaSelecionada.nombre}
+                          </Typography>
+                          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                            {materiaSelecionada.nombre}
+                          </Typography>
+                        </Box>
+                      )}
+                    </Draggable>
+                    {droppableProvided.placeholder}
+                  </Box>
+                )}
+              </Droppable>
+            </DragDropContext>
           </Modal>
           <Box gridArea={"footer"} height={"40px"} width={"100%"}></Box>
         </Box>
