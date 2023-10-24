@@ -13,7 +13,7 @@ import {
 } from "@mui/material";
 import React from "react";
 import { Carrera, Cursada, Materia } from "../database/interfaces";
-import {DragDropContext,Draggable,Droppable} from "react-beautiful-dnd";
+import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 
 const style = {
   position: "absolute",
@@ -81,93 +81,115 @@ const Personaliza = ({ carrera }: { carrera: Carrera }) => {
             gridAutoRows={"auto"}
           >
             {carrera.plan.map((cuatrimestre, index) => (
-              <List
+              <DragDropContext
                 key={index}
-                sx={{
-                  width: "100%",
-                  display: "flex",
-                  flexDirection: "column",
-                  paddingBottom: "15px",
-                  borderBottom: "solid 1px",
-                  borderColor: theme.palette.primary.main,
+                onDragEnd={(result) => {
+                  const { source, destination } = result;
+                  if (!destination) {
+                    return;
+                  }
+                  if (
+                    source.index === destination.index &&
+                    source.droppableId === destination.droppableId
+                  ) {
+                    return;
+                  }
                 }}
               >
-                {cuatrimestre.materias.map((materia) => (
-                  <ListItem key={materia.id} sx={{ padding: "2px" }}>
-                    <ListItemIcon sx={{ justifyContent: "center" }}>
-                      {materia.cursada === Cursada.CURSANDO && (
-                        <RadioButtonChecked sx={{ fontSize: "30px" }} />
-                      )}
-                      {materia.cursada === Cursada.DISPONIBLE && (
-                        <RadioButtonChecked sx={{ fontSize: "30px" }} />
-                      )}
-                      {materia.cursada === Cursada.APROBADA && (
-                        <RadioButtonChecked
-                          sx={{
-                            color: theme.palette.primary.main,
-                            fontSize: "30px",
-                          }}
-                        />
-                      )}
-                      {materia.cursada === Cursada.PENDIENTE && (
-                        <RadioButtonUnchecked sx={{ fontSize: "30px" }} />
-                      )}
-                    </ListItemIcon>
-                    <ListItemText>
-                      <Button
-                        onClick={setHandleOpen(materia)}
-                        sx={{
-                          padding: { xs: "1px", md: "4px" },
-                          display: "block",
-                          textAlign: "start",
-                          minWidth: "0px",
-                          lineHeight: "normal",
-                          textTransform: "none",
-                          color: "black",
-                          textDecoration: "none",
-                          paddingLeft: { xs: "0px", md: "10px" },
-                          fontSize: { xs: "15px", md: "20px" },
-                        }}
-                      >
-                        {materia.nombre}
-                      </Button>
-                    </ListItemText>
-                  </ListItem>
-                ))}
-              </List>
+                <Droppable droppableId={`${index}`}>
+                  {(droppableProvided) => (
+                    <List
+                      key={index}
+                      sx={{
+                        width: "100%",
+                        display: "flex",
+                        flexDirection: "column",
+                        paddingBottom: "15px",
+                        borderBottom: "solid 1px",
+                        borderColor: theme.palette.primary.main,
+                      }}
+                      {...droppableProvided.droppableProps}
+                      ref={droppableProvided.innerRef}
+                    >
+                      {cuatrimestre.materias.map((materia, index) => (
+                        <Draggable
+                          draggableId={`${materia.id}`}
+                          index={index}
+                          key={materia.id}
+                        >
+                          {(draggableProvided) => (
+                            <ListItem
+                              key={materia.id}
+                              sx={{ padding: "2px" }}
+                              {...draggableProvided.draggableProps}
+                              ref={draggableProvided.innerRef}
+                              {...draggableProvided.dragHandleProps}
+                            >
+                              <ListItemIcon sx={{ justifyContent: "center" }}>
+                                {materia.cursada === Cursada.CURSANDO && (
+                                  <RadioButtonChecked
+                                    sx={{ fontSize: "30px" }}
+                                  />
+                                )}
+                                {materia.cursada === Cursada.DISPONIBLE && (
+                                  <RadioButtonChecked
+                                    sx={{ fontSize: "30px" }}
+                                  />
+                                )}
+                                {materia.cursada === Cursada.APROBADA && (
+                                  <RadioButtonChecked
+                                    sx={{
+                                      color: theme.palette.primary.main,
+                                      fontSize: "30px",
+                                    }}
+                                  />
+                                )}
+                                {materia.cursada === Cursada.PENDIENTE && (
+                                  <RadioButtonUnchecked
+                                    sx={{ fontSize: "30px" }}
+                                  />
+                                )}
+                              </ListItemIcon>
+                              <ListItemText>
+                                <Button
+                                  onClick={setHandleOpen(materia)}
+                                  sx={{
+                                    padding: { xs: "1px", md: "4px" },
+                                    display: "block",
+                                    textAlign: "start",
+                                    minWidth: "0px",
+                                    lineHeight: "normal",
+                                    textTransform: "none",
+                                    color: "black",
+                                    textDecoration: "none",
+                                    paddingLeft: { xs: "0px", md: "10px" },
+                                    fontSize: { xs: "15px", md: "20px" },
+                                  }}
+                                >
+                                  {materia.nombre}
+                                </Button>
+                              </ListItemText>
+                            </ListItem>
+                          )}
+                        </Draggable>
+                      ))}
+                      {droppableProvided.placeholder}
+                    </List>
+                  )}
+                </Droppable>
+              </DragDropContext>
             ))}
           </Box>
 
           <Modal open={open} onClose={handleClose}>
-            <DragDropContext onDragEnd={(result => {
-              const {source,destination}=result;
-              if (!destination) {
-                return;
-              }
-              if (source.index === destination.index && source.droppableId === destination.droppableId) {
-                return;
-              }
-              })}>
-              <Droppable droppableId="">
-                {(droppableProvided)=>(
-                  <Box sx={style}{...droppableProvided.droppableProps} ref={droppableProvided.innerRef}>
-                    <Draggable draggableId="" index={0}>
-                      {(draggableProvided)=>(
-                        <Box {...draggableProvided.draggableProps} ref={draggableProvided.innerRef} {...draggableProvided.dragHandleProps} sx={style}>
-                          <Typography id="modal-modal-title" variant="h6" component="h2">
-                            {materiaSelecionada.nombre}
-                          </Typography>
-                          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                            {materiaSelecionada.nombre}
-                          </Typography>
-                        </Box>
-                      )}
-                    </Draggable>
-                    {droppableProvided.placeholder}
-                  </Box>
-                )}
-              </Droppable>
-            </DragDropContext>
+            <Box sx={style}>
+              <Typography id="modal-modal-title" variant="h6" component="h2">
+                {materiaSelecionada.nombre}
+              </Typography>
+              <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                {materiaSelecionada.nombre}
+              </Typography>
+            </Box>
           </Modal>
           <Box gridArea={"footer"} height={"40px"} width={"100%"}></Box>
         </Box>
