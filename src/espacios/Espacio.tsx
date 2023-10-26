@@ -62,7 +62,7 @@ const Espacio = () => {
         >
           <Container id="elegir-video" sx={{ marginBottom: "20px" }}>
             <FormControl fullWidth>
-              <InputLabel id="demo-simple-select-label">
+              <InputLabel id="demo-simple-select-label" sx={{ color: "blue" }}>
                 {" "}
                 Select Video
               </InputLabel>
@@ -70,6 +70,7 @@ const Espacio = () => {
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
                 defaultValue={"video-general"}
+                sx={{ color: "blue" }}
               >
                 <MenuItem value="video-general">Video General</MenuItem>
                 <MenuItem value="primer-piso">Primer Piso</MenuItem>
