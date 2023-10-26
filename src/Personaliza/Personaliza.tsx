@@ -14,6 +14,7 @@ import {
 import React from "react";
 import { Carrera, Cursada, Materia } from "../database/interfaces";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
+import DragHandleIcon from "@mui/icons-material/DragHandle";
 
 const style = {
   position: "absolute",
@@ -39,8 +40,22 @@ const Personaliza = ({ carrera }: { carrera: Carrera }) => {
     return handleOpen;
   };
   const handleClose = () => setOpen(false);
-
   const theme = useTheme();
+  const [indice, setIndice] = React.useState(carrera.plan);
+  const reorder = ({
+    list,
+    startIndex,
+    endIndex,
+  }: {
+    list: [];
+    startIndex: number;
+    endIndex: number;
+  }) => {
+    const result = [...list];
+    const [removed] = result.splice(startIndex, 1);
+    result.splice(endIndex, 0, removed);
+    return result;
+  };
 
   return (
     <Box>
@@ -82,7 +97,6 @@ const Personaliza = ({ carrera }: { carrera: Carrera }) => {
           >
             {carrera.plan.map((cuatrimestre, index) => (
               <DragDropContext
-                key={index}
                 onDragEnd={(result) => {
                   const { source, destination } = result;
                   if (!destination) {
@@ -99,7 +113,6 @@ const Personaliza = ({ carrera }: { carrera: Carrera }) => {
                 <Droppable droppableId={`${index}`}>
                   {(droppableProvided) => (
                     <List
-                      key={index}
                       sx={{
                         width: "100%",
                         display: "flex",
@@ -112,14 +125,9 @@ const Personaliza = ({ carrera }: { carrera: Carrera }) => {
                       ref={droppableProvided.innerRef}
                     >
                       {cuatrimestre.materias.map((materia, index) => (
-                        <Draggable
-                          draggableId={`${materia.id}`}
-                          index={index}
-                          key={materia.id}
-                        >
+                        <Draggable draggableId={`${materia.id}`} index={index}>
                           {(draggableProvided) => (
                             <ListItem
-                              key={materia.id}
                               sx={{ padding: "2px" }}
                               {...draggableProvided.draggableProps}
                               ref={draggableProvided.innerRef}
@@ -169,6 +177,11 @@ const Personaliza = ({ carrera }: { carrera: Carrera }) => {
                                   {materia.nombre}
                                 </Button>
                               </ListItemText>
+                              <ListItemIcon>
+                                <DragHandleIcon
+                                  sx={{ fontSize: "30px" }}
+                                ></DragHandleIcon>
+                              </ListItemIcon>
                             </ListItem>
                           )}
                         </Draggable>
@@ -180,7 +193,6 @@ const Personaliza = ({ carrera }: { carrera: Carrera }) => {
               </DragDropContext>
             ))}
           </Box>
-
           <Modal open={open} onClose={handleClose}>
             <Box sx={style}>
               <Typography id="modal-modal-title" variant="h6" component="h2">
@@ -197,5 +209,4 @@ const Personaliza = ({ carrera }: { carrera: Carrera }) => {
     </Box>
   );
 };
-
 export default Personaliza;
