@@ -110,9 +110,15 @@ const Espacio = () => {
             src="https://sharedby.blomp.com/kzv6mK"
             ref={refVideo}
           />
+
           {!reproduciendo && (
             <IconButton onClick={handlePressPlay}>
-              <PlayCircleIcon />
+              <PlayCircleIcon
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                }}
+              />
             </IconButton>
           )}
 
