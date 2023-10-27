@@ -17,7 +17,7 @@ import {
   Skeleton,
 } from "@mui/material";
 import { useState } from "react";
-import { useRef, refVideo } from "react";
+import { useRef } from "react";
 import Modal from "@mui/material/Modal";
 
 const Espacio = () => {
