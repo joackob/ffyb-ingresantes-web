@@ -12,8 +12,13 @@ import {
   useTheme,
 } from "@mui/material";
 import React from "react";
-import { Carrera, Cuatrimestre, Cursada, Materia } from "../database/interfaces";
-import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
+import { Carrera, Cursada, Materia } from "../database/interfaces";
+import {
+  DragDropContext,
+  Draggable,
+  Droppable,
+  resetServerContext,
+} from "react-beautiful-dnd";
 import DragHandleIcon from "@mui/icons-material/DragHandle";
 
 const style = {
@@ -30,7 +35,7 @@ const style = {
 const Personaliza = ({ carrera }: { carrera: Carrera }) => {
   const [open, setOpen] = React.useState(false);
   const [materiaSelecionada, setMateriaSeleccionada] = React.useState<Materia>(
-    carrera.plan[0].materias[0]
+    carrera.plan[0].materias[0],
   );
   const setHandleOpen = (materia: Materia) => {
     const handleOpen = () => {
@@ -39,23 +44,11 @@ const Personaliza = ({ carrera }: { carrera: Carrera }) => {
     };
     return handleOpen;
   };
+
+  const [plan, setPlan] = React.useState(carrera.plan);
   const handleClose = () => setOpen(false);
   const theme = useTheme();
-  const [plan, setPlan] = React.useState(carrera.plan);
-  const reorder = ({
-    list,
-    startIndex,
-    endIndex,
-  }: {
-    list: Cuatrimestre[];
-    startIndex: number;
-    endIndex: number;
-  }) => {
-    const result = [...list];
-    const [removed] = result.splice(startIndex, 1);
-    result.splice(endIndex, 0, removed);
-    return result;
-  };
+  resetServerContext();
 
   return (
     <Box>
@@ -96,22 +89,35 @@ const Personaliza = ({ carrera }: { carrera: Carrera }) => {
             gridAutoRows={"auto"}
           >
             <DragDropContext
-                onDragEnd={(result) => {
-                  const { source, destination } = result;
-                  if (!destination) {
-                    return;
-                  }
-                  if (
-                    source.index === destination.index &&
-                    source.droppableId === destination.droppableId
-                  ) {
-                    return;
-                  }
-                }}
-              >
-              {carrera.plan.map((cuatrimestre, index) => (
-                  <Droppable droppableId={`${index}`}>
-                    {(droppableProvided) => (
+              onDragEnd={(result) => {
+                if (!result.destination) return;
+
+                const { source, destination } = result;
+
+                const posicionOrigen = source.index;
+                const cuatrimestreOrigen = Number(source.droppableId);
+                const posicionDestino = destination.index;
+                const cuatrimestreDestino = Number(destination.droppableId);
+
+                const nuevoPlan = [...plan];
+
+                const [materia] = nuevoPlan[cuatrimestreOrigen].materias.splice(
+                  posicionOrigen,
+                  1,
+                );
+                nuevoPlan[cuatrimestreDestino].materias.splice(
+                  posicionDestino,
+                  0,
+                  materia,
+                );
+
+                setPlan(nuevoPlan);
+              }}
+            >
+              {plan.map((cuatrimestre, index) => (
+                <Droppable droppableId={`${index}`} key={index}>
+                  {(droppableProvided) => {
+                    return (
                       <List
                         sx={{
                           width: "100%",
@@ -121,75 +127,82 @@ const Personaliza = ({ carrera }: { carrera: Carrera }) => {
                           borderBottom: "solid 1px",
                           borderColor: theme.palette.primary.main,
                         }}
-                        {...droppableProvided.droppableProps}
                         ref={droppableProvided.innerRef}
+                        {...droppableProvided.droppableProps}
                       >
                         {cuatrimestre.materias.map((materia, index) => (
-                          <Draggable draggableId={`${materia.id}`} index={index}>
-                            {(draggableProvided) => (
-                              <ListItem
-                                sx={{ padding: "2px" }}
-                                {...draggableProvided.draggableProps}
-                                ref={draggableProvided.innerRef}
-                                {...draggableProvided.dragHandleProps}
-                              >
-                                <ListItemIcon sx={{ justifyContent: "center" }}>
-                                  {materia.cursada === Cursada.CURSANDO && (
-                                    <RadioButtonChecked
-                                      sx={{ fontSize: "30px" }}
-                                    />
-                                  )}
-                                  {materia.cursada === Cursada.DISPONIBLE && (
-                                    <RadioButtonChecked
-                                      sx={{ fontSize: "30px" }}
-                                    />
-                                  )}
-                                  {materia.cursada === Cursada.APROBADA && (
-                                    <RadioButtonChecked
-                                      sx={{
-                                        color: theme.palette.primary.main,
-                                        fontSize: "30px",
-                                      }}
-                                    />
-                                  )}
-                                  {materia.cursada === Cursada.PENDIENTE && (
-                                    <RadioButtonUnchecked
-                                      sx={{ fontSize: "30px" }}
-                                    />
-                                  )}
-                                </ListItemIcon>
-                                <ListItemText>
-                                  <Button
-                                    onClick={setHandleOpen(materia)}
-                                    sx={{
-                                      padding: { xs: "1px", md: "4px" },
-                                      display: "block",
-                                      textAlign: "start",
-                                      minWidth: "0px",
-                                      lineHeight: "normal",
-                                      textTransform: "none",
-                                      color: "black",
-                                      textDecoration: "none",
-                                      paddingLeft: { xs: "0px", md: "10px" },
-                                      fontSize: { xs: "15px", md: "20px" },
-                                    }}
+                          <Draggable
+                            draggableId={`m-${materia.id}`}
+                            index={index}
+                            key={index}
+                          >
+                            {(draggableProvided) => {
+                              return (
+                                <ListItem
+                                  {...draggableProvided.draggableProps}
+                                  {...draggableProvided.dragHandleProps}
+                                  ref={draggableProvided.innerRef}
+                                  sx={{ padding: "2px" }}
+                                >
+                                  <ListItemIcon
+                                    sx={{ justifyContent: "center" }}
                                   >
-                                    {materia.nombre}
-                                  </Button>
-                                </ListItemText>
-                                <ListItemIcon>
-                                  <DragHandleIcon
-                                    sx={{ fontSize: "30px" }}
-                                  ></DragHandleIcon>
-                                </ListItemIcon>
-                              </ListItem>
-                            )}
+                                    {materia.cursada === Cursada.CURSANDO && (
+                                      <RadioButtonChecked
+                                        sx={{ fontSize: "30px" }}
+                                      />
+                                    )}
+                                    {materia.cursada === Cursada.DISPONIBLE && (
+                                      <RadioButtonChecked
+                                        sx={{ fontSize: "30px" }}
+                                      />
+                                    )}
+                                    {materia.cursada === Cursada.APROBADA && (
+                                      <RadioButtonChecked
+                                        sx={{
+                                          color: theme.palette.primary.main,
+                                          fontSize: "30px",
+                                        }}
+                                      />
+                                    )}
+                                    {materia.cursada === Cursada.PENDIENTE && (
+                                      <RadioButtonUnchecked
+                                        sx={{ fontSize: "30px" }}
+                                      />
+                                    )}
+                                  </ListItemIcon>
+                                  <ListItemText>
+                                    <Button
+                                      onClick={setHandleOpen(materia)}
+                                      sx={{
+                                        padding: { xs: "1px", md: "4px" },
+                                        display: "block",
+                                        textAlign: "start",
+                                        minWidth: "0px",
+                                        lineHeight: "normal",
+                                        textTransform: "none",
+                                        color: "black",
+                                        textDecoration: "none",
+                                        paddingLeft: { xs: "0px", md: "10px" },
+                                        fontSize: { xs: "15px", md: "20px" },
+                                      }}
+                                    >
+                                      {materia.nombre}
+                                    </Button>
+                                  </ListItemText>
+                                  <ListItemIcon>
+                                    <DragHandleIcon sx={{ fontSize: "30px" }} />
+                                  </ListItemIcon>
+                                </ListItem>
+                              );
+                            }}
                           </Draggable>
                         ))}
                         {droppableProvided.placeholder}
                       </List>
-                    )}
-                  </Droppable>
+                    );
+                  }}
+                </Droppable>
               ))}
             </DragDropContext>
           </Box>
