@@ -7,6 +7,7 @@ import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import PlayCircleIcon from "@mui/icons-material/PlayCircle";
 import PauseCircleIcon from "@mui/icons-material/PauseCircle";
+import zIndex from "./zIndex";
 import {
   Box,
   IconButton,
@@ -62,7 +63,10 @@ const Espacio = () => {
         >
           <Container id="elegir-video" sx={{ marginBottom: "20px" }}>
             <FormControl fullWidth>
-              <InputLabel id="demo-simple-select-label" sx={{ color: "blue" }}>
+              <InputLabel
+                id="demo-simple-select-label"
+                sx={{ color: "#3728b7" }}
+              >
                 {" "}
                 Select Video
               </InputLabel>
@@ -70,7 +74,7 @@ const Espacio = () => {
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
                 defaultValue={"video-general"}
-                sx={{ color: "blue" }}
+                sx={{ color: "#3728b7" }}
               >
                 <MenuItem value="video-general">Video General</MenuItem>
                 <MenuItem value="primer-piso">Primer Piso</MenuItem>
@@ -85,7 +89,11 @@ const Espacio = () => {
               variant="outlined"
               size="large"
               fullWidth
-              sx={{ height: "100%" }}
+              sx={{
+                height: "100%",
+                color: "#3728b7",
+                borderColor: "#3728b7",
+              }}
             >
               Ver Plano
             </Button>
@@ -109,24 +117,29 @@ const Espacio = () => {
             id="video-space"
             src="https://sharedby.blomp.com/kzv6mK"
             ref={refVideo}
+            sx={{ position: "absolute", zIndex: "-1" }}
           />
+          <Container
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignContent: "center",
+              position: "relative",
+              zIndex: "1",
+            }}
+          >
+            {!reproduciendo && (
+              <IconButton onClick={handlePressPlay}>
+                <PlayCircleIcon />
+              </IconButton>
+            )}
 
-          {!reproduciendo && (
-            <IconButton onClick={handlePressPlay}>
-              <PlayCircleIcon
-                sx={{
-                  display: "flex",
-                  justifyContent: "center",
-                }}
-              />
-            </IconButton>
-          )}
-
-          {reproduciendo && (
-            <IconButton onClick={handlePressPause}>
-              <PauseCircleIcon />
-            </IconButton>
-          )}
+            {reproduciendo && (
+              <IconButton onClick={handlePressPause}>
+                <PauseCircleIcon />
+              </IconButton>
+            )}
+          </Container>
         </Container>
       </Box>
     </Box>
