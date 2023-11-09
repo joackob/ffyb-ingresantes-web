@@ -7,7 +7,6 @@ import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import PlayCircleIcon from "@mui/icons-material/PlayCircle";
 import PauseCircleIcon from "@mui/icons-material/PauseCircle";
-import zIndex from "./zIndex";
 import {
   Box,
   IconButton,
@@ -53,7 +52,7 @@ const Espacio = () => {
   };
 
   return (
-    <Box id="contenedor-supremo" sx={{ marginTop: "20px" }}>
+    <Box id="contenedor-supremo" sx={{ marginTop: "30px" }}>
       <Box id="contenedor-general">
         <Box
           id="paneles-superiores"
@@ -111,35 +110,38 @@ const Espacio = () => {
           </Container>
         </Box>
 
-        <Container id="videos">
+        <Container id="videos" sx={{ position: "relative" }}>
           <video
-            width="100%"
             id="video-space"
             src="https://sharedby.blomp.com/kzv6mK"
             ref={refVideo}
-            sx={{ position: "absolute", zIndex: "-1" }}
+            width="100%"
           />
-          <Container
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              alignContent: "center",
-              position: "relative",
-              zIndex: "1",
-            }}
-          >
-            {!reproduciendo && (
-              <IconButton onClick={handlePressPlay}>
-                <PlayCircleIcon />
-              </IconButton>
-            )}
+        </Container>
+        <Container
+          sx={{
+            position: "absolute",
+            top: "75%",
+            display: "flex",
+            justifyContent: "center",
+            zIndex: 1,
+          }}
+        >
+          {!reproduciendo && (
+            <IconButton onClick={handlePressPlay}>
+              <PlayCircleIcon
+                sx={{ fontSize: "8rem", color: "#3728b7", opacity: "80%" }}
+              />
+            </IconButton>
+          )}
 
-            {reproduciendo && (
-              <IconButton onClick={handlePressPause}>
-                <PauseCircleIcon />
-              </IconButton>
-            )}
-          </Container>
+          {reproduciendo && (
+            <IconButton onClick={handlePressPause}>
+              <PauseCircleIcon
+                sx={{ fontSize: "8rem", color: "#3728b7", opacity: "80%" }}
+              />
+            </IconButton>
+          )}
         </Container>
       </Box>
     </Box>
