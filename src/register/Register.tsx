@@ -1,8 +1,5 @@
 //https://mui.com/material-ui/ materiales pantillas etc etc
 import * as React from "react";
-import "./Login.module.css";
-import GoogleIcon from "@mui/icons-material/Google";
-import FacebookIcon from "@mui/icons-material/Facebook";
 import {
   Box,
   IconButton,
@@ -13,17 +10,13 @@ import {
   FormControl,
   TextField,
 } from "@mui/material";
+import GoogleIcon from "@mui/icons-material/Google";
+import FacebookIcon from "@mui/icons-material/Facebook";
 import Input from "@mui/material/Input";
 import { signIn } from "next-auth/react";
-import { redirect } from "next/navigation";
-import Link from "next/link";
 
-const Login = () => {
+const Register = () => {
   const md = useMediaQuery("min-width(900px)");
-
-  const redirigirLogin = () => {
-    redirect("./register/Register.tsx");
-  };
 
   return (
     <Box
@@ -36,7 +29,7 @@ const Login = () => {
       }}
     >
       <Typography variant={"h2"} fontWeight="bold" sx={{ textAlign: "center" }}>
-        Iniciar Sesión
+        Registrarse
       </Typography>
       <Container
         id="form"
@@ -52,9 +45,11 @@ const Login = () => {
             gap: "10px",
           }}
         >
-          <TextField type="email" placeholder="Email" required />
-          <TextField type="password" placeholder="Contraseña" required />
-          <TextField type="button" variant="standard" value="Iniciar Sesión" />
+          <TextField type="text" placeholder="Nombre completo" />
+          <TextField type="email" placeholder="Email" />
+          <TextField type="password" placeholder="Contraseña" />
+          <TextField type="password" placeholder="Confirmar contraseña" />
+          <TextField type="button" variant="standard" value="Registrarse" />
         </FormControl>
         <Container
           sx={{ display: "flex", justifyContent: "center", gap: "5px" }}
@@ -62,9 +57,9 @@ const Login = () => {
           <GoogleIcon></GoogleIcon>
           <FacebookIcon></FacebookIcon>
         </Container>
-        <Button href="/register">Registrate si no tienes cuenta</Button>
+        <Button href="/login">Inicia sesión si ya tienes cuenta</Button>
       </Container>
     </Box>
   );
 };
-export default Login;
+export default Register;
