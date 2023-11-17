@@ -42,3 +42,6 @@ workbox*
 # dev
 .env
 
+# videos
+*.mp4
+

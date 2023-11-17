@@ -4,45 +4,13 @@ import "./Espacio.module.css";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
-import PlayCircleIcon from "@mui/icons-material/PlayCircle";
-import PauseCircleIcon from "@mui/icons-material/PauseCircle";
-import {
-  Box,
-  IconButton,
-  Container,
-  useMediaQuery,
-  Typography,
-  Button,
-  Skeleton,
-} from "@mui/material";
-import { useState } from "react";
-import { useRef } from "react";
-import { useEffect } from "react";
+import Select from "@mui/material/Select";
+import { Box, Container, Button } from "@mui/material";
+
 import Modal from "@mui/material/Modal";
+import VideoEspacios from "./components/VideoEspacios";
 
 const Espacio = () => {
-  const md = useMediaQuery("min-width(900px)");
-  const telefono = useMediaQuery("max-width(900px)");
-
-  //Video Responsive
-  const videoSources = {
-    desktop: "https://sharedby.blomp.com/qTphr8",
-    mobile: "https://sharedby.blomp.com/kzv6mK",
-  };
-
-  const [videoSource, setVideoSource] = useState(videoSources.desktop);
-  const videoRef = useRef<HTMLVideoElement | null>(null);
-
-  useEffect(() => {
-    if (md) {
-      setVideoSource(videoSources.desktop);
-    } else {
-      setVideoSource(videoSources.mobile);
-    }
-  }, [md, videoSources]);
-
-  //Modal
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -56,18 +24,6 @@ const Espacio = () => {
     border: "2px solid #000",
     boxShadow: 24,
     p: 4,
-  };
-
-  const [reproduciendo, setReproduciendo] = useState(false);
-  const refVideo = useRef<HTMLVideoElement>(null);
-
-  const handlePressPlay = () => {
-    refVideo?.current?.play();
-    setReproduciendo(true);
-  };
-  const handlePressPause = () => {
-    refVideo?.current?.pause();
-    setReproduciendo(false);
   };
 
   return (
@@ -130,39 +86,7 @@ const Espacio = () => {
             </Container>
           </Box>
 
-          <Container id="videos" sx={{ position: "relative" }}>
-            <video id="video-space" ref={refVideo} width="100%">
-              <source src={videoSource} />
-            </video>
-            <Container
-              sx={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                position: "absolute",
-                top: "50%",
-                left: "50%",
-                transform: "translate(-50%, -50%)",
-                zIndex: 1,
-              }}
-            >
-              {!reproduciendo && (
-                <IconButton onClick={handlePressPlay}>
-                  <PlayCircleIcon
-                    sx={{ fontSize: "8rem", color: "#3728b7", opacity: "80%" }}
-                  />
-                </IconButton>
-              )}
-
-              {reproduciendo && (
-                <IconButton onClick={handlePressPause}>
-                  <PauseCircleIcon
-                    sx={{ fontSize: "8rem", color: "#3728b7", opacity: "80%" }}
-                  />
-                </IconButton>
-              )}
-            </Container>
-          </Container>
+          <VideoEspacios />
         </Box>
       </Box>
     </Box>
