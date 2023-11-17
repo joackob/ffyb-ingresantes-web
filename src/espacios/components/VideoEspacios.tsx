@@ -4,10 +4,10 @@ import PauseCircleIcon from "@mui/icons-material/PauseCircle";
 import { useEffect, useRef, useState } from "react";
 
 const videoSources = {
-  // desktop: "https://sharedby.blomp.com/qTphr8",
-  // mobile: "https://sharedby.blomp.com/kzv6mK",
-  desktop: "/desk.mp4",
-  mobile: "/mob.mp4",
+  desktop: "https://sharedby.blomp.com/qTphr8",
+  mobile: "https://sharedby.blomp.com/kzv6mK",
+  // desktop: "/desk.mp4",
+  // mobile: "/mob.mp4",
 };
 
 const VideoEspacios = () => {
@@ -15,12 +15,18 @@ const VideoEspacios = () => {
   const [sourceVideo, setSourceVideo] = useState(videoSources.mobile);
   const refVideo = useRef<HTMLVideoElement>(null);
 
-  useEffect(() => {
+  const handleResize = () => {
     if (window.innerWidth > 640) {
       setSourceVideo(videoSources.desktop);
     } else {
       setSourceVideo(videoSources.mobile);
     }
+  };
+
+  useEffect(() => {
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const handlePressPlay = () => {
