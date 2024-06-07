@@ -41,8 +41,8 @@ const linksRight = [
   },
 ];
 
-const Header = () => (
-  <Box component={"header"}>
+const Header = () => {
+  return (<Box component={"header"}>
     <Box>
       <Box
         display={{
@@ -63,6 +63,6 @@ const Header = () => (
       </Box>
     </Box>
   </Box>
-);
+)};
 
 export default Header;
