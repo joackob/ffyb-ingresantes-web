@@ -2,6 +2,7 @@ import * as React from 'react';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import { Link, useTheme } from '@mui/material';
 
 export default function MenuDesplegable() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -12,7 +13,7 @@ export default function MenuDesplegable() {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
+  const theme = useTheme();
   return (
     <div>
       <Button
@@ -21,9 +22,19 @@ export default function MenuDesplegable() {
         aria-haspopup="true"
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
+        variant='text'
+        size='large'
+        style={{textTransform: "none", color: "#676667", fontWeight: "bold"}}
+        sx={{
+         "&:hover": {
+            color: theme.palette.primary.main,
+          }
+
+       }}
       >
-        Dashboard
+        Plan de estudios - IPlan
       </Button>
+
       <Menu
         id="demo-positioned-menu"
         aria-labelledby="demo-positioned-button"
@@ -39,9 +50,18 @@ export default function MenuDesplegable() {
           horizontal: 'left',
         }}
       >
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
-        <MenuItem onClick={handleClose}>Logout</MenuItem>
+        <MenuItem onClick={handleClose}
+        style={{textTransform: "none", color: "#676667", fontWeight: "bold"}}
+        >Farmacia</MenuItem>
+        <MenuItem onClick={handleClose}
+        style={{textTransform: "none", color: "#676667", fontWeight: "bold"}}
+        >Bioquímica</MenuItem>
+        <MenuItem onClick={handleClose}
+        style={{textTransform: "none", color: "#676667", fontWeight: "bold"}}
+        >Licenciatura en Ciencia y Tecnología de Alimentos</MenuItem>
+        <MenuItem onClick={handleClose}
+        style={{textTransform: "none", color: "#676667", fontWeight: "bold"}}
+        >Tecnicatura Universitaria en Medicina Nuclear</MenuItem>
       </Menu>
     </div>
   );

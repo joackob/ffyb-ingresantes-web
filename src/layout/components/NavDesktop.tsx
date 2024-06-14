@@ -1,5 +1,8 @@
 import { Breadcrumbs, Container, Link, Stack, Typography,useTheme } from "@mui/material";
 import { ReactNode } from "react";
+import { FormatListBulleted} from "@mui/icons-material";
+import MenuDesplegable from "@/src/menuDesplegable/MenuDesplegable";
+
 const NavDesktop = ({
   linksLeft,
   linksRight,
@@ -55,6 +58,7 @@ const NavDesktop = ({
           </Stack>
         ))}
       </Breadcrumbs>
+      <MenuDesplegable/>
       <Breadcrumbs separator={" "}>
         {linksRight.map((item, index) => (
           <Stack key={index} spacing={1} alignItems="center" direction="row">

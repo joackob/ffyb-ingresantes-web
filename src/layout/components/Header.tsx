@@ -22,17 +22,18 @@ const linksLeft = [
     icon: <LocationOn />,
   },
   {
-    label: "Plan de estudios - IPlan",
-    href: "/plan",
-    icon: <FormatListBulleted />,
-  },
-  {
     label: "Comunidad Discord",
     href: "/",
     icon: <Adb />,
   },
 ];
-
+const studyPlan = [
+{
+  label: "Plan de estudios - IPlan",
+  href: "/plan",
+  icon: <FormatListBulleted />,
+},
+];
 const linksRight = [
   {
     label: "Iniciar sesión",
