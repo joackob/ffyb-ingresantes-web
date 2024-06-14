@@ -1,9 +1,8 @@
 import * as React from "react";
-import { Box, Typography } from "@mui/material";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
+import { Box, useTheme } from "@mui/material";
 
 const Cartas = ({ gridKeys }: { gridKeys: string[] }) => {
+  const theme = useTheme();
   return (
     <>
       {gridKeys.map((key) => (
@@ -14,23 +13,28 @@ const Cartas = ({ gridKeys }: { gridKeys: string[] }) => {
           margin={"5px"}
           justifyContent={"center"}
         >
-          <Card
-            sx={{
-              maxWidth: 300,
-              border: "2px solid black",
-              borderRadius: "20px",
+          <div
+            className="card"
+            style={{
+              borderStyle: "solid",
+              borderWidth: "2px",
+              borderColor: theme.palette.primary.main,
             }}
           >
-            <CardContent>
-              <Typography variant="h5" sx={{ padding: "10px" }}>
-                ¿Tenés problemas económicos?
-              </Typography>
-              <Typography variant="subtitle1" sx={{ textAlign: "center" }}>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit.Lorem,
-                ipsum dolor sit amet consectetur adipisicing elit.
-              </Typography>
-            </CardContent>
-          </Card>
+            <div className="card-content">
+              <div className="card-top">
+                <span className="card-title">
+                  <h2>¿Necesitas ayuda?</h2>
+                </span>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Excepturi ullam beatae repellat. Harum et perferendis eum in
+                  vel saepe quasi minus, eveniet velit distinctio tenetur
+                  quisquam hic. Esse, consequatur minus.
+                </p>
+              </div>
+            </div>
+          </div>
         </Box>
       ))}
     </>
