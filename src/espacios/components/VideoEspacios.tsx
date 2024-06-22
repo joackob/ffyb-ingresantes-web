@@ -1,5 +1,7 @@
 import { Player } from "video-react";
 import { useEffect, useState } from "react";
+import "video-react/dist/video-react.css";
+import styles from "../Espacio.module.css";
 
 const videoSources = {
   desktop: "https://sharedby.blomp.com/qTphr8",
@@ -15,6 +17,8 @@ const VideoEspacios = () => {
     } else {
       setSourceVideo(videoSources.mobile);
     }
+    console.log(window.innerWidth);
+    console.log(sourceVideo);
   };
 
   useEffect(() => {
@@ -24,9 +28,13 @@ const VideoEspacios = () => {
   }, []);
 
   return (
-    <Player>
-      <source src={sourceVideo} />
-    </Player>
+    <div className={styles.videoContainer}>
+      <div className={styles.playerWrapper}>
+        <Player>
+          <source src={sourceVideo} />
+        </Player>
+      </div>
+    </div>
   );
 };
 
