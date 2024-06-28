@@ -1,8 +1,6 @@
 //https://mui.com/material-ui/ materiales pantillas etc etc
 import * as React from "react";
 import "./Login.module.css";
-import GoogleIcon from "@mui/icons-material/Google";
-import FacebookIcon from "@mui/icons-material/Facebook";
 import {
   Box,
   IconButton,
@@ -36,7 +34,7 @@ const Login = () => {
         justifyContent: "center",
       }}
     >
-      <Typography variant={"h2"} fontWeight="bold" sx={{ textAlign: "center" }}>
+      <Typography variant={"h4"} fontWeight="bold" sx={{ textAlign: "center" }}>
         Iniciar Sesión
       </Typography>
       <Container
@@ -46,24 +44,22 @@ const Login = () => {
         <FormControl
           id="signUp"
           sx={{
+            padding: "10px",
             marginTop: "20px",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            gap: "10px",
+            gap: "20px",
           }}
         >
           <TextField type="email" placeholder="Email" required />
           <TextField type="password" placeholder="Contraseña" required />
-          <TextField type="button" variant="standard" value="Iniciar Sesión" />
+          <Button variant="contained">Iniciar Sesion</Button>
         </FormControl>
         <Container
           sx={{ display: "flex", justifyContent: "center", gap: "5px" }}
         >
-          <GoogleIcon></GoogleIcon>
-          <FacebookIcon></FacebookIcon>
         </Container>
-        <Button href="/register">Registrate si no tienes cuenta</Button>
       </Container>
     </Box>
   );

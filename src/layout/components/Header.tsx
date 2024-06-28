@@ -23,17 +23,18 @@ const linksLeft = [
     icon: <LocationOn />,
   },
   {
-    label: "Plan de estudios - IPlan",
-    href: "/plan",
-    icon: <FormatListBulleted />,
-  },
-  {
     label: "Comunidad Discord",
     href: "/",
     icon: <Adb />,
   },
 ];
-
+const studyPlan = [
+{
+  label: "Plan de estudios - IPlan",
+  href: "/plan",
+  icon: <FormatListBulleted />,
+},
+];
 const linksRight = [
   {
     label: "Iniciar sesión",
@@ -43,8 +44,8 @@ const linksRight = [
   },
 ];
 
-const Header = () => (
-  <Box component={"header"}>
+const Header = () => {
+  return (<Box component={"header"}>
     <Box>
       <Box
         display={{
@@ -65,6 +66,6 @@ const Header = () => (
       </Box>
     </Box>
   </Box>
-);
+)};
 
 export default Header;
