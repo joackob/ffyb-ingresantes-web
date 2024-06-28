@@ -75,7 +75,7 @@ const MainSection = () => {
             >
               <ListItem sx={{ paddingLeft: "0px", maxWidth: "85vw" }}>
                 <ListItemIcon>
-                  <CheckCircle sx={{ color: theme.palette.primary.main }} />
+                  <CheckCircle sx={{ color: theme.palette.secondary.main }} />
                 </ListItemIcon>
                 <ListItemText sx={{ marginLeft: "-1rem", display: "contents" }}>
                   Crea un camino de aprendizaje adaptado a tu estilo y ritmo.
@@ -83,7 +83,7 @@ const MainSection = () => {
               </ListItem>
               <ListItem sx={{ paddingLeft: "0px", maxWidth: "85vw" }}>
                 <ListItemIcon>
-                  <CheckCircle sx={{ color: theme.palette.primary.main }} />
+                  <CheckCircle sx={{ color: theme.palette.secondary.main }} />
                 </ListItemIcon>
                 <ListItemText sx={{ marginLeft: "-1rem", display: "contents" }}>
                   Colabora con nuestro equipo de tutores altamente calificados.
@@ -91,7 +91,7 @@ const MainSection = () => {
               </ListItem>
               <ListItem sx={{ paddingLeft: "0px", maxWidth: "85vw" }}>
                 <ListItemIcon>
-                  <CheckCircle sx={{ color: theme.palette.primary.main }} />
+                  <CheckCircle sx={{ color: theme.palette.secondary.main }} />
                 </ListItemIcon>
                 <ListItemText sx={{ marginLeft: "-1rem", display: "contents" }}>
                   Resuelve tus dudas y transita tu camino por los estudios
@@ -101,7 +101,22 @@ const MainSection = () => {
             </List>
           </Box>
 
-          
+          <Box
+            gridArea={"btn"}
+            alignSelf={{ xs: "center", md: "start" }}
+            textAlign={{ xs: "center", md: "left" }}
+          >
+            
+            {/*<Button
+              variant="contained"
+              sx={{
+                backgroundColor: theme.palette.primary.main,
+                width: "10rem",
+              }}
+            >
+              Continuar
+            </Button>*/}
+          </Box>
 
           <Box
             gridArea={"img"}

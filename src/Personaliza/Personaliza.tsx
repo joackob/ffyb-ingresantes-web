@@ -20,7 +20,7 @@ import {
   resetServerContext,
 } from "react-beautiful-dnd";
 import DragHandleIcon from "@mui/icons-material/DragHandle";
-
+import { carreras } from "../Plan/data/index";
 const style = {
   position: "absolute",
   top: "50%",
@@ -54,7 +54,9 @@ const Personaliza = ({ carrera }: { carrera: Carrera }) => {
     <Box>
       <Container>
         <Box
-          justifyItems={"center"}
+        
+      
+
           display={"grid"}
           gridTemplateColumns={{ xs: "1fr", md: "1fr 1fr" }}
           gridTemplateRows={{ xs: "80px", md: "130px" }}
@@ -69,11 +71,14 @@ const Personaliza = ({ carrera }: { carrera: Carrera }) => {
             paddingTop={{ xs: "10px", md: "30px" }}
             gridArea={"title"}
             alignSelf={"start"}
-            textAlign={"center"}
+            textAlign={"start"}
+           
+          
           >
-            <Typography fontSize={{ xs: "40px", md: "55px" }} fontWeight="bold">
-              Personaliza
+            <Typography fontSize={{ xs: "40px", md: "55px" }} fontWeight="bold"  >
+            {carrera.nombre}
             </Typography>
+             
           </Box>
 
           <Box
@@ -87,6 +92,7 @@ const Personaliza = ({ carrera }: { carrera: Carrera }) => {
             gridTemplateRows="auto"
             gridAutoColumns={"1fr"}
             gridAutoRows={"auto"}
+            marginTop={"50px"}
           >
             <DragDropContext
               onDragEnd={(result) => {
@@ -124,8 +130,9 @@ const Personaliza = ({ carrera }: { carrera: Carrera }) => {
                           display: "flex",
                           flexDirection: "column",
                           paddingBottom: "15px",
-                          borderBottom: "solid 1px",
-                          borderColor: theme.palette.primary.main,
+                          border:"solid 1px",
+                          borderRadius: "10%",
+                          borderColor: "#c2c2c2",
                         }}
                         ref={droppableProvided.innerRef}
                         {...droppableProvided.droppableProps}
