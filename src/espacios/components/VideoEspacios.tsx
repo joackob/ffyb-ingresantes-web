@@ -1,19 +1,15 @@
-import { Container, IconButton } from "@mui/material";
-import PlayCircleIcon from "@mui/icons-material/PlayCircle";
-import PauseCircleIcon from "@mui/icons-material/PauseCircle";
-import { useEffect, useRef, useState } from "react";
+import { Player } from "video-react";
+import { useEffect, useState } from "react";
+import "video-react/dist/video-react.css";
+import styles from "../Espacio.module.css";
 
 const videoSources = {
   desktop: "https://sharedby.blomp.com/qTphr8",
   mobile: "https://sharedby.blomp.com/kzv6mK",
-  // desktop: "/desk.mp4",
-  // mobile: "/mob.mp4",
 };
 
 const VideoEspacios = () => {
-  const [reproduciendo, setReproduciendo] = useState(false);
   const [sourceVideo, setSourceVideo] = useState(videoSources.mobile);
-  const refVideo = useRef<HTMLVideoElement>(null);
 
   const handleResize = () => {
     if (window.innerWidth > 640) {
@@ -21,6 +17,8 @@ const VideoEspacios = () => {
     } else {
       setSourceVideo(videoSources.mobile);
     }
+    console.log(window.innerWidth);
+    console.log(sourceVideo);
   };
 
   useEffect(() => {
@@ -29,48 +27,14 @@ const VideoEspacios = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const handlePressPlay = () => {
-    refVideo?.current?.play();
-    setReproduciendo(true);
-  };
-
-  const handlePressPause = () => {
-    refVideo?.current?.pause();
-    setReproduciendo(false);
-  };
-
   return (
-    <Container id="videos" sx={{ position: "relative" }}>
-      <video src={sourceVideo} ref={refVideo} width="100%"></video>
-      <Container
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          position: "absolute",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-          zIndex: 1,
-        }}
-      >
-        {!reproduciendo && (
-          <IconButton onClick={handlePressPlay}>
-            <PlayCircleIcon
-              sx={{ fontSize: "8rem", color: "#3728b7", opacity: "80%" }}
-            />
-          </IconButton>
-        )}
-
-        {reproduciendo && (
-          <IconButton onClick={handlePressPause}>
-            <PauseCircleIcon
-              sx={{ fontSize: "8rem", color: "#3728b7", opacity: "80%" }}
-            />
-          </IconButton>
-        )}
-      </Container>
-    </Container>
+    <div className={styles.videoContainer}>
+      <div className={styles.playerWrapper}>
+        <Player>
+          <source src={sourceVideo} />
+        </Player>
+      </div>
+    </div>
   );
 };
 
