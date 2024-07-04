@@ -1,4 +1,4 @@
-import Carrera from "@/src/Carrera/Carrera";
+import Carrera from "@/src/carrera";
 import { tuEnMedicinaNuclearMock } from "@/src/database/mocks";
 
 const plan = () => {

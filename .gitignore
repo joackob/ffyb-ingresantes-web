@@ -45,3 +45,5 @@ workbox*
 # videos
 *.mp4
 
+# bunlock
+bun.lockb

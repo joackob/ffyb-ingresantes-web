@@ -20,7 +20,6 @@ import {
   resetServerContext,
 } from "react-beautiful-dnd";
 import DragHandleIcon from "@mui/icons-material/DragHandle";
-import { carreras } from "../Plan/data/index";
 const style = {
   position: "absolute",
   top: "50%",
@@ -54,9 +53,6 @@ const Personaliza = ({ carrera }: { carrera: Carrera }) => {
     <Box>
       <Container>
         <Box
-        
-      
-
           display={"grid"}
           gridTemplateColumns={{ xs: "1fr", md: "1fr 1fr" }}
           gridTemplateRows={{ xs: "80px", md: "130px" }}
@@ -72,13 +68,10 @@ const Personaliza = ({ carrera }: { carrera: Carrera }) => {
             gridArea={"title"}
             alignSelf={"start"}
             textAlign={"start"}
-           
-          
           >
-            <Typography fontSize={{ xs: "40px", md: "55px" }} fontWeight="bold"  >
-            {carrera.nombre}
+            <Typography fontSize={{ xs: "40px", md: "55px" }} fontWeight="bold">
+              {carrera.nombre}
             </Typography>
-             
           </Box>
 
           <Box
@@ -130,7 +123,7 @@ const Personaliza = ({ carrera }: { carrera: Carrera }) => {
                           display: "flex",
                           flexDirection: "column",
                           paddingBottom: "15px",
-                          border:"solid 1px",
+                          border: "solid 1px",
                           borderRadius: "10%",
                           borderColor: "#c2c2c2",
                         }}

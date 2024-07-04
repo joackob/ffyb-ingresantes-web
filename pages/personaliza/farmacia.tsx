@@ -1,4 +1,4 @@
-import Personaliza from "@/src/Personaliza/Personaliza";
+import Personaliza from "@/src/personaliza";
 import { farmaciaMock } from "@/src/database/mocks";
 
 const personaliza = () => {
@@ -6,4 +6,3 @@ const personaliza = () => {
 };
 
 export default personaliza;
-

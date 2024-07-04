@@ -1,7 +1,6 @@
 import { Breadcrumbs, Container, Link, Stack, Typography,useTheme } from "@mui/material";
 import { ReactNode } from "react";
-import { FormatListBulleted} from "@mui/icons-material";
-import MenuDesplegable from "@/src/menuDesplegable/MenuDesplegable";
+import MenuDesplegable from "@/src/menu-desplegable";
 
 const NavDesktop = ({
   linksLeft,
