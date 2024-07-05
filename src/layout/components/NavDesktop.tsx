@@ -1,4 +1,5 @@
 import {
+  AppBar,
   Breadcrumbs,
   Container,
   Link,
@@ -23,14 +24,32 @@ const NavDesktop = () => {
       }}
     >
       <Container sx={{ height: "8vh", padding: "0px" }}>
+        <Box>
+        </Box>
         <Stack
-          height="100%"
-          width="100%"
+          
           alignItems="center"
           justifyContent="space-around"
           direction="row"
+          
+          color={"#3728b7"}
+          //borderBottom={"8"}
+          sx={{
+            height: 124
+          }}
         >
-          <Breadcrumbs separator={" "}>
+        <AppBar position="static"
+          sx={{
+            height :92,
+            backgroundColor : "transparent",
+            paddingTop: 1.6,
+            paddingBottom: 1.6,
+            borderSpacing: 5,
+            borderBottom: "8px solid #011344",
+            wordBreak: "break-word"
+          }}
+          >
+         {/*<Breadcrumbs separator={" "}>
             <Stack alignItems="center" direction="row" spacing={1}>
               <Link
                 href="/"
@@ -52,7 +71,7 @@ const NavDesktop = () => {
               </Link>
             </Stack>
           </Breadcrumbs>
-          <MenuDesplegable />
+          <MenuDesplegable /> */}
           <Breadcrumbs separator={" "}>
             {links.map((item, index) => (
               <Stack
@@ -65,10 +84,10 @@ const NavDesktop = () => {
                   href={item.url}
                   display={"flex"}
                   justifyContent={"space-between"}
-                  color={"#3728b7"}
-                  border={"solid 2.5px"}
+                  color={"#123546"}
+                  border={"none"}
                   borderRadius={"10px"}
-                  borderColor={"#3728b7"}
+                  
                   padding={"10px 20px"}
                   underline="none"
                   fontWeight={"bold"}
@@ -80,6 +99,7 @@ const NavDesktop = () => {
               </Stack>
             ))}
           </Breadcrumbs>
+          </AppBar>
         </Stack>
       </Container>
     </Box>

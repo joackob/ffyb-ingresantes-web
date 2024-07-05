@@ -1,14 +1,18 @@
 const links = [
   {
-    label: "Home",
+    label: "Recursos y ofertas",
     url: "/",
   },
   {
-    label: "About",
+    label: "Aulas y espacios de la facultad",
     url: "/about",
   },
   {
-    label: "Contact",
+    label: "Tu plan de estudios",
+    url: "/contact",
+  },
+  {
+    label: "Iniciar sesión",
     url: "/contact",
   },
 ];
