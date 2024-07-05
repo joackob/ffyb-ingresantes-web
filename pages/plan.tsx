@@ -1,8 +1,7 @@
-import Plan from "@/src/plan";
+import Plan from "@/src/planes";
 
 const plan = () => {
   return <Plan />;
 };
 
 export default plan;
-

@@ -1,7 +1,7 @@
 import { Box, Container, Link, Typography } from "@mui/material";
 import { carreras } from "./data";
 
-const Plan = () => {
+const index = () => {
   const title = "Personaliza tu plan de estudios a tu medida.\n";
 
   return (
@@ -97,4 +97,4 @@ const Plan = () => {
   );
 };
 
-export default Plan;
+export default index;
