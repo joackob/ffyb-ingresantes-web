@@ -1,8 +1,8 @@
 import { Box } from "@mui/material";
-import React from "react";
+import React, { ReactNode } from "react";
 
-const Footer = () => {
-  return <Box component={"footer"} />;
+const Footer = ({ children }: { children: ReactNode }) => {
+  return <Box component={"footer"}>{children}</Box>;
 };
 
 export default Footer;

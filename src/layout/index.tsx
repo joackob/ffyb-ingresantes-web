@@ -2,16 +2,23 @@ import { ReactNode } from "react";
 import Header from "./components/Header";
 import Main from "./components/Main";
 import Footer from "./components/Footer";
-import { Box } from "@mui/material";
+import Layout from "./components/Layout";
+import NavDesktop from "./components/NavDesktop";
+import NavMobile from "./components/NavMobile";
 
-const Layout = ({ children }: { children: ReactNode }) => {
+const index = ({ children }: { children: ReactNode }) => {
   return (
-    <Box display={"flex"} flexDirection="column" minHeight={"100vh"}>
-      <Header />
+    <Layout>
+      <Header>
+        <NavDesktop />
+        <NavMobile />
+      </Header>
+
       <Main>{children}</Main>
-      <Footer />
-    </Box>
+
+      <Footer>footer</Footer>
+    </Layout>
   );
 };
 
-export default Layout;
+export default index;

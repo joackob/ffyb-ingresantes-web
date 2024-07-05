@@ -1,4 +1,4 @@
-import Espacio from "@/src/espacios/Espacio";
+import Espacio from "@/src/espacios";
 
 const espacio = () => {
   return <Espacio />;

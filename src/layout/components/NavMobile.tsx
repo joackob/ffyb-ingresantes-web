@@ -14,14 +14,9 @@ import {
 import { ReactNode, useState } from "react";
 import { MouseEvent } from "react";
 import NavLogo from "./NavLogo";
+import links from "../links";
 
-const NavMobile = ({
-  linksLeft,
-  linksRight,
-}: {
-  linksLeft: { label: string; href: string; icon: ReactNode }[];
-  linksRight: { label: string; href: string; icon: ReactNode }[];
-}) => {
+const NavMobile = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
@@ -33,7 +28,15 @@ const NavMobile = ({
   };
 
   return (
-    <Box height="100%" width="100%">
+    <Box
+      display={{
+        xs: "block",
+        sm: "block",
+        md: "none",
+        lg: "none",
+        xl: "none",
+      }}
+    >
       <Container sx={{ height: "7vh" }} />
       <AppBar position="fixed">
         <Toolbar sx={{ backgroundColor: "var(--color-primario)" }}>
@@ -59,30 +62,14 @@ const NavMobile = ({
             "aria-labelledby": "basic-button",
           }}
         >
-          {linksLeft.map((link, index) => (
+          {links.map((link, index) => (
             <MenuItem
               key={index}
               onClick={handleClose}
               component={Link}
-              href={link.href}
+              href={link.url}
               underline="none"
             >
-              {link.icon}
-              <Typography variant="inherit" sx={{ ml: 1 }}>
-                {link.label}
-              </Typography>
-            </MenuItem>
-          ))}
-          <Divider variant="middle" />
-          {linksRight.map((link, index) => (
-            <MenuItem
-              key={index}
-              onClick={handleClose}
-              component={Link}
-              href={link.href}
-              underline="none"
-            >
-              {link.icon}
               <Typography variant="inherit" sx={{ ml: 1 }}>
                 {link.label}
               </Typography>

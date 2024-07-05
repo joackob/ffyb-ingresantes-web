@@ -1,6 +1,5 @@
 //https://mui.com/material-ui/ materiales pantillas etc etc
 import * as React from "react";
-import "./Espacio.module.css";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";

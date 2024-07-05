@@ -1,7 +1,7 @@
 import { Player } from "video-react";
 import { useEffect, useState } from "react";
 import "video-react/dist/video-react.css";
-import styles from "../Espacio.module.css";
+import styles from "../styles/VideoEspacios.module.css";
 
 const videoSources = {
   desktop: "https://sharedby.blomp.com/qTphr8",
