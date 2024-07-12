@@ -1,4 +1,4 @@
-import Login from "@/src/login/Login";
+import Login from "@/src/login";
 
 const login = () => {
   return <Login />;

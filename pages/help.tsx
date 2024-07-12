@@ -1,4 +1,4 @@
-import Help from "@/src/help/help";
+import Help from "@/src/help";
 
 const help = () => {
   return <Help />;
