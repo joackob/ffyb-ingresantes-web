@@ -1,25 +1,10 @@
-import { RadioButtonChecked, RadioButtonUnchecked } from "@mui/icons-material";
-import {
-  Box,
-  Button,
-  Container,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  Modal,
-  Typography,
-  useTheme,
-} from "@mui/material";
+import { Box, Button, Container, List, ListItem, ListItemIcon, ListItemText, Modal, Typography, useTheme } from "@mui/material";
 import React from "react";
 import { Carrera, Cursada, Materia } from "../database/interfaces";
-import {
-  DragDropContext,
-  Draggable,
-  Droppable,
-  resetServerContext,
-} from "react-beautiful-dnd";
+import { DragDropContext, Draggable, Droppable, resetServerContext } from "react-beautiful-dnd";
 import DragHandleIcon from "@mui/icons-material/DragHandle";
+import { RadioButtonChecked, RadioButtonUnchecked } from "@mui/icons-material";
+
 const style = {
   position: "absolute",
   top: "50%",
@@ -48,6 +33,31 @@ const Personaliza = ({ carrera }: { carrera: Carrera }) => {
   const handleClose = () => setOpen(false);
   const theme = useTheme();
   resetServerContext();
+
+  // Función para obtener el estado predominante del cuatrimestre
+  const getPredominantState = (cuatrimestre: Materia[]) => {
+    const states = cuatrimestre.map((materia) => materia.cursada);
+    if (states.includes(Cursada.CURSANDO)) {
+      return Cursada.CURSANDO;
+    } else if (states.includes(Cursada.APROBADA)) {
+      return Cursada.APROBADA;
+    } else if (states.includes(Cursada.PENDIENTE)) {
+      return Cursada.PENDIENTE;
+    } else {
+      return Cursada.DISPONIBLE;
+    }
+  };
+
+  
+  const getListBackgroundColor = (cuatrimestre: Materia[]) => {
+    const predominantState = getPredominantState(cuatrimestre);
+    switch (predominantState) {
+      case Cursada.CURSANDO:
+        return "#9FA2A7";
+      default:
+        return "white"; 
+    }
+  };
 
   return (
     <Box>
@@ -122,10 +132,14 @@ const Personaliza = ({ carrera }: { carrera: Carrera }) => {
                           width: "100%",
                           display: "flex",
                           flexDirection: "column",
-                          paddingBottom: "15px",
+                          padding: "15px",
                           border: "solid 1px",
                           borderRadius: "10%",
                           borderColor: "#c2c2c2",
+                          
+                          backgroundColor: getListBackgroundColor(
+                            cuatrimestre.materias
+                          ),
                         }}
                         ref={droppableProvided.innerRef}
                         {...droppableProvided.droppableProps}
@@ -142,15 +156,16 @@ const Personaliza = ({ carrera }: { carrera: Carrera }) => {
                                   {...draggableProvided.draggableProps}
                                   {...draggableProvided.dragHandleProps}
                                   ref={draggableProvided.innerRef}
-                                  sx={{ padding: "2px" }}
+                                  sx={{ padding: "2px", display:"flex", flexDirection: "column", alignItems: "flex-start",margin:"5px"}}
                                 >
                                   <ListItemIcon
                                     sx={{ justifyContent: "center" }}
                                   >
                                     {materia.cursada === Cursada.CURSANDO && (
-                                      <RadioButtonChecked
-                                        sx={{ fontSize: "30px" }}
-                                      />
+                                      <Typography
+                                        sx={{ fontSize: "30px", backgroundColor:"#4FB7EF",borderRadius:"10px" }}
+                                      > Cursando
+                                      </Typography>
                                     )}
                                     {materia.cursada === Cursada.DISPONIBLE && (
                                       <RadioButtonChecked
@@ -190,9 +205,7 @@ const Personaliza = ({ carrera }: { carrera: Carrera }) => {
                                       {materia.nombre}
                                     </Button>
                                   </ListItemText>
-                                  <ListItemIcon>
-                                    <DragHandleIcon sx={{ fontSize: "30px" }} />
-                                  </ListItemIcon>
+                                  
                                 </ListItem>
                               );
                             }}
@@ -222,4 +235,5 @@ const Personaliza = ({ carrera }: { carrera: Carrera }) => {
     </Box>
   );
 };
+
 export default Personaliza;
