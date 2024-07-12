@@ -1,9 +1,26 @@
-import { Box, Button, Container, List, ListItem, ListItemIcon, ListItemText, Modal, Typography, useTheme } from "@mui/material";
+import {
+  Box,
+  Button,
+  Container,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Modal,
+  Typography,
+  useTheme,
+} from "@mui/material";
 import React from "react";
 import { Carrera, Cursada, Materia } from "../database/interfaces";
-import { DragDropContext, Draggable, Droppable, resetServerContext } from "react-beautiful-dnd";
+import {
+  DragDropContext,
+  Draggable,
+  Droppable,
+  resetServerContext,
+} from "react-beautiful-dnd";
 import DragHandleIcon from "@mui/icons-material/DragHandle";
 import { RadioButtonChecked, RadioButtonUnchecked } from "@mui/icons-material";
+import TarjetaCuatrimestre from "./components/TarjetaCuatrimestre";
 
 const style = {
   position: "absolute",
@@ -19,7 +36,7 @@ const style = {
 const Personaliza = ({ carrera }: { carrera: Carrera }) => {
   const [open, setOpen] = React.useState(false);
   const [materiaSelecionada, setMateriaSeleccionada] = React.useState<Materia>(
-    carrera.plan[0].materias[0],
+    carrera.plan[0].materias[0]
   );
   const setHandleOpen = (materia: Materia) => {
     const handleOpen = () => {
@@ -33,31 +50,6 @@ const Personaliza = ({ carrera }: { carrera: Carrera }) => {
   const handleClose = () => setOpen(false);
   const theme = useTheme();
   resetServerContext();
-
-  // Función para obtener el estado predominante del cuatrimestre
-  const getPredominantState = (cuatrimestre: Materia[]) => {
-    const states = cuatrimestre.map((materia) => materia.cursada);
-    if (states.includes(Cursada.CURSANDO)) {
-      return Cursada.CURSANDO;
-    } else if (states.includes(Cursada.APROBADA)) {
-      return Cursada.APROBADA;
-    } else if (states.includes(Cursada.PENDIENTE)) {
-      return Cursada.PENDIENTE;
-    } else {
-      return Cursada.DISPONIBLE;
-    }
-  };
-
-  
-  const getListBackgroundColor = (cuatrimestre: Materia[]) => {
-    const predominantState = getPredominantState(cuatrimestre);
-    switch (predominantState) {
-      case Cursada.CURSANDO:
-        return "#9FA2A7";
-      default:
-        return "white"; 
-    }
-  };
 
   return (
     <Box>
@@ -112,110 +104,23 @@ const Personaliza = ({ carrera }: { carrera: Carrera }) => {
 
                 const [materia] = nuevoPlan[cuatrimestreOrigen].materias.splice(
                   posicionOrigen,
-                  1,
+                  1
                 );
                 nuevoPlan[cuatrimestreDestino].materias.splice(
                   posicionDestino,
                   0,
-                  materia,
+                  materia
                 );
 
                 setPlan(nuevoPlan);
               }}
             >
               {plan.map((cuatrimestre, index) => (
-                <Droppable droppableId={`${index}`} key={index}>
-                  {(droppableProvided) => {
-                    return (
-                      <List
-                        sx={{
-                          width: "100%",
-                          display: "flex",
-                          flexDirection: "column",
-                          padding: "15px",
-                          border: "solid 1px",
-                          borderRadius: "10%",
-                          borderColor: "#c2c2c2",
-                          
-                          backgroundColor: getListBackgroundColor(
-                            cuatrimestre.materias
-                          ),
-                        }}
-                        ref={droppableProvided.innerRef}
-                        {...droppableProvided.droppableProps}
-                      >
-                        {cuatrimestre.materias.map((materia, index) => (
-                          <Draggable
-                            draggableId={`m-${materia.id}`}
-                            index={index}
-                            key={index}
-                          >
-                            {(draggableProvided) => {
-                              return (
-                                <ListItem
-                                  {...draggableProvided.draggableProps}
-                                  {...draggableProvided.dragHandleProps}
-                                  ref={draggableProvided.innerRef}
-                                  sx={{ padding: "2px", display:"flex", flexDirection: "column", alignItems: "flex-start",margin:"5px"}}
-                                >
-                                  <ListItemIcon
-                                    sx={{ justifyContent: "center" }}
-                                  >
-                                    {materia.cursada === Cursada.CURSANDO && (
-                                      <Typography
-                                        sx={{ fontSize: "30px", backgroundColor:"#4FB7EF",borderRadius:"10px" }}
-                                      > Cursando
-                                      </Typography>
-                                    )}
-                                    {materia.cursada === Cursada.DISPONIBLE && (
-                                      <RadioButtonChecked
-                                        sx={{ fontSize: "30px" }}
-                                      />
-                                    )}
-                                    {materia.cursada === Cursada.APROBADA && (
-                                      <RadioButtonChecked
-                                        sx={{
-                                          color: theme.palette.primary.main,
-                                          fontSize: "30px",
-                                        }}
-                                      />
-                                    )}
-                                    {materia.cursada === Cursada.PENDIENTE && (
-                                      <RadioButtonUnchecked
-                                        sx={{ fontSize: "30px" }}
-                                      />
-                                    )}
-                                  </ListItemIcon>
-                                  <ListItemText>
-                                    <Button
-                                      onClick={setHandleOpen(materia)}
-                                      sx={{
-                                        padding: { xs: "1px", md: "4px" },
-                                        display: "block",
-                                        textAlign: "start",
-                                        minWidth: "0px",
-                                        lineHeight: "normal",
-                                        textTransform: "none",
-                                        color: "black",
-                                        textDecoration: "none",
-                                        paddingLeft: { xs: "0px", md: "10px" },
-                                        fontSize: { xs: "15px", md: "20px" },
-                                      }}
-                                    >
-                                      {materia.nombre}
-                                    </Button>
-                                  </ListItemText>
-                                  
-                                </ListItem>
-                              );
-                            }}
-                          </Draggable>
-                        ))}
-                        {droppableProvided.placeholder}
-                      </List>
-                    );
-                  }}
-                </Droppable>
+                <TarjetaCuatrimestre
+                  cuatrimestre={cuatrimestre}
+                  key={index}
+                  index={index}
+                />
               ))}
             </DragDropContext>
           </Box>
