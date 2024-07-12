@@ -5,7 +5,7 @@ import {
   } from "@mui/material";
 
   const MensajePrincipal = () => {
-    const promo = "Bienvenidos al Sistema de Tutorías de Farmacia y bioquímica.\n ";
+    const promo: string = "Bienvenidos al Sistema de Tutorías de Farmacia y bioquímica.\n ";
   return(
   <Box 
   width={"100%"}  
