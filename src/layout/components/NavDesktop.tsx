@@ -28,28 +28,36 @@ const NavDesktop = () => {
         </Box>
         <Stack
           
-          alignItems="center"
-          justifyContent="space-around"
+          alignItems="baseline"
+          justifyContent="left"
           direction="row"
-          
           color={"#3728b7"}
-          //borderBottom={"8"}
+          borderBottom={"8px solid #011344"}
+          paddingTop={"10px"}
+          paddingBottom={"10px"}
+          paddingLeft={"none"}
+          marginBottom={"1px"}
+          marginLeft={"0px"}
           sx={{
-            height: 124
+            paddingBottom: "none",
+            marginBottom: "0px",
+            
           }}
         >
-        <AppBar position="static"
+      { /*<AppBar position="static"
           sx={{
             height :92,
             backgroundColor : "transparent",
             paddingTop: 1.6,
-            paddingBottom: 1.6,
+            paddingBottom: 0,
             borderSpacing: 5,
             borderBottom: "8px solid #011344",
-            wordBreak: "break-word"
+            wordBreak: "break-word",
+            alignItems: "start"
+            
           }}
           >
-         {/*<Breadcrumbs separator={" "}>
+         <Breadcrumbs separator={" "}>
             <Stack alignItems="center" direction="row" spacing={1}>
               <Link
                 href="/"
@@ -71,6 +79,7 @@ const NavDesktop = () => {
               </Link>
             </Stack>
           </Breadcrumbs>
+          </AppBar>
           <MenuDesplegable /> */}
           <Breadcrumbs separator={" "}>
             {links.map((item, index) => (
@@ -83,14 +92,20 @@ const NavDesktop = () => {
                 <Link
                   href={item.url}
                   display={"flex"}
-                  justifyContent={"space-between"}
-                  color={"#123546"}
+                  justifyContent={"bottom"}
+                  color={"#8b8b8b"}
                   border={"none"}
                   borderRadius={"10px"}
-                  
-                  padding={"10px 20px"}
+                  alignItems={"baseline"}
+                  paddingTop={"10px"}
+                  paddingBottom={"10px"}
+                  paddingLeft={"1px"}
+                  marginBottom={"1px"}
+                  marginLeft={"none"}
                   underline="none"
-                  fontWeight={"bold"}
+                  fontWeight={"light"}
+
+                  
                 >
                   <Typography marginLeft={"10px"} variant="inherit">
                     {item.label}
@@ -99,7 +114,7 @@ const NavDesktop = () => {
               </Stack>
             ))}
           </Breadcrumbs>
-          </AppBar>
+          
         </Stack>
       </Container>
     </Box>
