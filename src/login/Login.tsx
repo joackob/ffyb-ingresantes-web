@@ -30,40 +30,48 @@ const Login = () => {
   };
 
   return (
-      <Stack
-        direction="column"
-        justifyContent="center"
-        alignItems="center"
-        height={"100vh"}
-        spacing={2}
-        sx={{backgroundImage: "https://noticias.utpl.edu.ec/sites/default/files/imagenes_editor/_dsc4080-min_2.jpg"}}
+    <Stack
+      direction="column"
+      justifyContent="center"
+      alignItems="center"
+      height={"100vh"}
+      spacing={2}
+      sx={{
+        backgroundImage:"url('https://www.ffyb.uba.ar/wp-content/uploads/2023/05/66-aniversario-ffyb-alumnos-990x500.jpg')",
+        backgroundRepeat: "no-repeat",
+        backgroundSize:"cover"
+      }}
       >
-        <Box sx={{
-          backgroundColor: "red",
-          display: "inline-block",
-        }}>
-          <Typography variant={"h5"} fontStyle="Roboto">
-            INICIAR SESION
-          </Typography>
-          <FormControl
-            id="signUp"
-            sx={{
-              padding: "10px",
-              marginTop: "5px",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              gap: "32px",
-              width: 300,
-              maxWidth: '100%'
-            }}
-          >
-            <TextField fullWidth label="Usuario" id="signUp" required />
-            <TextField fullWidth label="Contraseña" id="signUp" required />
-            <Button variant="contained">Iniciar Sesion</Button>
-          </FormControl>
-        </Box>
-      </Stack>
+      <Box sx={{
+        display: "inline-block",
+        padding: "15px",
+        borderRadius: "5px",
+        boxShadow:4,
+        backgroundColor:"#fff9"
+      }}>
+        <Typography variant={"h6"} fontStyle="Roboto" marginLeft={"10px"} color={"white"}>
+          INICIAR SESION
+        </Typography>
+        <FormControl
+          id="signUp"
+          sx={{
+            padding: "10px",
+            marginTop: "5px",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            gap: "32px",
+            width: 345,
+            maxWidth: 345,
+          }}
+        >
+        
+          <TextField fullWidth label="Usuario" id="signUp" required />
+          <TextField fullWidth label="Contraseña" id="signUp" required />
+          <Button  variant="contained" size="medium" sx={{color:"white",backgroundColor:"#3498DB",paddingLeft:"122px", paddingRight:"122px"}}>Continuar</Button>
+        </FormControl>
+      </Box>
+    </Stack>
   );
 };
 export default Login;
