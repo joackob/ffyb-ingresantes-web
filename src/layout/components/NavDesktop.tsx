@@ -24,8 +24,40 @@ const NavDesktop = () => {
       }}
     >
       <Container sx={{ height: "8vh", padding: "0px" }}>
+        
+        <Box sx={{
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "start",
+        paddingTop: "20px",
+        paddingBottom: "0px",
+        marginBottom:"0px"
+      }}>
         <Box>
+        <Typography 
+        variant={"h1"}
+        fontSize={"36px"}
+        fontWeight={"700"}
+        lineHeight={"43.88px"}
+        
+        > 
+        .UBA
+        </Typography>
         </Box>
+        <Box>
+           <Typography
+           variant={"h1"}
+           fontWeight={"400"}
+           fontSize={"36px"}
+           lineHeight={"42.19px"}
+           letterSpacing={"-4%"}
+           color={"#007AC6"}
+           >
+            FARMACIA Y BIOQUIMICA
+            
+           </Typography>
+             </Box>
+             </Box>
         <Stack
           
           alignItems="baseline"
@@ -41,7 +73,6 @@ const NavDesktop = () => {
           sx={{
             paddingBottom: "none",
             marginBottom: "0px",
-            
           }}
         >
       { /*<AppBar position="static"
@@ -82,12 +113,15 @@ const NavDesktop = () => {
           </AppBar>
           <MenuDesplegable /> */}
           <Breadcrumbs separator={" "}>
+          
             {links.map((item, index) => (
+              <Box style={{ width: '125px', wordWrap: 'break-word' }}>
               <Stack
                 key={index}
                 spacing={1}
                 alignItems="center"
                 direction="row"
+                paddingBottom={"5px"}
               >
                 <Link
                   href={item.url}
@@ -97,21 +131,17 @@ const NavDesktop = () => {
                   border={"none"}
                   borderRadius={"10px"}
                   alignItems={"baseline"}
-                  paddingTop={"10px"}
-                  paddingBottom={"10px"}
-                  paddingLeft={"1px"}
-                  marginBottom={"1px"}
-                  marginLeft={"none"}
                   underline="none"
                   fontWeight={"light"}
-
-                  
                 >
-                  <Typography marginLeft={"10px"} variant="inherit">
+                  <Typography marginLeft={"1px"} variant="inherit"
+                 >
+                  
                     {item.label}
                   </Typography>
                 </Link>
               </Stack>
+              </Box>
             ))}
           </Breadcrumbs>
           

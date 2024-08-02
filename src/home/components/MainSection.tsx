@@ -21,6 +21,7 @@ const MainSection = () => {
     <Box>
       <Container>
         <Box
+          marginTop={"25px"}
           display={"grid"}
           gridTemplateColumns={{ xs: "1fr", md: "1fr 1fr" }}
           gridTemplateRows="auto"
