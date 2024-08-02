@@ -5,6 +5,8 @@ import Footer from "./components/Footer";
 import Layout from "./components/Layout";
 import NavDesktop from "./components/NavDesktop";
 import NavMobile from "./components/NavMobile";
+import MensajePrincipal from "../home/components/MensajePrincipal";
+import Galeria from "../home/components/Galeria";
 
 const index = ({ children }: { children: ReactNode }) => {
   return (
@@ -13,9 +15,8 @@ const index = ({ children }: { children: ReactNode }) => {
         <NavDesktop />
         <NavMobile />
       </Header>
-
-      <Main>{children}</Main>
-
+      <MensajePrincipal/>
+    <Galeria/>
       <Footer>footer</Footer>
     </Layout>
   );

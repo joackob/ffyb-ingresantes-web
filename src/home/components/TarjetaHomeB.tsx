@@ -1,6 +1,5 @@
 import {
   Box,
-  Container,
   Typography,
   Link,
 } from "@mui/material";
@@ -46,7 +45,7 @@ const TarjetaHomeB = () => {
             width: "100%", // Llenar horizontalmente el contenedor
 
             "& > *": {
-              marginBottom: 20, // Espaciado entre elementos verticales
+              marginBottom: "20px", // Espaciado entre elementos verticales
             },
           }}>
           <Box
@@ -73,7 +72,7 @@ const TarjetaHomeB = () => {
               {resumen}
             </Typography>
           </Box>
-          <Link href="https://www.ejemplo.com" style={{ color: "5DAFD6" }}>
+          <Link href="https://www.ejemplo.com" style={{ color: "5DAFD6", textDecoration: "none"}}>
             {enlace}
           </Link>
         </Box>

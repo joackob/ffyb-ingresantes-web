@@ -2,19 +2,20 @@ import {
     Box,
     Container,
     Typography,
+    useTheme,
   } from "@mui/material";
-
+  
   const MensajePrincipal = () => {
     const promo: string = "Bienvenidos al Sistema de Tutorías de Farmacia y bioquímica.\n ";
-  return(
+    const theme = useTheme();  
+    return(
   <Box 
   width={"100%"}  
   textAlign={"center"}
-  fontWeight="800"
   height={"448px"}
   display="flex" 
   flexDirection="column" 
-  justifyContent="space-between" 
+  justifyContent="center" 
   alignItems="center"
   color={"#FFFFFF"}
   fontFamily={"Montserrat"}
@@ -27,6 +28,7 @@ import {
               fontSize={"48px"}
               display={{ md: "block", xs: "none" }}
               padding={"10px"}
+              fontWeight={800}
             >
               {promo}
             </Typography>
@@ -35,6 +37,7 @@ import {
               fontSize={"40px"}
               display={{ md: "none", xs: "block" }}
               padding={"10px"}
+              fontWeight={800}
             >
               {promo}
             </Typography>
