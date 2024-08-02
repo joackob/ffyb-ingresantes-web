@@ -1,6 +1,4 @@
 import { Cursada, Materia } from "@/src/database/interfaces";
-import index from "@/src/layout";
-import theme from "@/src/theme";
 import { RadioButtonChecked, RadioButtonUnchecked } from "@mui/icons-material";
 import {
   List,
