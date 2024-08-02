@@ -1,16 +1,10 @@
 import { Cursada, Materia } from "@/src/database/interfaces";
-import { RadioButtonChecked, RadioButtonUnchecked } from "@mui/icons-material";
-import {
-  List,
-  ListItem,
-  ListItemIcon,
-  Typography,
-  ListItemText,
-  Button,
-} from "@mui/material";
+import { List } from "@mui/material";
 import React from "react";
 import { Droppable, Draggable } from "react-beautiful-dnd";
 import { Cuatrimestre } from "@/src/database/interfaces";
+import TarjetaMateria from "./TarjetaMateria";
+
 // Función para obtener el estado predominante del cuatrimestre
 const getPredominantState = (cuatrimestre: Materia[]) => {
   const states = cuatrimestre.map((materia) => materia.cursada);
@@ -60,75 +54,7 @@ const TarjetaCuatrimestre = ({
             {...droppableProvided.droppableProps}
           >
             {cuatrimestre.materias.map((materia, index) => (
-              <Draggable
-                draggableId={`m-${materia.id}`}
-                index={index}
-                key={index}
-              >
-                {(draggableProvided) => {
-                  return (
-                    <ListItem
-                      {...draggableProvided.draggableProps}
-                      {...draggableProvided.dragHandleProps}
-                      ref={draggableProvided.innerRef}
-                      sx={{
-                        padding: "2px",
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "flex-start",
-                        margin: "5px",
-                      }}
-                    >
-                      <ListItemIcon sx={{ justifyContent: "center" }}>
-                        {materia.cursada === Cursada.CURSANDO && (
-                          <Typography
-                            sx={{
-                              fontSize: "30px",
-                              backgroundColor: "#4FB7EF",
-                              borderRadius: "10px",
-                            }}
-                          >
-                            {" "}
-                            Cursando
-                          </Typography>
-                        )}
-                        {materia.cursada === Cursada.DISPONIBLE && (
-                          <RadioButtonChecked sx={{ fontSize: "30px" }} />
-                        )}
-                        {materia.cursada === Cursada.APROBADA && (
-                          <RadioButtonChecked
-                            sx={{
-                              color: "blue",
-                              fontSize: "30px",
-                            }}
-                          />
-                        )}
-                        {materia.cursada === Cursada.PENDIENTE && (
-                          <RadioButtonUnchecked sx={{ fontSize: "30px" }} />
-                        )}
-                      </ListItemIcon>
-                      <ListItemText>
-                        <Button
-                          sx={{
-                            padding: { xs: "1px", md: "4px" },
-                            display: "block",
-                            textAlign: "start",
-                            minWidth: "0px",
-                            lineHeight: "normal",
-                            textTransform: "none",
-                            color: "black",
-                            textDecoration: "none",
-                            paddingLeft: { xs: "0px", md: "10px" },
-                            fontSize: { xs: "15px", md: "20px" },
-                          }}
-                        >
-                          {materia.nombre}
-                        </Button>
-                      </ListItemText>
-                    </ListItem>
-                  );
-                }}
-              </Draggable>
+              <TarjetaMateria materia={materia} key={index} index={index} />
             ))}
             {droppableProvided.placeholder}
           </List>

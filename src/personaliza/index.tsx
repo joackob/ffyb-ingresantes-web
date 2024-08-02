@@ -1,4 +1,3 @@
-import React from "react";
 import { Carrera } from "../database/interfaces";
 import TituloCarrera from "./components/TituloCarrera";
 import PlanPersonalizable from "./components/PlanPersonalizable";
