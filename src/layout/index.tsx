@@ -15,9 +15,9 @@ const index = ({ children }: { children: ReactNode }) => {
         <NavDesktop />
         <NavMobile />
       </Header>
-      <MensajePrincipal/>
-    <Galeria/>
-      <Footer>footer</Footer>
+      <MensajePrincipal />
+      <Galeria />
+      <Footer />
     </Layout>
   );
 };

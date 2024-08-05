@@ -13,7 +13,7 @@ const links = [
   },
   {
     label: "Iniciar sesión",
-    url: "/contact",
+    url: "/login",
   },
 ];
 

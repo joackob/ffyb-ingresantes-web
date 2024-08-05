@@ -24,42 +24,40 @@ const NavDesktop = () => {
       }}
     >
       <Container sx={{ height: "8vh", padding: "0px" }}>
-        
-        <Box sx={{
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "start",
-        paddingTop: "20px",
-        paddingBottom: "0px",
-        marginBottom:"0px"
-      }}>
-        <Box>
-        <Typography 
-        variant={"h1"}
-        fontSize={"36px"}
-        fontWeight={"700"}
-        lineHeight={"43.88px"}
-        
-        > 
-        .UBA
-        </Typography>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "start",
+            paddingTop: "20px",
+            paddingBottom: "0px",
+            marginBottom: "0px",
+          }}
+        >
+          <Box>
+            <Typography
+              variant={"h1"}
+              fontSize={"36px"}
+              fontWeight={"700"}
+              lineHeight={"43.88px"}
+            >
+              .UBA
+            </Typography>
+          </Box>
+          <Box>
+            <Typography
+              variant={"h1"}
+              fontWeight={"400"}
+              fontSize={"36px"}
+              lineHeight={"42.19px"}
+              letterSpacing={"-4%"}
+              color={"#007AC6"}
+            >
+              FARMACIA Y BIOQUIMICA
+            </Typography>
+          </Box>
         </Box>
-        <Box>
-           <Typography
-           variant={"h1"}
-           fontWeight={"400"}
-           fontSize={"36px"}
-           lineHeight={"42.19px"}
-           letterSpacing={"-4%"}
-           color={"#007AC6"}
-           >
-            FARMACIA Y BIOQUIMICA
-            
-           </Typography>
-             </Box>
-             </Box>
         <Stack
-          
           alignItems="baseline"
           justifyContent="left"
           direction="row"
@@ -75,7 +73,7 @@ const NavDesktop = () => {
             marginBottom: "0px",
           }}
         >
-      { /*<AppBar position="static"
+          {/*<AppBar position="static"
           sx={{
             height :92,
             backgroundColor : "transparent",
@@ -113,38 +111,36 @@ const NavDesktop = () => {
           </AppBar>
           <MenuDesplegable /> */}
           <Breadcrumbs separator={" "}>
-          
             {links.map((item, index) => (
-              <Box style={{ width: '125px', wordWrap: 'break-word' }}>
-              <Stack
+              <Box
                 key={index}
-                spacing={1}
-                alignItems="center"
-                direction="row"
-                paddingBottom={"5px"}
+                style={{ width: "125px", wordWrap: "break-word" }}
               >
-                <Link
-                  href={item.url}
-                  display={"flex"}
-                  justifyContent={"bottom"}
-                  color={"#8b8b8b"}
-                  border={"none"}
-                  borderRadius={"10px"}
-                  alignItems={"baseline"}
-                  underline="none"
-                  fontWeight={"light"}
+                <Stack
+                  spacing={1}
+                  alignItems="center"
+                  direction="row"
+                  paddingBottom={"5px"}
                 >
-                  <Typography marginLeft={"1px"} variant="inherit"
-                 >
-                  
-                    {item.label}
-                  </Typography>
-                </Link>
-              </Stack>
+                  <Link
+                    href={item.url}
+                    display={"flex"}
+                    justifyContent={"bottom"}
+                    color={"#8b8b8b"}
+                    border={"none"}
+                    borderRadius={"10px"}
+                    alignItems={"baseline"}
+                    underline="none"
+                    fontWeight={"light"}
+                  >
+                    <Typography marginLeft={"1px"} variant="inherit">
+                      {item.label}
+                    </Typography>
+                  </Link>
+                </Stack>
               </Box>
             ))}
           </Breadcrumbs>
-          
         </Stack>
       </Container>
     </Box>
