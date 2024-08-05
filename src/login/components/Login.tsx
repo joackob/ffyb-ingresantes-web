@@ -1,4 +1,8 @@
 //https://mui.com/material-ui/ materiales pantillas etc etc
+import "@fontsource/roboto/300.css";
+import "@fontsource/roboto/400.css";
+import "@fontsource/roboto/500.css";
+import "@fontsource/roboto/700.css";
 import * as React from "react";
 import "./Login.module.css";
 import {
@@ -10,6 +14,8 @@ import {
   Button,
   FormControl,
   TextField,
+  colors,
+  Stack,
 } from "@mui/material";
 import Input from "@mui/material/Input";
 import { signIn } from "next-auth/react";
@@ -24,44 +30,66 @@ const Login = () => {
   };
 
   return (
-    <Box
-      id="contenedor-supremo"
+    <Stack
+      direction="column"
+      justifyContent="center"
+      alignItems="center"
+      height={"100vh"}
+      spacing={2}
       sx={{
-        //paddingTop:"700px",
-        marginTop: "50px",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
+        backgroundImage:
+          "url('https://www.ffyb.uba.ar/wp-content/uploads/2023/05/66-aniversario-ffyb-alumnos-990x500.jpg')",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
       }}
     >
-      <Typography variant={"h4"} fontWeight="bold" sx={{ textAlign: "center" }}>
-        Iniciar Sesión
-      </Typography>
-      <Container
-        id="form"
-        sx={{ display: "flex", flexDirection: "column", gap: "10px" }}
+      <Box
+        sx={{
+          display: "inline-block",
+          padding: "15px",
+          borderRadius: "5px",
+          boxShadow: 4,
+          backgroundColor: "#fff9",
+        }}
       >
+        <Typography
+          variant={"h6"}
+          fontStyle="Roboto"
+          marginLeft={"10px"}
+          color={"white"}
+        >
+          INICIAR SESION
+        </Typography>
         <FormControl
           id="signUp"
           sx={{
             padding: "10px",
-            marginTop: "20px",
+            marginTop: "5px",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
-            gap: "20px",
+            gap: "32px",
+            width: 345,
+            maxWidth: 345,
           }}
         >
-          <TextField type="email" placeholder="Email" required />
-          <TextField type="password" placeholder="Contraseña" required />
-          <Button variant="contained">Iniciar Sesion</Button>
+          <TextField fullWidth label="Usuario" id="signUp" required />
+          <TextField fullWidth label="Contraseña" id="signUp" required />
+          <Button
+            variant="contained"
+            size="medium"
+            sx={{
+              color: "white",
+              backgroundColor: "#3498DB",
+              paddingLeft: "122px",
+              paddingRight: "122px",
+            }}
+          >
+            Continuar
+          </Button>
         </FormControl>
-        <Container
-          sx={{ display: "flex", justifyContent: "center", gap: "5px" }}
-        >
-        </Container>
-      </Container>
-    </Box>
+      </Box>
+    </Stack>
   );
 };
 export default Login;
