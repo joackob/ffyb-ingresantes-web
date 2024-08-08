@@ -8,12 +8,12 @@ type InfoMateria = {
   descripcion: string;
 };
 
-type MetodosContextoInfoMateria = {
+type AccionesContextoInfoMateria = {
   mostrarInfo: (info: InfoMateria) => void;
   ocultarInfo: () => void;
 };
 
-const ContextoInfoMateria = createContext<MetodosContextoInfoMateria>({
+const ContextoInfoMateria = createContext<AccionesContextoInfoMateria>({
   mostrarInfo: (_: InfoMateria) => {},
   ocultarInfo: () => {},
 });
@@ -47,7 +47,6 @@ export const ProveedorModalMateria = ({
   return (
     <ContextoInfoMateria.Provider value={{ mostrarInfo, ocultarInfo }}>
       {children}
-
       <Modal open={open} onClose={ocultarInfo}>
         <Box>
           <Typography id="modal-modal-title" variant="h6" component="h2">

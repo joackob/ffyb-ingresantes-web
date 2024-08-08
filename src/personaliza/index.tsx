@@ -1,13 +1,23 @@
 import { Carrera } from "../database/interfaces";
-import TituloCarrera from "./components/TituloCarrera";
-import PlanPersonalizable from "./components/PlanPersonalizable";
+import {
+  TableroCuatrimestres,
+  ImagenDeFondo,
+  PlanPersonalizable,
+  TituloCarrera,
+} from "./components";
+import { usePlanPersonalizable } from "./hooks";
 
 const Personaliza = ({ carrera }: { carrera: Carrera }) => {
+  const { brindarPlanActual, actualizarPlanDeEstudios } =
+    usePlanPersonalizable(carrera);
+
   return (
-    <>
+    <ImagenDeFondo>
       <TituloCarrera carrera={carrera.nombre} />
-      <PlanPersonalizable plan={carrera.plan} />
-    </>
+      <PlanPersonalizable alCambiar={actualizarPlanDeEstudios}>
+        <TableroCuatrimestres cuatrimestres={brindarPlanActual()} />
+      </PlanPersonalizable>
+    </ImagenDeFondo>
   );
 };
 

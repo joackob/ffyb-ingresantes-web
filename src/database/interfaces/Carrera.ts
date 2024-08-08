@@ -1,4 +1,5 @@
 import { Cursada, type Cuatrimestre } from ".";
+import { v4 as uuidv4 } from "uuid";
 
 export abstract class Carrera {
   id: string;
@@ -7,17 +8,15 @@ export abstract class Carrera {
   plan: Cuatrimestre[];
 
   constructor({
-    id,
     nombre,
     descripcion,
     plan,
   }: {
-    id: string;
     nombre: string;
     descripcion: string;
     plan: Cuatrimestre[];
   }) {
-    this.id = id;
+    this.id = uuidv4();
     this.nombre = nombre;
     this.descripcion = descripcion;
     this.plan = plan;
