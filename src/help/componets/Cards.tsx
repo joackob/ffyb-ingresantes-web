@@ -1,43 +1,45 @@
 import * as React from "react";
-import { Box, useTheme } from "@mui/material";
+import { Box, useTheme, Card, CardMedia, Typography, Button } from "@mui/material";
 
 const Cartas = ({ gridKeys }: { gridKeys: string[] }) => {
-  const theme = useTheme();
   return (
     <>
-      {gridKeys.map((key) => (
-        <Box
-          key={key}
-          gridArea={key}
-          display={{ xs: "none", md: "grid" }}
-          margin={"5px"}
-          justifyContent={"center"}
+      {gridKeys.map((key, index) => (
+        <Card
+          key={index}
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            width: 300, 
+            height: "auto", 
+            alignItems: "flex-start",
+          }}
         >
-          <div
-            className="card"
-            style={{
-              borderStyle: "solid",
-              borderWidth: "2px",
-              borderColor: theme.palette.primary.main,
+          <CardMedia
+            component="img"
+            sx={{
+              height: 140,
+              width: '100%', 
+              objectFit: "cover", 
+            }}
+            image="https://www.geriatricarea.com/wp-content/uploads/2020/09/geriatricarea-farmaceutico.jpg"
+            alt="Descripción de la imagen" 
+          />
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              p: 2,
+              width: '100%', // Asegura que el contenido use todo el ancho de la tarjeta
+              boxSizing: 'border-box', // Incluye el padding en el ancho total
             }}
           >
-            <div className="card-content">
-              <div className="card-top">
-                <span className="card-title">
-                  <h2>¿Necesitas ayuda?</h2>
-                </span>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Excepturi ullam beatae repellat. Harum et perferendis eum in
-                  vel saepe quasi minus, eveniet velit distinctio tenetur
-                  quisquam hic. Esse, consequatur minus.
-                </p>
-              </div>
-            </div>
-          </div>
-        </Box>
+           
+          </Box>
+        </Card>
       ))}
     </>
   );
 };
+
 export default Cartas;
