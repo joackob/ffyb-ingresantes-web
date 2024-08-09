@@ -14,7 +14,7 @@ const TarjetaHomeB = () => {
       sx={{
         maxWidth: "606px",
         minWidth: "390px",
-        pt: 12
+        
       }} >
       <Box
 

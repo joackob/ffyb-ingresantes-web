@@ -21,9 +21,9 @@ const Galeria = () => {
       >
         {titulo}
       </Typography>
-      <Grid container spacing={2.5}>
+      <Grid container spacing={5}>
         <Grid item md={12}>
-          <Grid container spacing={2}>
+          <Grid container spacing={5}>
             <Grid item md={4}>
               <TarjetaHomeB />
             </Grid>
