@@ -23,7 +23,7 @@ const getListBackgroundColor = (cuatrimestre: Materia[]) => {
   const predominantState = getPredominantState(cuatrimestre);
   switch (predominantState) {
     case Cursada.CURSANDO:
-      return "#9FA2A7";
+      return "rgba(129, 138, 145, 0.85)";
     default:
       return "white";
   }
@@ -36,17 +36,18 @@ const TarjetaCuatrimestre = ({
   index: number;
 }) => {
   return (
-    <Droppable droppableId={`${index}`}>
+    <Droppable droppableId={cuatrimestre.id}>
       {(droppableProvided) => {
         return (
           <List
             sx={{
-              width: "100%",
+              width: "272px",
               display: "flex",
               flexDirection: "column",
+              marginBottom:"100px",
               padding: "15px",
               border: "solid 1px",
-              borderRadius: "10%",
+              borderRadius: "5%",
               borderColor: "#c2c2c2",
               backgroundColor: getListBackgroundColor(cuatrimestre.materias),
             }}
@@ -54,6 +55,7 @@ const TarjetaCuatrimestre = ({
             {...droppableProvided.droppableProps}
           >
             {cuatrimestre.materias.map((materia, index) => (
+              
               <TarjetaMateria materia={materia} key={index} index={index} />
             ))}
             {droppableProvided.placeholder}

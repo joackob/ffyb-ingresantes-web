@@ -1,11 +1,9 @@
 import { Cursada, Materia } from "@/src/database/interfaces";
-
+import { EstadoCursada } from "./EstadoCursada";
 import { RadioButtonChecked, RadioButtonUnchecked } from "@mui/icons-material";
 import {
+  Box,
   Button,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
   Typography,
 } from "@mui/material";
 import React from "react";
@@ -22,47 +20,25 @@ const TarjetaMateria = ({
     <Draggable draggableId={`m-${materia.id}`} index={index} key={index}>
       {(draggableProvided) => {
         return (
-          <ListItem
+          <Box
             {...draggableProvided.draggableProps}
             {...draggableProvided.dragHandleProps}
             ref={draggableProvided.innerRef}
             sx={{
-              padding: "2px",
+              width:"208px",             
+              borderRadius:"10px",
               display: "flex",
               flexDirection: "column",
               alignItems: "flex-start",
-              margin: "5px",
+              margin: "8px",
+              backgroundColor:"white",
+              direction:"vertical"
+              
+              
             }}
           >
-            <ListItemIcon sx={{ justifyContent: "center" }}>
-              {materia.cursada === Cursada.CURSANDO && (
-                <Typography
-                  sx={{
-                    fontSize: "30px",
-                    backgroundColor: "#4FB7EF",
-                    borderRadius: "10px",
-                  }}
-                >
-                  {" "}
-                  Cursando
-                </Typography>
-              )}
-              {materia.cursada === Cursada.DISPONIBLE && (
-                <RadioButtonChecked sx={{ fontSize: "30px" }} />
-              )}
-              {materia.cursada === Cursada.APROBADA && (
-                <RadioButtonChecked
-                  sx={{
-                    color: "blue",
-                    fontSize: "30px",
-                  }}
-                />
-              )}
-              {materia.cursada === Cursada.PENDIENTE && (
-                <RadioButtonUnchecked sx={{ fontSize: "30px" }} />
-              )}
-            </ListItemIcon>
-            <ListItemText>
+            <EstadoCursada cursada={materia.cursada}/>
+            <Box>
               <Button
                 sx={{
                   padding: { xs: "1px", md: "4px" },
@@ -73,14 +49,16 @@ const TarjetaMateria = ({
                   textTransform: "none",
                   color: "black",
                   textDecoration: "none",
-                  paddingLeft: { xs: "0px", md: "10px" },
-                  fontSize: { xs: "15px", md: "20px" },
+                  direction:"vertical",
+                  fontSize: { xs: "15px", md: "12px" },
+                  backgroundColor:"white",
+                  
                 }}
               >
                 {materia.nombre}
               </Button>
-            </ListItemText>
-          </ListItem>
+            </Box>
+          </Box>
         );
       }}
     </Draggable>
