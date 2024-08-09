@@ -10,11 +10,20 @@ import {
 } from "@mui/material";
 import MenuDesplegable from "@/src/menu-desplegable";
 import links from "../links";
+import { Label } from "@mui/icons-material";
+import miimagen from '../images/miimagen.png';
 
+const imagenSrc: React.FC = () => {
+  return (
+    <div>
+      <img src="miimagen.png" width="70" height="70" alt="Descripción de la imagen" />
+    </div>
+  );
+};
 const NavDesktop = () => {
   const theme = useTheme();
   return (
-    <Box
+    <Box 
       display={{
         xs: "none",
         sm: "none",
@@ -26,6 +35,7 @@ const NavDesktop = () => {
       <Container sx={{ height: "8vh", padding: "0px" }}>
         <Box
           sx={{
+            
             display: "flex",
             flexDirection: "row",
             justifyContent: "start",
@@ -47,6 +57,7 @@ const NavDesktop = () => {
           <Box>
             <Typography
               variant={"h1"}
+              //fontFamily={"roboto condensed"}
               fontWeight={"400"}
               fontSize={"36px"}
               lineHeight={"42.19px"}
@@ -57,13 +68,15 @@ const NavDesktop = () => {
             </Typography>
           </Box>
         </Box>
+        
         <Stack
+          
           alignItems="baseline"
           justifyContent="left"
           direction="row"
           color={"#3728b7"}
           borderBottom={"8px solid #011344"}
-          paddingTop={"10px"}
+          paddingTop={"1px"}
           paddingBottom={"10px"}
           paddingLeft={"none"}
           marginBottom={"1px"}
@@ -114,15 +127,16 @@ const NavDesktop = () => {
             {links.map((item, index) => (
               <Box
                 key={index}
-                style={{ width: "125px", wordWrap: "break-word" }}
-              >
+             >
                 <Stack
                   spacing={1}
                   alignItems="center"
                   direction="row"
-                  paddingBottom={"5px"}
+                  paddingBottom={"0px"}
                 >
                   <Link
+                    fontSize={"12px"}
+                    lineHeight={'1.2'} 
                     href={item.url}
                     display={"flex"}
                     justifyContent={"bottom"}
@@ -133,18 +147,20 @@ const NavDesktop = () => {
                     underline="none"
                     fontWeight={"light"}
                   >
-                    <Typography marginLeft={"1px"} variant="inherit">
-                      {item.label}
+                    <Typography marginLeft={"1px"} textTransform={"uppercase"} variant="inherit" dangerouslySetInnerHTML={{__html:item.label}}>
+                      
                     </Typography>
                   </Link>
+                  
                 </Stack>
               </Box>
             ))}
           </Breadcrumbs>
+          
         </Stack>
+        
       </Container>
     </Box>
   );
 };
-
 export default NavDesktop;
