@@ -1,7 +1,14 @@
-import MainSection from "@/src/home/components/MainSection";
+import MensajePrincipal from "./components/MensajePrincipal";
+import Galeria from "./components/Galeria";
+import { Box } from "@mui/material";
 
 const Home = () => {
-  return  <MainSection />
+  return  (
+  <Box >  
+  <MensajePrincipal />
+  <Galeria />
+  </Box>
+  );
 };
 
 export default Home;

@@ -3,7 +3,14 @@ import {
   Typography,
   Link,
 } from "@mui/material";
-const TarjetaHomeB = () => {
+
+interface MyComponentProps {
+  height: number;
+  widthImg: number;
+  width?:number;
+}
+
+const TarjetaHomeB: React.FC<MyComponentProps> = ({height, widthImg, width}) => {
   const titulo: string = "Un título para la tarjeta.";
   const resumen: string = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum dapibus at nunc mollis tincidunt. Vivamus efficitur gravida libero non dapibus.";
   const enlace: string = "Ver más...";
@@ -14,6 +21,7 @@ const TarjetaHomeB = () => {
       sx={{
         maxWidth: "606px",
         minWidth: "390px",
+        width: {width}
         
       }} >
       <Box
@@ -44,40 +52,24 @@ const TarjetaHomeB = () => {
             flexBasis: "auto",
             width: "100%", // Llenar horizontalmente el contenedor
 
-            "& > *": {
-              marginBottom: "20px", // Espaciado entre elementos verticales
-            },
-          }}>
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "flex-start",
-              flexGrow: 0, // No crecer verticalmente (hug)
-              flexShrink: 0, // No encoger verticalmente (hug)
-              flexBasis: "auto", // Tamaño base automático vertical
-              width: "100%",
-              
 
-              "& > * + *": {
-                marginTop: 16, // Espaciado vertical entre elementos
-              },
-            }}>
+          }}>
+          
             <Typography
-              style={{ color: "#011344", fontWeight: "800" }}>
+              style={{ color: "#011344", fontWeight: "800", paddingTop: "10px" }}>
               {titulo}
             </Typography>
             <Typography
               style={{ color: "#7C7C7C", fontWeight: "400" }}>
               {resumen}
             </Typography>
-          </Box>
+          
           <Link href="https://www.ejemplo.com" style={{ color: "5DAFD6", textDecoration: "none"}}>
             {enlace}
           </Link>
         </Box>
         <Box>
-          <img src={imagenSrc} width="188" height="148" />
+          <img src={imagenSrc} width={widthImg} height={height} />
         </Box>
       </Box>
     </Box>

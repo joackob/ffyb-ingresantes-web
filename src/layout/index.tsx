@@ -13,14 +13,12 @@ const index = ({ children }: { children: ReactNode }) => {
     <Layout>
       <Header>
         <NavDesktop />
-        <NavMobile />
+        <NavMobile /> 
       </Header>
       <Main>
         {children}
       </Main>
-      <MensajePrincipal />
-      <Galeria />
-      
+
       <Footer />
     </Layout>
   );
