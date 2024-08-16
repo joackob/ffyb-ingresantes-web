@@ -3,7 +3,7 @@ import { Box, Container, Typography, Grid } from "@mui/material";
 import TarjetaHomeB from "./TarjetaHomeB";
 
 const Galeria = () => {
-  const titulo: string = "Sobre las tutorias";
+  const titulo: string = "SOBRE LAS TUTORÍAS";
 
   return (
     <Container >
@@ -15,7 +15,7 @@ const Galeria = () => {
           textAlign: "left",
           verticalAlign: "middle",
           paddingBottom: "16px",
-          fontFamily: "Montserrat",
+          fontFamily: "Montserrat, Arial, sans-serif",
           color: "#2D1D54",
           fontWeight: "800",
           fontSize: "48px",
@@ -25,25 +25,25 @@ const Galeria = () => {
       </Typography>
       <Grid container spacing={2.5}>
         <Grid item md={12}>
-          <Grid container spacing={10}>
+          <Grid container spacing={5}>
             <Grid item md={4}>
-              <TarjetaHomeB height={148} widthImg={390} width={390}/>
+              <TarjetaHomeB height={148} widthImg={345} width={345}/>
             </Grid>
             <Grid item md={4}>
-              <TarjetaHomeB height={148} widthImg={390} width={390}/>
+              <TarjetaHomeB height={148} widthImg={345} width={345}/>
             </Grid>
             <Grid item md={4}>
-              <TarjetaHomeB height={148} widthImg={390} width={390} />
+              <TarjetaHomeB height={148} widthImg={345} width={345} />
             </Grid>
           </Grid>
         </Grid>
         <Grid item md={12}>
-          <Grid container spacing={5} justifyContent="center">
+          <Grid container spacing={2} justifyContent="center">
             <Grid item md={6} sx={{ height: "148" }}>
-              <TarjetaHomeB height={148} widthImg={188} width={606}/>
+              <TarjetaHomeB height={148} widthImg={188} width={560}/>
             </Grid>
             <Grid item md={6} sx={{ height: "148" }}> 
-              <TarjetaHomeB height={148} widthImg={188} width={606}/>
+              <TarjetaHomeB height={148} widthImg={188} width={560}/>
             </Grid>
           </Grid>
         </Grid>

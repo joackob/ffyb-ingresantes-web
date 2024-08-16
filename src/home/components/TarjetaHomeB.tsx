@@ -25,18 +25,17 @@ const TarjetaHomeB: React.FC<MyComponentProps> = ({height, widthImg, width}) => 
         
       }} >
       <Box
+      
 
+      
         sx={{
-          display: "flex",
-          flexDirection: "row",
-          flexWrap: "wrap",
+          
           alignItems: "flex-start",
-          flexGrow: 0,
-          flexShrink: 0,
-          flexBasis: "auto",
+          display: "flex",
+          flexDirection: width === 560 ? 'row' : 'column',  
 
 
-          fontFamily: "Montserrat",
+          fontFamily: "Montserrat, Arial, sans-serif",
           fontSize: "16px",
           borderTop: "4px solid #FF8700",
         }}
@@ -50,7 +49,7 @@ const TarjetaHomeB: React.FC<MyComponentProps> = ({height, widthImg, width}) => 
             flexGrow: 0, // No crecer verticalmente (hug)
             flexShrink: 0, // No encoger verticalmente (hug)
             flexBasis: "auto",
-            width: "100%", // Llenar horizontalmente el contenedor
+            width: width === 560 ? '60%' : '100%',  // Llenar horizontalmente el contenedor
 
 
           }}>
@@ -64,11 +63,12 @@ const TarjetaHomeB: React.FC<MyComponentProps> = ({height, widthImg, width}) => 
               {resumen}
             </Typography>
           
-          <Link href="https://www.ejemplo.com" style={{ color: "5DAFD6", textDecoration: "none"}}>
+          <Link href="https://www.ejemplo.com" style={{ color: "5DAFD6", textDecoration: "none", paddingTop: "30px"}}>
             {enlace}
           </Link>
         </Box>
-        <Box>
+        <Box
+        style={{paddingTop: "20px"}}>
           <img src={imagenSrc} width={widthImg} height={height} />
         </Box>
       </Box>
