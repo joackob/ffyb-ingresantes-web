@@ -3,15 +3,9 @@ import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
-import {
-  Container,
-  Divider,
-  Link,
-  Menu,
-  MenuItem,
-  Typography,
-} from "@mui/material";
-import { ReactNode, useState } from "react";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
+import { Container, Link, Menu, MenuItem, Typography } from "@mui/material";
+import { useState } from "react";
 import { MouseEvent } from "react";
 import NavLogo from "./NavLogo";
 import links from "../links";
@@ -39,18 +33,12 @@ const NavMobile = () => {
     >
       <Container sx={{ height: "7vh" }} />
       <AppBar position="fixed">
-        <Toolbar sx={{ backgroundColor: "var(--color-primario)" }}>
+        <Toolbar sx={{ backgroundColor: "white" }}>
           <Link href="/" flexGrow={1} underline="none" color="inherit">
             <NavLogo />
           </Link>
-          <IconButton
-            size="large"
-            edge="start"
-            aria-label="menu"
-            sx={{ color: "white" }}
-            onClick={handleClick}
-          >
-            <MenuIcon color="inherit" />
+          <IconButton onClick={handleClick}>
+            <MoreVertIcon fontSize={"large"} sx={{ color: "black" }} />
           </IconButton>
         </Toolbar>
         <Menu

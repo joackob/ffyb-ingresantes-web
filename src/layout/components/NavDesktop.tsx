@@ -1,5 +1,4 @@
 import {
-  AppBar,
   Breadcrumbs,
   Container,
   Link,
@@ -8,22 +7,13 @@ import {
   Box,
   useTheme,
 } from "@mui/material";
-import MenuDesplegable from "@/src/menu-desplegable";
 import links from "../links";
-import { Label } from "@mui/icons-material";
-import miimagen from '../images/miimagen.png';
-/*
-const imagenSrc: React.FC = () => {
-  return (
-    <div>
-      <img src="miimagen.png" width="70" height="70" alt="Descripción de la imagen" />
-    </div>
-  );
-};*/
+import NavLogo from "./NavLogo";
+
 const NavDesktop = () => {
   const theme = useTheme();
   return (
-    <Box 
+    <Box
       display={{
         xs: "none",
         sm: "none",
@@ -33,44 +23,9 @@ const NavDesktop = () => {
       }}
     >
       <Container sx={{ height: "8vh", padding: "0px" }}>
-        <Box
-          sx={{
-            
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "start",
-            paddingTop: "20px",
-            paddingBottom: "0px",
-            marginBottom: "0px",
-          }}
-        >
-          <Box>
-            <Typography
-              variant={"h1"}
-              fontSize={"36px"}
-              fontWeight={"700"}
-              lineHeight={"43.88px"}
-            >
-              .UBA
-            </Typography>
-          </Box>
-          <Box>
-            <Typography
-              variant={"h1"}
-              //fontFamily={"roboto condensed"}
-              fontWeight={"400"}
-              fontSize={"36px"}
-              lineHeight={"42.19px"}
-              letterSpacing={"-4%"}
-              color={"#007AC6"}
-            >
-              FARMACIA Y BIOQUIMICA
-            </Typography>
-          </Box>
-        </Box>
-        
+        <NavLogo />
+
         <Stack
-          
           alignItems="baseline"
           justifyContent="left"
           direction="row"
@@ -123,59 +78,65 @@ const NavDesktop = () => {
           </Breadcrumbs>
           </AppBar>
           <MenuDesplegable /> */}
-          <Box
-          display={"flex"}
-          flexDirection={"row"}
-          alignItems={"center"}>
-          <Breadcrumbs separator={" "}>
-            {links.map((item, index) => (
-              <Box
-                key={index}
-             >
-                <Stack
-                  spacing={1}
-                  alignItems="center"
-                  direction="row"
-                  paddingBottom={"10px"}
-                >
-                  <Link
-                    fontSize={"12px"}
-                    lineHeight={'1.2'} 
-                    href={item.url}
-                    display={"flex"}
-                    justifyContent={"bottom"}
-                    color={"#8b8b8b"}
-                    border={"none"}
-                    borderRadius={"10px"}
-                    alignItems={"baseline"}
-                    underline="none"
-                    fontWeight={"light"}
+          <Box display={"flex"} flexDirection={"row"} alignItems={"center"}>
+            <Breadcrumbs separator={" "}>
+              {links.map((item, index) => (
+                <Box key={index}>
+                  <Stack
+                    spacing={1}
+                    alignItems="center"
+                    direction="row"
+                    paddingBottom={"10px"}
                   >
-                    <Typography marginLeft={"1px"} textTransform={"uppercase"} variant="inherit" dangerouslySetInnerHTML={{__html:item.label}}>
-                      
-                    </Typography>
-                  </Link>
-                </Stack>
-              </Box>
-            ))}
-          </Breadcrumbs>
-          <Box
-          paddingLeft={"8px"}
-          paddingRight={"8px"}
-          paddingTop={"2px"}
-          alignItems={"center"}
-          marginBottom={"10px"}
-          marginLeft={"20px"}
-          sx={{
-            backgroundColor:"#818A91",
-            borderRadius:"99%"
-          }}
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" style={{width: "20px", height: "30px"}}><path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512l388.6 0c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304l-91.4 0z" fill="white"/></svg>
-           </Box>
+                    <Link
+                      fontSize={"12px"}
+                      lineHeight={"1.2"}
+                      href={item.url}
+                      display={"flex"}
+                      justifyContent={"bottom"}
+                      color={"#8b8b8b"}
+                      border={"none"}
+                      borderRadius={"10px"}
+                      alignItems={"baseline"}
+                      underline="none"
+                      fontWeight={"light"}
+                    >
+                      <Typography
+                        marginLeft={"1px"}
+                        textTransform={"uppercase"}
+                        variant="inherit"
+                        dangerouslySetInnerHTML={{ __html: item.label }}
+                      ></Typography>
+                    </Link>
+                  </Stack>
+                </Box>
+              ))}
+            </Breadcrumbs>
+            <Box
+              paddingLeft={"8px"}
+              paddingRight={"8px"}
+              paddingTop={"2px"}
+              alignItems={"center"}
+              marginBottom={"10px"}
+              marginLeft={"20px"}
+              sx={{
+                backgroundColor: "#818A91",
+                borderRadius: "99%",
+              }}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 448 512"
+                style={{ width: "20px", height: "30px" }}
+              >
+                <path
+                  d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512l388.6 0c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304l-91.4 0z"
+                  fill="white"
+                />
+              </svg>
+            </Box>
           </Box>
         </Stack>
-        
       </Container>
     </Box>
   );
