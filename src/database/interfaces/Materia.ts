@@ -1,4 +1,5 @@
 import { Cursada } from ".";
+import { v4 as uuidv4 } from "uuid";
 
 export class Materia {
   id: string;
@@ -7,15 +8,13 @@ export class Materia {
   correlativas: Materia[];
 
   constructor({
-    id,
     nombre,
     correlativas = [],
   }: {
-    id: string;
     nombre: string;
     correlativas?: Materia[];
   }) {
-    this.id = id;
+    this.id = uuidv4();
     this.nombre = nombre;
     this.cursada = Cursada.PENDIENTE;
     this.correlativas = correlativas;
