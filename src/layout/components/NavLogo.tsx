@@ -2,7 +2,7 @@ import { Stack, Typography } from "@mui/material";
 
 const NavLogo = () => {
   return (
-    <Stack flexWrap={"wrap"} direction="row">
+    <Stack alignItems={"center"} flexWrap={"wrap"} direction={"row"}>
       <Typography
         variant={"h1"}
         fontSize={{
