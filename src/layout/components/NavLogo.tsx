@@ -29,9 +29,9 @@ const NavLogo = () => {
           lg: "36px",
           xl: "36px",
         }}
-        letterSpacing={"-4%"}
         color={"#007AC6"}
         textTransform={"uppercase"}
+        fontFamily={"Roboto Condensed"}
       >
         farmacia y bíoquimica
       </Typography>

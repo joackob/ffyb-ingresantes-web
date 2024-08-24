@@ -11,6 +11,7 @@
     "@emotion/styled": "^11.10.4",
     "@fontsource/montserrat": "^5.0.18",
     "@fontsource/roboto": "^5.0.13",
+    "@fontsource/roboto-condensed": "^5.0.17",
     "@mui/icons-material": "^5.10.9",
     "@mui/material": "^5.10.11",
     "next": "^14.2.3",

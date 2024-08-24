@@ -46,21 +46,17 @@ const NavMobile = () => {
           anchorEl={anchorEl}
           open={open}
           onClose={handleClose}
-          MenuListProps={{
-            "aria-labelledby": "basic-button",
-          }}
         >
           {links.map((link, index) => (
             <MenuItem
               key={index}
               onClick={handleClose}
               component={Link}
+              fontSize="Montserrat"
               href={link.url}
               underline="none"
             >
-              <Typography variant="inherit" sx={{ ml: 1 }}>
-                {link.label}
-              </Typography>
+              {link.label}
             </MenuItem>
           ))}
         </Menu>
