@@ -1,14 +1,14 @@
 import NavLogo from "../components/NavLogo";
-import NavBarContainer from "./components/NavBarContainer";
-import NavMenu from "./components/NavMenu";
+import Layout from "./components/Layout";
+import Menu from "./components/Menu";
 
 const index = () => {
   return (
     <>
-      <NavBarContainer>
+      <Layout>
         <NavLogo />
-        <NavMenu />
-      </NavBarContainer>
+        <Menu />
+      </Layout>
     </>
   );
 };

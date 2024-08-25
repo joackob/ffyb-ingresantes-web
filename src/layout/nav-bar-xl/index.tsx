@@ -1,13 +1,13 @@
 import NavLogo from "../components/NavLogo";
-import NavBarContainer from "./components/NavBarContainer";
-import NavBar from "./components/NavBar";
+import Layout from "./components/Layout";
+import BarraNavegacion from "./components/BarraNavegacion";
 
 const index = () => {
   return (
-    <NavBarContainer>
+    <Layout>
       <NavLogo />
-      <NavBar />
-    </NavBarContainer>
+      <BarraNavegacion />
+    </Layout>
   );
 };
 export default index;
