@@ -12,7 +12,11 @@ const NavBarContainer = ({ children }: { children: ReactNode }) => {
         xl: "none",
       }}
     >
-      <Box height={"7vh"} />
+      <Box
+        height={{
+          xs: "56px",
+        }}
+      />
       <AppBar position="fixed">
         <Toolbar
           style={{

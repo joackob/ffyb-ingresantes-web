@@ -39,7 +39,6 @@ const NavMenu = () => {
               fontWeight={"light"}
               textTransform={"uppercase"}
               dangerouslySetInnerHTML={{ __html: link.label }}
-              key={index}
             />
           </MenuItem>
         ))}

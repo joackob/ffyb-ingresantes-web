@@ -1,45 +1,38 @@
-import { Box, Container, Typography, useTheme } from "@mui/material";
+import { Box, Container, Typography } from "@mui/material";
 
 const MensajePrincipal = () => {
-  const promo: string =
-    `Bienvenidos al Sistema<br/>de Tutorías<br/>de Farmacia y bioquímica. `;
-  const theme = useTheme();
+  const promo = `Bienvenidos al Sistema<br/>de Tutorías<br/>de Farmacia y bioquímica.`;
   return (
     <Box
-      width={"100%"}
-      textAlign={"center"}
       height={"448px"}
-      display="flex"
-      flexDirection="column"
-      justifyContent="center"
-      alignItems="center"
-      color={"#FFFFFF"}
-      fontFamily={"Montserrat"}
+      style={{
+        backgroundImage: "url(https://picsum.photos/1200/800)",
+        backgroundSize: "cover",
+      }}
     >
-      <Container>
-        <Box>
-          <Typography
-            variant={"h1"}
-            fontSize={"48px"}
-            display={{ md: "block", xs: "none" }}
-            padding={"10px"}
-            fontWeight={800}
-            dangerouslySetInnerHTML={{ __html: promo }}
-          />
-          <Typography
-            variant={"h3"}
-            fontSize={"40px"}
-            display={{ md: "none", xs: "block" }}
-            padding={"10px"}
-            fontWeight={800}
-            dangerouslySetInnerHTML={{ __html: promo }}
-          />
-        </Box>
-      </Container>
+      <Box
+        height={"100%"}
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        style={{
+          backdropFilter: "blur(10px)",
+          backgroundColor: "rgba(0,0,0,0.2)",
+        }}
+      >
+        <Typography
+          variant={"h1"}
+          fontSize={{ md: "48px", xs: "40px" }}
+          textAlign={"center"}
+          padding={"10px"}
+          color={"white"}
+          fontWeight={"900"}
+          fontFamily={"Montserrat"}
+          dangerouslySetInnerHTML={{ __html: promo }}
+        />
+      </Box>
     </Box>
   );
 };
 
 export default MensajePrincipal;
-
-

@@ -1,4 +1,4 @@
-import HomePage from "@/src/home";
-export default function Home() {
-  return <HomePage />;
+import Home from "@/src/home";
+export default function index() {
+  return <Home />;
 }
