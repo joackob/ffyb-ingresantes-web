@@ -32,6 +32,7 @@ const Galeria = () => {
               resumen={articulo.descripcion}
               enlace={articulo.enlace}
               imagen={articulo.imagen}
+              key={articulo.titulo}
             />
           ))}
         </Box>

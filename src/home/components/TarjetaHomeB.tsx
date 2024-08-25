@@ -22,9 +22,11 @@ const TarjetaHomeB = (props: ResumenArticulo) => {
           flexBasis={"390px"}
           flexGrow={1}
           marginBottom={"20px"}
+          marginRight={"16px"}
         >
           <Stack spacing={"16px"}>
             <Typography
+              component={"h6"}
               style={{
                 color: "#011344",
                 fontWeight: "800",
@@ -38,7 +40,6 @@ const TarjetaHomeB = (props: ResumenArticulo) => {
                 color: "#7C7C7C",
                 fontWeight: "400",
                 fontFamily: "Montserrat",
-                marginRight: "8px",
               }}
             >
               {props.resumen}
