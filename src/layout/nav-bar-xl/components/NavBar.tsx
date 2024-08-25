@@ -1,7 +1,7 @@
 import { Link, Stack, Box } from "@mui/material";
 import links from "@/src/layout/links";
 
-const NavDesktop = () => {
+const NavBar = () => {
   return (
     <Stack
       height={"100%"}
@@ -10,20 +10,17 @@ const NavDesktop = () => {
       spacing={"32px"}
     >
       {links.map((link, index) => (
-        <Box key={index}>
-          <Stack spacing={1} alignItems="center" direction="row">
-            <Link
-              fontSize={"12px"}
-              fontFamily={"Montserrat"}
-              href={link.url}
-              color={"#8b8b8b"}
-              underline="none"
-              fontWeight={"light"}
-              textTransform={"uppercase"}
-              dangerouslySetInnerHTML={{ __html: link.label }}
-            />
-          </Stack>
-        </Box>
+        <Link
+          fontSize={"12px"}
+          fontFamily={"Montserrat"}
+          href={link.url}
+          color={"#8b8b8b"}
+          underline="none"
+          fontWeight={"light"}
+          textTransform={"uppercase"}
+          dangerouslySetInnerHTML={{ __html: link.label }}
+          key={index}
+        />
       ))}
 
       <Box
@@ -51,4 +48,4 @@ const NavDesktop = () => {
     </Stack>
   );
 };
-export default NavDesktop;
+export default NavBar;

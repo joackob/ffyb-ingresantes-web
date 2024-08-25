@@ -3,8 +3,8 @@ import Header from "./components/Header";
 import Main from "./components/Main";
 import Footer from "./components/Footer";
 import Layout from "./components/Layout";
-import NavDesktop from "./nav-bar-escritorio";
-import NavMobile from "./components/NavMobile";
+import NavDesktop from "./nav-bar-xl";
+import NavMobile from "./nav-bar-sm";
 
 const index = ({ children }: { children: ReactNode }) => {
   return (

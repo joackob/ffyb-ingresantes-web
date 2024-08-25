@@ -2,7 +2,7 @@ import NavLogo from "../components/NavLogo";
 import NavBarContainer from "./components/NavBarContainer";
 import NavBar from "./components/NavBar";
 
-const NavDesktop = () => {
+const index = () => {
   return (
     <NavBarContainer>
       <NavLogo />
@@ -10,4 +10,4 @@ const NavDesktop = () => {
     </NavBarContainer>
   );
 };
-export default NavDesktop;
+export default index;
