@@ -1,8 +1,7 @@
 import { Box, Container, Typography } from "@mui/material";
-import TarjetaHomeB from "./TarjetaHomeB";
-import { articulos } from "../fake";
+import { ReactNode } from "react";
 
-const Galeria = () => {
+const Galeria = ({ children }: { children: ReactNode }) => {
   return (
     <Container>
       <Box my="32px">
@@ -26,15 +25,7 @@ const Galeria = () => {
           }
           gap={"32px"}
         >
-          {articulos.map((articulo) => (
-            <TarjetaHomeB
-              titulo={articulo.titulo}
-              resumen={articulo.descripcion}
-              enlace={articulo.enlace}
-              imagen={articulo.imagen}
-              key={articulo.titulo}
-            />
-          ))}
+          {children}
         </Box>
       </Box>
     </Container>
