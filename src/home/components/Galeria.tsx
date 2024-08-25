@@ -1,57 +1,43 @@
-import React from "react";
-import { Box, Container, Typography, Grid } from "@mui/material";
+import { Box, Container, Typography } from "@mui/material";
 import TarjetaHomeB from "./TarjetaHomeB";
+import { articulos } from "../fake";
 
 const Galeria = () => {
-  const titulo: string = "SOBRE LAS TUTORÍAS";
-
   return (
-    <Container >
-      <Box
-      py="10px">  
-      <Typography
-        sx={{
-          display: "block",
-          textAlign: "left",
-          verticalAlign: "middle",
-          paddingBottom: "16px",
-          fontFamily: "Montserrat, Arial, sans-serif",
-          color: "#2D1D54",
-          fontWeight: "800",
-          fontSize: "48px",
-        }}
-      >
-        {titulo}
-      </Typography>
-      <Grid container spacing={2.5}>
-        <Grid item md={12}>
-          <Grid container spacing={5}>
-            <Grid item md={4}>
-              <TarjetaHomeB height={148} widthImg={345} width={345}/>
-            </Grid>
-            <Grid item md={4}>
-              <TarjetaHomeB height={148} widthImg={345} width={345}/>
-            </Grid>
-            <Grid item md={4}>
-              <TarjetaHomeB height={148} widthImg={345} width={345} />
-            </Grid>
-          </Grid>
-        </Grid>
-        <Grid item md={12}>
-          <Grid container spacing={2} justifyContent="center">
-            <Grid item md={6} sx={{ height: "148" }}>
-              <TarjetaHomeB height={148} widthImg={188} width={560}/>
-            </Grid>
-            <Grid item md={6} sx={{ height: "148" }}> 
-              <TarjetaHomeB height={148} widthImg={188} width={560}/>
-            </Grid>
-          </Grid>
-        </Grid>
-      </Grid>
+    <Container>
+      <Box my="32px">
+        <Typography
+          variant="h1"
+          fontSize={{ md: "44px", xs: "36px" }}
+          style={{
+            marginBottom: "16px",
+            fontFamily: "Montserrat",
+            color: "#2D1D54",
+            fontWeight: "800",
+            textTransform: "uppercase",
+          }}
+        >
+          sobre las tutorías
+        </Typography>
+        <Box
+          display={"grid"}
+          gridTemplateColumns={
+            "repeat(auto-fit, minmax(min(100%, 390px), 1fr))"
+          }
+          gap={"32px"}
+        >
+          {articulos.map((articulo) => (
+            <TarjetaHomeB
+              titulo={articulo.titulo}
+              resumen={articulo.descripcion}
+              enlace={articulo.enlace}
+              imagen={articulo.imagen}
+            />
+          ))}
+        </Box>
       </Box>
     </Container>
   );
 };
 
 export default Galeria;
-

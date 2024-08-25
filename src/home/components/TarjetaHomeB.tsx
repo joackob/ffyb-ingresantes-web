@@ -1,76 +1,74 @@
-import { Box, Typography, Link } from "@mui/material";
+import { Box, Typography, Link, Stack } from "@mui/material";
+import Image from "next/image";
 
-interface MyComponentProps {
-  height: number;
-  widthImg: number;
-  width?: number;
-}
+type ResumenArticulo = {
+  titulo: string;
+  resumen: string;
+  enlace: string;
+  imagen: string;
+};
 
-const TarjetaHomeB: React.FC<MyComponentProps> = ({
-  height,
-  widthImg,
-  width,
-}) => {
-  const titulo: string = "Un título para la tarjeta.";
-  const resumen: string =
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum dapibus at nunc mollis tincidunt. Vivamus efficitur gravida libero non dapibus.";
-  const enlace: string = "Ver más...";
-  const imagenSrc: string = "https://ejemplo.com/imagen.png";
-
+const TarjetaHomeB = (props: ResumenArticulo) => {
   return (
     <Box
-      sx={{
-        maxWidth: "606px",
-        minWidth: "390px",
-        width: { width },
+      style={{
+        borderTop: "4px solid #FF8700",
+        paddingTop: "20px",
       }}
     >
-      <Box
-        sx={{
-          alignItems: "flex-start",
-          display: "flex",
-          flexDirection: width === 560 ? "row" : "column",
-
-          fontFamily: "Montserrat, Arial, sans-serif",
-          fontSize: "16px",
-          borderTop: "4px solid #FF8700",
-        }}
-      >
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "flex-start",
-            flexGrow: 0, // No crecer verticalmente (hug)
-            flexShrink: 0, // No encoger verticalmente (hug)
-            flexBasis: "auto",
-            width: width === 560 ? "60%" : "100%", // Llenar horizontalmente el contenedor
-          }}
+      <Stack direction="row" flexWrap={"wrap"}>
+        <Stack
+          spacing={"20px"}
+          flexBasis={"390px"}
+          flexGrow={1}
+          marginBottom={"20px"}
         >
-          <Typography
-            style={{ color: "#011344", fontWeight: "800", paddingTop: "10px" }}
-          >
-            {titulo}
-          </Typography>
-          <Typography style={{ color: "#7C7C7C", fontWeight: "400" }}>
-            {resumen}
-          </Typography>
-
+          <Stack spacing={"16px"}>
+            <Typography
+              style={{
+                color: "#011344",
+                fontWeight: "800",
+                fontFamily: "Montserrat",
+              }}
+            >
+              {props.titulo}
+            </Typography>
+            <Typography
+              style={{
+                color: "#7C7C7C",
+                fontWeight: "400",
+                fontFamily: "Montserrat",
+                marginRight: "8px",
+              }}
+            >
+              {props.resumen}
+            </Typography>
+          </Stack>
           <Link
-            href="https://www.ejemplo.com"
+            href={props.enlace}
             style={{
-              color: "5DAFD6",
+              color: "#5DAFD6",
               textDecoration: "none",
-              paddingTop: "30px",
+              fontFamily: "Montserrat",
             }}
           >
-            {enlace}
+            Ver más
           </Link>
+        </Stack>
+        <Box
+          height={"148px"}
+          position={"relative"}
+          flexBasis={"33%"}
+          flexGrow={999}
+        >
+          <Image
+            src={props.imagen}
+            alt={props.titulo}
+            fill
+            objectFit={"cover"}
+          />
         </Box>
-        <Box style={{ paddingTop: "20px" }}>
-          <img src={imagenSrc} width={widthImg} height={height} />
-        </Box>
-      </Box>
+      </Stack>
     </Box>
   );
 };

@@ -7,7 +7,7 @@ const NavBarContainer = ({ children }: { children: ReactNode }) => {
       display={{
         xs: "block",
         sm: "block",
-        md: "none",
+        md: "block",
         lg: "none",
         xl: "none",
       }}

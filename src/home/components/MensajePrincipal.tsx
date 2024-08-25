@@ -1,4 +1,4 @@
-import { Box, Container, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 const MensajePrincipal = () => {
   const promo = `Bienvenidos al Sistema<br/>de Tutorías<br/>de Farmacia y bioquímica.`;

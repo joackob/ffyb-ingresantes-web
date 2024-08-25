@@ -7,14 +7,14 @@ const NavBarContainer = ({ children }: { children: ReactNode }) => {
       display={{
         xs: "none",
         sm: "none",
-        md: "block",
+        md: "none",
         lg: "block",
         xl: "block",
       }}
       minHeight={{
-        xs: "0vh",
-        sm: "0vh",
-        md: "80px",
+        xs: "0",
+        sm: "0",
+        md: "0",
         lg: "80px",
         xl: "80px",
       }}
