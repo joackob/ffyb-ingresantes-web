@@ -15,11 +15,11 @@ const Banner = () => {
     >
       <Typography 
         sx={{
-          color: '#FFFFFF',       // Color del texto
-          maxWidth: 900,          // Ancho máximo del texto
-          textAlign: 'center', // Centrado del texto
-          fontSize: 40,  
-          fontFamily: "Montserrant",
+          color: '#FFFFFF',     
+          maxWidth: 900,        
+          textAlign: 'center',  
+          fontSize: { xs: 24, md: 40 },
+          fontFamily: "Montserrat",
           fontWeight: "bold"
         }}
       >
