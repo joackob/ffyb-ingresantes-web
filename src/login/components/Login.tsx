@@ -7,28 +7,14 @@ import * as React from "react";
 import "./Login.module.css";
 import {
   Box,
-  IconButton,
-  Container,
-  useMediaQuery,
   Typography,
   Button,
   FormControl,
   TextField,
-  colors,
   Stack,
 } from "@mui/material";
-import Input from "@mui/material/Input";
-import { signIn } from "next-auth/react";
-import { redirect } from "next/navigation";
-import Link from "next/link";
 
 const Login = () => {
-  const md = useMediaQuery("min-width(900px)");
-
-  const redirigirLogin = () => {
-    redirect("./register/Register.tsx");
-  };
-
   return (
     <Stack
       direction="column"
