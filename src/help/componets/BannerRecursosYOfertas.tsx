@@ -10,21 +10,32 @@ const BannerRecursosYOfertas = () => {
         backgroundSize: "cover",
       }}
     >
-      <Container style={{ height: "100%" }}>
-        <Stack direction={"row"} alignItems={"center"} height={"100%"}>
-          <Typography
-            fontSize={{ xs: 24, md: 40 }}
-            component="h1"
-            style={{
-              color: "#FFFFFF",
-              fontFamily: "Montserrat",
-              fontWeight: "bold",
-            }}
-          >
-            Recursos y Ofertas
-          </Typography>
-        </Stack>
-      </Container>
+      <Box
+        height={"100%"}
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        style={{
+          backdropFilter: "blur(10px)",
+          backgroundColor: "rgba(0,0,0,0.2)",
+        }}
+      >
+        <Container style={{ height: "100%" }}>
+          <Stack direction={"row"} alignItems={"center"} height={"100%"}>
+            <Typography
+              fontSize={{ xs: "40px", md: "48px" }}
+              component="h1"
+              style={{
+                color: "#FFFFFF",
+                fontFamily: "Montserrat",
+                fontWeight: 900,
+              }}
+            >
+              Recursos y Ofertas
+            </Typography>
+          </Stack>
+        </Container>
+      </Box>
     </Box>
   );
 };

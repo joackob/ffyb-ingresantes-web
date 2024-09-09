@@ -1,18 +1,69 @@
-import { createTheme, ThemeOptions, ThemeProvider } from "@mui/material";
+import {
+  createTheme,
+  outlinedInputClasses,
+  ThemeOptions,
+  ThemeProvider,
+} from "@mui/material";
 import { ReactNode } from "react";
 const options: ThemeOptions = {
-  palette: {
-    primary: {
-      light: "#f6f7f9",
-      main: "#3728b7",
-      dark: "#1A0030",
-      contrastText: "#fff",
+  components: {
+    MuiTextField: {
+      styleOverrides: {
+        root: {
+          "--TextField-brandBorderColor": "#E0E3E7",
+          "--TextField-brandBorderHoverColor": "#B2BAC2",
+          "--TextField-brandBorderFocusedColor": "#6F7E8C",
+          "& label.Mui-focused": {
+            color: "var(--TextField-brandBorderFocusedColor)",
+          },
+        },
+      },
     },
-    secondary: {
-      light: "#ff7961",
-      main: "#15d448",
-      dark: "#ba000d",
-      contrastText: "#000",
+
+    MuiOutlinedInput: {
+      styleOverrides: {
+        notchedOutline: {
+          borderColor: "var(--TextField-brandBorderColor)",
+        },
+        // root: {
+        //   [`&:hover .${outlinedInputClasses.notchedOutline}`]: {
+        //     borderColor: "var(--TextField-brandBorderHoverColor)",
+        //   },
+        //   [`&.Mui-focused .${outlinedInputClasses.notchedOutline}`]: {
+        //     borderColor: "var(--TextField-brandBorderFocusedColor)",
+        //   },
+        // },
+      },
+    },
+    MuiFilledInput: {
+      styleOverrides: {
+        root: {
+          "&::before, &::after": {
+            borderBottom: "2px solid var(--TextField-brandBorderColor)",
+          },
+          "&:hover:not(.Mui-disabled, .Mui-error):before": {
+            borderBottom: "2px solid var(--TextField-brandBorderHoverColor)",
+          },
+          "&.Mui-focused:after": {
+            borderBottom: "2px solid var(--TextField-brandBorderFocusedColor)",
+          },
+        },
+      },
+    },
+    MuiInput: {
+      styleOverrides: {
+        root: {
+          "&::before": {
+            borderBottom: "2px solid var(--TextField-brandBorderColor)",
+          },
+          "&:hover:not(.Mui-disabled, .Mui-error):before": {
+            borderBottom: "2px solid var(--TextField-brandBorderHoverColor)",
+          },
+          "&.Mui-focused:after": {
+            borderBottom: "2px solid var(--TextField-brandBorderFocusedColor)",
+          },
+        },
+      },
     },
   },
 };
