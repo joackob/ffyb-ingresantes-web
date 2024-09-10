@@ -7,6 +7,11 @@ const withPWA = require("next-pwa")({
 module.exports = withPWA({
   // config
   images: {
-    domains: ["picsum.photos"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "picsum.photos",
+      },
+    ],
   },
 });

@@ -12,9 +12,6 @@ const BannerRecursosYOfertas = () => {
     >
       <Box
         height={"100%"}
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
         style={{
           backdropFilter: "blur(10px)",
           backgroundColor: "rgba(0,0,0,0.2)",

@@ -16,7 +16,7 @@ const MensajePrincipal = () => {
         justifyContent="center"
         alignItems="center"
         style={{
-          backdropFilter: "blur(10px)",
+          backdropFilter: "blur(8px)",
           backgroundColor: "rgba(0,0,0,0.2)",
         }}
       >
