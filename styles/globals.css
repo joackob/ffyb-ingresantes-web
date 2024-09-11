@@ -23,54 +23,7 @@ a {
   box-sizing: border-box;
 }
 
-.card {
-  width: 320px;
-  background: white;
-  color: black;
-  position: relative;
-  border-radius: 3em;
-  padding: 2em;
-  transition: transform 0.4s ease;
+ol,
+ul {
+  list-style-type: none;
 }
-
-.card .card-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 5em;
-  height: 100%;
-  transition: transform 0.4s ease;
-}
-
-.card .card-top p,
-.card .card-top .card-title,
-.card-title {
-  margin: 0;
-}
-
-.card .card-title {
-  font-weight: bold;
-}
-
-.card .card-top p,
-.card {
-  font-weight: 600;
-}
-
-.card:hover {
-  cursor: pointer;
-  transform: scale(0.97);
-}
-
-.card:hover .card-content {
-  transform: scale(0.96);
-}
-
-.card:hover .card-image svg {
-  transform: scale(1.05);
-}
-
-.card:active {
-  transform: scale(0.9);
-}
-

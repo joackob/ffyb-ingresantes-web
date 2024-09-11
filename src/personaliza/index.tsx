@@ -16,7 +16,7 @@ const Personaliza = () => {
   return (
     <ImagenDeFondo>
       <TituloCarrera carrera={"Farmacia"} />
-      <PlanPersonalizable alCambiar={actualizarPlanDeEstudios}>
+      <PlanPersonalizable alCambiar={() => {}}>
         {cuatrimestres.map(({ cuatrimestre, materias }) => (
           <CuatrimestreDroppable
             id={cuatrimestre.toString()}

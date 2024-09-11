@@ -1,11 +1,11 @@
 "use client";
-import React, { ReactNode } from "react";
-import { DragDropContext } from "@hello-pangea/dnd";
+import { ReactNode } from "react";
+import { closestCenter, DndContext } from "@dnd-kit/core";
 import { ModificacionEnPlanDeEstudios } from "../hooks";
 import { Container, Stack } from "@mui/material";
 
 export type AccionAlCambiarPlanDeEstudios = (
-  modificacion: ModificacionEnPlanDeEstudios,
+  modificacion: ModificacionEnPlanDeEstudios
 ) => void;
 
 const PlanPersonalizable = ({
@@ -16,47 +16,26 @@ const PlanPersonalizable = ({
   alCambiar: AccionAlCambiarPlanDeEstudios;
 }) => {
   return (
-    <DragDropContext
-      onDragEnd={(result) => {
-        console.log(result);
-        if (!result.destination) return;
-        alCambiar({
-          desde: {
-            idCuatrimestre: Number(result.source.droppableId) - 1,
-            posicion: result.source.index,
-          },
-          hacia: {
-            idCuatrimestre: Number(result.destination.droppableId) - 1,
-            posicion: result.destination.index,
-          },
-        });
-      }}
-    >
+    <DndContext id="plan-personalizable" collisionDetection={closestCenter}>
       <Container
         style={{
           minHeight: "inherit",
+          paddingBottom: "16px",
           overflowY: "hidden",
           overflowX: "scroll",
-          // minHeight: "inherit",
           scrollbarWidth: "none",
-          paddingBottom: "16px",
         }}
       >
         <Stack
+          component={"ol"}
           direction="row"
           spacing={"16px"}
-          // style={{
-          //   overflowY: "hidden",
-          //   overflowX: "scroll",
-          //   minHeight: "inherit",
-          //   scrollbarWidth: "none",
-          //   paddingBottom: "16px",
-          // }}
+          minHeight={"inherit"}
         >
           {children}
         </Stack>
       </Container>
-    </DragDropContext>
+    </DndContext>
   );
 };
 

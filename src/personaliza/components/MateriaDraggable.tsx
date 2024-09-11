@@ -1,7 +1,8 @@
 "use client";
 import { Box, Typography } from "@mui/material";
+import { useDraggable } from "@dnd-kit/core";
+import { CSS } from "@dnd-kit/utilities";
 import React from "react";
-import { Draggable } from "@hello-pangea/dnd";
 import { Materia } from "../fake";
 import { ChipEstadoCursada } from "./ChipEstadoCursada";
 
@@ -12,37 +13,35 @@ const MateriaDraggable = ({
   materia: Materia;
   index: number;
 }) => {
+  const { setNodeRef, attributes, listeners, transform } = useDraggable({
+    id: materia.nombre,
+  });
+
   return (
-    <Draggable draggableId={materia.nombre} index={index}>
-      {(draggableProvided) => {
-        return (
-          <Box
-            {...draggableProvided.draggableProps}
-            // {...draggableProvided.dragHandleProps}
-            ref={draggableProvided.innerRef}
-            style={{
-              borderRadius: "4px",
-              backgroundColor: "white",
-            }}
-          >
-            <Box {...draggableProvided.dragHandleProps}>
-              <ChipEstadoCursada cursada={materia.estado} />
-            </Box>
-            <Box style={{ padding: "4px 8px" }}>
-              <Typography
-                fontFamily="Montserrat"
-                color={"#818a91"}
-                // color={"#000"}
-                fontWeight="bold"
-                fontSize="14px"
-              >
-                {materia.nombre}
-              </Typography>
-            </Box>
-          </Box>
-        );
+    <Box
+      ref={setNodeRef}
+      component={"li"}
+      style={{
+        borderRadius: "4px",
+        backgroundColor: "white",
+        transform: CSS.Transform.toString(transform),
       }}
-    </Draggable>
+    >
+      <Box style={{ userSelect: "none" }} {...attributes} {...listeners}>
+        <ChipEstadoCursada cursada={materia.estado} />
+      </Box>
+      <Box style={{ padding: "4px 8px" }}>
+        <Typography
+          fontFamily="Montserrat"
+          color={"#818a91"}
+          fontWeight="bold"
+          fontSize="14px"
+          style={{ userSelect: "none" }}
+        >
+          {materia.nombre}
+        </Typography>
+      </Box>
+    </Box>
   );
 };
 

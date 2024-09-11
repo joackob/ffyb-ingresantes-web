@@ -18,7 +18,7 @@ const ImagenComplementaria = (props: FuenteImagen) => {
         src={props.fuente}
         alt={props.descripcion}
         fill
-        objectFit={"cover"}
+        style={{ objectFit: "cover" }}
       />
     </Box>
   );
