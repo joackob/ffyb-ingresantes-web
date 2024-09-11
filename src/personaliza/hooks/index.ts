@@ -1,40 +1,43 @@
-import { Carrera, Cuatrimestre } from "@/src/database/interfaces";
+"use client";
 import { useState } from "react";
-import { ModificacionEnPlanDeEstudios } from "../components/PlanPersonalizable";
+import { Cuatrimestre, planDeEstudios } from "../fake";
 
-export const usePlanPersonalizable = (carrera: Carrera) => {
-  const [cuatrimestres, setCuatrimestres] = useState<Cuatrimestre[]>(
-    carrera.plan
-  );
+export type ModificacionEnPlanDeEstudios = {
+  desde: {
+    idCuatrimestre: number;
+    posicion: number;
+  };
+  hacia: {
+    idCuatrimestre: number;
+    posicion: number;
+  };
+};
+
+export const usePlanPersonalizable = () => {
+  const [cuatrimestres, setCuatrimestres] =
+    useState<Cuatrimestre[]>(planDeEstudios);
 
   const brindarPlanActual = () => {
     return cuatrimestres;
   };
 
   const actualizarPlanDeEstudios = (
-    modificacion: ModificacionEnPlanDeEstudios
+    modificacion: ModificacionEnPlanDeEstudios,
   ) => {
-    {
-      const { posicionOrigen, posicionDestino } = modificacion;
-      const cuatrimestreOrigen = cuatrimestres.findIndex(
-        (cuatrimestre) => cuatrimestre.id === posicionOrigen.idCuatrimestre
-      );
-      const cuatrimestreDestino = cuatrimestres.findIndex(
-        (cuatrimestre) => cuatrimestre.id === posicionDestino.idCuatrimestre
-      );
-      const nuevoPlan = [...cuatrimestres];
-      const [materia] = nuevoPlan[cuatrimestreOrigen].materias.splice(
-        posicionOrigen.posicion,
-        1
-      );
-      nuevoPlan[cuatrimestreDestino].materias.splice(
-        posicionDestino.posicion,
-        0,
-        materia
-      );
+    console.log(modificacion);
+    const { desde, hacia } = modificacion;
+    const planActualizado = [...cuatrimestres];
+    const [materia] = planActualizado[desde.idCuatrimestre].materias.splice(
+      desde.posicion,
+      1,
+    );
+    planActualizado[hacia.idCuatrimestre].materias.splice(
+      hacia.posicion,
+      0,
+      materia,
+    );
 
-      setCuatrimestres(nuevoPlan);
-    }
+    setCuatrimestres(planActualizado);
   };
 
   return { brindarPlanActual, actualizarPlanDeEstudios } as const;

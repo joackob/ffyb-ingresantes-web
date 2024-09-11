@@ -9,7 +9,7 @@ const links = [
   },
   {
     label: "Tu plan <br/> de estudios",
-    url: "/personaliza/farmacia",
+    url: "/personaliza",
   },
   {
     label: "Iniciar <br/> sesión",

@@ -1,21 +1,11 @@
+"use client";
 import React, { ReactNode } from "react";
-import { DragDropContext, resetServerContext } from "react-beautiful-dnd";
-
-export type ModificacionEnPlanDeEstudios = {
-  posicionOrigen: {
-    idCuatrimestre: string;
-    idMateria: string;
-    posicion: number;
-  };
-  posicionDestino: {
-    idCuatrimestre: string;
-    idMateria: string;
-    posicion: number;
-  };
-};
+import { DragDropContext } from "@hello-pangea/dnd";
+import { ModificacionEnPlanDeEstudios } from "../hooks";
+import { Container, Stack } from "@mui/material";
 
 export type AccionAlCambiarPlanDeEstudios = (
-  modificacion: ModificacionEnPlanDeEstudios
+  modificacion: ModificacionEnPlanDeEstudios,
 ) => void;
 
 const PlanPersonalizable = ({
@@ -25,27 +15,47 @@ const PlanPersonalizable = ({
   children: ReactNode;
   alCambiar: AccionAlCambiarPlanDeEstudios;
 }) => {
-  resetServerContext();
-
   return (
     <DragDropContext
       onDragEnd={(result) => {
+        console.log(result);
         if (!result.destination) return;
         alCambiar({
-          posicionOrigen: {
-            idCuatrimestre: result.source.droppableId,
-            idMateria: result.draggableId,
+          desde: {
+            idCuatrimestre: Number(result.source.droppableId) - 1,
             posicion: result.source.index,
           },
-          posicionDestino: {
-            idCuatrimestre: result.destination.droppableId,
-            idMateria: result.draggableId,
+          hacia: {
+            idCuatrimestre: Number(result.destination.droppableId) - 1,
             posicion: result.destination.index,
           },
         });
       }}
     >
-      {children}
+      <Container
+        style={{
+          minHeight: "inherit",
+          overflowY: "hidden",
+          overflowX: "scroll",
+          // minHeight: "inherit",
+          scrollbarWidth: "none",
+          paddingBottom: "16px",
+        }}
+      >
+        <Stack
+          direction="row"
+          spacing={"16px"}
+          // style={{
+          //   overflowY: "hidden",
+          //   overflowX: "scroll",
+          //   minHeight: "inherit",
+          //   scrollbarWidth: "none",
+          //   paddingBottom: "16px",
+          // }}
+        >
+          {children}
+        </Stack>
+      </Container>
     </DragDropContext>
   );
 };

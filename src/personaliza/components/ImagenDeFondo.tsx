@@ -1,21 +1,25 @@
-import { Container } from "@mui/material";
+import { Box, Container } from "@mui/material";
 import React, { ReactNode } from "react";
 
 const ImagenDeFondo = ({ children }: { children: ReactNode }) => {
   return (
-    <Container
-      maxWidth={false}
-   
-      sx={{
-        backgroundImage:
-          'url("https://www.ffyb.uba.ar/wp-content/uploads/2024/01/estudiar-en-FFyB.png")',
+    <Box
+      style={{
+        backgroundImage: 'url("https://picsum.photos/1200/800")',
         backgroundSize: "cover",
-        backgroundRepeat: "no-repeat",
-        width: "100%"
+        minHeight: "inherit",
       }}
     >
-      {children}
-    </Container>
+      <Box
+        style={{
+          backdropFilter: "blur(8px)",
+          backgroundColor: "rgba(0,0,0,0.2)",
+          minHeight: "inherit",
+        }}
+      >
+        {children}
+      </Box>
+    </Box>
   );
 };
 
