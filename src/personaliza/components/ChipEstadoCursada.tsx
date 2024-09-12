@@ -1,3 +1,4 @@
+"use client";
 import { Box, Typography } from "@mui/material";
 import React from "react";
 
@@ -18,6 +19,7 @@ export const ChipEstadoCursada = ({
         width: "100%",
         backgroundColor: colorDeFondoPorCursada.get(cursada),
         marginBottom: "4px",
+        userSelect: "none",
       }}
     >
       <Typography
