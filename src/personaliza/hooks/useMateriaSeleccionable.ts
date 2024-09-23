@@ -34,6 +34,6 @@ export const useMateriaSeleccionable = () => {
     seleccionar: seleccionarMateria,
     eleccion: brindarMateriaSeleccionada,
     deseleccionar: deseleccionarMateria,
-    seleccionada: hayUnaMateriaSeleccionada,
+    fueSeleccionada: hayUnaMateriaSeleccionada,
   } as const;
 };

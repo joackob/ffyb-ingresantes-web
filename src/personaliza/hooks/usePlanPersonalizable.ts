@@ -1,17 +1,7 @@
 "use client";
 import { useState } from "react";
-import {
-  Cuatrimestre,
-  planDeEstudios,
-  materiasPorCuatri,
-  Materia,
-} from "../fake";
+import { Cuatrimestre, materiasPorCuatri, Materia } from "../fake";
 import { arrayMove } from "@dnd-kit/sortable";
-
-export type ModificacionEnPlanDeEstudios = {
-  idOrignen: string;
-  idDestino: string;
-};
 
 export const usePlanPersonalizable = () => {
   const [cuatrimestres, setCuatrimestres] =
@@ -33,107 +23,117 @@ export const usePlanPersonalizable = () => {
     return planActual;
   };
 
-  const noForzarCambio = ({
-    cuatri,
-    origen,
-    destino,
+  const cambiarMateriaDeCuatriODePosicion = ({
+    idOrigen,
+    idDestino,
   }: {
-    cuatri: string;
-    origen: string;
-    destino: string;
+    idOrigen: string;
+    idDestino: string;
   }) => {
-    const materias = cuatrimestres.get(cuatri);
-
-    if (!materias) return;
-
-    const indexOrigen = materias.findIndex((materia) => materia.id === origen);
-    const indexDestino = cuatrimestres.has(destino)
-      ? materias.length + 1
-      : materias.findIndex((materias) => materias.id === destino);
-
     setCuatrimestres((cuatrimestres) => {
-      const planOrdenado = new Map(cuatrimestres);
-      planOrdenado.set(cuatri, arrayMove(materias, indexOrigen, indexDestino));
-      return planOrdenado;
-    });
-  };
+      const idCuatriOrigen = cuatriPorMateria.get(idOrigen) ?? "";
+      const idCuatriDestino = cuatriPorMateria.get(idDestino) ?? idDestino;
+      const idMateriaOrigen = idOrigen;
+      const idMateriaDestino = idDestino;
 
-  const forzarCambio = ({
-    origen,
-    destino,
-  }: {
-    origen: { materia: string; cuatri: string };
-    destino: { materia: string; cuatri: string };
-  }) => {
-    const materiasOrigen = cuatrimestres.get(origen.cuatri);
-    const materiasDestino = cuatrimestres.get(destino.cuatri);
-
-    if (!materiasOrigen || !materiasDestino) return;
-
-    const indexOrigen = materiasOrigen.findIndex(
-      (materia) => materia.id === origen.materia
-    );
-    const indexDestino = cuatrimestres.has(destino.materia)
-      ? materiasDestino.length + 1
-      : materiasDestino.findIndex(
-          (materias) => materias.id === destino.materia
-        );
-
-    setCuatrimestres((cuatrimestres) => {
-      const [materia] = materiasOrigen.splice(indexOrigen, 1);
-      materiasDestino.splice(indexDestino, 0, materia);
-
-      const planActualizado = new Map(cuatrimestres);
-      planActualizado.set(origen.cuatri, [...materiasOrigen]);
-      planActualizado.set(destino.cuatri, [...materiasDestino]);
-      return planActualizado;
-    });
-  };
-
-  const actualizarPlanDeEstudios = (
-    modificacion: ModificacionEnPlanDeEstudios
-  ) => {
-    const { idOrignen, idDestino } = modificacion;
-    const cuatriOrigen = cuatriPorMateria.get(idOrignen);
-    const cuatriDestino = cuatrimestres.has(idDestino)
-      ? idDestino
-      : cuatriPorMateria.get(idDestino);
-
-    if (!cuatriOrigen || !cuatriDestino) return;
-    if (cuatriOrigen === cuatriDestino) {
-      noForzarCambio({
-        cuatri: cuatriOrigen,
-        origen: idOrignen,
-        destino: idDestino,
+      const nuevoPlan = cambiarMateriaDeCuatrimestre({
+        idMateria: idMateriaOrigen,
+        idCuatriOrigen: idCuatriOrigen,
+        idCuatriDestino: idCuatriDestino,
+        cuatrimestres: cuatrimestres,
       });
-      return;
-    }
-    forzarCambio({
-      origen: { materia: idOrignen, cuatri: cuatriOrigen },
-      destino: { materia: idDestino, cuatri: cuatriDestino },
+      return cambiarMateriaDePosicion({
+        idCuatri: idCuatriDestino,
+        idMateriaOrigen: idMateriaOrigen,
+        idMateriaDestino: idMateriaDestino,
+        cuatrimestres: nuevoPlan,
+      });
     });
   };
 
-  const ordenarPlanDeEstudios = (
-    modificacion: ModificacionEnPlanDeEstudios
-  ) => {
-    const { idOrignen, idDestino } = modificacion;
-    const cuatriOrigen = cuatriPorMateria.get(idOrignen);
-    const cuatriDestino = cuatrimestres.has(idDestino)
-      ? idDestino
-      : cuatriPorMateria.get(idDestino);
+  const ordenarPlanDeEstudios = ({
+    idOrigen,
+    idDestino,
+  }: {
+    idOrigen: string;
+    idDestino: string;
+  }) => {
+    setCuatrimestres((cuatrimestres) =>
+      cambiarMateriaDePosicion({
+        idCuatri: cuatriPorMateria.get(idDestino) ?? "",
+        idMateriaOrigen: idOrigen,
+        idMateriaDestino: idDestino,
+        cuatrimestres,
+      })
+    );
+  };
 
-    if (!cuatriOrigen || !cuatriDestino) return;
-    noForzarCambio({
-      cuatri: cuatriOrigen,
-      origen: idOrignen,
-      destino: idDestino,
-    });
+  // pre: los ids de cuatriOrigen y cuatriDestino son validos
+  // es decir, existe una serie de materias asociadas
+  // pre: los ids de cuatriOrigen y cuatriDestino son distintos
+  const cambiarMateriaDeCuatrimestre = ({
+    idMateria,
+    idCuatriOrigen,
+    idCuatriDestino,
+    cuatrimestres,
+  }: {
+    idMateria: string;
+    idCuatriOrigen: string;
+    idCuatriDestino: string;
+    cuatrimestres: Map<string, Materia[]>;
+  }): Map<string, Materia[]> => {
+    if (idCuatriOrigen === idCuatriDestino) return cuatrimestres;
+    const materiasOrigen = cuatrimestres.get(idCuatriOrigen);
+    const materiasDestino = cuatrimestres.get(idCuatriDestino);
+    if (!materiasOrigen || !materiasDestino) return cuatrimestres;
+
+    const materia = materiasOrigen.find((materia) => materia.id === idMateria);
+    if (!materia) return cuatrimestres;
+
+    const planActualizado = new Map(cuatrimestres);
+    planActualizado.set(
+      idCuatriOrigen,
+      materiasOrigen.filter((materia) => materia.id !== idMateria)
+    );
+    planActualizado.set(idCuatriDestino, [...materiasDestino, materia]);
+    return planActualizado;
+  };
+
+  // pre: los ids de idOrigen y idDestino son validos.
+  // es decir, existen en el conjunto de materias asociados a idCuatri
+  // pre: idCuatri es valido
+  // es decir, existe una serie de materias asociadas
+  const cambiarMateriaDePosicion = ({
+    idCuatri,
+    idMateriaOrigen,
+    idMateriaDestino,
+    cuatrimestres,
+  }: {
+    idCuatri: string;
+    idMateriaOrigen: string;
+    idMateriaDestino: string;
+    cuatrimestres: Map<string, Materia[]>;
+  }): Map<string, Materia[]> => {
+    const materias = cuatrimestres.get(idCuatri);
+    if (!materias) return cuatrimestres;
+    const posicionOrigen = materias.findIndex(
+      (materia) => materia.id === idMateriaOrigen
+    );
+    const posicionDestino = materias.findIndex(
+      (materias) => materias.id === idMateriaDestino
+    );
+    if (posicionOrigen === -1 || posicionDestino === -1) return cuatrimestres;
+    const planOrdenado = new Map(cuatrimestres);
+    planOrdenado.set(
+      idCuatri,
+      arrayMove(materias, posicionOrigen, posicionDestino)
+    );
+    return planOrdenado;
   };
 
   return {
     actual: brindarPlanActual,
-    actualizar: actualizarPlanDeEstudios,
+    actualizar: cambiarMateriaDeCuatriODePosicion,
     ordenar: ordenarPlanDeEstudios,
   } as const;
 };

@@ -8,7 +8,7 @@ colorDeFondoPorCursada.set("Aprobada", "#1da1f2");
 colorDeFondoPorCursada.set("Disponible", "#80ceeb");
 colorDeFondoPorCursada.set("No disponible", "#818a91");
 
-export const ChipEstadoCursada = ({
+export const ChipCursada = ({
   cursada,
 }: {
   cursada: "Aprobada" | "En curso" | "No disponible" | "Disponible";
@@ -16,7 +16,6 @@ export const ChipEstadoCursada = ({
   return (
     <Box
       style={{
-        width: "100%",
         backgroundColor: colorDeFondoPorCursada.get(cursada),
         marginBottom: "4px",
         userSelect: "none",
