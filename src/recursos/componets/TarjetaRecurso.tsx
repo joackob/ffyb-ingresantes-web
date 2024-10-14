@@ -7,7 +7,11 @@ type Recurso = {
   contacto: string[];
 };
 
-const TarjetaRecurso = ({ recurso }: { recurso: Recurso }) => {
+const TarjetaParaCadaRecursoUOfertaDisponible = ({
+  recurso,
+}: {
+  recurso: Recurso;
+}) => {
   const { titulo, descripcion, contacto } = recurso;
   return (
     <Stack spacing={"8px"}>
@@ -61,4 +65,4 @@ const TarjetaRecurso = ({ recurso }: { recurso: Recurso }) => {
   );
 };
 
-export default TarjetaRecurso;
+export default TarjetaParaCadaRecursoUOfertaDisponible;

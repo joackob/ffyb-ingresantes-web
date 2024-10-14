@@ -1,7 +1,7 @@
 import { Box, Container, Typography } from "@mui/material";
 import { ReactNode } from "react";
 
-const Galeria = ({ children }: { children: ReactNode }) => {
+const ContenedorParaLasTarjetas = ({ children }: { children: ReactNode }) => {
   return (
     <Container>
       <Box my="32px">
@@ -32,4 +32,4 @@ const Galeria = ({ children }: { children: ReactNode }) => {
   );
 };
 
-export default Galeria;
+export default ContenedorParaLasTarjetas;

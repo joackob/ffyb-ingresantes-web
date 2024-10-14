@@ -1,7 +1,11 @@
 import { Box, Container } from "@mui/material";
 import { ReactNode } from "react";
 
-const DistribucionRecursos = ({ children }: { children: ReactNode }) => {
+const GaleriaDeTarjetasParaCadaRecurso = ({
+  children,
+}: {
+  children: ReactNode;
+}) => {
   return (
     <Container>
       <Box
@@ -20,4 +24,4 @@ const DistribucionRecursos = ({ children }: { children: ReactNode }) => {
   );
 };
 
-export default DistribucionRecursos;
+export default GaleriaDeTarjetasParaCadaRecurso;

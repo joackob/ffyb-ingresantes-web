@@ -1,15 +1,15 @@
 import MensajePrincipal from "./components/MensajePrincipal";
-import Galeria from "./components/Galeria";
-import Tarjeta from "./tarjeta";
+import ContenedorParaLasTarjetas from "./components/ContenedorParaLasTarjetas";
+import TarjetaParaElResumenDeCadaArticulo from "./tarjeta";
 import { articulos } from "./fake";
 
 const index = () => {
   return (
     <>
       <MensajePrincipal />
-      <Galeria>
+      <ContenedorParaLasTarjetas>
         {articulos.map((articulo) => (
-          <Tarjeta
+          <TarjetaParaElResumenDeCadaArticulo
             key={articulo.titulo}
             titulo={articulo.titulo}
             resumen={articulo.descripcion}
@@ -20,7 +20,7 @@ const index = () => {
             }}
           />
         ))}
-      </Galeria>
+      </ContenedorParaLasTarjetas>
     </>
   );
 };

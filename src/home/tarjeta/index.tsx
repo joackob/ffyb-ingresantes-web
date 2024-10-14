@@ -1,5 +1,5 @@
-import Layout from "./components/Layout";
-import Contenido from "./components/Contenido";
+import ContenedorParaLaTarjeta from "./components/ContenedorParaLaTarjeta";
+import CuerpoPrincipalDeLaTarjeta from "./components/CuerpoPrincipalDeLaTarjeta";
 import ImagenComplementaria from "./components/ImagenComplementaria";
 
 type ParametrosTarjeta = {
@@ -14,8 +14,8 @@ type ParametrosTarjeta = {
 
 const index = (props: ParametrosTarjeta) => {
   return (
-    <Layout>
-      <Contenido
+    <ContenedorParaLaTarjeta>
+      <CuerpoPrincipalDeLaTarjeta
         titulo={props.titulo}
         resumen={props.resumen}
         enlace={props.enlace}
@@ -24,7 +24,7 @@ const index = (props: ParametrosTarjeta) => {
         fuente={props.imagen.fuente}
         descripcion={props.imagen.descripcion}
       />
-    </Layout>
+    </ContenedorParaLaTarjeta>
   );
 };
 

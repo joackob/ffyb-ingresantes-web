@@ -1,7 +1,7 @@
 const links = [
   {
     label: `Recursos <br/> y ofertas`,
-    url: "/help",
+    url: "/recursos",
   },
   {
     label: "Aulas y espacios <br/> de la facultad",

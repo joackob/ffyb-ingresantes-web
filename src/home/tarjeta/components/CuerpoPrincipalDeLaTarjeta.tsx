@@ -1,12 +1,14 @@
 import { Typography, Link, Stack } from "@mui/material";
 
-type Componentes = {
+type PropiedadesDelCuerpoPrincipalDeLaTarjeta = {
   titulo: string;
   resumen: string;
   enlace: string;
 };
 
-const Contenido = (props: Componentes) => {
+const CuerpoPrincipalDeLaTarjeta = (
+  props: PropiedadesDelCuerpoPrincipalDeLaTarjeta,
+) => {
   return (
     <Stack
       spacing={"20px"}
@@ -14,6 +16,7 @@ const Contenido = (props: Componentes) => {
       flexGrow={1}
       marginBottom={"20px"}
       marginRight={"16px"}
+      width={"100%"}
     >
       <Stack spacing={"16px"}>
         <Typography
@@ -27,6 +30,7 @@ const Contenido = (props: Componentes) => {
           {props.titulo}
         </Typography>
         <Typography
+          component={"p"}
           style={{
             color: "#7C7C7C",
             fontWeight: "400",
@@ -50,4 +54,4 @@ const Contenido = (props: Componentes) => {
   );
 };
 
-export default Contenido;
+export default CuerpoPrincipalDeLaTarjeta;
