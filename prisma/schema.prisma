@@ -9,12 +9,38 @@ datasource db {
   provider = "sqlite"
   url      = env("DATABASE_URL")
 }
-model Carreras {
- id Int @id @default(autoincrement())
- Carrera String
+model Usuarios {
+  id                      String           @id @default(uuid())
+  createdAt               DateTime         @default(now())
+  updatedAt               DateTime         @updatedAt
+  nombre                  String
+  apellido                String
+  email                   String           @unique
+  contrasena              String           @unique
 }
+model Carreras {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  nombre    String
+}
+model Cuatrimestre {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  }
+
 model Asignaturas {
- id Int @id @default(autoincrement())
- Asignatura String
- Carrera_id Int
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  nombre    String
+  correlativas Correlativas[]
+}
+
+model Correlativas{
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  asignaturas Asignaturas[]
 }
