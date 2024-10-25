@@ -9,38 +9,60 @@ datasource db {
   provider = "sqlite"
   url      = env("DATABASE_URL")
 }
+
 model Usuarios {
-  id                      String           @id @default(uuid())
-  createdAt               DateTime         @default(now())
-  updatedAt               DateTime         @updatedAt
-  nombre                  String
-  apellido                String
-  email                   String           @unique
-  contrasena              String           @unique
+  id         String      @id @default(uuid())
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+  nombre     String
+  apellido   String
+  email      String      @unique
+  contrasena String      @unique
+  tutorando  Tutorandos?
 }
+
+model Tutorandos {
+  usuario   Usuarios   @relation(fields: [usuarioId], references: [id])
+  usuarioId String     @unique
+  carreras  Carreras[]
+}
+
 model Carreras {
-  id        String   @id @default(uuid())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  nombre    String
+  id           String         @id @default(uuid())
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+  nombre       String
+  tutorando    Tutorandos     @relation(fields: [tutorandoId], references: [usuarioId])
+  tutorandoId  String
+  cuatrimestre Cuatrimestre[]
 }
+
 model Cuatrimestre {
-  id        String   @id @default(uuid())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  }
+  id          String        @id @default(uuid())
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  carreraId   String
+  carrera     Carreras      @relation(fields: [carreraId], references: [id])
+  asignaturas Asignaturas[]
+}
 
 model Asignaturas {
-  id        String   @id @default(uuid())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  nombre    String
-  correlativas Correlativas[]
+  id             String         @id @default(uuid())
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+  nombre         String
+  cuatrimestre   Cuatrimestre   @relation(fields: [cuatrimestreId], references: [id])
+  cuatrimestreId String
+  correlativas   Correlativas[] @relation("correlativasDeLaAsignatura")
+  asignatura     Correlativas?  @relation("asignaturaConCorrelativa")
 }
 
-model Correlativas{
-  id        String   @id @default(uuid())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  asignaturas Asignaturas[]
+model Correlativas {
+  id            String      @id @default(uuid())
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  asignatura    Asignaturas @relation("asignaturaConCorrelativa", fields: [asignaturaId], references: [id])
+  asignaturaId  String      @unique
+  correlativa   Asignaturas @relation("correlativasDeLaAsignatura", fields: [correlativaId], references: [id])
+  correlativaId String
 }
