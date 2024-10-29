@@ -4,7 +4,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "test": "jest"
+    "test": "jest",
+    "init": "npx prisma migrate dev --name init"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.1.0",
