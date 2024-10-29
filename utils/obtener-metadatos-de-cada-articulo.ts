@@ -1,6 +1,6 @@
 import matter from "gray-matter";
 import path from "path";
-import fs from "fs";
+import fs from 'fs'
 
 export const obtenerMetadatosDeCadaArticulo = (carpeta: string): any[] => {
   const directorioConArticulos = path.join(process.cwd(), carpeta);
