@@ -3,7 +3,7 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { Link, Menu, MenuItem } from "@mui/material";
 import { useState } from "react";
 import { MouseEvent } from "react";
-import links from "@/src/layout/links";
+import links from "@/src/app/layout/links";
 
 const NavMenu = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);

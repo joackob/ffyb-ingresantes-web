@@ -1,4 +1,4 @@
-import "../styles/globals.css";
+import "../src/app/styles/globals.css";
 
 import "@fontsource/montserrat/300.css";
 import "@fontsource/montserrat/400.css";
@@ -21,6 +21,8 @@ import "@fontsource/roboto-condensed/700.css";
 import { AppProps } from "next/app";
 import App from "@/src/app";
 
-export default function MyApp(props: AppProps) {
+const app = (props: AppProps) => {
   return <App {...props} />;
-}
+};
+
+export default app;

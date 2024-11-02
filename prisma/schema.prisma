@@ -17,7 +17,8 @@ model Usuarios {
   nombre     String
   apellido   String
   email      String      @unique
-  contrasena String      @unique
+  contrasena String
+  tipo       String // enum['tutor', 'tutorando', 'coordinador']
   tutorando  Tutorandos?
 }
 

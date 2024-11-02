@@ -1,5 +1,5 @@
 import { Link, Stack, Box } from "@mui/material";
-import links from "@/src/layout/links";
+import links from "@/src/app/layout/links";
 
 const NavBar = () => {
   return (

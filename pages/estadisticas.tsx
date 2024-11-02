@@ -1,9 +1,8 @@
-import React from 'react'
+import React from "react";
 
-const Carreras_terminadas = () => {
-  return (
-    <div>De la carrera terminada</div>
-  )
-}
+const estadisticas = () => {
+  return <div>De la carrera terminada</div>;
+};
 
-export default Carreras_terminadas
+export default estadisticas;
+

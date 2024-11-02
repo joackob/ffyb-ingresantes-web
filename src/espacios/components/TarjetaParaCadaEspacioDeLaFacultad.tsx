@@ -2,7 +2,7 @@ import {
   ContenedorParaLaTarjeta,
   VideoComplementario,
   CuerpoDeLaTarjeta,
-} from "./ComponentesParaLaTarjetaDeCadaEspacio";
+} from "./ComponentesParaLasTarjetasDeCadaEspacio";
 
 type PropiedadesDeCadaEspacioDeLaFacultad = {
   video: string;

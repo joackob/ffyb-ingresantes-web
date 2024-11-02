@@ -1,13 +1,13 @@
 import Banner from "../components/Banner";
-import GaleriaDeTarjetasParaCadaEspacio from "./components/GaleriaDeVideosParaCadaEspacio";
-import TarjetaParaCadaEspacioDeLaFacultad from "./components/TarjetaParaUnEspacioDeLaFacultad";
-import { videos } from "./fake";
+import GaleriaParaLasTarjetasDeCadaEspacio from "./components/GaleriaDeVideosParaCadaEspacio";
+import TarjetaParaCadaEspacioDeLaFacultad from "./components/TarjetaParaCadaEspacioDeLaFacultad";
+import { videos } from "./videos";
 
 const index = () => {
   return (
     <>
-      <Banner titulo="Aulas y espacios de la facultad" />
-      <GaleriaDeTarjetasParaCadaEspacio>
+      <Banner titulo="Aulas y Espacios de la Facultad" />
+      <GaleriaParaLasTarjetasDeCadaEspacio>
         {videos.map((video) => (
           <TarjetaParaCadaEspacioDeLaFacultad
             key={video.id}
@@ -15,7 +15,7 @@ const index = () => {
             description={video.descripcion}
           />
         ))}
-      </GaleriaDeTarjetasParaCadaEspacio>
+      </GaleriaParaLasTarjetasDeCadaEspacio>
     </>
   );
 };

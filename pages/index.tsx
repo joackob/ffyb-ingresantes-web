@@ -1,4 +1,7 @@
 import Home from "@/src/home";
-export default function index() {
+
+const index = () => {
   return <Home />;
-}
+};
+
+export default index;

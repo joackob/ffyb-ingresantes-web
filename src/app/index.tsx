@@ -1,6 +1,6 @@
 import { Fragment } from "react";
-import Layout from "@/src/layout";
-import Theme from "@/src/theme";
+import Layout from "@/src/app/layout";
+import Theme from "@/src/app/theme";
 import Metadata from "./components/Metadata";
 import { AppProps } from "next/app";
 

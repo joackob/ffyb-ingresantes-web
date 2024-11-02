@@ -1,13 +1,13 @@
-# PWA con NextJS y Materia UI
+# Aplicación para ingresantes a la Facultad de Farmacia y Bioquímica de la Universidad de Buenos Aires
 
-Este template fue creado para aprender sobre tecnologías frontend. Posee un ejemplo y en este archivo se explicara el paso a paso de como fue su proceso de desarrollo.
+Bajo el Sistema de Tutorías orientado a ingresantes de las carreras de Facultad de Farmacia y Bioquímica, es que se desarrolla esta aplicación que organización y planificación de estudios, manejo de herramientas digitales, actividades para el entrenamiento en el uso de la plataforma Moodle y otras que fomenten el sentido de pertenencia que implica formar parte de la comunidad de FFyB.
 
 ## Entorno
 
-Asegurarse de tener instalado `git` . Esto se puede revisar muy facílmente a trevés del comando `git --version` . En caso de no estar instalado, se puede hacer a través de los siguientes paso
+Asegurarse de tener instalado `git` . Esto se puede revisar muy fácilmente a trevés del comando `git --version` . En caso de no estar instalado, se puede hacer a través de los siguientes paso
 
 - En Linux, a través del comando `sudo apt install git`.
-- En Windows, a través de la pagina oficial https://git-scm.com/
+- En Windows, a través de la pagina oficial <https://git-scm.com/>
 
 Procurar tener actualizado `node.js` a la versión `lts`. Si desea asegurarse, puede ejecutar el comando `npm doctor` que le indicara si cumple con los requisitos. Si el comando no se encuentra o `node.js` esta desactualizado, puede instalar `node.js --lts` mediante alguno de los siguientes pasos
 
@@ -26,6 +26,7 @@ Procurar tener actualizado `node.js` a la versión `lts`. Si desea asegurarse, p
 ## Instalación y ejecución
 
 - 🛠Para instalar las dependencias ejecutar el siguiente comando `npm install`
+- 🛠Para inicializar la base de datos desde cero, ejecutar el comando `npm run init`
 - ⚒Para ejecutar el modo playground o repl, ejecutar el siguiente comando `npm run dev`
 - 🔧Para traducir el código en `/src` a `JavaScript` , usar el comando `npm run build`
 - 🔑Para ejecutar el código con `Node.js`, usar el comando `npm run start`
@@ -33,7 +34,7 @@ Procurar tener actualizado `node.js` a la versión `lts`. Si desea asegurarse, p
 
 ## Variables de entorno
 
-- `NODE_ENV`: Variable que identifica el entorno en que se ejecuta el proyecto. "development": en desarrollo, "production": en producción, "test": en testing.
+- `NODE_ENV`: Variable que identifica el entorno en que se ejecuta el proyecto. "development": en desarrollo, "production": en producción, "testing": en testing.
 
 Se puede usar el archivo `.env` para configurar estas variables de entorno en testing y desarrollo. Solo se debe ejecutar el comando `cp .env.example .env`.
 
@@ -47,8 +48,8 @@ Se puede usar el archivo `.env` para configurar estas variables de entorno en te
 
 ## Artículos y ejemplos tomados en cuenta para el desarrollo del template
 
-- https://www.npmjs.com/package/next-pwa
-- https://nextjs.org/docs/testing
+- <https://www.npmjs.com/package/next-pwa>
+- <https://nextjs.org/docs/testing>
 
 ## Pasos para crear este template
 
@@ -70,12 +71,12 @@ Como lo menciona la documentación oficial, es necesario crear el archivo `jest.
 
 ```jsx
 // jest.config.js
-const nextJest = require('next/jest')
+const nextJest = require("next/jest");
 
 const createJestConfig = nextJest({
   // Provide the path to your Next.js app to load next.config.js and .env files in your test environment
-  dir: './',
-})
+  dir: "./",
+});
 
 // Add any custom config to be passed to Jest
 /** @type {import('jest').Config} */
@@ -83,18 +84,18 @@ const customJestConfig = {
   // Add more setup options before each test is run
   // setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
   // if using TypeScript with a baseUrl set to the root directory then you need the below for alias' to work
-  moduleDirectories: ['node_modules', '<rootDir>/'],
-  testEnvironment: 'jest-environment-jsdom',
-}
+  moduleDirectories: ["node_modules", "<rootDir>/"],
+  testEnvironment: "jest-environment-jsdom",
+};
 
 // createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async
-module.exports = createJestConfig(customJestConfig)
+module.exports = createJestConfig(customJestConfig);
 ```
 
 Por último, se incluye material UI como librería frontend
 
 ```bash
-npm install @mui/material @emotion/react @emotion/styled 
+npm install @mui/material @emotion/react @emotion/styled
 ```
 
 ```bash
@@ -105,7 +106,7 @@ npm install @mui/icons-material
 
 ### Favicon
 
-Empieza eligiendo el icono o logotipo que representará a la pagina. Recomiendo https://favicon.io/ para este trabajo. Es rápido, sencillo, y nos provee de todo lo necesario para incluir el icono en la pagina. Cuando termine de crear la marca, descargue el comprimido y su contenido debe moverse a la carpeta `public` del proyecto. 
+Empieza eligiendo el icono o logotipo que representará a la pagina. Recomiendo <https://favicon.io/> para este trabajo. Es rápido, sencillo, y nos provee de todo lo necesario para incluir el icono en la pagina. Cuando termine de crear la marca, descargue el comprimido y su contenido debe moverse a la carpeta `public` del proyecto.
 
 La propia pagina nos otorga los links que debemos pegar en el `Layout/components/Header` para que los iconos sean tomados en cuenta.
 
@@ -113,8 +114,8 @@ La propia pagina nos otorga los links que debemos pegar en el `Layout/components
 
 Con la marca ya elegida, proceda a elegir los colores que serán parte del estilo de la pagina. En la carpeta `src/theme/Theme.tsx` se encuentra el componente a cargo de customizar la paleta de colores, ademas de otras características del estilo. Recomiendo leer los siguientes artículos para saber más.
 
-- https://mui.com/material-ui/customization/theming/
-- https://mui.com/material-ui/customization/color/
+- <https://mui.com/material-ui/customization/theming/>
+- <https://mui.com/material-ui/customization/color/>
 
 ### Mobile
 

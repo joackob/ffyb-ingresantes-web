@@ -47,3 +47,10 @@ workbox*
 
 # bunlock
 bun.lockb
+
+# db
+test.db
+test.db-journal
+*.db
+*.db-journal
+/prisma/migrations/

@@ -1,7 +1,7 @@
 import { Stack } from "@mui/material";
 import React, { ReactNode } from "react";
 
-const GaleriaDeTarjetasParaCadaEspacio = ({
+const GaleriaParaLasTarjetasDeCadaEspacio = ({
   children,
 }: {
   children: ReactNode;
@@ -9,4 +9,4 @@ const GaleriaDeTarjetasParaCadaEspacio = ({
   return <Stack>{children}</Stack>;
 };
 
-export default GaleriaDeTarjetasParaCadaEspacio;
+export default GaleriaParaLasTarjetasDeCadaEspacio;

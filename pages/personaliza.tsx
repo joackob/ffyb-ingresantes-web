@@ -1,5 +1,3 @@
-"use client";
-
 import Personaliza from "@/src/personaliza";
 
 const personaliza = () => {
