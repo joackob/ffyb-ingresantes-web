@@ -24,7 +24,6 @@
     "@next/mdx": "^15.0.2",
     "@prisma/client": "5.21.0",
     "@types/mdx": "^2.0.13",
-    "gray-matter": "^4.0.3",
     "next": "^14.2.9",
     "next-auth": "^4.24.3",
     "next-mdx-remote": "^5.0.0",
