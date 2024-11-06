@@ -17,7 +17,7 @@ const TarjetaParaCadaEspacioDeLaFacultad = ({
     <ContenedorParaLaTarjeta>
       <VideoComplementario
         url={video}
-        titulo={"UBA | Facultad de Farmacia y Bioquimica"}
+        // titulo={"UBA | Facultad de Farmacia y Bioquimica"}
       />
       <CuerpoDeLaTarjeta contenido={description} />
     </ContenedorParaLaTarjeta>
