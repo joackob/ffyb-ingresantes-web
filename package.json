@@ -6,7 +6,7 @@
     "build": "next build",
     "start": "next start",
     "test": "jest",
-    "init": "npx prisma migrate dev --name init && node ./db/utils/inicializar.js"
+    "init": "npx prisma migrate dev --name init && node ./db/utils/inicializar.mjs"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.1.0",
