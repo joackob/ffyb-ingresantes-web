@@ -1,20 +1,24 @@
 import { Box, CardMedia, Stack, Typography } from "@mui/material";
 
+// Definir el tipo de los datos del recurso
 type Recurso = {
   titulo: string;
-  imagen: string;
+  imagen: string; // Imagen como URL
   descripcion: string;
   contacto: string[];
 };
 
+// Componente que muestra cada tarjeta
 const TarjetaParaCadaRecursoUOfertaDisponible = ({
   recurso,
 }: {
-  recurso: Recurso;
+  recurso: Recurso; // Recibe un recurso con todas sus propiedades
 }) => {
-  const { titulo, descripcion, contacto } = recurso;
+  const { titulo, descripcion, contacto, imagen } = recurso; // Extraemos los datos
+
   return (
     <Stack spacing={"8px"}>
+      {/* Aquí usamos la imagen dinámica */}
       <CardMedia
         component="img"
         sx={{
@@ -22,8 +26,8 @@ const TarjetaParaCadaRecursoUOfertaDisponible = ({
           width: "100%",
           objectFit: "cover",
         }}
-        image={"https://via.placeholder.com/150"}
-        alt="Descripción de la imagen"
+        image={imagen} // Usamos la URL de imagen del recurso
+        alt={`Imagen de ${titulo}`} // Descripción accesible de la imagen
       />
       <Typography
         style={{
@@ -46,9 +50,9 @@ const TarjetaParaCadaRecursoUOfertaDisponible = ({
         {descripcion}
       </Typography>
       <Box>
-        {contacto.map((dato) => (
+        {contacto.map((dato, index) => (
           <Typography
-            key={dato}
+            key={index} // Usamos el índice como key
             style={{
               color: "#5DAFD6",
               fontFamily: "Montserrat",
