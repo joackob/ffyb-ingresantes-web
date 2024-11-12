@@ -13,6 +13,7 @@ const index = () => {
             key={video.id}
             video={video.url}
             description={video.descripcion}
+            titulo={video.titulo}
           />
         ))}
       </GaleriaParaLasTarjetasDeCadaEspacio>
