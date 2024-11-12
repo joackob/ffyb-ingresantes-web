@@ -5,7 +5,7 @@ export const videos = [
     id: "1",
     titulo: "UBA | Facultad de Farmacia y Bioquimica | Entrada",
     descripcion:
-      "Lorem ipsum dolor sit amet consectetur adipiscing elit sociosqu odio, cubilia faucibus gravida eros volutpat vulputate quam venenatis platea tempor, in ultricies imperdiet magna morbi nascetur dignissim penatibus. Sed magnis suspendisse penatibus senectus lacus montes tristique dignissim, imperdiet justo tincidunt ut dictum euismod massa rutrum elementum, aptent donec fermentum curae netus purus cras. Quam habitant ac ullamcorper pellentesque eleifend dictumst nam dictum interdum cubilia, venenatis himenaeos dis bibendum convallis diam donec cras nisl commodo, et taciti eget natoque torquent nullam justo at class.",
+      "Lorem ipsum dolor sit amet consectetur adipiscing elit sociosqu odio, cubilia faucibus gravida eros volutpat vulputate quam venenatis platea tempor, in ultricies imperdiet magna morbi nascetur dignissim penatibus. Sed magnis suspendisse penatibus senectus lacus montes tristique dignissim, imperdiet justo tincidunt ut dictum euismod massa rutrum elementum, aptent donec fermentum curae netus purus cras. Quam habitant ac ullamcorper pellent",
     url: "https://www.youtube.com/embed/Sh4ieBwc3BY?feature=share",
   },
 
