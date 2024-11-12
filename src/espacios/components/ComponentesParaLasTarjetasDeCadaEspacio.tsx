@@ -1,4 +1,4 @@
-import { Container, Stack } from "@mui/material";
+import { Container, Stack, Typography } from "@mui/material";
 import { ReactNode } from "react";
 
 export const ContenedorParaLaTarjeta = ({
@@ -7,12 +7,15 @@ export const ContenedorParaLaTarjeta = ({
   children: ReactNode;
 }) => (
   <Container>
-    <Stack direction={"row"}>{children}</Stack>
+    <Stack spacing={"16px"} direction={"column"}>
+      {children}
+    </Stack>
   </Container>
 );
 
 export const CuerpoDeLaTarjeta = ({ contenido }: { contenido: string }) => {
-  return <div>{contenido}</div>;
+  const resumen = contenido.split(" ").slice(0, 16).join(" ").concat("...");
+  return <div>{resumen}</div>;
 };
 
 export const VideoComplementario = ({ url }: { url: string }) => {
@@ -21,11 +24,16 @@ export const VideoComplementario = ({ url }: { url: string }) => {
       width="360"
       height="640"
       src={url}
-      title="Estudia Laboratorio Clínico y Anatomía Patológica💜"
+      title="UBA | Facultad de Farmacia y Bioquimica"
       // frameBorder="0"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
       referrerPolicy="strict-origin-when-cross-origin"
       allowFullScreen
     ></iframe>
   );
+};
+
+export const TituloDelVideo = ({ titulo }: { titulo: string }) => {
+  return <Typography {titulo}> 
+  
 };
