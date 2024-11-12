@@ -878,6 +878,44 @@
           }
         ]
       }
+    },
+    {
+      "nombre": "Tecnicatura Universitaria en Gestión Integral de Bioterio",
+      "cuatrimestres": {
+        "1° cuatrimestre": [
+          { "id": 1, "nombre": "Anatomía" },
+          { "id": 2, "nombre": "Histología" },
+          { "id": 3, "nombre": "Física" },
+          { "id": 4, "nombre": "Informática y Bioestadística" },
+          { "id": 5, "nombre": "Técnica de Bioterio I" }
+        ],
+        "2° cuatrimestre": [
+          { "id": 6, "nombre": "Fisiología" },
+          { "id": 7, "nombre": "Microbiología" },
+          { "id": 8, "nombre": "Parasitología" },
+          { "id": 9, "nombre": "Higiene" },
+          { "id": 10, "nombre": "Genética" },
+          { "id": 11, "nombre": "Técnica de Bioterio II" }
+        ],
+        "3° cuatrimestre": [
+          { "id": 12, "nombre": "Principios de Nutrición" },
+          { "id": 13, "nombre": "Toxicología" },
+          { "id": 14, "nombre": "Legislación y Ética" },
+          { "id": 15, "nombre": "Epidemiología" },
+          { "id": 16, "nombre": "Técnica de Bioterio III" }
+        ],
+        "4° cuatrimestre": [
+          { "id": 17, "nombre": "Farmacología" },
+          { "id": 18, "nombre": "Técnicas de Laboratorio" },
+          { "id": 19, "nombre": "Patología" },
+          { "id": 20, "nombre": "Técnica de Bioterio IV" }
+        ],
+        "5° cuatrimestre": [
+          { "id": 21, "nombre": "Cirugía Experimental" },
+          { "id": 22, "nombre": "Etología" },
+          { "id": 23, "nombre": "Técnica de Bioterio V" }
+        ]
+      }
     }
   ]
 }
