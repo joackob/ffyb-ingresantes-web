@@ -2,23 +2,24 @@ import {
   ContenedorParaLaTarjeta,
   VideoComplementario,
   CuerpoDeLaTarjeta,
+  TituloDelVideo,
 } from "./ComponentesParaLasTarjetasDeCadaEspacio";
 
 type PropiedadesDeCadaEspacioDeLaFacultad = {
   video: string;
   description: string;
+  titulo: string;
 };
 
 const TarjetaParaCadaEspacioDeLaFacultad = ({
   video,
   description,
+  titulo,
 }: PropiedadesDeCadaEspacioDeLaFacultad) => {
   return (
     <ContenedorParaLaTarjeta>
-      <VideoComplementario
-        url={video}
-        // titulo={"UBA | Facultad de Farmacia y Bioquimica"}
-      />
+      <TituloDelVideo titulo={titulo} />
+      <VideoComplementario url={video} />
       <CuerpoDeLaTarjeta contenido={description} />
     </ContenedorParaLaTarjeta>
   );
