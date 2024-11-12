@@ -2,6 +2,7 @@
 /** @type {import('next').NextConfig} */
 import createMDX from "@next/mdx";
 import createPWA from "next-pwa";
+import { hostname } from "os";
 import remarkFrontmatter from "remark-frontmatter";
 import remarkMdxFrontmatter from "remark-mdx-frontmatter";
 
@@ -23,6 +24,10 @@ const config = {
       {
         protocol: "https",
         hostname: "picsum.photos",
+      },
+      {
+        protocol: "https",
+        hostname: "encrypted-tbn0.gstatic.com",
       },
     ],
   },
