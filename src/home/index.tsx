@@ -1,22 +1,27 @@
 import MensajePrincipal from "./components/MensajePrincipal";
 import ContenedorParaLasTarjetas from "./components/ContenedorParaLasTarjetas";
 import TarjetaParaElResumenDeCadaArticulo from "./tarjeta";
+import { MetadatosDeUnArticuloDeTutorias } from "./utils/obtener-metadatos-de-cada-articulo-sobre-tutorias";
 import { articulos } from "./fake";
 
-const index = () => {
+const index = ({
+  metadatos,
+}: {
+  metadatos: MetadatosDeUnArticuloDeTutorias[];
+}) => {
   return (
     <>
       <MensajePrincipal />
       <ContenedorParaLasTarjetas>
-        {articulos.map((articulo) => (
+        {metadatos.map((metadatosDeUnArticulo) => (
           <TarjetaParaElResumenDeCadaArticulo
-            key={articulo.titulo}
-            titulo={articulo.titulo}
-            resumen={articulo.descripcion}
-            enlace={articulo.enlace}
+            key={metadatosDeUnArticulo.titulo}
+            titulo={metadatosDeUnArticulo.titulo}
+            resumen={metadatosDeUnArticulo.descripcion}
+            enlace={`/sobre-tutorias/${metadatosDeUnArticulo.nombre}`}
             imagen={{
-              fuente: articulo.imagen.fuente,
-              descripcion: articulo.imagen.fuente,
+              fuente: metadatosDeUnArticulo.portada,
+              descripcion: metadatosDeUnArticulo.alt,
             }}
           />
         ))}

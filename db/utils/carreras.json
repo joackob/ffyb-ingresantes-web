@@ -1,0 +1,593 @@
+{
+    "carreras": [
+        {
+            "nombre": "farmacia",
+            "cuatrimestres": {
+                "3° cuatrimestre": [
+                    {
+                        "id": 7,
+                        "nombre": "Química General e Inorgánica",
+                        "correlativas": [
+                            "CBC aprobado"
+                        ]
+                    },
+                    {
+                        "id": 8,
+                        "nombre": "Matemática",
+                        "correlativas": [
+                            "CBC aprobado"
+                        ]
+                    },
+                    {
+                        "id": 9,
+                        "nombre": "Anatomía e Histología",
+                        "correlativas": [
+                            "CBC aprobado"
+                        ]
+                    }
+                ],
+                "4° cuatrimestre": [
+                    {
+                        "id": 10,
+                        "nombre": "Física",
+                        "correlativas": [
+                            "TP:8"
+                        ]
+                    },
+                    {
+                        "id": 11,
+                        "nombre": "Biología Celular y Molecular",
+                        "correlativas": [
+                            "TP:9"
+                        ]
+                    },
+                    {
+                        "id": 12,
+                        "nombre": "Química Orgánica I",
+                        "correlativas": [
+                            "TP:7",
+                            "F:7"
+                        ]
+                    }
+                ],
+                "5° cuatrimestre": [
+                    {
+                        "id": 13,
+                        "nombre": "Química Orgánica II",
+                        "correlativas": [
+                            "TP:10/12",
+                            "F:12"
+                        ]
+                    },
+                    {
+                        "id": 14,
+                        "nombre": "Fisiología",
+                        "correlativas": [
+                            "F:9",
+                            "TP:11",
+                            "F:11"
+                        ]
+                    },
+                    {
+                        "id": 15,
+                        "nombre": "Química Analítica",
+                        "correlativas": [
+                            "F:7",
+                            "TP:8",
+                            "F:8"
+                        ]
+                    }
+                ],
+                "6° cuatrimestre": [
+                    {
+                        "id": 16,
+                        "nombre": "Fisicoquímica",
+                        "correlativas": [
+                            "F:7",
+                            "TP:10",
+                            "F:10"
+                        ]
+                    },
+                    {
+                        "id": 17,
+                        "nombre": "Química Analítica Instrumental",
+                        "correlativas": [
+                            "F:10",
+                            "TP:15",
+                            "F:15"
+                        ]
+                    },
+                    {
+                        "id": 18,
+                        "nombre": "Química Biológica",
+                        "correlativas": [
+                            "F:11",
+                            "TP:13",
+                            "F:13"
+                        ]
+                    }
+                ],
+                "7° cuatrimestre": [
+                    {
+                        "id": 19,
+                        "nombre": "Fisiopatología",
+                        "correlativas": [
+                            "TP:14",
+                            "F:14"
+                        ]
+                    },
+                    {
+                        "id": 20,
+                        "nombre": "Microbiología",
+                        "correlativas": [
+                            "TP:18"
+                        ]
+                    },
+                    {
+                        "id": 21,
+                        "nombre": "Farmacobotánica",
+                        "correlativas": [
+                            "F:11"
+                        ]
+                    },
+                    {
+                        "id": 22,
+                        "nombre": "Inmunología",
+                        "correlativas": [
+                            "TP:14/18",
+                            "F:14"
+                        ]
+                    }
+                ],
+                "8° cuatrimestre": [
+                    {
+                        "id": 23,
+                        "nombre": "Farmacología I",
+                        "correlativas": [
+                            "F:14",
+                            "TP:18/19",
+                            "F:18"
+                        ]
+                    },
+                    {
+                        "id": 24,
+                        "nombre": "Farmacognosia",
+                        "correlativas": [
+                            "F:13",
+                            "TP:17/21",
+                            "F:17/21"
+                        ]
+                    },
+                    {
+                        "id": 25,
+                        "nombre": "Nutrición",
+                        "correlativas": [
+                            "F:14/18",
+                            "TP:19",
+                            "F:19"
+                        ]
+                    },
+                    {
+                        "id": 26,
+                        "nombre": "Salud Pública e Higiene ambiental",
+                        "correlativas": [
+                            "TP:15/20",
+                            "F:15"
+                        ]
+                    }
+                ],
+                "9° cuatrimestre": [
+                    {
+                        "id": 27,
+                        "nombre": "Farmacología II",
+                        "correlativas": [
+                            "TP:23",
+                            "F:23"
+                        ]
+                    },
+                    {
+                        "id": 28,
+                        "nombre": "Toxicología",
+                        "correlativas": [
+                            "F:15/18",
+                            "TP:17/23",
+                            "F:17/23"
+                        ]
+                    },
+                    {
+                        "id": 29,
+                        "nombre": "Tecnología Farmacéutica I",
+                        "correlativas": [
+                            "F:16",
+                            "TP:24",
+                            "F:24"
+                        ]
+                    },
+                    {
+                        "id": 30,
+                        "nombre": "Farmacología Clínica",
+                        "correlativas": [
+                            "F:19",
+                            "TP:22/23",
+                            "F:22/23"
+                        ]
+                    },
+                    {
+                        "id": 31,
+                        "nombre": "Farmacología Clínica y Asistencial",
+                        "correlativas": [
+                            "F:19",
+                            "TP:22/23",
+                            "F:22/23"
+                        ]
+                    }
+                ],
+                "10° cuatrimestre": [
+                    {
+                        "id": 32,
+                        "nombre": "Calidad de Medicamentos",
+                        "correlativas": [
+                            "F:17",
+                            "TP:20/29",
+                            "F:29"
+                        ]
+                    },
+                    {
+                        "id": 33,
+                        "nombre": "Bromatología",
+                        "correlativas": [
+                            "TP:20/25",
+                            "F:20"
+                        ]
+                    },
+                    {
+                        "id": 34,
+                        "nombre": "Tecnología Farmacéutica II",
+                        "correlativas": [
+                            "TP:29",
+                            "F:29"
+                        ]
+                    },
+                    {
+                        "id": 35,
+                        "nombre": "Química Medicinal",
+                        "correlativas": [
+                            "TP:24/27",
+                            "F:24/27"
+                        ]
+                    }
+                ],
+                "Materias adicionales": [
+                    {
+                        "id": 39,
+                        "nombre": "Inglés",
+                        "correlativas": []
+                    },
+                    {
+                        "id": 40,
+                        "nombre": "Bioestadística",
+                        "correlativas": [
+                            "TP:8",
+                            "F:8"
+                        ]
+                    },
+                    {
+                        "id": 41,
+                        "nombre": "Legislación Farmacéutica y Derechos Humanos",
+                        "correlativas": []
+                    },
+                    {
+                        "id": 42,
+                        "nombre": "Práctica Profesional Farmacéutica",
+                        "correlativas": []
+                    },
+                    {
+                        "id": 43,
+                        "nombre": "Práctica Social Educativa",
+                        "correlativas": []
+                    }
+                ]
+            }
+        },
+        {
+            "nombre": "Bioquimica",
+            "cuatrimestres": {
+                "3° cuatrimestre": [
+                    {
+                        "id": 7,
+                        "nombre": "Química General e Inorgánica",
+                        "correlativas": [
+                            "CBC aprobado"
+                        ]
+                    },
+                    {
+                        "id": 8,
+                        "nombre": "Matemática",
+                        "correlativas": [
+                            "CBC aprobado"
+                        ]
+                    },
+                    {
+                        "id": 9,
+                        "nombre": "Anatomía e Histología",
+                        "correlativas": [
+                            "CBC aprobado"
+                        ]
+                    }
+                ],
+                "4° cuatrimestre": [
+                    {
+                        "id": 10,
+                        "nombre": "Física",
+                        "correlativas": [
+                            "TP:8"
+                        ]
+                    },
+                    {
+                        "id": 11,
+                        "nombre": "Biología Celular y Molecular",
+                        "correlativas": [
+                            "TP:9"
+                        ]
+                    },
+                    {
+                        "id": 12,
+                        "nombre": "Química Orgánica I",
+                        "correlativas": [
+                            "TP:7",
+                            "F:7"
+                        ]
+                    }
+                ],
+                "5° cuatrimestre": [
+                    {
+                        "id": 13,
+                        "nombre": "Química Orgánica II",
+                        "correlativas": [
+                            "TP:10/12",
+                            "F:12"
+                        ]
+                    },
+                    {
+                        "id": 14,
+                        "nombre": "Fisiología",
+                        "correlativas": [
+                            "F:9",
+                            "TP:11",
+                            "F:11"
+                        ]
+                    },
+                    {
+                        "id": 15,
+                        "nombre": "Química Analítica",
+                        "correlativas": [
+                            "F:7",
+                            "TP:8",
+                            "F:8"
+                        ]
+                    }
+                ],
+                "6° cuatrimestre": [
+                    {
+                        "id": 16,
+                        "nombre": "Fisicoquímica",
+                        "correlativas": [
+                            "F:7",
+                            "TP:10",
+                            "F:10"
+                        ]
+                    },
+                    {
+                        "id": 17,
+                        "nombre": "Química Analítica Instrumental",
+                        "correlativas": [
+                            "F:10",
+                            "TP:15",
+                            "F:15"
+                        ]
+                    },
+                    {
+                        "id": 18,
+                        "nombre": "Química Biológica",
+                        "correlativas": [
+                            "F:11",
+                            "TP:13",
+                            "F:13"
+                        ]
+                    }
+                ],
+                "7° cuatrimestre": [
+                    {
+                        "id": 19,
+                        "nombre": "Fisiopatología",
+                        "correlativas": [
+                            "TP:14",
+                            "F:14"
+                        ]
+                    },
+                    {
+                        "id": 20,
+                        "nombre": "Microbiología",
+                        "correlativas": [
+                            "TP:18"
+                        ]
+                    },
+                    {
+                        "id": 21,
+                        "nombre": "Química Biológica Superior",
+                        "correlativas": [
+                            "TP:16/17/18",
+                            "F:16/18"
+                        ]
+                    },
+                    {
+                        "id": 22,
+                        "nombre": "Genética Molecular",
+                        "correlativas": [
+                            "TP:18"
+                        ]
+                    }
+                ],
+                "8° cuatrimestre": [
+                    {
+                        "id": 23,
+                        "nombre": "Inmunología",
+                        "correlativas": [
+                            "F:14",
+                            "TP:20",
+                            "F:18"
+                        ]
+                    },
+                    {
+                        "id": 24,
+                        "nombre": "Farmacología",
+                        "correlativas": [
+                            "F:14",
+                            "TP:18/19",
+                            "F:18"
+                        ]
+                    },
+                    {
+                        "id": 25,
+                        "nombre": "Biotecnología",
+                        "correlativas": [
+                            "TP:20/22",
+                            "F:20/22"
+                        ]
+                    },
+                    {
+                        "id": 26,
+                        "nombre": "Virología",
+                        "correlativas": [
+                            "TP:20/22",
+                            "F:20/22"
+                        ]
+                    },
+                    {
+                        "id": 27,
+                        "nombre": "Nutrición",
+                        "correlativas": [
+                            "F:14/18",
+                            "TP:19",
+                            "F:19"
+                        ]
+                    }
+                ],
+                "9° cuatrimestre": [
+                    {
+                        "id": 28,
+                        "nombre": "Microbiología Clínica",
+                        "correlativas": [
+                            "TP:19/23/26",
+                            "F:19/20/23"
+                        ]
+                    },
+                    {
+                        "id": 29,
+                        "nombre": "Bioquímica Clínica I",
+                        "correlativas": [
+                            "F:18",
+                            "TP:19/21/23",
+                            "F:19/23"
+                        ]
+                    },
+                    {
+                        "id": 30,
+                        "nombre": "Práct. Prof. Bioquímica Interna I",
+                        "correlativas": []
+                    }
+                ],
+                "10° cuatrimestre": [
+                    {
+                        "id": 31,
+                        "nombre": "Toxicología y Química Legal",
+                        "correlativas": [
+                            "F:15/18",
+                            "TP:17/24",
+                            "F:17/24"
+                        ]
+                    },
+                    {
+                        "id": 32,
+                        "nombre": "Bromatología",
+                        "correlativas": [
+                            "TP:20/27",
+                            "F:20"
+                        ]
+                    },
+                    {
+                        "id": 33,
+                        "nombre": "Bioquímica de Metabolopatías",
+                        "correlativas": [
+                            "TP:18/19",
+                            "F:18/19"
+                        ]
+                    },
+                    {
+                        "id": 34,
+                        "nombre": "Genética Forense",
+                        "correlativas": [
+                            "TP:22",
+                            "F:22"
+                        ]
+                    },
+                    {
+                        "id": 35,
+                        "nombre": "Bioquímica Clínica II",
+                        "correlativas": [
+                            "F:19",
+                            "TP:29",
+                            "F:21"
+                        ]
+                    },
+                    {
+                        "id": 30,
+                        "nombre": "Práct. Prof. Bioquímica Interna II",
+                        "correlativas": []
+                    }
+                ],
+                "11° cuatrimestre": [
+                    {
+                        "id": 36,
+                        "nombre": "Práct. Prof. Bioquímica Externa",
+                        "correlativas": [
+                            "TP:30"
+                        ]
+                    }
+                ],
+                "Materias adicionales": [
+                    {
+                        "id": 43,
+                        "nombre": "Inglés",
+                        "correlativas": []
+                    },
+                    {
+                        "id": 44,
+                        "nombre": "Bioestadística",
+                        "correlativas": [
+                            "TP:8",
+                            "F:8"
+                        ]
+                    },
+                    {
+                        "id": 45,
+                        "nombre": "Leg. Bioquímica y DD.HH.",
+                        "correlativas": []
+                    },
+                    {
+                        "id": 46,
+                        "nombre": "Salud Pública",
+                        "correlativas": [
+                            "TP:20"
+                        ]
+                    },
+                    {
+                        "id": 47,
+                        "nombre": "Práctica Social Educativa",
+                        "correlativas": []
+                    }
+                ]
+            }
+        }
+    ]
+}
