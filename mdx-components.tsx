@@ -33,5 +33,6 @@ export const customComponents: MDXComponents = {
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     ...components,
+    ...customComponents,
   };
 }

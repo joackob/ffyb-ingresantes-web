@@ -34,6 +34,5 @@ export const VideoComplementario = ({ url }: { url: string }) => {
 };
 
 export const TituloDelVideo = ({ titulo }: { titulo: string }) => {
-  return <Typography {titulo}> 
-  
+  return <Typography>{titulo}</Typography>;
 };

@@ -1,19 +1,19 @@
 const links = [
   {
     label: `Recursos <br/> y ofertas`,
-    url: "/recursos",
+    url: "/recursos-y-ofertas",
   },
   {
     label: "Aulas y espacios <br/> de la facultad",
-    url: "/espacios",
+    url: "/espacios-de-la-facultad",
   },
   {
     label: "Tu plan <br/> de estudios",
-    url: "/personaliza",
+    url: "/estudiantes/personaliza-tu-carrera",
   },
   {
     label: "Iniciar <br/> sesión",
-    url: "/login",
+    url: "/estudiantes/inicio-de-sesion",
   },
 ];
 
