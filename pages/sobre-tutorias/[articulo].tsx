@@ -2,10 +2,15 @@ import { obtenerContenidoDeUnDeterminadoArticuloSobreTutorias } from "@/src/home
 import { intentarObtenerMetadatosDeCadaArticuloSobreTutorias } from "@/src/home/utils/obtener-metadatos-de-cada-articulo-sobre-tutorias";
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
 import { MDXRemote } from "next-mdx-remote";
-import { customComponents, useMDXComponents } from "@/mdx-components";
+import { customComponents } from "@/mdx-components";
+import { Container } from "@mui/material";
 
 const Page = ({ contenido }: ContenidoDeCadaArticulo) => {
-  return <MDXRemote {...contenido} components={customComponents} />;
+  return (
+    <Container>
+      <MDXRemote {...contenido} components={customComponents} />
+    </Container>
+  );
 };
 
 export const getStaticPaths = (async () => {
