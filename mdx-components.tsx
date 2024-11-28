@@ -15,7 +15,6 @@ export const customComponents: MDXComponents = {
         paddingLeft: "20px", // Agrega relleno en el lado izquierdo
         //paddingRight: "15px", // Agrega relleno en el lado derecho
         //backgroundColor: "#e7f5ec", // Cambia el color de fondo
-        
       }}
     >
       {children}
@@ -33,7 +32,6 @@ export const customComponents: MDXComponents = {
         marginBottom: "20px", // Agrega margen inferior
         paddingLeft: "20px", // Agrega relleno en el lado izquierdo
         //paddingRight: "15px", // Agrega relleno en el lado derecho
-        
       }}
     >
       {children}
@@ -49,10 +47,9 @@ export const customComponents: MDXComponents = {
         fontWeight: "ExtraBold",
         fontSize: "16px",
         marginTop: "50px", // Agrega margen superior
-        marginBottom: "20px", // Agrega margen inferior
+        marginBottom: "50px", // Agrega margen inferior
         paddingLeft: "20px", // Agrega relleno en el lado izquierdo
         //paddingRight: "15px", // Agrega relleno en el lado derecho
-        
       }}
     >
       {children}
@@ -71,7 +68,6 @@ export const customComponents: MDXComponents = {
         paddingRight: "50px", // Agrega relleno en el lado derecho
         //textAlign: "center", // Centra el texto
         marginBottom: "20px", //MODIFICAR ESTA PARTE PARA LA PARTE DE ABAJO.
-
       }}
     >
       {children}
@@ -91,13 +87,11 @@ export const customComponents: MDXComponents = {
         paddingRight: "50px", // Agrega relleno en el lado derecho
         //textAlign: "center", // Centra el texto
         marginBottom: "50px", //MODIFICAR ESTA PARTE PARA LA PARTE DE ABAJO.
-
       }}
     >
       {children}
     </Typography>
   ),
-  
 };
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
