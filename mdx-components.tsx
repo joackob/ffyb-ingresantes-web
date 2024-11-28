@@ -12,9 +12,9 @@ export const customComponents: MDXComponents = {
         fontSize: "16px",
         marginTop: "50px", // Agrega margen superior
         marginBottom: "20px", // Agrega margen inferior
-        paddingLeft: "50px", // Agrega relleno en el lado izquierdo
+        paddingLeft: "20px", // Agrega relleno en el lado izquierdo
         //paddingRight: "15px", // Agrega relleno en el lado derecho
-        backgroundColor: "#e7f5ec", // Cambia el color de fondo
+        //backgroundColor: "#e7f5ec", // Cambia el color de fondo
         
       }}
     >
@@ -31,7 +31,7 @@ export const customComponents: MDXComponents = {
         fontSize: "16px",
         marginTop: "50px", // Agrega margen superior
         marginBottom: "20px", // Agrega margen inferior
-        paddingLeft: "50px", // Agrega relleno en el lado izquierdo
+        paddingLeft: "20px", // Agrega relleno en el lado izquierdo
         //paddingRight: "15px", // Agrega relleno en el lado derecho
         
       }}
@@ -40,7 +40,7 @@ export const customComponents: MDXComponents = {
     </Typography>
   ),
 
-  h5: ({ children }) => (
+  h4: ({ children }) => (
     <Typography
       component={"h5"}
       sx={{
@@ -50,7 +50,7 @@ export const customComponents: MDXComponents = {
         fontSize: "16px",
         marginTop: "50px", // Agrega margen superior
         marginBottom: "20px", // Agrega margen inferior
-        paddingLeft: "50px", // Agrega relleno en el lado izquierdo
+        paddingLeft: "20px", // Agrega relleno en el lado izquierdo
         //paddingRight: "15px", // Agrega relleno en el lado derecho
         
       }}
@@ -70,7 +70,7 @@ export const customComponents: MDXComponents = {
         paddingLeft: "50px", // Agrega relleno en el lado izquierdo
         paddingRight: "50px", // Agrega relleno en el lado derecho
         //textAlign: "center", // Centra el texto
-        marginBottom: "50px",
+        marginBottom: "20px", //MODIFICAR ESTA PARTE PARA LA PARTE DE ABAJO.
 
       }}
     >
@@ -78,7 +78,25 @@ export const customComponents: MDXComponents = {
     </Typography>
   ),
 
-//PREGUNTAR A FEDE SOBRE ESTO :    marginBottom: "20px", EN LA PARTE DE ABAJO
+  h5: ({ children }) => (
+    <Typography
+      component={"h6"}
+      sx={{
+        color: "#7C7C7C",
+        fontFamily: "Montserrat",
+        fontWeight: "Regular",
+        fontSize: "16px",
+        marginTop: "20px", // Agrega margen superior
+        paddingLeft: "50px", // Agrega relleno en el lado izquierdo
+        paddingRight: "50px", // Agrega relleno en el lado derecho
+        //textAlign: "center", // Centra el texto
+        marginBottom: "50px", //MODIFICAR ESTA PARTE PARA LA PARTE DE ABAJO.
+
+      }}
+    >
+      {children}
+    </Typography>
+  ),
   
 };
 
