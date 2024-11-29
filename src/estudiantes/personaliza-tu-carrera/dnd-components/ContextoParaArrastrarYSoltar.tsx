@@ -1,5 +1,13 @@
 "use client";
-import { DndContext, closestCorners } from "@dnd-kit/core";
+import {
+  DndContext,
+  KeyboardSensor,
+  MouseSensor,
+  TouchSensor,
+  closestCorners,
+  useSensor,
+  useSensors,
+} from "@dnd-kit/core";
 import { ReactNode } from "react";
 
 type AlDetectarUnElementoSiendoArrastrado = ({
@@ -35,6 +43,11 @@ const ContextoParaArrastrarYDepositar = ({
   alDetectarUnElementoSiendoDepositado: AlDetectarUnElementoSiendoDepositado;
   alDetectarUnElementoPosandoseSobreOtro: AlDetectarUnElementoPosandoseSobreOtro;
 }) => {
+  const mouse = useSensor(MouseSensor);
+  const touch = useSensor(TouchSensor);
+  const teclado = useSensor(KeyboardSensor);
+  const sensores = useSensors(mouse, touch, teclado);
+
   return (
     <DndContext
       onDragStart={(event) => {
@@ -61,6 +74,7 @@ const ContextoParaArrastrarYDepositar = ({
         });
       }}
       collisionDetection={closestCorners}
+      sensors={sensores}
     >
       {children}
     </DndContext>

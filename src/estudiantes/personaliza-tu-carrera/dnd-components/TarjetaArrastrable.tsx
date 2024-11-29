@@ -1,10 +1,8 @@
 "use client";
-import { Box, Typography } from "@mui/material";
-import { useDraggable } from "@dnd-kit/core";
+import { Box } from "@mui/material";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 import React, { ReactNode } from "react";
-import { Materia } from "../fake";
 
 const ElementoArrastrable = ({
   id,
