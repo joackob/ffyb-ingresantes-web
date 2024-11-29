@@ -7,7 +7,7 @@ import { Container } from "@mui/material";
 
 const Page = ({ contenido }: ContenidoDeCadaArticulo) => {
   return (
-    <Container>
+    <Container maxWidth={"md"} >
       <MDXRemote {...contenido} components={customComponents} />
     </Container>
   );
