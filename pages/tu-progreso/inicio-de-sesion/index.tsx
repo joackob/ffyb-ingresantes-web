@@ -1,4 +1,4 @@
-import Login from "@/src/estudiantes/inicio-de-sesion";
+import Login from "@/src/tu-progreso/inicio-de-sesion";
 
 const page = () => {
   return <Login />;

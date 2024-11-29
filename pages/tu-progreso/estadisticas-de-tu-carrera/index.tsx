@@ -1,4 +1,4 @@
-import Estadisticas from "@/src/estudiantes/estadisticas-de-tu-carrera";
+import Estadisticas from "@/src/tu-progreso/estadisticas-de-tu-carrera";
 
 const page = () => {
   return <Estadisticas />;

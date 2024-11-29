@@ -1,4 +1,4 @@
-import Personaliza from "@/src/estudiantes/personaliza-tu-carrera";
+import Personaliza from "@/src/tu-progreso/personaliza-tu-carrera";
 
 const page = () => {
   return <Personaliza />;
