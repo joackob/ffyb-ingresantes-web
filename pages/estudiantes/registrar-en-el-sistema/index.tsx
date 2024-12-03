@@ -18,8 +18,8 @@ const registro = () => {
 
   const onSubmit = handleSubmit(data => {
     //hacer aca para mandar los datods
-    fetch('/api/auth') 
-      method
+    //fetch('/api/auth') 
+    //  method
     //console.log(data)
    })
 
