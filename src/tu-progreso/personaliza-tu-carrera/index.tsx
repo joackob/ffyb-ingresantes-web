@@ -22,7 +22,7 @@ const Personaliza = () => {
   useEffect(() => {
     fetch("/api/carreras")
       .then((data) => data.json())
-      .then((response) => setCarreras(response.carreras));
+      .then((response) => console.log(response.carreras)); //setCarreras
   }, []);
 
   return (

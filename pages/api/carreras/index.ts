@@ -3,7 +3,7 @@ import { intentarBrindarInformacionPorDefectoDeLasCarreras } from "@/src/api/car
 
 const route = async (
   req: NextApiRequest,
-  res: NextApiResponse,
+  res: NextApiResponse
 ): Promise<void> => {
   switch (req.method) {
     case "GET":
