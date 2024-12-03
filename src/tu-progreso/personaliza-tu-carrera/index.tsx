@@ -11,14 +11,37 @@ import TarjetaDondeDepositar from "./dnd-components/TarjetaDondeDepositar";
 import TarjetaArrastrable from "./dnd-components/TarjetaArrastrable";
 import TarjetaParaCubrirArrastre from "./dnd-components/TarjetaParaCubrirArrastre";
 import { ChipCursada } from "./components/ChipCursada";
+import { useEffect, useState } from "react";
+import { Container } from "@mui/material";
 
 const Personaliza = () => {
   const plan = usePlanPersonalizable();
   const materia = useMateriaSeleccionable();
+  const [carreras, setCarreras] = useState([]);
+
+  useEffect(() => {
+    fetch("/api/carreras")
+      .then((data) => data.json())
+      .then((response) => console.log(response.carreras)); //setCarreras
+  }, []);
 
   return (
     <ImagenDeFondo>
-      <TituloCarrera carrera={"Farmacia"} />
+      <Container
+        sx={{
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
+        <TituloCarrera carrera={"Farmacia"} />
+        <select style={{ marginLeft: "10px", padding: "5px" }}>
+          {carreras.map((carrera, index) => (
+            <option key={index} value={carrera.nombre}>
+              {carrera.nombre}
+            </option>
+          ))}
+        </select>
+      </Container>
       <TableroParaCuatrimestres>
         <ContextoParaArrastrarYDepositar
           alDetectarUnElementoSiendoArrastrado={({ idElementoArrastrado }) =>
