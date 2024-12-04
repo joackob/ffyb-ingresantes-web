@@ -1,6 +1,7 @@
 //modificar
-"use client"
+"use client";
 import { useForm } from "react-hook-form";
+//import { useRouter } from "next/navigation";
 
 import {
   Box,
@@ -11,17 +12,35 @@ import {
   Stack,
 } from "@mui/material";
 
-
-
 const registro = () => {
-  const { register, handleSubmit, formState: {errors} } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-  const onSubmit = handleSubmit(data => {
-    //hacer aca para mandar los datods
-    //fetch('/api/auth') 
-    //  method
-    //console.log(data)
-   })
+  const onSubmit = handleSubmit(async (data) => {
+    try {
+      if (data.contrasena !== data.confimar_contrasena) {
+        return alert("Passwords do not match");
+      }
+
+      const res = await fetch("http://localhost:3002/api/auth/registrar", {
+        method: "POST",
+        body: JSON.stringify({
+          nombre: data.nombre,
+          apellido: data.apellido,
+          email: data.email,
+          contrasena: data.contrasena,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  });
 
   return (
     <Box
@@ -33,7 +52,6 @@ const registro = () => {
         backgroundColor: "#fff7",
       }}
     >
-
       <Stack spacing={"20px"}>
         <Typography
           component={"h6"}
@@ -50,12 +68,11 @@ const registro = () => {
           <TextField
             fullWidth
             label="Nombre"
-            id="Nombre"
-            {...register("nombre", { required: true, })}
+            id="nombre"
+            {...register("nombre", { required: true })}
             required
             type={"text"}
             variant="filled"
-
           />
           {errors.Nombre && (
             <span className="text-red-500 text-xs">
@@ -67,8 +84,8 @@ const registro = () => {
           <TextField
             fullWidth
             label="Apellido"
-            id="Apellido"
-            {...register("apellido", { required: true, })}
+            id="apellido"
+            {...register("apellido", { required: true })}
             required
             type={"text"}
             variant="filled"
@@ -79,8 +96,8 @@ const registro = () => {
           <TextField
             fullWidth
             label="Email"
-            id="Email"
-            {...register("Email", { required: true, })}
+            id="email"
+            {...register("email", { required: true })}
             required
             type={"text"}
             variant="filled"
@@ -91,8 +108,8 @@ const registro = () => {
           <TextField
             fullWidth
             label="Contraseña"
-            id="contraseña"
-            {...register("contraseña", { required: true, })}
+            id="contrasena"
+            {...register("contrasena", { required: true })}
             required
             type={"password"}
             variant="filled"
@@ -102,8 +119,8 @@ const registro = () => {
           <TextField
             fullWidth
             label="Confimar Contraseña"
-            id="Confimar Contraseña"
-            {...register("confirmar contrase", { required: true, })}
+            id="confimar_contrasena"
+            {...register("confimar_contrasena", { required: true })}
             required
             type={"password"}
             variant="filled"
@@ -116,6 +133,7 @@ const registro = () => {
             color: "white",
             backgroundColor: "#3498DB",
           }}
+          type="submit"
         >
           Continuar
         </Button>
