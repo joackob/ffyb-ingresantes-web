@@ -1,3 +1,9 @@
+"use client";
+import { useForm } from "react-hook-form";
+import { signIn } from "next-auth/react"; //AGREGAR quizas
+import { useRouter } from "next/navigation"; //AGREGAR quizas
+import { useState } from "react"; //AGREGAR quizas
+
 import {
   Box,
   Typography,
@@ -8,8 +14,69 @@ import {
 } from "@mui/material";
 
 const FormularioLogin = () => {
+  //
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  //const router = useRouter(); // AGREGAR quizas
+  //const [error, setError] = useState(null); //AGRAGAR quizas
+
+  const onSubmit = handleSubmit(
+    async (data) => {
+      // try {
+      //   if (data.contrasena !== data.confimar_contrasena) {
+      //     return alert("Passwords do not match");
+      //   }
+      //
+      //
+      // NO SE SI LA RUTA DE [...nexauth] ESTA BIEN, PREGUNTAR
+      const res = await fetch("http://localhost:3001/api/auth/[...nextauth]", {
+        method: "POST",
+        body: JSON.stringify({
+          //nombre: data.nombre,
+          //apellido: data.apellido,
+          email: data.email,
+          contrasena: data.contrasena,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      // catch (error) {
+      // console.error(error);
+    }
+    //  }
+  );
+
+  // PREGUNTAR SI HAY QUE AGRGAR ESTO, O NO ES NECESARIO.
+  /*
+const onSubmit = handleSubmit(async (data) => {
+  console.log(data);
+
+  const res = await signIn("credentials", {
+    email: data.email,
+    password: data.password,
+    redirect: false,
+  });
+
+  console.log(res)
+  if (res.error) {
+    setError(res.error)
+  } else {
+    router.push('/dashboard')
+    router.refresh()
+  }
+});
+
+*/
+
+  //
   return (
     <Box
+      component={"form"}
+      onSubmit={onSubmit}
       sx={{
         padding: "15px",
         borderRadius: "8px",
@@ -32,6 +99,7 @@ const FormularioLogin = () => {
             fullWidth
             label="Usuario"
             id="usuario"
+            {...register("usuario", { required: true })}
             required
             type={"text"}
             variant="filled"
@@ -42,7 +110,8 @@ const FormularioLogin = () => {
           <TextField
             fullWidth
             label="Contraseña"
-            id="contraseña"
+            id="contrasena"
+            {...register("contrasena", { required: true })}
             required
             type={"password"}
             variant="filled"

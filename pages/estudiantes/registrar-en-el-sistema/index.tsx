@@ -25,7 +25,7 @@ const registro = () => {
         return alert("Passwords do not match");
       }
 
-      const res = await fetch("http://localhost:3002/api/auth/registrar", {
+      const res = await fetch("http://localhost:3001/api/auth/registrar", {
         method: "POST",
         body: JSON.stringify({
           nombre: data.nombre,
