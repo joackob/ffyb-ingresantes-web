@@ -1,41 +1,72 @@
 import { NextApiRequest, NextApiResponse } from "next";
+import { brindarInformacionPorDefectoDeLasCarreras } from "@/src/api/carreras/intentar-brindar-informacion-por-defecto-de-las-carreras";
+import path from "path";
+import fs from "fs/promises";
 
-const route = async (req: NextApiRequest, res: NextApiResponse) => {
-  const carrera = req.query.carrera;
+const route = async (consulta: NextApiRequest, respuesta: NextApiResponse) => {
+  const carrera = consulta.query.carrera;
+  const direccionDeLosDatosConInformacionSobreLasCarreras = path.join(
+    process.cwd(),
+    "src/api/carreras/data",
+    "carreras.json"
+  );
+  const informacionEnCrudoDeLasCarreras = await fs.readFile(
+    direccionDeLosDatosConInformacionSobreLasCarreras,
+    { encoding: "utf-8" }
+  );
+  const informacionDeLasCarreras = JSON.parse(informacionEnCrudoDeLasCarreras);
+
+  const carreras = informacionDeLasCarreras["carreras"];
+
+  const encontrarCarrera = (carreraABuscar: string) => {
+    return (carreras as Array<{ nombre: string }>).find(
+      (carrera) => carrera.nombre === carreraABuscar
+    );
+  };
+
+  console.log(carreras);
   switch (carrera) {
     case "farmacia": {
-      console.log("Farmacia");
+      return respuesta.json(encontrarCarrera("farmacia"));
       break;
     }
     case "bioquimica": {
-      console.log("Bioquimica");
+      return respuesta.json(encontrarCarrera("Bioquimica"));
       break;
     }
     case "tecnico-universitario-en-medicina-nuclear": {
-      console.log("Técnico Universitario en Medicina Nuclear");
+      return respuesta.json(
+        encontrarCarrera("Técnico Universitario en Medicina Nuclear")
+      );
       break;
     }
     case "tecnico-universitario-en-optica-y-contactologia": {
-      console.log("Técnico Universitario en Óptica y Contactología");
+      return respuesta.json(
+        encontrarCarrera("Técnico Universitario en Óptica y Contactología")
+      );
       break;
     }
     case "licenciatura-en-ciencia-y-tecnologia-de-alimentos": {
-      console.log("Licenciatura en Ciencia y Tecnología de Alimentos");
+      return respuesta.json(
+        encontrarCarrera("Licenciatura en Ciencia y Tecnología de Alimentos")
+      );
       break;
     }
     case "tecnicatura-universitaria-en-gestion-integral-de-bioterio": {
-      console.log("Tecnicatura Universitaria en Gestión Integral de Bioterio");
+      return respuesta.json(
+        encontrarCarrera(
+          "Tecnicatura Universitaria en Gestión Integral de Bioterio"
+        )
+      );
       break;
     }
     default: {
-      console.log("Carrera invalida");
+      return respuesta.status(404).json({ message: `Carrera invalida` });
       break;
     }
   }
 
-  return res
-    .status(404)
-    .json({ message: `Hello from /api/carreras/${carrera}` });
+  return respuesta.status(200);
 };
 
 export default route;
