@@ -35,14 +35,6 @@ const route = async (
           nombre: "Pedro Sánchez",
           correo: "pedro.sanchez@gmail.com",
         },
-        {
-          nombre: "Laura Fernández",
-          correo: "laura.fernandez@gmail.com",
-        },
-        {
-          nombre: "Natalia Mamani",
-          correo: "natalia.mamani@gmail.com",
-        },
       ],
     });
   }
