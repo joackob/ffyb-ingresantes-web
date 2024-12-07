@@ -3,7 +3,7 @@ import { obtenerMetadatosDeCadaArticulo } from "./obtener-metadatos-de-cada-arti
 
 export const intentarObtenerMetadatosDeCadaArticuloSobreTutorias =
   async (): Promise<MetadatosDeUnArticuloDeTutorias[]> => {
-    const carpeta = "/src/home/articulos";
+    const carpeta = "/src/sobre-tutorias/articulos";
     const metadatos = await obtenerMetadatosDeCadaArticulo(carpeta);
     return validarLosMetadatosDeCadaArticuloSobreTutorias(metadatos);
   };

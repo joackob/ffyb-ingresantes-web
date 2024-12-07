@@ -1,11 +1,17 @@
 import { Box, Container, Stack, Typography } from "@mui/material";
 
-const Banner = ({ titulo }: { titulo: string }) => {
+const Banner = ({
+  titulo,
+  imagen = "https://picsum.photos/1200/800",
+}: {
+  titulo: string;
+  imagen?: string;
+}) => {
   return (
     <Box
       style={{
         height: "112px",
-        backgroundImage: "url(https://picsum.photos/1200/800)",
+        backgroundImage: `url(${imagen})`,
         backgroundSize: "cover",
       }}
     >

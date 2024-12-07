@@ -17,7 +17,7 @@ import { Container } from "@mui/material";
 const Personaliza = () => {
   const plan = usePlanPersonalizable();
   const materia = useMateriaSeleccionable();
-  const [carreras, setCarreras] = useState([]);
+  const [carreras, setCarreras] = useState<{ nombre: string }[]>([]);
 
   useEffect(() => {
     fetch("/api/carreras")

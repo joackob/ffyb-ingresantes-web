@@ -2,7 +2,6 @@ import MensajePrincipal from "./components/MensajePrincipal";
 import ContenedorParaLasTarjetas from "./components/ContenedorParaLasTarjetas";
 import TarjetaParaElResumenDeCadaArticulo from "./tarjeta";
 import { MetadatosDeUnArticuloDeTutorias } from "./utils/obtener-metadatos-de-cada-articulo-sobre-tutorias";
-import { articulos } from "./fake";
 
 const index = ({
   metadatos,

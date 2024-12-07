@@ -1,5 +1,5 @@
-import { obtenerContenidoDeUnDeterminadoArticuloSobreTutorias } from "@/src/home/utils/obtener-contenido-de-un-determinado-articulo-sobre-tutorias";
-import { intentarObtenerMetadatosDeCadaArticuloSobreTutorias } from "@/src/home/utils/obtener-metadatos-de-cada-articulo-sobre-tutorias";
+import { obtenerContenidoDeUnDeterminadoArticuloSobreTutorias } from "@/src/sobre-tutorias/utils/obtener-contenido-de-un-determinado-articulo-sobre-tutorias";
+import { intentarObtenerMetadatosDeCadaArticuloSobreTutorias } from "@/src/sobre-tutorias/utils/obtener-metadatos-de-cada-articulo-sobre-tutorias";
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
 import { MDXRemote } from "next-mdx-remote";
 import { customComponents } from "@/mdx-components";
@@ -7,7 +7,10 @@ import { Container } from "@mui/material";
 
 const Page = ({ contenido }: ContenidoDeCadaArticulo) => {
   return (
-    <Container maxWidth={"md"} >
+    <Container
+      maxWidth={"md"}
+      style={{ marginTop: "2rem", marginBottom: "2rem" }}
+    >
       <MDXRemote {...contenido} components={customComponents} />
     </Container>
   );

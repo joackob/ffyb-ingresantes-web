@@ -1,4 +1,11 @@
-import { Typography } from "@mui/material";
+import { Circle } from "@mui/icons-material";
+import {
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Typography,
+} from "@mui/material";
 import type { MDXComponents } from "mdx/types";
 
 export const customComponents: MDXComponents = {
@@ -8,11 +15,11 @@ export const customComponents: MDXComponents = {
       sx={{
         color: "#011344",
         fontFamily: "Montserrat",
-        fontWeight: "ExtraBold",
+        fontWeight: 800,
         fontSize: "16px",
-        marginTop: "50px", // Agrega margen superior
-        marginBottom: "20px", // Agrega margen inferior
-        paddingLeft: "20px", // Agrega relleno en el lado izquierdo
+        marginTop: "1rem", // Agrega margen superior
+        marginBottom: "1rem", // Agrega margen inferior
+        // paddingLeft: "20px", // Agrega relleno en el lado izquierdo
         //paddingRight: "15px", // Agrega relleno en el lado derecho
         //backgroundColor: "#e7f5ec", // Cambia el color de fondo
       }}
@@ -26,11 +33,11 @@ export const customComponents: MDXComponents = {
       sx={{
         color: "#7C7C7C",
         fontFamily: "Montserrat",
-        fontWeight: "ExtraBold",
+        fontWeight: 800,
         fontSize: "16px",
-        marginTop: "50px", // Agrega margen superior
-        marginBottom: "20px", // Agrega margen inferior
-        paddingLeft: "20px", // Agrega relleno en el lado izquierdo
+        marginTop: "1rem", // Agrega margen superior
+        marginBottom: "1rem", // Agrega margen inferior
+        // paddingLeft: "20px", // Agrega relleno en el lado izquierdo
         //paddingRight: "15px", // Agrega relleno en el lado derecho
       }}
     >
@@ -44,11 +51,11 @@ export const customComponents: MDXComponents = {
       sx={{
         color: "#7C7C7C",
         fontFamily: "Montserrat",
-        fontWeight: "ExtraBold",
+        fontWeight: 800,
         fontSize: "16px",
-        marginTop: "50px", // Agrega margen superior
-        marginBottom: "50px", // Agrega margen inferior
-        paddingLeft: "20px", // Agrega relleno en el lado izquierdo
+        marginTop: "1rem", // Agrega margen superior
+        marginBottom: "1rem", // Agrega margen inferior
+        // paddingLeft: "20px", // Agrega relleno en el lado izquierdo
         //paddingRight: "15px", // Agrega relleno en el lado derecho
       }}
     >
@@ -63,11 +70,10 @@ export const customComponents: MDXComponents = {
         fontFamily: "Montserrat",
         fontWeight: "Regular",
         fontSize: "16px",
-        marginTop: "20px", // Agrega margen superior
-        paddingLeft: "50px", // Agrega relleno en el lado izquierdo
-        paddingRight: "50px", // Agrega relleno en el lado derecho
-        //textAlign: "center", // Centra el texto
-        marginBottom: "20px", //MODIFICAR ESTA PARTE PARA LA PARTE DE ABAJO.
+        // marginTop: "20px", // Agrega margen superior
+        // paddingLeft: "50px", // Agrega relleno en el lado izquierdo
+        // paddingRight: "50px", // Agrega relleno en el lado derecho
+        // marginBottom: "20px", //MODIFICAR ESTA PARTE PARA LA PARTE DE ABAJO.
       }}
     >
       {children}
@@ -80,18 +86,29 @@ export const customComponents: MDXComponents = {
       sx={{
         color: "#7C7C7C",
         fontFamily: "Montserrat",
-        fontWeight: "Regular",
         fontSize: "16px",
-        marginTop: "20px", // Agrega margen superior
-        paddingLeft: "50px", // Agrega relleno en el lado izquierdo
-        paddingRight: "50px", // Agrega relleno en el lado derecho
-        //textAlign: "center", // Centra el texto
-        marginBottom: "50px", //MODIFICAR ESTA PARTE PARA LA PARTE DE ABAJO.
+        marginTop: "1rem", // Agrega margen superior
+        marginBottom: "1rem", //MODIFICAR ESTA PARTE PARA LA PARTE DE ABAJO.
       }}
     >
       {children}
     </Typography>
   ),
+
+  li: ({ children }) => (
+    <ListItem
+      sx={{
+        color: "#7C7C7C",
+        fontFamily: "Montserrat",
+        fontWeight: "Regular",
+        fontSize: "16px",
+      }}
+    >
+      {children}
+    </ListItem>
+  ),
+
+  ul: ({ children }) => <List>{children}</List>,
 };
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {

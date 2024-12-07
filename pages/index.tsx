@@ -1,12 +1,12 @@
-import Home from "@/src/home";
+import Tutorias from "@/src/sobre-tutorias";
 import {
   intentarObtenerMetadatosDeCadaArticuloSobreTutorias,
   MetadatosDeUnArticuloDeTutorias,
-} from "@/src/home/utils/obtener-metadatos-de-cada-articulo-sobre-tutorias";
+} from "@/src/sobre-tutorias/utils/obtener-metadatos-de-cada-articulo-sobre-tutorias";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
 
 const index = ({ metadatos }: MetadatosAColocarEnCadaResumen) => {
-  return <Home metadatos={metadatos} />;
+  return <Tutorias metadatos={metadatos} />;
 };
 
 export const getStaticProps = (async () => {
