@@ -1,25 +1,10 @@
 "use client";
 import { useForm } from "react-hook-form";
-import { signIn } from "next-auth/react"; //AGREGAR quizas
-import { useRouter } from "next/navigation"; //AGREGAR quizas
-import { useState } from "react"; //AGREGAR quizas
-
-import {
-  Box,
-  Typography,
-  Button,
-  FormControl,
-  TextField,
-  Stack,
-} from "@mui/material";
+import { Box, Typography, Button, TextField, Stack } from "@mui/material";
 
 const FormularioLogin = () => {
   //
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit } = useForm();
   //const router = useRouter(); // AGREGAR quizas
   //const [error, setError] = useState(null); //AGRAGAR quizas
 
@@ -32,7 +17,7 @@ const FormularioLogin = () => {
       //
       //
       // NO SE SI LA RUTA DE [...nexauth] ESTA BIEN, PREGUNTAR
-      const res = await fetch("http://localhost:3001/api/auth/[...nextauth]", {
+      await fetch("http://localhost:3001/api/auth/[...nextauth]", {
         method: "POST",
         body: JSON.stringify({
           //nombre: data.nombre,
@@ -46,7 +31,7 @@ const FormularioLogin = () => {
       });
       // catch (error) {
       // console.error(error);
-    }
+    },
     //  }
   );
 

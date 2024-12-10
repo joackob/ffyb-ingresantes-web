@@ -16,7 +16,7 @@ export const authOptions = {
           placeholder: "*****",
         },
       },
-      async authorize(credentials, req) {
+      async authorize(credentials) {
         console.log(credentials);
 
         const userFound = await db.usuarios.findUnique({
@@ -31,7 +31,7 @@ export const authOptions = {
 
         const matchPassword = await bcrypt.compare(
           credentials?.contrasena || "",
-          userFound.contrasena
+          userFound.contrasena,
         );
 
         if (!matchPassword) throw new Error("contraseña incorrecta");

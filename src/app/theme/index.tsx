@@ -1,9 +1,4 @@
-import {
-  createTheme,
-  outlinedInputClasses,
-  ThemeOptions,
-  ThemeProvider,
-} from "@mui/material";
+import { createTheme, ThemeOptions, ThemeProvider } from "@mui/material";
 import { ReactNode } from "react";
 const options: ThemeOptions = {
   components: {

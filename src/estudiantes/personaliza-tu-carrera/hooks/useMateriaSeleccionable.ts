@@ -1,12 +1,12 @@
 "use client";
 import { useState } from "react";
-import { Cuatrimestre, Materia, materiaPorId, planDeEstudios } from "../fake";
+import { Materia } from "../types";
 
 export type MateriaSeleccionada = {
   id: string;
 };
 
-export const useMateriaSeleccionable = () => {
+export const useMateriaSeleccionable = (materias: Map<string, Materia>) => {
   const [materiaSeleccionada, setMateriaSeleccionada] = useState<{
     id: string;
     seleccionada: boolean;
@@ -20,7 +20,7 @@ export const useMateriaSeleccionable = () => {
   };
 
   const brindarMateriaSeleccionada = (): Materia => {
-    return materiaPorId.get(materiaSeleccionada.id)!;
+    return materias.get(materiaSeleccionada.id)!;
   };
 
   const deseleccionarMateria = (): void => {

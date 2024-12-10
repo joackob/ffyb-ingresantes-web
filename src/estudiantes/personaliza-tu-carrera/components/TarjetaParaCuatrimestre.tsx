@@ -2,10 +2,10 @@ import { Box, Stack, Typography } from "@mui/material";
 import { ReactNode } from "react";
 
 const CuatrimestreDroppable = ({
-  posicion,
+  cuatrimestre,
   children,
 }: {
-  posicion: number;
+  cuatrimestre: string;
   children: ReactNode;
 }) => {
   return (
@@ -24,7 +24,7 @@ const CuatrimestreDroppable = ({
           fontSize={"16px"}
           textTransform={"uppercase"}
           style={{ userSelect: "none" }}
-        >{`${posicion}° cuatrimestre`}</Typography>
+        >{`${cuatrimestre}`}</Typography>
       </Box>
       <Stack
         spacing={"8px"}

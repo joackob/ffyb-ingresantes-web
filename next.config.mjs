@@ -2,7 +2,6 @@
 /** @type {import('next').NextConfig} */
 import createMDX from "@next/mdx";
 import createPWA from "next-pwa";
-import { hostname } from "os";
 import remarkFrontmatter from "remark-frontmatter";
 import remarkMdxFrontmatter from "remark-mdx-frontmatter";
 
@@ -11,6 +10,26 @@ const withPWA = createPWA({
   disable: process.env.NODE_ENV === "development",
   register: true, // register the PWA service worker
   skipWaiting: true, // skip waiting for service worker activation
+  exclude: [
+    // add buildExcludes here
+    ({ asset }) => {
+      if (
+        asset.name.startsWith("server/") ||
+        asset.name.match(
+          /^((app-|^)build-manifest\.json|react-loadable-manifest\.json)$/,
+        )
+      ) {
+        return true;
+      }
+      if (
+        process.env.NODE_ENV !== "production" &&
+        !asset.name.startsWith("static/runtime/")
+      ) {
+        return true;
+      }
+      return false;
+    },
+  ],
 });
 
 const withMDX = createMDX({

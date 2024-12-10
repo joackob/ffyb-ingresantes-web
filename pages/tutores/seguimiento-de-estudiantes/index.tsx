@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Avatar, Box, Container, Stack, Typography } from "@mui/material";
 import Banner from "@/src/components/Banner";
-import Link from "next/link";
 
 // Definimos la interfaz para cada tutorando
 interface Tutorando {
@@ -28,7 +27,9 @@ const Index = () => {
         <Box
           marginLeft={"16px"}
           display={"grid"}
-          gridTemplateColumns={"repeat(auto-fit, minmax(min(100%, 350px), 1fr))"}
+          gridTemplateColumns={
+            "repeat(auto-fit, minmax(min(100%, 350px), 1fr))"
+          }
           gap={"32px"}
         >
           {/* Mapear los tutorandos obtenidos de la API */}
@@ -71,4 +72,4 @@ const Index = () => {
     </>
   );
 };
-export default Index
+export default Index;

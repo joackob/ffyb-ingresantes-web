@@ -9,7 +9,8 @@ export const tratarExcepciones = ({
 }): void => {
   try {
     (excepcion as Excepcion).brindarUnaRespuestaAdecuada(respuesta);
-  } catch (errorInexperado) {
+  } catch (error) {
+    console.error("Error desconocido", error);
     const excepcionDesconocida = new Excepcion({
       codigoHttp: 500,
       mensaje: "Algo inesperado ocurrio con el servicio",

@@ -3,16 +3,9 @@
 import { useForm } from "react-hook-form";
 //import { useRouter } from "next/navigation";
 
-import {
-  Box,
-  Typography,
-  Button,
-  FormControl,
-  TextField,
-  Stack,
-} from "@mui/material";
+import { Box, Typography, Button, TextField, Stack } from "@mui/material";
 
-const registro = () => {
+const Page = () => {
   const {
     register,
     handleSubmit,
@@ -25,7 +18,7 @@ const registro = () => {
         return alert("Passwords do not match");
       }
 
-      const res = await fetch("http://localhost:3001/api/auth/registrar", {
+      await fetch("http://localhost:3001/api/auth/registrar", {
         method: "POST",
         body: JSON.stringify({
           nombre: data.nombre,
@@ -142,4 +135,4 @@ const registro = () => {
   );
 };
 
-export default registro;
+export default Page;

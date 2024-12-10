@@ -1,5 +1,3 @@
-import { WidthFull } from "@mui/icons-material";
-
 export const videos = [
   {
     id: "1",

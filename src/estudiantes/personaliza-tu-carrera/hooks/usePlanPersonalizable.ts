@@ -1,25 +1,31 @@
 "use client";
 import { useState } from "react";
-import { Cuatrimestre, materiasPorCuatri, Materia } from "../fake";
+import { Cuatrimestre, Materia } from "../types";
 import { arrayMove } from "@dnd-kit/sortable";
 
-export const usePlanPersonalizable = () => {
+export const usePlanPersonalizable = (
+  planDeEstudios: Map<string, Materia[]>
+) => {
   const [cuatrimestres, setCuatrimestres] =
-    useState<Map<string, Materia[]>>(materiasPorCuatri);
+    useState<Map<string, Materia[]>>(planDeEstudios);
 
   const cuatriPorMateria = new Map<string, string>();
   cuatrimestres.forEach((materias, cuatri) => {
     materias.forEach((materia) => {
-      cuatriPorMateria.set(materia.id, cuatri);
+      cuatriPorMateria.set(materia.nombre, cuatri);
     });
   });
 
   const brindarPlanActual = () => {
     const planActual: Cuatrimestre[] = [];
     cuatrimestres.forEach((materias, cuatri) => {
-      planActual.push({ cuatrimestre: Number(cuatri), materias });
+      planActual.push({ id: cuatri, materias });
     });
-    planActual.sort((a, b) => a.cuatrimestre - b.cuatrimestre);
+    planActual.sort((a, b) => {
+      const posicionA = parseInt(a.id.match(/\d+/)?.[0] || "0");
+      const posicionB = parseInt(b.id.match(/\d+/)?.[0] || "0");
+      return posicionA - posicionB;
+    });
     return planActual;
   };
 
@@ -87,13 +93,15 @@ export const usePlanPersonalizable = () => {
     const materiasDestino = cuatrimestres.get(idCuatriDestino);
     if (!materiasOrigen || !materiasDestino) return cuatrimestres;
 
-    const materia = materiasOrigen.find((materia) => materia.id === idMateria);
+    const materia = materiasOrigen.find(
+      (materia) => materia.nombre === idMateria
+    );
     if (!materia) return cuatrimestres;
 
     const planActualizado = new Map(cuatrimestres);
     planActualizado.set(
       idCuatriOrigen,
-      materiasOrigen.filter((materia) => materia.id !== idMateria)
+      materiasOrigen.filter((materia) => materia.nombre !== idMateria)
     );
     planActualizado.set(idCuatriDestino, [...materiasDestino, materia]);
     return planActualizado;
@@ -117,10 +125,10 @@ export const usePlanPersonalizable = () => {
     const materias = cuatrimestres.get(idCuatri);
     if (!materias) return cuatrimestres;
     const posicionOrigen = materias.findIndex(
-      (materia) => materia.id === idMateriaOrigen
+      (materia) => materia.nombre === idMateriaOrigen
     );
     const posicionDestino = materias.findIndex(
-      (materias) => materias.id === idMateriaDestino
+      (materias) => materias.nombre === idMateriaDestino
     );
     if (posicionOrigen === -1 || posicionDestino === -1) return cuatrimestres;
     const planOrdenado = new Map(cuatrimestres);

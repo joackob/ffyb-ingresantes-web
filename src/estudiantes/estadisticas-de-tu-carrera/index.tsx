@@ -2,16 +2,16 @@ import { Avatar } from "@mui/material";
 import { useEffect, useState } from "react";
 import Banner from "@/src/components/Banner";
 
-interface StudentData{
+interface StudentData {
   DE_LA_CARRERA_TERMINADA: number;
   MATERIAS_APROBADAS_POR_CUATRIMESTRE: number;
   AÑO_DE_EGRESO_ESTIMADO: number;
   NOTA_PROMEDIO: number;
-  MATERIAS_APROBADAS_EN_EL_MEJOR_CUATRIMESTRE: number; 
-  TU_MEJOR_NOTA: number; 
+  MATERIAS_APROBADAS_EN_EL_MEJOR_CUATRIMESTRE: number;
+  TU_MEJOR_NOTA: number;
 }
 
-const index = () => {
+const Page = () => {
   // State to store the student data from the API
   const [studentData, setStudentData] = useState<StudentData | null>(null);
 
@@ -20,7 +20,7 @@ const index = () => {
       .then((data) => data.json())
       .then((response) => {
         // Assuming `response[0].plan_estudios` is the structure
-        setStudentData(response[0].plan_estudios);//muestra solo a 1 estudiante.
+        setStudentData(response[0].plan_estudios); //muestra solo a 1 estudiante.
       });
   }, []);
 
@@ -127,21 +127,21 @@ const index = () => {
                 {key === "percentageCompleted"
                   ? "DE LA CARRERA TERMINADA"
                   : key === "subjectsPerSemester"
-                  ? "MATERIAS APROBADAS POR CUATRIMESTRE"
-                  : key === "expectedGraduation"
-                  ? "AÑO DE EGRESO ESTIMADO"
-                  : key === "averageGrade"
-                  ? "NOTA PROMEDIO"
-                  : key === "maxSubjectsSemester"
-                  ? "MATERIAS APROBADAS EN EL MEJOR CUATRIMESTRE"
-                  : "TU MEJOR NOTA"}
+                    ? "MATERIAS APROBADAS POR CUATRIMESTRE"
+                    : key === "expectedGraduation"
+                      ? "AÑO DE EGRESO ESTIMADO"
+                      : key === "averageGrade"
+                        ? "NOTA PROMEDIO"
+                        : key === "maxSubjectsSemester"
+                          ? "MATERIAS APROBADAS EN EL MEJOR CUATRIMESTRE"
+                          : "TU MEJOR NOTA"}
               </p>
             </div>
-          )
+          ),
         )}
       </div>
     </>
   );
 };
 
-export default index;
+export default Page;

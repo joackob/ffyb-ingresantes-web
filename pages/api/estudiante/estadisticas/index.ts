@@ -1,9 +1,8 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { intentarBrindarInformacionPorDefectoDeLasCarreras } from "@/src/api/carreras/intentar-brindar-informacion-por-defecto-de-las-carreras";
 
 const route = async (
   consulta: NextApiRequest,
-  respuesta: NextApiResponse
+  respuesta: NextApiResponse,
 ): Promise<void> => {
   // Si la solicitud es de tipo GET
   if (consulta.method === "GET") {

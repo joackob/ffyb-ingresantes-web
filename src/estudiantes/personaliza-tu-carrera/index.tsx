@@ -11,37 +11,23 @@ import TarjetaDondeDepositar from "./dnd-components/TarjetaDondeDepositar";
 import TarjetaArrastrable from "./dnd-components/TarjetaArrastrable";
 import TarjetaParaCubrirArrastre from "./dnd-components/TarjetaParaCubrirArrastre";
 import { ChipCursada } from "./components/ChipCursada";
-import { useEffect, useState } from "react";
-import { Container } from "@mui/material";
+import { Materia } from "./types";
 
-const Personaliza = () => {
-  const plan = usePlanPersonalizable();
-  const materia = useMateriaSeleccionable();
-  const [carreras, setCarreras] = useState<{ nombre: string }[]>([]);
-
-  useEffect(() => {
-    fetch("/api/carreras")
-      .then((data) => data.json())
-      .then((response) => setCarreras(response.carreras)); //setCarreras
-  }, []);
+const Personaliza = ({
+  cuatrimestres,
+  materias,
+  nombre,
+}: {
+  nombre: string;
+  cuatrimestres: Map<string, Materia[]>;
+  materias: Map<string, Materia>;
+}) => {
+  const plan = usePlanPersonalizable(cuatrimestres);
+  const materia = useMateriaSeleccionable(materias);
 
   return (
     <ImagenDeFondo>
-      <Container
-        sx={{
-          display: "flex",
-          alignItems: "center",
-        }}
-      >
-        <TituloCarrera carrera={"Farmacia"} />
-        <select style={{ marginLeft: "10px", padding: "5px" }}>
-          {carreras.map((carrera, index) => (
-            <option key={index} value={carrera.nombre}>
-              {carrera.nombre}
-            </option>
-          ))}
-        </select>
-      </Container>
+      <TituloCarrera carrera={nombre} />
       <TableroParaCuatrimestres>
         <ContextoParaArrastrarYDepositar
           alDetectarUnElementoSiendoArrastrado={({ idElementoArrastrado }) =>
@@ -67,17 +53,13 @@ const Personaliza = () => {
             });
           }}
         >
-          {plan.actual().map(({ cuatrimestre, materias }) => (
-            <TarjetaDondeDepositar
-              id={cuatrimestre.toString()}
-              key={cuatrimestre}
-              items={materias}
-            >
-              <TarjetaParaCuatrimestre posicion={cuatrimestre}>
+          {plan.actual().map(({ id, materias }) => (
+            <TarjetaDondeDepositar id={id} key={id} items={materias}>
+              <TarjetaParaCuatrimestre cuatrimestre={id}>
                 {materias.map(({ nombre, estado }) => (
                   <TarjetaArrastrable id={nombre} key={nombre}>
                     <TarjetaParaMateria nombre={nombre}>
-                      <ChipCursada cursada={estado} />
+                      <ChipCursada cursada={estado || "No disponible"} />
                     </TarjetaParaMateria>
                   </TarjetaArrastrable>
                 ))}
@@ -86,7 +68,9 @@ const Personaliza = () => {
           ))}
           <TarjetaParaCubrirArrastre esArrastrada={materia.fueSeleccionada()}>
             <TarjetaParaMateria nombre={materia.eleccion()?.nombre}>
-              <ChipCursada cursada={materia.eleccion()?.estado} />
+              <ChipCursada
+                cursada={materia.eleccion()?.estado || "No disponible"}
+              />
             </TarjetaParaMateria>
           </TarjetaParaCubrirArrastre>
         </ContextoParaArrastrarYDepositar>

@@ -13,7 +13,7 @@ const TarjetaDondeDepositar = ({
   children,
 }: {
   id: string;
-  items: { id: string }[];
+  items: { id: number }[];
   children: ReactNode;
 }) => {
   const { setNodeRef } = useDroppable({
