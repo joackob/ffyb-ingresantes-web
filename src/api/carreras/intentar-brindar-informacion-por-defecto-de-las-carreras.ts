@@ -4,7 +4,7 @@ import { NextApiResponse } from "next";
 import { tratarExcepciones } from "../excepciones";
 
 export const intentarBrindarInformacionPorDefectoDeLasCarreras = async (
-  respuesta: NextApiResponse,
+  respuesta: NextApiResponse
 ): Promise<void> => {
   try {
     brindarInformacionPorDefectoDeLasCarreras(respuesta);
@@ -16,17 +16,17 @@ export const intentarBrindarInformacionPorDefectoDeLasCarreras = async (
   }
 };
 
-const brindarInformacionPorDefectoDeLasCarreras = async (
-  respuesta: NextApiResponse,
+export const brindarInformacionPorDefectoDeLasCarreras = async (
+  respuesta: NextApiResponse
 ): Promise<void> => {
   const direccionDeLosDatosConInformacionSobreLasCarreras = path.join(
     process.cwd(),
     "src/api/carreras/data",
-    "carreras.json",
+    "carreras.json"
   );
   const informacionEnCrudoDeLasCarreras = await fs.readFile(
     direccionDeLosDatosConInformacionSobreLasCarreras,
-    { encoding: "utf-8" },
+    { encoding: "utf-8" }
   );
   respuesta.status(200).json(JSON.parse(informacionEnCrudoDeLasCarreras));
 };

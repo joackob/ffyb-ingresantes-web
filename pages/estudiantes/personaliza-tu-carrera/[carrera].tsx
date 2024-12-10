@@ -16,7 +16,7 @@ const Page = () => {
       )}
       {carrera.descargada() && (
         <Personaliza
-          nombre={""}
+          nombre={carrera.nombre()}
           cuatrimestres={carrera.cuatrimestres()}
           materias={carrera.materias()}
         />
