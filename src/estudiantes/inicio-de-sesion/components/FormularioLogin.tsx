@@ -1,61 +1,29 @@
 "use client";
 import { useForm } from "react-hook-form";
 import { Box, Typography, Button, TextField, Stack } from "@mui/material";
+import { useRouter } from "next/router";
+import { signIn } from "next-auth/react";
 
 const FormularioLogin = () => {
   //
   const { register, handleSubmit } = useForm();
-  //const router = useRouter(); // AGREGAR quizas
+  const router = useRouter(); // AGREGAR quizas
   //const [error, setError] = useState(null); //AGRAGAR quizas
 
-  const onSubmit = handleSubmit(
-    async (data) => {
-      // try {
-      //   if (data.contrasena !== data.confimar_contrasena) {
-      //     return alert("Passwords do not match");
-      //   }
-      //
-      //
-      // NO SE SI LA RUTA DE [...nexauth] ESTA BIEN, PREGUNTAR
-      await fetch("http://localhost:3001/api/auth/[...nextauth]", {
-        method: "POST",
-        body: JSON.stringify({
-          //nombre: data.nombre,
-          //apellido: data.apellido,
-          email: data.email,
-          contrasena: data.contrasena,
-        }),
-        headers: {
-          "Content-Type": "application/json",
-        },
+  const onSubmit = handleSubmit(async (data) => {
+    console.log(data);
+    try {
+      await signIn("credentials", {
+        email: data.email,
+        contrasena: data.contrasena,
+        redirect: false,
       });
-      // catch (error) {
-      // console.error(error);
-    },
-    //  }
-  );
-
-  // PREGUNTAR SI HAY QUE AGRGAR ESTO, O NO ES NECESARIO.
-  /*
-const onSubmit = handleSubmit(async (data) => {
-  console.log(data);
-
-  const res = await signIn("credentials", {
-    email: data.email,
-    password: data.password,
-    redirect: false,
+      router.push("/");
+      router.reload();
+    } catch (error) {
+      console.log(error);
+    }
   });
-
-  console.log(res)
-  if (res.error) {
-    setError(res.error)
-  } else {
-    router.push('/dashboard')
-    router.refresh()
-  }
-});
-
-*/
 
   //
   return (
@@ -84,7 +52,7 @@ const onSubmit = handleSubmit(async (data) => {
             fullWidth
             label="Usuario"
             id="usuario"
-            {...register("usuario", { required: true })}
+            {...register("email", { required: true })}
             required
             type={"text"}
             variant="filled"
@@ -105,6 +73,7 @@ const onSubmit = handleSubmit(async (data) => {
         <Button
           variant="contained"
           size="medium"
+          type="submit"
           sx={{
             color: "white",
             backgroundColor: "#3498DB",

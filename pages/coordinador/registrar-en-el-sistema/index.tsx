@@ -3,7 +3,19 @@
 import { useForm } from "react-hook-form";
 //import { useRouter } from "next/navigation";
 
-import { Box, Typography, Button, TextField, Stack } from "@mui/material";
+import {
+  Box,
+  Typography,
+  Button,
+  TextField,
+  Stack,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  SelectChangeEvent,
+} from "@mui/material";
+import { ReactNode } from "react";
 
 const Page = () => {
   const {
@@ -18,13 +30,14 @@ const Page = () => {
         return alert("Passwords do not match");
       }
 
-      await fetch("http://localhost:3001/api/auth/registrar", {
+      await fetch("http://localhost:3000/api/auth/registrar", {
         method: "POST",
         body: JSON.stringify({
           nombre: data.nombre,
           apellido: data.apellido,
           email: data.email,
           contrasena: data.contrasena,
+          tipo: data.tipo,
         }),
         headers: {
           "Content-Type": "application/json",
@@ -118,6 +131,17 @@ const Page = () => {
             type={"password"}
             variant="filled"
           />
+        </Box>
+
+        <Box style={{ backgroundColor: "#ededed", borderRadius: "4px" }}>
+          <FormControl fullWidth>
+            <InputLabel id="tipo">tipo</InputLabel>
+            <Select id="tipo" label="tipo" {...register("tipo")}>
+              <MenuItem value={"coordinador"}>Coordinador</MenuItem>
+              <MenuItem value={"tutor"}>Tutor</MenuItem>
+              <MenuItem value={"tutorando"}>Tutorando</MenuItem>
+            </Select>
+          </FormControl>
         </Box>
         <Button
           variant="contained"
