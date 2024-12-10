@@ -22,11 +22,25 @@ model Usuarios {
   updatedAt  DateTime    @updatedAt
 }
 
+
+
+model Tutor {
+  id    Int     @id @default(autoincrement())
+  email String  @unique 
+  name  String?
+  tutorandos Tutorandos[] // Relación uno a muchos con Tutorandos 
+}
+
 model Tutorandos {
-  usuario   Usuarios   @relation(fields: [usuarioId], references: [id])
+  id    Int     @id @default(autoincrement())
+  usuario   Usuarios   @relation(fields: [usuarioId], references: [id]) // Relación con el usuario, usando el campo usuarioId
   usuarioId String     @unique
   carreras  Carreras[]
+  tutor    Tutor    @relation(fields: [tutorId], references: [id])
+  tutorId  Int  // Id del tutor que está relacionado con el tutorando
 }
+
+
 
 model Carreras {
   id           String         @id @default(uuid())

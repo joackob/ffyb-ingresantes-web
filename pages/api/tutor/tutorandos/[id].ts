@@ -1,9 +1,11 @@
 import { NextApiRequest, NextApiResponse } from "next";
-
+import db from "@/db";
 const route = async (
   consulta: NextApiRequest,
   respuesta: NextApiResponse
 ): Promise<void> => {
+  const idtutor = consulta.query.id;
+  console.log(idtutor);
   if (consulta.method === "GET") {
     return respuesta.status(200).json({
       personas: [
