@@ -1,36 +1,62 @@
-import Banner from "@/src/components/Banner";
 import { Avatar } from "@mui/material";
-import link from "next/link";
+import { useEffect, useState } from "react";
+import Banner from "@/src/components/Banner";
+
+interface StudentData{
+  DE_LA_CARRERA_TERMINADA: number;
+  MATERIAS_APROBADAS_POR_CUATRIMESTRE: number;
+  AÑO_DE_EGRESO_ESTIMADO: number;
+  NOTA_PROMEDIO: number;
+  MATERIAS_APROBADAS_EN_EL_MEJOR_CUATRIMESTRE: number; 
+  TU_MEJOR_NOTA: number; 
+}
 
 const index = () => {
-  const studentData = {
+  // State to store the student data from the API
+  const [studentData, setStudentData] = useState<StudentData | null>(null);
+
+  useEffect(() => {
+    fetch("/api/estudiante/estadisticas")
+      .then((data) => data.json())
+      .then((response) => {
+        // Assuming `response[0].plan_estudios` is the structure
+        setStudentData(response[0].plan_estudios);//muestra solo a 1 estudiante.
+      });
+  }, []);
+
+  // Loading state while waiting for data
+  if (!studentData) {
+    return <div>Loading...</div>;
+  }
+
+  const studentDataStructure = {
     percentageCompleted: {
-      value: "80%",
-      customWidth: "240px", // Ancho personalizable para este cuadro
-      customHeight: "240px", // Altura personalizable para este cuadro
+      value: `${studentData.DE_LA_CARRERA_TERMINADA}%`,
+      customWidth: "240px",
+      customHeight: "240px",
     },
     subjectsPerSemester: {
-      value: "5",
-      customWidth: "260px", // Otro ancho personalizado
-      customHeight: "220px", // Otra altura personalizada
+      value: studentData.MATERIAS_APROBADAS_POR_CUATRIMESTRE,
+      customWidth: "260px",
+      customHeight: "220px",
     },
     expectedGraduation: {
-      value: "2025",
-      customWidth: "280px", // Ancho personalizado
-      customHeight: "210px", // Altura personalizada
+      value: studentData.AÑO_DE_EGRESO_ESTIMADO,
+      customWidth: "280px",
+      customHeight: "210px",
     },
     averageGrade: {
-      value: "8,7",
+      value: studentData.NOTA_PROMEDIO,
       customWidth: "200px",
       customHeight: "220px",
     },
     maxSubjectsSemester: {
-      value: "6",
+      value: studentData.MATERIAS_APROBADAS_EN_EL_MEJOR_CUATRIMESTRE,
       customWidth: "400px",
       customHeight: "200px",
     },
     highestGrade: {
-      value: "10",
+      value: studentData.TU_MEJOR_NOTA,
       customWidth: "200px",
       customHeight: "200px",
     },
@@ -40,13 +66,12 @@ const index = () => {
     <>
       <Banner titulo={"Tu progreso"} />
 
-      {/* Contenedor del Avatar con margen superior para moverlo hacia abajo */}
       <div
         style={{
           display: "flex",
-          justifyContent: "center", // Centra horizontalmente
-          alignItems: "center", // Centra verticalmente
-          marginTop: "50px", // Mueve el Avatar hacia abajo (ajusta el valor según si es necesario :))
+          justifyContent: "center",
+          alignItems: "center",
+          marginTop: "50px",
         }}
       >
         <Avatar
@@ -60,42 +85,41 @@ const index = () => {
         style={{
           fontFamily: "Arial, sans-serif",
           color: "#061847",
-          width: "320px", // Ancho fijo del bloque contenedor
-          height: "auto", // El bloque se adapta al tamaño del contenido
-          margin: "16px auto", // Centrado automático con margen superior e inferior
-          padding: "10px", // Espaciado interno del contenedor principal
+          width: "320px",
+          height: "auto",
+          margin: "16px auto",
+          padding: "10px",
           backgroundColor: "#fff",
           borderRadius: "8px",
           boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
           display: "flex",
-          flexDirection: "column", // Disposición en columna
+          flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
-          overflow: "hidden", // Evitar desbordamiento
+          overflow: "hidden",
         }}
       >
-        <h1>{/* Título general si es necesario */}</h1>
+        <h1>{/* Title if needed */}</h1>
 
-        {/* Contenedor de cada tarjeta */}
-        {Object.entries(studentData).map(
+        {Object.entries(studentDataStructure).map(
           ([key, { value, customWidth, customHeight }]) => (
             <div
               key={key}
               style={{
-                margin: "16px 16px", // Márgenes de arriba y abajo para separar los cuadros
-                padding: "32px", // Espaciado de 32px (aproximadamente 32px de distancia alrededor del contenido)
+                margin: "16px 16px",
+                padding: "32px",
                 display: "flex",
-                flexDirection: "column", // Asegura que el contenido esté en columna
-                justifyContent: "center", // Centra el contenido verticalmente
-                alignItems: "center", // Centra el contenido horizontalmente
-                textAlign: "center", // Centra el texto
-                width: customWidth || "auto", // El ancho del cuadro se ajusta, pero se puede personalizar
-                height: customHeight || "auto", // La altura del cuadro también se ajusta, pero se puede personalizar
-                maxWidth: "100%", // Asegura que el cuadro no se salga del contenedor padre
-                wordWrap: "break-word", // Para que el texto largo se ajuste
-                overflow: "hidden", // Evita desbordamientos
-                whiteSpace: "normal", // Permite el ajuste de línea
-                boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)", // Sombra sutil para el cuadro
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+                textAlign: "center",
+                width: customWidth || "auto",
+                height: customHeight || "auto",
+                maxWidth: "100%",
+                wordWrap: "break-word",
+                overflow: "hidden",
+                whiteSpace: "normal",
+                boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)",
               }}
             >
               <h2 style={{ margin: 1, fontSize: "5rem" }}>{value}</h2>
