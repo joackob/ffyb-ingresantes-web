@@ -3,15 +3,19 @@ import Layout from "@/src/app/layout";
 import Theme from "@/src/app/theme";
 import Metadata from "./components/Metadata";
 import { AppProps } from "next/app";
+import { SessionProvider } from "next-auth/react";
 
-const App = ({ Component, pageProps }: AppProps) => {
+const App = ({ Component, pageProps: { session, ...pageProps } }: AppProps) => {
+  console.log();
   return (
     <Fragment>
       <Metadata />
       <Theme>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        <SessionProvider session={session}>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </SessionProvider>
       </Theme>
     </Fragment>
   );

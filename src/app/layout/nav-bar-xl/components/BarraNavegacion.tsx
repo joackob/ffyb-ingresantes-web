@@ -1,7 +1,9 @@
 import { Link, Stack, Box } from "@mui/material";
 import links from "@/src/app/layout/links";
+import { useSession } from "next-auth/react";
 
 const NavBar = () => {
+  const sesion = useSession();
   return (
     <Stack
       height={"100%"}
@@ -22,6 +24,18 @@ const NavBar = () => {
           key={index}
         />
       ))}
+      {sesion.status === "authenticated" && (
+        <Link
+          fontSize={"12px"}
+          fontFamily={"Montserrat"}
+          href={"/"}
+          color={"#8b8b8b"}
+          underline="none"
+          fontWeight={"light"}
+          textTransform={"uppercase"}
+          dangerouslySetInnerHTML={{ __html: "cerrar sesion" }}
+        />
+      )}
 
       <Box
         display={"flex"}
