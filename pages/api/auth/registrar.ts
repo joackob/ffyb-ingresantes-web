@@ -13,7 +13,7 @@ export default async function ruta(req: NextApiRequest, res: NextApiResponse) {
         apellido: data.apellido,
         email: data.email,
         contrasena: hashedPassword,
-        tipo: "tutorando",
+        tipo: data.tipo,
       },
     });
 

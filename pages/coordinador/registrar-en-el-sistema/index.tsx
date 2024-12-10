@@ -3,7 +3,19 @@
 import { useForm } from "react-hook-form";
 //import { useRouter } from "next/navigation";
 
-import { Box, Typography, Button, TextField, Stack } from "@mui/material";
+import {
+  Box,
+  Typography,
+  Button,
+  TextField,
+  Stack,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  SelectChangeEvent,
+} from "@mui/material";
+import { ReactNode } from "react";
 
 const Page = () => {
   const {
@@ -25,6 +37,7 @@ const Page = () => {
           apellido: data.apellido,
           email: data.email,
           contrasena: data.contrasena,
+          tipo: data.tipo,
         }),
         headers: {
           "Content-Type": "application/json",
@@ -118,6 +131,17 @@ const Page = () => {
             type={"password"}
             variant="filled"
           />
+        </Box>
+
+        <Box style={{ backgroundColor: "#ededed", borderRadius: "4px" }}>
+          <FormControl fullWidth>
+            <InputLabel id="tipo">tipo</InputLabel>
+            <Select id="tipo" label="tipo" {...register("tipo")}>
+              <MenuItem value={"coordinador"}>Coordinador</MenuItem>
+              <MenuItem value={"tutor"}>Tutor</MenuItem>
+              <MenuItem value={"tutorando"}>Tutorando</MenuItem>
+            </Select>
+          </FormControl>
         </Box>
         <Button
           variant="contained"
