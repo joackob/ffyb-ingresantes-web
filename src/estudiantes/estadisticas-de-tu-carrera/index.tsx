@@ -12,7 +12,7 @@ interface StudentData {
 }
 
 const Page = () => {
-  // State to store the student data from the API
+  // Estado para almacenar los datos del estudiante desde la API
   const [studentData, setStudentData] = useState<StudentData | null>(null);
 
   useEffect(() => {
@@ -127,17 +127,17 @@ const Page = () => {
                 {key === "percentageCompleted"
                   ? "DE LA CARRERA TERMINADA"
                   : key === "subjectsPerSemester"
-                    ? "MATERIAS APROBADAS POR CUATRIMESTRE"
-                    : key === "expectedGraduation"
-                      ? "AÑO DE EGRESO ESTIMADO"
-                      : key === "averageGrade"
-                        ? "NOTA PROMEDIO"
-                        : key === "maxSubjectsSemester"
-                          ? "MATERIAS APROBADAS EN EL MEJOR CUATRIMESTRE"
-                          : "TU MEJOR NOTA"}
+                  ? "MATERIAS APROBADAS POR CUATRIMESTRE"
+                  : key === "expectedGraduation"
+                  ? "AÑO DE EGRESO ESTIMADO"
+                  : key === "averageGrade"
+                  ? "NOTA PROMEDIO"
+                  : key === "maxSubjectsSemester"
+                  ? "MATERIAS APROBADAS EN EL MEJOR CUATRIMESTRE"
+                  : "TU MEJOR NOTA"}
               </p>
             </div>
-          ),
+          )
         )}
       </div>
     </>
