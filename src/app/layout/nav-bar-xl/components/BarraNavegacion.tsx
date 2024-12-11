@@ -1,6 +1,8 @@
 import { Link, Stack, Box } from "@mui/material";
 import links from "@/src/app/layout/links";
 import { useSession } from "next-auth/react";
+import { signOut } from "next-auth/react"
+
 
 const NavBar = () => {
   const sesion = useSession();
@@ -30,6 +32,7 @@ const NavBar = () => {
           fontSize={"12px"}
           fontFamily={"Montserrat"}
           href={"/"}
+          onClick={() => signOut({ callbackUrl: '/' })}
           color={"#8b8b8b"}
           underline="none"
           fontWeight={"light"}
