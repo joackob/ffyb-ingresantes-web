@@ -30,7 +30,7 @@ const Page = () => {
         return alert("Passwords do not match");
       }
 
-      await fetch("http://localhost:3000/api/auth/registrar", {
+      await fetch("http://localhost:3001/api/auth/registrar", {
         method: "POST",
         body: JSON.stringify({
           nombre: data.nombre,

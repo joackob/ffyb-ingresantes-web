@@ -3,12 +3,12 @@ import { useEffect, useState } from "react";
 import Banner from "@/src/components/Banner";
 
 interface StudentData {
-  DE_LA_CARRERA_TERMINADA: number;
-  MATERIAS_APROBADAS_POR_CUATRIMESTRE: number;
-  AÑO_DE_EGRESO_ESTIMADO: number;
-  NOTA_PROMEDIO: number;
-  MATERIAS_APROBADAS_EN_EL_MEJOR_CUATRIMESTRE: number;
-  TU_MEJOR_NOTA: number;
+  porcentajeDeLaCarreraTerminada: number;
+  aprobadasPorCuatrimestre: number;
+  añoDeEgreso: number;
+  notaPromedio: number;
+  aprovadosEnELMejorCuatri: number;
+  mejorNota: number;
 }
 
 const Page = () => {
@@ -31,32 +31,32 @@ const Page = () => {
 
   const studentDataStructure = {
     percentageCompleted: {
-      value: `${studentData.DE_LA_CARRERA_TERMINADA}%`,
+      value: `${studentData.porcentajeDeLaCarreraTerminada}%`,
       customWidth: "240px",
       customHeight: "240px",
     },
     subjectsPerSemester: {
-      value: studentData.MATERIAS_APROBADAS_POR_CUATRIMESTRE,
+      value: studentData.aprobadasPorCuatrimestre,
       customWidth: "260px",
       customHeight: "220px",
     },
     expectedGraduation: {
-      value: studentData.AÑO_DE_EGRESO_ESTIMADO,
+      value: studentData.añoDeEgreso,
       customWidth: "280px",
       customHeight: "210px",
     },
     averageGrade: {
-      value: studentData.NOTA_PROMEDIO,
+      value: studentData.notaPromedio,
       customWidth: "200px",
       customHeight: "220px",
     },
     maxSubjectsSemester: {
-      value: studentData.MATERIAS_APROBADAS_EN_EL_MEJOR_CUATRIMESTRE,
+      value: studentData.aprovadosEnELMejorCuatri,
       customWidth: "400px",
       customHeight: "200px",
     },
     highestGrade: {
-      value: studentData.TU_MEJOR_NOTA,
+      value: studentData.mejorNota,
       customWidth: "200px",
       customHeight: "200px",
     },
