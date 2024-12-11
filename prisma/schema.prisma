@@ -18,29 +18,28 @@ model Usuarios {
   contrasena String
   tipo       String // enum['tutor', 'tutorando', 'coordinador']
   tutorando  Tutorandos?
+  tutor      Tutor?
   createdAt  DateTime    @default(now())
   updatedAt  DateTime    @updatedAt
 }
 
-
-
+// encargada de guiar o supervisar a los tutorandos
 model Tutor {
-  id    Int     @id @default(autoincrement())
-  email String  @unique 
-  name  String?
+  id         String       @id @default(uuid())
+  usuario    Usuarios     @relation(fields: [usuarioId], references: [id]) // Relación con el usuario, usando el campo usuarioId
+  usuarioId  String       @unique
   tutorandos Tutorandos[] // Relación uno a muchos con Tutorandos 
 }
 
+// Es un usuario que recibe la tutoría del tutor
 model Tutorandos {
-  id    Int     @id @default(autoincrement())
+  id        String     @id @default(uuid())
   usuario   Usuarios   @relation(fields: [usuarioId], references: [id]) // Relación con el usuario, usando el campo usuarioId
   usuarioId String     @unique
   carreras  Carreras[]
-  tutor    Tutor    @relation(fields: [tutorId], references: [id])
-  tutorId  Int  // Id del tutor que está relacionado con el tutorando
+  tutor     Tutor      @relation(fields: [tutorId], references: [id])
+  tutorId   String // Id del tutor que está relacionado con el tutorando
 }
-
-
 
 model Carreras {
   id           String         @id @default(uuid())
