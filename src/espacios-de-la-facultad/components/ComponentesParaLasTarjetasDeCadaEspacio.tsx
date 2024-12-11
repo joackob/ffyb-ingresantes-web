@@ -1,4 +1,5 @@
 import { Container, Stack, Typography } from "@mui/material";
+import { MDXComponents } from "mdx/types";
 import { ReactNode } from "react";
 
 export const ContenedorParaLaTarjeta = ({
@@ -7,14 +8,14 @@ export const ContenedorParaLaTarjeta = ({
   children: ReactNode;
 }) => (
   <Container>
-    <Stack spacing={"16px"} direction={"column"}>
+    <Stack spacing={"16px"} direction={"row"}>
       {children}
     </Stack>
   </Container>
 );
 
 export const CuerpoDeLaTarjeta = ({ contenido }: { contenido: string }) => {
-  const resumen = contenido.split(" ").slice(0, 16).join(" ").concat("...");
+  const resumen = contenido.split(" ").join(" ").concat("");
   return <div>{resumen}</div>;
 };
 
@@ -34,5 +35,14 @@ export const VideoComplementario = ({ url }: { url: string }) => {
 };
 
 export const TituloDelVideo = ({ titulo }: { titulo: string }) => {
-  return <Typography>{titulo}</Typography>;
+  return <Typography 
+  component={"h2"}
+  sx={{
+    color: "black",
+    fontFamily: "Montserrat",
+    fontWeight: 800,
+    fontSize: "16px",
+    marginTop: "1rem", 
+    marginBottom: "1rem",
+  }} >{titulo}</Typography>;
 };
