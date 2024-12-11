@@ -19,7 +19,6 @@ const FormularioLogin = () => {
         redirect: false,
       });
       router.push("/");
-      router.reload();
     } catch (error) {
       console.log(error);
     }
@@ -50,11 +49,11 @@ const FormularioLogin = () => {
         <Box style={{ backgroundColor: "#ededed", borderRadius: "4px" }}>
           <TextField
             fullWidth
-            label="Usuario"
-            id="usuario"
+            label="Email"
+            id="email"
             {...register("email", { required: true })}
             required
-            type={"text"}
+            type={"email"}
             variant="filled"
           />
         </Box>
