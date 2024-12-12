@@ -1,12 +1,14 @@
 import { Box, Container, Stack, Typography } from "@mui/material";
 
+interface BannerProps {
+  titulo: string;
+  imagen?: string;
+}
+
 const Banner = ({
   titulo,
   imagen = "https://picsum.photos/1200/800",
-}: {
-  titulo: string;
-  imagen?: string;
-}) => {
+}: BannerProps) => {
   return (
     <Box
       style={{
