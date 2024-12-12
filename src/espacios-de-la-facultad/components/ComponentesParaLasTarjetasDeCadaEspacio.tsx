@@ -1,3 +1,4 @@
+import { FaceRetouchingNaturalSharp } from "@mui/icons-material";
 import { Container, Stack, Typography } from "@mui/material";
 import { MDXComponents } from "mdx/types";
 import { ReactNode } from "react";
@@ -7,8 +8,8 @@ export const ContenedorParaLaTarjeta = ({
 }: {
   children: ReactNode;
 }) => (
-  <Container>
-    <Stack spacing={"16px"} direction={"row"}>
+  <Container style={{marginTop:"30px", marginBottom:"50px"}}>
+    <Stack spacing={"16px"} direction={"row"} flexWrap={"wrap"} >
       {children}
     </Stack>
   </Container>
@@ -16,7 +17,14 @@ export const ContenedorParaLaTarjeta = ({
 
 export const CuerpoDeLaTarjeta = ({ contenido }: { contenido: string }) => {
   const resumen = contenido.split(" ").join(" ").concat("");
-  return <div>{resumen}</div>;
+  return <Typography
+  component={"p"}
+  sx={{
+    font: "Montserrat",
+    weight: "Regular",
+    fontSize: "16px",
+    LetterSpacing: "0%",}}>
+    {resumen}</Typography>;
 };
 
 export const VideoComplementario = ({ url }: { url: string }) => {
@@ -46,3 +54,4 @@ export const TituloDelVideo = ({ titulo }: { titulo: string }) => {
     marginBottom: "1rem",
   }} >{titulo}</Typography>;
 };
+

@@ -10,7 +10,10 @@ export const videos = [
     id: "2",
     titulo: "UBA | Facultad de Farmacia y Bioquimica | PISO 1",
     descripcion:
-      "El primer piso consta de: Tres Aulas (101, 102, 103) Tres laboratorios (Laboratorio de Microscopía, Laboratorio de T.P de Anatomía e Historia, Laboratorio Oca. Biología Vegetal) Cuatro Cátedras (cátedra de Oca. Biológica, Cátedra de Biología Celular y Molecular, Cátedra de Anatomía e Historia, Cátedra de Farmacobotánica) Dos Museos (Museo de Farmacobotánica, Museo de Farmacia) Una Biblioteca de Alumnos.",
+      "El primer piso consta de: \
+      \n* Tres Aulas (101, 102, 103) \
+      \n* Tres laboratorios (Laboratorio de Microscopía, Laboratorio de T.P de Anatomía e Historia, Laboratorio Oca. Biología Vegetal) Cuatro Cátedras (cátedra de Oca. Biológica, Cátedra de Biología Celular y Molecular, Cátedra de Anatomía e Historia, Cátedra de Farmacobotánica) Dos Museos (Museo de Farmacobotánica, Museo de Farmacia)\
+      \n* Una Biblioteca de Alumnos.",
     url: "https://youtube.com/embed/6pkD4LZFJGU?feature=share",
   },
   {
@@ -45,8 +48,8 @@ export const videos = [
     id: "7",
     titulo: "UBA | Facultad de Farmacia y Bioquimica | PISO 3",
     descripcion:
-      "El tercer piso consta de: Un Aula Magna (301) Dos Aulas (302, 303) Tres Laboratorios (Laboratorio de T.P de Oca.analitica/instrumental, Laboratorio de T.P de Química Orgánica, Laboratorio T.P de uso común 3º Piso) Cuatro Cátedras (Cátedra de Química Orgánica I, Cátedra de Quimica Analitica, Cátedra de Quimica Analitica instrumental, Cátedra de Química Orgánica II)",
-    url: "https://youtu.be/fXpAd-dCV6Q",
+      "El tercer piso consta de:Un Aula Magna (301) Dos Aulas (302, 303) Tres Laboratorios (Laboratorio de T.P de Oca.analitica/instrumental, Laboratorio de T.P de Química Orgánica, Laboratorio T.P de uso común 3º Piso) Cuatro Cátedras (Cátedra de Química Orgánica I, Cátedra de Quimica Analitica, Cátedra de Quimica Analitica instrumental, Cátedra de Química Orgánica II)",
+    url: "https://youtube.com/embed/a_HKHeqVdS0?feature=share",
   },
 
   {
