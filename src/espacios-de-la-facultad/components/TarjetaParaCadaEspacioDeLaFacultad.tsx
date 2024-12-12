@@ -6,6 +6,7 @@ import {
   TituloDelVideo,
 } from "./ComponentesParaLasTarjetasDeCadaEspacio";
 import { ReactNode } from "react";
+import { Typography } from "@mui/material";
 
 type PropiedadesDeCadaEspacioDeLaFacultad = {
   video: string;
@@ -19,9 +20,8 @@ const ContenidoDeLaTargeta = ({
   children: ReactNode;
 }) => {
   return (
-    <Box>
+    <Box maxWidth={"330px"}>
       {children}
-
     </Box>
   );
 }
@@ -33,12 +33,11 @@ const TarjetaParaCadaEspacioDeLaFacultad = ({
 }: PropiedadesDeCadaEspacioDeLaFacultad) => {
   return (
     <ContenedorParaLaTarjeta>
-       <VideoComplementario url={video} />
+      <VideoComplementario url={video} />
       <ContenidoDeLaTargeta>
         <TituloDelVideo titulo={titulo} />
         <CuerpoDeLaTarjeta contenido={description} />
       </ContenidoDeLaTargeta>
-     
     </ContenedorParaLaTarjeta>
   );
 };
