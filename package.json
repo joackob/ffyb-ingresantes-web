@@ -7,7 +7,8 @@
     "start": "next start",
     "lint": "next lint",
     "test": "jest",
-    "init": "npx prisma migrate dev --name init"
+    "init": "npx prisma migrate dev --name init",
+    "init:tutorandos": "node ./db/ingresar_tutorandos.mjs"
   },
   "dependencies": {
     "@dnd-kit/core": "^6.1.0",
