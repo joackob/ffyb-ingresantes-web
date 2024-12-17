@@ -82,15 +82,15 @@ model Correlativas {
 }
 
 model Estudiante {
-  id                     Int       @id @default(autoincrement())
-  nombre                 String
-  edad                   Int
-  genero                 String
-  carrera                String
-  porcentajeDeCarrera    Float
+  id                       String @id @default(uuid())
+  nombre                   String
+  edad                     Int
+  genero                   String
+  carrera                  String
+  porcentajeDeCarrera      Float
   aprobadasPorCuatrimestre Int
-  añoDeEgreso            Int
-  notaPromedio           Float
+  anioDeEgreso             Int
+  notaPromedio             Float
   aprovadosEnElMejorCuatri Int
-  mejorNota              Float
+  mejorNota                Float
 }

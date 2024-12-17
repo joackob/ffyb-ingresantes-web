@@ -6,7 +6,6 @@ import {
   TituloDelVideo,
 } from "./ComponentesParaLasTarjetasDeCadaEspacio";
 import { ReactNode } from "react";
-import { Typography } from "@mui/material";
 
 type PropiedadesDeCadaEspacioDeLaFacultad = {
   video: string;
@@ -14,17 +13,9 @@ type PropiedadesDeCadaEspacioDeLaFacultad = {
   titulo: string;
 };
 
-const ContenidoDeLaTargeta = ({
-  children,
-}: {
-  children: ReactNode;
-}) => {
-  return (
-    <Box maxWidth={"330px"}>
-      {children}
-    </Box>
-  );
-}
+const ContenidoDeLaTargeta = ({ children }: { children: ReactNode }) => {
+  return <Box maxWidth={"330px"}>{children}</Box>;
+};
 
 const TarjetaParaCadaEspacioDeLaFacultad = ({
   video,

@@ -1,5 +1,5 @@
 export type Materia = {
-  id: number;
+  id: string;
   nombre: string;
   estado: string;
 };
@@ -13,15 +13,15 @@ export const mapearMateriasConSuID = (cuatremestres: Cuatrimestre[]) => {
   const materias = cuatremestres!.flatMap(({ materias }) => materias);
   return materias.reduce(
     (map, materia) => map.set(materia.nombre, materia),
-    new Map<string, Materia>()
+    new Map<string, Materia>(),
   );
 };
 
 export const mapearMateriasConSuCuatrimestre = (
-  cuatrimestres: Cuatrimestre[]
+  cuatrimestres: Cuatrimestre[],
 ) => {
   return cuatrimestres!.reduce(
     (map, cuatri) => map.set(cuatri.id, cuatri.materias),
-    new Map<string, Materia[]>()
+    new Map<string, Materia[]>(),
   );
 };
