@@ -6,7 +6,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest",
+    "tests:e2e": "npx playwright test",
+    "tests:e2e:create": "bunx playwright codegen",
     "init": "npx prisma migrate dev --name init",
     "init:tutorandos": "node ./db/ingresar_tutorandos.mjs"
   },
