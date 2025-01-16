@@ -1,34 +1,19 @@
-"use client";
-import { useForm } from "react-hook-form";
-import { Box, Typography, Button, TextField, Stack } from "@mui/material";
-import { useRouter } from "next/router";
-import { signIn } from "next-auth/react";
+import {
+  Box,
+  Typography,
+  Button,
+  TextField,
+  Stack,
+  Alert,
+} from "@mui/material";
+import { useFormularioParaIniciarSesion } from "../hooks";
 
 const FormularioLogin = () => {
-  //
-  const { register, handleSubmit } = useForm();
-  const router = useRouter(); // AGREGAR quizas
-  //const [error, setError] = useState(null); //AGRAGAR quizas
-
-  const onSubmit = handleSubmit(async (data) => {
-    console.log(data);
-    try {
-      await signIn("credentials", {
-        email: data.email,
-        contrasena: data.contrasena,
-        redirect: false,
-      });
-      router.push("/");
-    } catch (error) {
-      console.log(error);
-    }
-  });
-
-  //
+  const formulario = useFormularioParaIniciarSesion();
   return (
     <Box
       component={"form"}
-      onSubmit={onSubmit}
+      onSubmit={formulario.iniciarSesion}
       sx={{
         padding: "15px",
         borderRadius: "8px",
@@ -51,7 +36,7 @@ const FormularioLogin = () => {
             fullWidth
             label="Email"
             id="email"
-            {...register("email", { required: true })}
+            {...formulario.configurarCampoParaElEmail()}
             required
             type={"email"}
             variant="filled"
@@ -63,7 +48,7 @@ const FormularioLogin = () => {
             fullWidth
             label="Contraseña"
             id="contrasena"
-            {...register("contrasena", { required: true })}
+            {...formulario.configurarCampoParaLaContrasena()}
             required
             type={"password"}
             variant="filled"
@@ -77,9 +62,13 @@ const FormularioLogin = () => {
             color: "white",
             backgroundColor: "#3498DB",
           }}
+          disabled={formulario.cargandoSesion()}
         >
           Continuar
         </Button>
+        {formulario.huboUnProblema() && (
+          <Alert severity="error">Hubo un problema</Alert>
+        )}
       </Stack>
     </Box>
   );

@@ -46,7 +46,7 @@ export const authOptions = {
     }),
   ],
   pages: {
-    signIn: "/tu-progreso/inicio-de-sesion",
+    signIn: "/inicio-de-sesion",
   },
 };
 

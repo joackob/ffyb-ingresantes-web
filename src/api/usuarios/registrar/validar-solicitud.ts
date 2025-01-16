@@ -5,7 +5,11 @@ export const EsquemaDeLaSolicitudParaRegistrarUnNuevoUsuario = z.object({
   apellido: z.string(),
   email: z.string(),
   contrasena: z.string(),
-  tipo: z.string(),
+  tipo: z.union([
+    z.literal("tutor"),
+    z.literal("tutorando"),
+    z.literal("coordinador"),
+  ]),
 });
 
 export type SolicitudParaRegistrarUnNuevoUsuario = z.infer<

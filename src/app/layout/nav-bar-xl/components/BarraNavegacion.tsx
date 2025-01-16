@@ -26,6 +26,18 @@ const NavBar = () => {
           key={index}
         />
       ))}
+      {sesion.status === "unauthenticated" && (
+        <Link
+          fontSize={"12px"}
+          fontFamily={"Montserrat"}
+          href={"/inicio-de-sesion"}
+          color={"#8b8b8b"}
+          underline="none"
+          fontWeight={"light"}
+          textTransform={"uppercase"}
+          dangerouslySetInnerHTML={{ __html: "Iniciar <br/> sesión" }}
+        />
+      )}
       {sesion.status === "authenticated" && (
         <Link
           fontSize={"12px"}
