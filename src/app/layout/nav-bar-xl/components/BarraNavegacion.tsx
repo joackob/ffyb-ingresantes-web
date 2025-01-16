@@ -5,7 +5,6 @@ import { signOut } from "next-auth/react";
 
 const NavBar = () => {
   const sesion = useSession();
-  console.log(sesion.status);
   return (
     <Stack
       height={"100%"}
@@ -35,19 +34,19 @@ const NavBar = () => {
           underline="none"
           fontWeight={"light"}
           textTransform={"uppercase"}
-          dangerouslySetInnerHTML={{ __html: "Iniciar <br/> sesión" }}
+          dangerouslySetInnerHTML={{ __html: "iniciar <br/> sesión" }}
         />
       )}
       {sesion.status === "authenticated" && (
         <Link
           fontSize={"12px"}
           fontFamily={"Montserrat"}
-          href={"/"}
-          onClick={() => signOut({ callbackUrl: "/" })}
+          onClick={async () => await signOut({ callbackUrl: "/" })}
           color={"#8b8b8b"}
           underline="none"
           fontWeight={"light"}
           textTransform={"uppercase"}
+          sx={{ cursor: "pointer" }}
           dangerouslySetInnerHTML={{ __html: "cerrar <br/> sesión" }}
         />
       )}

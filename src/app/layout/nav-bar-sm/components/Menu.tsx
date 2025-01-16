@@ -64,13 +64,13 @@ const NavMenu = () => {
             <Link
               fontSize={"12px"}
               fontFamily={"Montserrat"}
-              href={"/"}
-              onClick={() => signOut({ callbackUrl: "/" })}
+              onClick={async () => await signOut({ callbackUrl: "/" })}
               color={"#8b8b8b"}
               underline="none"
               fontWeight={"light"}
               textTransform={"uppercase"}
               dangerouslySetInnerHTML={{ __html: "cerrar <br/> sesión" }}
+              sx={{ cursor: "pointer" }}
             />
           </MenuItem>
         )}
