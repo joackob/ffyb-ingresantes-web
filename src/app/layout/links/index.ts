@@ -13,7 +13,7 @@ const links = [
   },
   {
     label: "Iniciar <br/> sesión",
-    url: "/estudiantes/inicio-de-sesion",
+    url: "/inicio-de-sesion",
   },
 ];
 
