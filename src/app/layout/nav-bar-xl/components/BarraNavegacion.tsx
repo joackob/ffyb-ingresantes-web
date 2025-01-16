@@ -37,6 +37,18 @@ const NavBar = () => {
           dangerouslySetInnerHTML={{ __html: "iniciar <br/> sesión" }}
         />
       )}
+      {sesion.status === "loading" && (
+        <Link
+          fontSize={"12px"}
+          fontFamily={"Montserrat"}
+          href={"#"}
+          color={"#8b8b8b"}
+          underline="none"
+          fontWeight={"light"}
+          textTransform={"uppercase"}
+          dangerouslySetInnerHTML={{ __html: "cargando <br/> sesión" }}
+        />
+      )}
       {sesion.status === "authenticated" && (
         <Link
           fontSize={"12px"}

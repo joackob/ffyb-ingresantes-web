@@ -26,7 +26,7 @@ Procurar tener actualizado `node.js` a la versión `lts`. Si desea asegurarse, p
 ## Instalación y ejecución
 
 - 🛠Para instalar las dependencias ejecutar el siguiente comando `npm install`
-- 🛠Para inicializar la base de datos desde cero, ejecutar el comando `npm run init`
+- 🛠Para inicializar la base de datos desde cero (para desarrollo), ejecutar el comando `npm run db:init:dev`. Para producción, se debe ejecutar el comando `npm run db:init:deploy`
 - ⚒Para ejecutar el modo playground o repl, ejecutar el siguiente comando `npm run dev`
 - 🔧Para traducir el código en `/src` a `JavaScript` , usar el comando `npm run build`
 - 🔑Para ejecutar el código con `Node.js`, usar el comando `npm run start`
@@ -34,7 +34,11 @@ Procurar tener actualizado `node.js` a la versión `lts`. Si desea asegurarse, p
 
 ## Variables de entorno
 
-- `NODE_ENV`: Variable que identifica el entorno en que se ejecuta el proyecto. "development": en desarrollo, "production": en producción, "testing": en testing.
+- `NODE_ENV=development`: Variable que identifica el entorno en que se ejecuta el proyecto. `development`: en desarrollo, `deploy`: en producción, `testing`: en testing.
+- `DATABASE_URL="file:test.db"`: URL para la base de datos. En entornos de desarrollo, se usa sqlite por defecto. En producción, se trabaja con PostgresSQL
+- `CI=off`: Variable que identifica un entorno de integración. Usado junto a GitHub Actions para CI.
+- `NEXTAUTH_URL=http://localhost:3000/api/auth`: En producción, la variable identifica la dirección de la api para NextAuth
+- `NEXTAUTH_SECRET=secret_for_jwt`: Clave secreta usada para encriptar JWT
 
 Se puede usar el archivo `.env` para configurar estas variables de entorno en testing y desarrollo. Solo se debe ejecutar el comando `cp .env.example .env`.
 
@@ -45,6 +49,7 @@ Se puede usar el archivo `.env` para configurar estas variables de entorno en te
 - [Jest](https://jestjs.io/)
 - [Testing Library](https://testing-library.com/)
 - [Next-pwa](https://www.npmjs.com/package/next-pwa)
+- [NextAuth](https://next-auth.js.org/)
 
 ## Artículos y ejemplos tomados en cuenta para el desarrollo del template
 

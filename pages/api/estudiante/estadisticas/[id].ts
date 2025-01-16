@@ -5,7 +5,6 @@ const route = async (
   respuesta: NextApiResponse
 ): Promise<void> => {
   const idEstudiante = parseInt(consulta.query.id as string); // Convertir el id a número
-  console.log(idEstudiante);
 
   // Definir los datos de los estudiantes (datos falsos)
   const estudiantes = [

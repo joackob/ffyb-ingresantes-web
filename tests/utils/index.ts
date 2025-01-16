@@ -12,15 +12,15 @@ export const registrarUnEstudiante = async () => {
       apellido: "Apellido",
       tipo: "tutorando",
     });
-  } catch (error) {
-    console.error("No se registro al estudiante: ", error);
+  } catch {
+    console.error("No se registro al estudiante");
   }
 };
 
 export const eliminarCualquierUsuario = async () => {
   try {
     await db.usuarios.deleteMany();
-  } catch (error) {
-    console.error("No se eliminaron los usuarios: ", error);
+  } catch {
+    console.error("No se eliminaron los usuarios");
   }
 };

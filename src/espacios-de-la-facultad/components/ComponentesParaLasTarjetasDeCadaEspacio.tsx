@@ -14,7 +14,6 @@ export const ContenedorParaLaTarjeta = ({
 );
 
 export const CuerpoDeLaTarjeta = ({ contenido }: { contenido: string }) => {
-  const resumen = contenido.split(" ").join(" ").concat("");
   return (
     <Typography
       component={"p"}
@@ -25,7 +24,7 @@ export const CuerpoDeLaTarjeta = ({ contenido }: { contenido: string }) => {
         LetterSpacing: "0%",
       }}
     >
-      {resumen}
+      {contenido}
     </Typography>
   );
 };

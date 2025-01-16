@@ -3,10 +3,9 @@ import db from "@/db";
 
 const route = async (
   consulta: NextApiRequest,
-  respuesta: NextApiResponse,
+  respuesta: NextApiResponse
 ): Promise<void> => {
   const idtutor = consulta.query.id;
-  console.log(idtutor);
   if (consulta.method === "GET") {
     if (idtutor === undefined)
       return respuesta
@@ -45,8 +44,7 @@ const intentarObtenerTutorandos = async (idDelTutor: string) => {
       };
     });
   } catch (error) {
-    console.error(error);
-    throw Error("No pude encontrar a los tutorandos");
+    throw Error(`No pude encontrar a los tutorandos: ${error}`);
   }
 };
 export default route;

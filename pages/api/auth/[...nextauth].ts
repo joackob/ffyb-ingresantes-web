@@ -17,8 +17,6 @@ export const authOptions = {
         },
       },
       async authorize(credentials) {
-        console.log(credentials);
-
         const usuario = await db.usuarios.findUnique({
           where: {
             email: credentials?.email,
@@ -27,15 +25,12 @@ export const authOptions = {
 
         if (!usuario) throw new Error("Ningún usuario encontrado");
 
-        console.log(usuario);
-
         const matchPassword = await bcrypt.compare(
           credentials?.contrasena || "",
           usuario.contrasena
         );
 
         if (!matchPassword) throw new Error("contraseña incorrecta");
-        console.log("estado autorizado");
         return {
           id: usuario.id,
           name: usuario.nombre,
