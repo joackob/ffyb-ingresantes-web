@@ -8,9 +8,9 @@
     "lint": "next lint",
     "tests:e2e": "npx playwright test",
     "tests:e2e:create": "bunx playwright codegen",
-    "init:db:dev": "npx prisma migrate dev --name init",
-    "init:db:deploy": "npx prisma migrate deploy",
-    "reset:db:dev": "npx prisma migrate reset",
+    "db:init:dev": "npx prisma migrate dev --name init",
+    "db:init:deploy": "npx prisma migrate deploy",
+    "db:reset": "npx prisma migrate reset",
     "init:tutorandos": "node ./db/ingresar_tutorandos.mjs"
   },
   "dependencies": {
