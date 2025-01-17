@@ -1,8 +1,8 @@
-import NextAuth from "next-auth";
+import NextAuth, { AuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials"; //quiero hacer login con usaurio y contraseña
 import { intentarAutenticarAlUsuarioLigadoALasCredenciales } from "@/src/api/usuarios/autenticar";
 
-export const authOptions = {
+export const nextAuthOptions: AuthOptions = {
   providers: [
     CredentialsProvider({
       name: "Credentials",
@@ -19,9 +19,17 @@ export const authOptions = {
       },
     }),
   ],
+  callbacks: {
+    session: async ({ session, token }) => {
+      return { ...session, user: { ...session.user, ...token } };
+    },
+    jwt: async ({ token, user }) => {
+      return { ...token, ...user };
+    },
+  },
   pages: {
     signIn: "/inicio-de-sesion",
   },
 };
 
-export default NextAuth(authOptions);
+export default NextAuth(nextAuthOptions);

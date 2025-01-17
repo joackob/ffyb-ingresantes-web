@@ -20,14 +20,16 @@ test.describe("Como usuario registrado, deseo acceder al sistema a través de mi
     await page.getByRole("button", { name: "Continuar" }).click();
   });
 
-  // test.afterEach(async ({ page }) => {
-  //   await page.getByRole("link", { name: "cerrar sesión" }).click();
-  // });
-
   test("Deberia aparecer un boton para cerrar sesión despues de acceder al sistema con un usuario registrado", async ({
     page,
   }) => {
     await expect(page.getByRole("banner")).toContainText("cerrar sesión");
+  });
+
+  test("Deberia aparecer un link para ver el progreso de la carrera solo si se trata de un estudiante registrado", async ({
+    page,
+  }) => {
+    await expect(page.getByRole("banner")).toContainText("tu progreso");
   });
 
   test("Deberia aparecer un boton para iniciar sesión despues de salir del sistema", async ({

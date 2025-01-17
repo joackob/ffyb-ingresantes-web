@@ -2,9 +2,11 @@ import { Link, Stack, Box } from "@mui/material";
 import links from "@/src/app/layout/links";
 import { useSession } from "next-auth/react";
 import { signOut } from "next-auth/react";
+import { Usuarios } from "@prisma/client";
 
 const NavBar = () => {
   const sesion = useSession();
+  console.log(sesion);
   return (
     <Stack
       height={"100%"}
@@ -49,6 +51,7 @@ const NavBar = () => {
           dangerouslySetInnerHTML={{ __html: "cargando <br/> sesión" }}
         />
       )}
+
       {sesion.status === "authenticated" && (
         <Link
           fontSize={"12px"}
@@ -63,6 +66,19 @@ const NavBar = () => {
         />
       )}
 
+      {sesion.status === "authenticated" &&
+        (sesion.data.user as Usuarios).tipo === "tutorando" && (
+          <Link
+            fontSize={"12px"}
+            fontFamily={"Montserrat"}
+            color={"#8b8b8b"}
+            underline="none"
+            fontWeight={"light"}
+            textTransform={"uppercase"}
+            href={"/estudiantes/estadisticas-de-tu-carrera"}
+            dangerouslySetInnerHTML={{ __html: "tu <br/> progreso" }}
+          />
+        )}
       <Box
         display={"flex"}
         alignItems={"center"}
