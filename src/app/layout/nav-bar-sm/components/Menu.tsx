@@ -5,6 +5,7 @@ import { useState } from "react";
 import { MouseEvent } from "react";
 import links from "@/src/app/layout/links";
 import { signOut, useSession } from "next-auth/react";
+import { Usuarios } from "@prisma/client";
 
 const NavMenu = () => {
   const sesion = useSession();
@@ -74,6 +75,22 @@ const NavMenu = () => {
             />
           </MenuItem>
         )}
+
+        {sesion.status === "authenticated" &&
+          (sesion.data.user as Usuarios).tipo === "tutorando" && (
+            <MenuItem>
+              <Link
+                fontSize={"12px"}
+                fontFamily={"Montserrat"}
+                color={"#8b8b8b"}
+                underline="none"
+                fontWeight={"light"}
+                textTransform={"uppercase"}
+                href={"/estudiantes/estadisticas-de-tu-carrera"}
+                dangerouslySetInnerHTML={{ __html: "tu <br/> progreso" }}
+              />
+            </MenuItem>
+          )}
       </Menu>
     </>
   );

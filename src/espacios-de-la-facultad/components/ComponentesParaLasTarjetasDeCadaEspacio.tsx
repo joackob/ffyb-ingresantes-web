@@ -47,6 +47,7 @@ export const VideoComplementario = ({ url }: { url: string }) => {
 export const TituloDelVideo = ({ titulo }: { titulo: string }) => {
   return (
     <Typography
+      variant="h2"
       component={"h2"}
       sx={{
         color: "black",

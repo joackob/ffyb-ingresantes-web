@@ -1,4 +1,4 @@
-import { Link, Stack, Box } from "@mui/material";
+import { Link, Stack, Box, Button } from "@mui/material";
 import links from "@/src/app/layout/links";
 import { useSession } from "next-auth/react";
 import { signOut } from "next-auth/react";
@@ -52,20 +52,6 @@ const NavBar = () => {
         />
       )}
 
-      {sesion.status === "authenticated" && (
-        <Link
-          fontSize={"12px"}
-          fontFamily={"Montserrat"}
-          onClick={async () => await signOut({ callbackUrl: "/" })}
-          color={"#8b8b8b"}
-          underline="none"
-          fontWeight={"light"}
-          textTransform={"uppercase"}
-          sx={{ cursor: "pointer" }}
-          dangerouslySetInnerHTML={{ __html: "cerrar <br/> sesión" }}
-        />
-      )}
-
       {sesion.status === "authenticated" &&
         (sesion.data.user as Usuarios).tipo === "tutorando" && (
           <Link
@@ -79,6 +65,34 @@ const NavBar = () => {
             dangerouslySetInnerHTML={{ __html: "tu <br/> progreso" }}
           />
         )}
+
+      {sesion.status === "authenticated" && (
+        <Button
+          variant="text"
+          onClick={async () => await signOut({ callbackUrl: "/" })}
+          style={{
+            fontFamily: "Montserrat",
+            fontSize: "12px",
+            backgroundColor: "transparent",
+            width: "70px",
+            lineHeight: "1.3",
+            padding: "0",
+            textAlign: "left",
+          }}
+          // sx={{
+          //   cursor: "pointer",
+          //   color: "#8b8b8b",
+          //   backgroundColor: "transparent",
+          //   fontSize: "12px",
+          //   fontFamily: "Montserrat",
+          //   fontWeight: "light",
+          //   textTransform: "uppercase",
+          // }}
+          // dangerouslySetInnerHTML={{ __html: "cerrar <br/> sesión" }}
+        >
+          cerrar sesión
+        </Button>
+      )}
       <Box
         display={"flex"}
         alignItems={"center"}

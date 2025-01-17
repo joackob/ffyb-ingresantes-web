@@ -23,7 +23,9 @@ test.describe("Como usuario registrado, deseo acceder al sistema a través de mi
   test("Deberia aparecer un boton para cerrar sesión despues de acceder al sistema con un usuario registrado", async ({
     page,
   }) => {
-    await expect(page.getByRole("banner")).toContainText("cerrar sesión");
+    await expect(
+      page.getByRole("button", { name: "cerrar sesión" })
+    ).toBeVisible();
   });
 
   test("Deberia aparecer un link para ver el progreso de la carrera solo si se trata de un estudiante registrado", async ({
@@ -35,7 +37,8 @@ test.describe("Como usuario registrado, deseo acceder al sistema a través de mi
   test("Deberia aparecer un boton para iniciar sesión despues de salir del sistema", async ({
     page,
   }) => {
-    await page.getByText("cerrar sesión").click();
+    await page.getByRole("button", { name: "cerrar sesión" }).click();
+    // await page.getByText("cerrar sesión").click();
     await expect(page.getByRole("banner")).toContainText("iniciar sesión");
   });
 });
