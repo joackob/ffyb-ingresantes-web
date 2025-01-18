@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Container } from "@mui/material";
 import React, { ReactNode } from "react";
 
 const ImagenDeFondo = ({ children }: { children: ReactNode }) => {
@@ -17,7 +17,7 @@ const ImagenDeFondo = ({ children }: { children: ReactNode }) => {
           minHeight: "inherit",
         }}
       >
-        {children}
+        <Container>{children}</Container>
       </Box>
     </Box>
   );

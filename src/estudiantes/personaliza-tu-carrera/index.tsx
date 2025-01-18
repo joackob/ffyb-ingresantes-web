@@ -13,7 +13,7 @@ import TarjetaParaCubrirArrastre from "./dnd-components/TarjetaParaCubrirArrastr
 import { ChipCursada } from "./components/ChipCursada";
 import { Materia } from "./types";
 import SelectorDeCarreras from "./components/SelectorDeCarreras";
-import { Box, FormControl } from "@mui/material";
+import EncabezadoParaElTableroDeCuatrimestres from "./components/EncabezadoParaElTableroDeCuatrimestres";
 
 const Personaliza = ({
   cuatrimestres,
@@ -29,12 +29,10 @@ const Personaliza = ({
 
   return (
     <ImagenDeFondo>
-      <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+      <EncabezadoParaElTableroDeCuatrimestres>
         <TituloCarrera carrera={nombre} />
-        <FormControl fullWidth>
-          <SelectorDeCarreras></SelectorDeCarreras>
-        </FormControl>
-      </Box>
+        <SelectorDeCarreras />
+      </EncabezadoParaElTableroDeCuatrimestres>
       <TableroParaCuatrimestres>
         <ContextoParaArrastrarYDepositar
           alDetectarUnElementoSiendoArrastrado={({ idElementoArrastrado }) =>

@@ -7,8 +7,11 @@ import {
   Materia,
 } from "../types";
 import { Carrera } from "@/pages/api/carreras/[carrera]";
+import { useRouter } from "next/router";
 
-export const useCarreraSeleccionable = (carreraSeleccionada?: string) => {
+export const useCarreraSeleccionable = () => {
+  const enrutador = useRouter();
+  const carreraSeleccionada = enrutador.query.carrera?.toString();
   const [carrera, fijarCarrera] = useState<Carrera>();
   const [estado, cambiarEstado] = useState<
     "en-proceso" | "descarga-completa" | "con-problemas"
@@ -43,10 +46,10 @@ export const useCarreraSeleccionable = (carreraSeleccionada?: string) => {
 };
 
 const obtenerLosCuatrimestresDeLaCarreraSeleccionada = async (
-  carrera: string
+  carrera: string,
 ): Promise<Carrera> => {
   const respuesta = await axios.get<Carrera>(
-    `${configuracion.api_url}/carreras/${carrera}`
+    `${configuracion.api_url}/carreras/${carrera}`,
   );
   return respuesta.data;
 };

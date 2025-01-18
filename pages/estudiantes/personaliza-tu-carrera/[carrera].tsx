@@ -1,12 +1,9 @@
 import { useCarreraSeleccionable } from "@/src/estudiantes/personaliza-tu-carrera/hooks/useCarrerasSeleccionables";
 import Personaliza from "@/src/estudiantes/personaliza-tu-carrera/index";
 import { LinearProgress, Alert } from "@mui/material";
-import { useRouter } from "next/router";
 
 const Page = () => {
-  const enrutador = useRouter();
-  const carreraSeleccionada = enrutador.query.carrera?.toString();
-  const carrera = useCarreraSeleccionable(carreraSeleccionada);
+  const carrera = useCarreraSeleccionable();
 
   return (
     <>

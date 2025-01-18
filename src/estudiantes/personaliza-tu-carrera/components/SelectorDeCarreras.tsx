@@ -1,10 +1,17 @@
-import { MenuItem, Select, Box, SelectChangeEvent } from "@mui/material";
-import React, { useState } from "react";
-import { useRouter } from "next/router";
+import { IconButton, Link, Menu, MenuItem } from "@mui/material";
+import { useState, MouseEvent } from "react";
+import { ExpandMore } from "@mui/icons-material";
 
 const SelectorDeCarreras = () => {
-  const router = useRouter();
-  const [carreraSeleccionada, setCarreraSeleccionada] = useState("");
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const open = Boolean(anchorEl);
+
+  const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   const carreras = [
     "Farmacia",
@@ -15,47 +22,44 @@ const SelectorDeCarreras = () => {
     "Tecnicatura Universitaria en Gestión Integral de Bioterio",
   ];
 
-  const handleChange = (event: SelectChangeEvent<string>) => {
-    const selectedCarrera = event.target.value;
-
-    const carreraParaRuta = selectedCarrera
+  const calcularCodigoDadaUnaCarrera = (carrera: string) => {
+    return carrera
       .toLowerCase()
       .normalize("NFD")
       .replace(/[\u0300-\u036f]/g, "")
       .replace(/\s+/g, "-");
-    setCarreraSeleccionada(selectedCarrera); // Actualiza el estado con la carrera seleccionada
-
-    if (selectedCarrera) {
-      router
-        .push(`/estudiantes/personaliza-tu-carrera/${carreraParaRuta}`)
-        .then(() => {
-          router.reload();
-        });
-    }
   };
 
   return (
-    <Box sx={{ display: "flex", justifyContent: "flex-end" }}>
-      <Select
-        value={carreraSeleccionada}
-        onChange={handleChange} // Al cambiar, se ejecuta handleChange
-        defaultValue=""
-        style={{
-          width: "450px",
-          backgroundColor: "#fff4",
-          borderRadius: "8px",
-        }}
+    <>
+      <IconButton onClick={handleClick}>
+        <ExpandMore fontSize={"large"} sx={{ color: "white" }} />
+      </IconButton>
+
+      <Menu
+        id="menu-selector-de-carreras"
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
       >
-        <MenuItem value="" disabled>
-          Seleccionar una carrera
-        </MenuItem>
-        {carreras.map((carrera, index) => (
-          <MenuItem key={index} value={carrera}>
-            {carrera}
+        {carreras.map((carrera) => (
+          <MenuItem key={carrera}>
+            <Link
+              fontSize={"12px"}
+              fontFamily={"Montserrat"}
+              href={`/estudiantes/personaliza-tu-carrera/${calcularCodigoDadaUnaCarrera(carrera)}`}
+              color={"#8b8b8b"}
+              underline="none"
+              fontWeight={"light"}
+              textTransform={"uppercase"}
+              // dangerouslySetInnerHTML={{ __html: carrera }}
+            >
+              {carrera}
+            </Link>
           </MenuItem>
         ))}
-      </Select>
-    </Box>
+      </Menu>
+    </>
   );
 };
 
