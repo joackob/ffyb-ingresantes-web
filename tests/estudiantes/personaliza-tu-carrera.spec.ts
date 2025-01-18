@@ -24,8 +24,8 @@ test.describe("Como estudiante no registrado, deseo una sección donde personali
   test("Debe ser posible seleccionar la carrera Bioquimica, lo que comprende materias como Física, Biología, Quimica Organica", async ({
     page,
   }) => {
-    await page.getByRole("combobox").click();
-    await page.getByRole("option", { name: "Bioquimica" }).click();
+    await page.getByRole("main").locator("button").click();
+    await page.getByRole("link", { name: "Bioquimica" }).click();
     await expect(page.getByText("4° cuatrimestre")).toBeVisible();
     await expect(
       page.getByRole("button", { name: "No disponible Física" }),
