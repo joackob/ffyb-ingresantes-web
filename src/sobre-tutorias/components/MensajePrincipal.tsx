@@ -1,4 +1,5 @@
 import { Box, Typography } from "@mui/material";
+import { configuracion } from "@/src/configuracion";
 
 const MensajePrincipal = () => {
   const promo = `Bienvenidos al Sistema<br/>de Tutorías<br/>de Farmacia y bioquímica.`;
@@ -6,7 +7,7 @@ const MensajePrincipal = () => {
     <Box
       height={"448px"}
       style={{
-        backgroundImage: "url(https://picsum.photos/1200/800)",
+        backgroundImage: `url(${configuracion.imagen_de_fondo})`,
         backgroundSize: "cover",
       }}
     >

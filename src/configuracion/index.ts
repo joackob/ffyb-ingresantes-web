@@ -1,4 +1,4 @@
 export const configuracion = {
   api_url: "/api",
-  // api_url: "http://localhost:3000/api",
+  imagen_de_fondo: "/1000071028.png",
 };
