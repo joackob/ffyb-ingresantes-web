@@ -11,9 +11,9 @@ import TarjetaDondeDepositar from "./dnd-components/TarjetaDondeDepositar";
 import TarjetaArrastrable from "./dnd-components/TarjetaArrastrable";
 import TarjetaParaCubrirArrastre from "./dnd-components/TarjetaParaCubrirArrastre";
 import { ChipCursada } from "./components/ChipCursada";
-import { Materia } from "./types";
 import SelectorDeCarreras from "./components/SelectorDeCarreras";
 import EncabezadoParaElTableroDeCuatrimestres from "./components/EncabezadoParaElTableroDeCuatrimestres";
+import { Materia } from "@/src/api/carreras/types";
 
 const Personaliza = ({
   cuatrimestres,
@@ -61,10 +61,10 @@ const Personaliza = ({
           {plan.actual().map(({ id, materias }) => (
             <TarjetaDondeDepositar id={id} key={id} items={materias}>
               <TarjetaParaCuatrimestre cuatrimestre={id}>
-                {materias.map(({ nombre, estado }) => (
-                  <TarjetaArrastrable id={nombre} key={nombre}>
+                {materias.map(({ id, nombre }) => (
+                  <TarjetaArrastrable id={id} key={id}>
                     <TarjetaParaMateria nombre={nombre}>
-                      <ChipCursada cursada={estado || "No disponible"} />
+                      <ChipCursada cursada={"No disponible"} />
                     </TarjetaParaMateria>
                   </TarjetaArrastrable>
                 ))}
@@ -73,9 +73,7 @@ const Personaliza = ({
           ))}
           <TarjetaParaCubrirArrastre esArrastrada={materia.fueSeleccionada()}>
             <TarjetaParaMateria nombre={materia.eleccion()?.nombre}>
-              <ChipCursada
-                cursada={materia.eleccion()?.estado || "No disponible"}
-              />
+              <ChipCursada cursada={"No disponible"} />
             </TarjetaParaMateria>
           </TarjetaParaCubrirArrastre>
         </ContextoParaArrastrarYDepositar>
