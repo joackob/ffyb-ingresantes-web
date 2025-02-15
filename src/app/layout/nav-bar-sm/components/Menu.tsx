@@ -9,27 +9,19 @@ import { Usuarios } from "@prisma/client";
 
 const NavMenu = () => {
   const sesion = useSession();
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const open = Boolean(anchorEl);
-
-  const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+  const menu = useMenuClickeable();
 
   return (
     <>
-      <IconButton onClick={handleClick}>
+      <IconButton onClick={menu.anclarAEsteElemento}>
         <MoreVertIcon fontSize={"large"} sx={{ color: "black" }} />
       </IconButton>
 
       <Menu
         id="basic-menu"
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleClose}
+        anchorEl={menu.elementoAlCualEstaAnclado()}
+        open={menu.estaAbierto()}
+        onClose={menu.desanclarDeCualquierElemento}
       >
         {links.map((link, index) => (
           <MenuItem key={index}>
@@ -94,6 +86,25 @@ const NavMenu = () => {
       </Menu>
     </>
   );
+};
+
+const useMenuClickeable = () => {
+  const [elementoDeAnclajeParaElMenu, establecerElementoDeAnclajeParaElMenu] =
+    useState<null | HTMLElement>(null);
+
+  const anclarElMenuAEsteElemento = (event: MouseEvent<HTMLButtonElement>) => {
+    establecerElementoDeAnclajeParaElMenu(event.currentTarget);
+  };
+  const desanclarElMenu = () => {
+    establecerElementoDeAnclajeParaElMenu(null);
+  };
+
+  return {
+    estaAbierto: () => elementoDeAnclajeParaElMenu !== null,
+    anclarAEsteElemento: anclarElMenuAEsteElemento,
+    desanclarDeCualquierElemento: desanclarElMenu,
+    elementoAlCualEstaAnclado: () => elementoDeAnclajeParaElMenu,
+  } as const;
 };
 
 export default NavMenu;

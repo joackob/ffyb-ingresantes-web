@@ -6,7 +6,6 @@ import { Usuarios } from "@prisma/client";
 
 const NavBar = () => {
   const sesion = useSession();
-  console.log(sesion);
   return (
     <Stack
       height={"100%"}
@@ -79,16 +78,6 @@ const NavBar = () => {
             padding: "0",
             textAlign: "left",
           }}
-          // sx={{
-          //   cursor: "pointer",
-          //   color: "#8b8b8b",
-          //   backgroundColor: "transparent",
-          //   fontSize: "12px",
-          //   fontFamily: "Montserrat",
-          //   fontWeight: "light",
-          //   textTransform: "uppercase",
-          // }}
-          // dangerouslySetInnerHTML={{ __html: "cerrar <br/> sesión" }}
         >
           cerrar sesión
         </Button>
