@@ -1,6 +1,6 @@
 import NavLogo from "../components/NavLogo";
 import Layout from "./components/Layout";
-import BarraNavegacion from "./components/BarraNavegacion";
+import BarraNavegacion from "./components/BarraDeNavegacion";
 
 const index = () => {
   return (

@@ -5,11 +5,11 @@ test.describe("Siendo referente del Sistema de Tutorias, deseo que la web conten
     page,
   }) => {
     await page.goto("http://localhost:3000/");
-    await page.getByRole("link", { name: "Aulas y espacios de la" }).click();
+    await page.getByRole("link", { name: "aulas y espacios" }).click();
     await expect(
       page.getByRole("heading", {
-        name: "UBA | Facultad de Farmacia y Bioquimica | Entrada",
-      }),
+        name: "Aulas y Espacios de la Facultad",
+      })
     ).toBeVisible();
   });
 });

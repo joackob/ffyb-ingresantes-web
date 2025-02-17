@@ -3,12 +3,10 @@ import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { Link, Menu, MenuItem } from "@mui/material";
 import { useState } from "react";
 import { MouseEvent } from "react";
-import links from "@/src/app/layout/links";
-import { signOut, useSession } from "next-auth/react";
-import { Usuarios } from "@prisma/client";
+import useSesion from "../../hooks";
 
 const NavMenu = () => {
-  const sesion = useSession();
+  const sesion = useSesion();
   const menu = useMenuClickeable();
 
   return (
@@ -23,66 +21,22 @@ const NavMenu = () => {
         open={menu.estaAbierto()}
         onClose={menu.desanclarDeCualquierElemento}
       >
-        {links.map((link, index) => (
-          <MenuItem key={index}>
-            <Link
-              fontSize={"12px"}
-              fontFamily={"Montserrat"}
-              href={link.url}
-              color={"#8b8b8b"}
-              underline="none"
-              fontWeight={"light"}
-              textTransform={"uppercase"}
-              dangerouslySetInnerHTML={{ __html: link.label }}
-            />
-          </MenuItem>
+        {sesion.enlaces().map((link) => (
+          <ItemParaElMenu key={link.label} url={link.url} label={link.label} />
         ))}
 
-        {sesion.status === "unauthenticated" && (
-          <MenuItem>
-            <Link
-              fontSize={"12px"}
-              fontFamily={"Montserrat"}
-              href={"/inicio-de-sesion"}
-              color={"#8b8b8b"}
-              underline="none"
-              fontWeight={"light"}
-              textTransform={"uppercase"}
-              dangerouslySetInnerHTML={{ __html: "Iniciar <br/> sesión" }}
-            />
-          </MenuItem>
+        {sesion.estaActivo() && (
+          <BotonParaSesion
+            label={"cerrar <br/> sesión"}
+            alPresionar={sesion.cerrar}
+          />
         )}
-        {sesion.status === "authenticated" && (
-          <MenuItem>
-            <Link
-              fontSize={"12px"}
-              fontFamily={"Montserrat"}
-              onClick={async () => await signOut({ callbackUrl: "/" })}
-              color={"#8b8b8b"}
-              underline="none"
-              fontWeight={"light"}
-              textTransform={"uppercase"}
-              dangerouslySetInnerHTML={{ __html: "cerrar <br/> sesión" }}
-              sx={{ cursor: "pointer" }}
-            />
-          </MenuItem>
+        {sesion.estaIniciando() && (
+          <BotonParaSesion
+            label={"iniciar <br/>sesion"}
+            alPresionar={sesion.iniciar}
+          />
         )}
-
-        {sesion.status === "authenticated" &&
-          (sesion.data.user as Usuarios).tipo === "tutorando" && (
-            <MenuItem>
-              <Link
-                fontSize={"12px"}
-                fontFamily={"Montserrat"}
-                color={"#8b8b8b"}
-                underline="none"
-                fontWeight={"light"}
-                textTransform={"uppercase"}
-                href={"/estudiantes/estadisticas-de-tu-carrera"}
-                dangerouslySetInnerHTML={{ __html: "tu <br/> progreso" }}
-              />
-            </MenuItem>
-          )}
       </Menu>
     </>
   );
@@ -106,5 +60,42 @@ const useMenuClickeable = () => {
     elementoAlCualEstaAnclado: () => elementoDeAnclajeParaElMenu,
   } as const;
 };
+
+const ItemParaElMenu = ({ url, label }: { url: string; label: string }) => (
+  <MenuItem>
+    <Link
+      fontSize={"12px"}
+      fontFamily={"Montserrat"}
+      href={url}
+      color={"#8b8b8b"}
+      underline="none"
+      fontWeight={"light"}
+      textTransform={"uppercase"}
+      dangerouslySetInnerHTML={{ __html: label }}
+    />
+  </MenuItem>
+);
+
+const BotonParaSesion = ({
+  label,
+  alPresionar,
+}: {
+  label: string;
+  alPresionar: () => void;
+}) => (
+  <MenuItem>
+    <Link
+      fontSize={"12px"}
+      fontFamily={"Montserrat"}
+      onClick={alPresionar}
+      color={"#8b8b8b"}
+      underline="none"
+      fontWeight={"light"}
+      textTransform={"uppercase"}
+      dangerouslySetInnerHTML={{ __html: label }}
+      sx={{ cursor: "pointer" }}
+    />
+  </MenuItem>
+);
 
 export default NavMenu;

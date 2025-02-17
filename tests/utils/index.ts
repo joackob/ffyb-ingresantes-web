@@ -17,6 +17,21 @@ export const registrarUnEstudiante = async () => {
   }
 };
 
+export const registrarAUnTutor = async () => {
+  try {
+    const contrasena = await encriptarContrasena("contrasena-larga");
+    await registrarUsuario({
+      email: "tutor@ffyb.uba.ar",
+      contrasena: contrasena,
+      nombre: "Tutor",
+      apellido: "Apellido",
+      tipo: "tutor",
+    });
+  } catch {
+    console.error("No se registro al estudiante");
+  }
+};
+
 export const eliminarCualquierUsuario = async () => {
   try {
     await db.usuarios.deleteMany();
