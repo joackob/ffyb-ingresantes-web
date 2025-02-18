@@ -11,10 +11,6 @@ const links = [
     label: "Tu plan <br/> de estudios",
     url: "/estudiantes/personaliza-tu-carrera/farmacia",
   },
-  {
-    label: "Iniciar <br/> sesión",
-    url: "/estudiantes/inicio-de-sesion",
-  },
 ];
 
 export default links;

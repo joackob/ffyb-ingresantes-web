@@ -1,12 +1,15 @@
 import { Box, Container, Stack, Typography } from "@mui/material";
+import { configuracion } from "@/src/configuracion";
+
+interface BannerProps {
+  titulo: string;
+  imagen?: string;
+}
 
 const Banner = ({
   titulo,
-  imagen = "https://picsum.photos/1200/800",
-}: {
-  titulo: string;
-  imagen?: string;
-}) => {
+  imagen = configuracion.imagen_de_fondo,
+}: BannerProps) => {
   return (
     <Box
       style={{
@@ -18,8 +21,9 @@ const Banner = ({
       <Box
         height={"100%"}
         style={{
-          backdropFilter: "blur(10px)",
+          backdropFilter: "blur(8px)",
           backgroundColor: "rgba(0,0,0,0.2)",
+          minHeight: "inherit",
         }}
       >
         <Container style={{ height: "100%" }}>

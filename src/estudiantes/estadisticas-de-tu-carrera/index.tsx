@@ -1,3 +1,4 @@
+import React from "react";
 import { Avatar } from "@mui/material";
 import { useEffect, useState } from "react";
 import Banner from "@/src/components/Banner";
@@ -6,9 +7,9 @@ interface StudentData {
   porcentajeDeLaCarreraTerminada: number;
   aprobadasPorCuatrimestre: number;
   añoDeEgreso: number;
-  notaPromedio: number;
+  notaPromedio: number; //crear funcion
   aprovadosEnELMejorCuatri: number;
-  mejorNota: number;
+  mejorNota: number; //crear funcion
 }
 
 const Page = () => {
@@ -16,11 +17,21 @@ const Page = () => {
   const [studentData, setStudentData] = useState<StudentData | null>(null);
 
   useEffect(() => {
-    fetch("/api/estudiante/estadisticas")
-      .then((data) => data.json())
+    // Suponiendo que quieres obtener los datos del estudiante con ID 1
+    const studentId = 1;
+
+    fetch(`/api/estudiante/estadisticas?id=${studentId}`)
       .then((response) => {
-        // Assuming `response[0].plan_estudios` is the structure
-        setStudentData(response[0].plan_estudios); //muestra solo a 1 estudiante.
+        if (!response.ok) {
+          throw new Error("Estudiante no encontrado");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setStudentData(data.plan_estudios); // Guarda solo el plan de estudios
+      })
+      .catch((error) => {
+        console.error(error);
       });
   }, []);
 
@@ -64,8 +75,7 @@ const Page = () => {
 
   return (
     <>
-      <Banner titulo={"Tu progreso"} />
-
+      <Banner titulo="Tu progreso" />
       <div
         style={{
           display: "flex",
@@ -80,7 +90,6 @@ const Page = () => {
           sx={{ width: 180, height: 180 }}
         />
       </div>
-
       <div
         style={{
           fontFamily: "Arial, sans-serif",

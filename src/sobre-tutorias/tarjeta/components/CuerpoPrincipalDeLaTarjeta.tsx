@@ -37,7 +37,7 @@ const CuerpoPrincipalDeLaTarjeta = (
             fontFamily: "Montserrat",
           }}
         >
-          {props.resumen.split(" ").slice(0, 16).join(" ")}...
+          {props.resumen.split(" ").slice(0, ).join(" ")}...
         </Typography>
       </Stack>
       <Link

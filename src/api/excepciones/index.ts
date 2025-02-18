@@ -8,6 +8,7 @@ export const tratarExcepciones = ({
   respuesta: NextApiResponse;
 }): void => {
   try {
+    console.error("Error a descubrir", excepcion);
     (excepcion as Excepcion).brindarUnaRespuestaAdecuada(respuesta);
   } catch (error) {
     console.error("Error desconocido", error);

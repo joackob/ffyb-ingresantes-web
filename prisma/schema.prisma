@@ -80,3 +80,17 @@ model Correlativas {
   correlativa   Asignaturas @relation("correlativasDeLaAsignatura", fields: [correlativaId], references: [id])
   correlativaId String
 }
+
+model Estudiante {
+  id                       String @id @default(uuid())
+  nombre                   String
+  edad                     Int
+  genero                   String
+  carrera                  String
+  porcentajeDeCarrera      Float
+  aprobadasPorCuatrimestre Int
+  anioDeEgreso             Int
+  notaPromedio             Float
+  aprovadosEnElMejorCuatri Int
+  mejorNota                Float
+}

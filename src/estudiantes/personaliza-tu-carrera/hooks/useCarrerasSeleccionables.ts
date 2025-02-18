@@ -1,15 +1,17 @@
 import { configuracion } from "@/src/configuracion";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import {
-  mapearMateriasConSuCuatrimestre,
-  mapearMateriasConSuID,
-  Materia,
-} from "../types";
-import { Carrera } from "@/pages/api/carreras/[carrera]";
+import { Carrera, Cuatrimestre, Materia } from "@/src/api/carreras/types";
+import { useRouter } from "next/router";
 
-export const useCarreraSeleccionable = (carreraSeleccionada?: string) => {
-  const [carrera, fijarCarrera] = useState<Carrera>();
+export const useCarreraSeleccionable = () => {
+  const enrutador = useRouter();
+  const carreraSeleccionada = enrutador.query.carrera?.toString();
+  const [carrera, fijarCarrera] = useState<Carrera>({
+    id: "farmacia",
+    nombre: "Farmacia",
+    cuatrimestres: [],
+  });
   const [estado, cambiarEstado] = useState<
     "en-proceso" | "descarga-completa" | "con-problemas"
   >("en-proceso");
@@ -27,26 +29,39 @@ export const useCarreraSeleccionable = (carreraSeleccionada?: string) => {
   }, [carreraSeleccionada]);
 
   return {
-    nombre: () => carrera?.carrera,
+    nombre: () => carrera.nombre,
     descargando: () => estado === "en-proceso",
     descargada: () => estado === "descarga-completa",
     fallida: () => estado === "con-problemas",
-    materias: () =>
-      carrera
-        ? mapearMateriasConSuID(carrera.cuatrimestres)
-        : new Map<string, Materia>(),
+    materias: () => indexarMateriasASuId(carrera.cuatrimestres),
     cuatrimestres: () =>
-      carrera
-        ? mapearMateriasConSuCuatrimestre(carrera.cuatrimestres)
-        : new Map<string, Materia[]>(),
+      indexarMateriasAlIdDelCuatrimestreQueLosContiene(carrera.cuatrimestres),
   } as const;
 };
 
 const obtenerLosCuatrimestresDeLaCarreraSeleccionada = async (
-  carrera: string
+  carrera: string,
 ): Promise<Carrera> => {
-  const respuesta = await axios.get<Carrera>(
-    `${configuracion.api_url}/carreras/${carrera}`
+  const { data: carreraDescargada } = await axios.get<Carrera>(
+    `${configuracion.api_url}/carreras/${carrera}`,
   );
-  return respuesta.data;
+  return carreraDescargada;
+};
+
+const indexarMateriasASuId = (
+  cuatremestres: Cuatrimestre[],
+): Map<string, Materia> => {
+  return new Map<string, Materia>(
+    cuatremestres
+      .flatMap(({ materias }) => materias)
+      .map((materia) => [materia.id, materia]),
+  );
+};
+
+const indexarMateriasAlIdDelCuatrimestreQueLosContiene = (
+  cuatrimestres: Cuatrimestre[],
+): Map<string, Materia[]> => {
+  return new Map<string, Materia[]>(
+    cuatrimestres.map((cuatri) => [cuatri.id, cuatri.materias]),
+  );
 };

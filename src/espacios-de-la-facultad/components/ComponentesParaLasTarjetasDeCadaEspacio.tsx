@@ -6,16 +6,27 @@ export const ContenedorParaLaTarjeta = ({
 }: {
   children: ReactNode;
 }) => (
-  <Container>
-    <Stack spacing={"16px"} direction={"column"}>
+  <Container style={{ marginTop: "30px", marginBottom: "50px" }}>
+    <Stack spacing={"16px"} direction={"row"} flexWrap={"wrap"}>
       {children}
     </Stack>
   </Container>
 );
 
 export const CuerpoDeLaTarjeta = ({ contenido }: { contenido: string }) => {
-  const resumen = contenido.split(" ").slice(0, 16).join(" ").concat("...");
-  return <div>{resumen}</div>;
+  return (
+    <Typography
+      component={"p"}
+      sx={{
+        font: "Montserrat",
+        weight: "Regular",
+        fontSize: "16px",
+        LetterSpacing: "0%",
+      }}
+    >
+      {contenido}
+    </Typography>
+  );
 };
 
 export const VideoComplementario = ({ url }: { url: string }) => {
@@ -34,5 +45,20 @@ export const VideoComplementario = ({ url }: { url: string }) => {
 };
 
 export const TituloDelVideo = ({ titulo }: { titulo: string }) => {
-  return <Typography>{titulo}</Typography>;
+  return (
+    <Typography
+      variant="h2"
+      component={"h2"}
+      sx={{
+        color: "black",
+        fontFamily: "Montserrat",
+        fontWeight: 800,
+        fontSize: "16px",
+        marginTop: "1rem",
+        marginBottom: "1rem",
+      }}
+    >
+      {titulo}
+    </Typography>
+  );
 };

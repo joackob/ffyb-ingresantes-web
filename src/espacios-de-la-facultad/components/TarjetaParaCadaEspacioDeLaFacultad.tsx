@@ -1,14 +1,20 @@
+import { Box } from "@mui/system";
 import {
   ContenedorParaLaTarjeta,
   VideoComplementario,
   CuerpoDeLaTarjeta,
   TituloDelVideo,
 } from "./ComponentesParaLasTarjetasDeCadaEspacio";
+import { ReactNode } from "react";
 
 type PropiedadesDeCadaEspacioDeLaFacultad = {
   video: string;
   description: string;
   titulo: string;
+};
+
+const ContenidoDeLaTargeta = ({ children }: { children: ReactNode }) => {
+  return <Box maxWidth={"330px"}>{children}</Box>;
 };
 
 const TarjetaParaCadaEspacioDeLaFacultad = ({
@@ -18,9 +24,11 @@ const TarjetaParaCadaEspacioDeLaFacultad = ({
 }: PropiedadesDeCadaEspacioDeLaFacultad) => {
   return (
     <ContenedorParaLaTarjeta>
-      <TituloDelVideo titulo={titulo} />
       <VideoComplementario url={video} />
-      <CuerpoDeLaTarjeta contenido={description} />
+      <ContenidoDeLaTargeta>
+        <TituloDelVideo titulo={titulo} />
+        <CuerpoDeLaTarjeta contenido={description} />
+      </ContenidoDeLaTargeta>
     </ContenedorParaLaTarjeta>
   );
 };

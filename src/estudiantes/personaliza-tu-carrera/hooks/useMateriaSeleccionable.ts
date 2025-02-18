@@ -1,6 +1,6 @@
 "use client";
+import { Materia } from "@/src/api/carreras/types";
 import { useState } from "react";
-import { Materia } from "../types";
 
 export type MateriaSeleccionada = {
   id: string;

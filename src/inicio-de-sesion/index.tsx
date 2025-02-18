@@ -1,10 +1,10 @@
 import FondoConImagen from "./components/FondoConImagen";
-import FormularioLogin from "./components/FormularioLogin";
+import FormularioParaElInicioDeSesion from "./components/FormularioLogin";
 
 const index = () => {
   return (
     <FondoConImagen>
-      <FormularioLogin />
+      <FormularioParaElInicioDeSesion />
     </FondoConImagen>
   );
 };
