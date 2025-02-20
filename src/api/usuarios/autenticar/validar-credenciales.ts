@@ -1,4 +1,5 @@
 import z from "zod";
+import { tratarExcepcionesEnLaValidacionDeSolicitudes } from "../../excepciones/tratar-excepciones-en-la-validacion-de-solicitudes";
 
 const EsquemaParaLasCredencialesDeUnUsuario = z.object({
   email: z.string().email({ message: "El email no es válido" }),
@@ -10,16 +11,11 @@ export type CredencialesParaAutenticarAUnUsuario = z.infer<
 >;
 
 export const validarCredenciales = (
-  credencialesEnCrudo: any,
+  credencialesEnCrudo: any
 ): CredencialesParaAutenticarAUnUsuario => {
   try {
     return EsquemaParaLasCredencialesDeUnUsuario.parse(credencialesEnCrudo);
-  } catch (camposInvalidos) {
-    const informacionSobreLosCamposInvalidos = (
-      camposInvalidos as z.ZodError
-    ).issues.map((campo) => {
-      return campo.message;
-    });
-    throw new Error(informacionSobreLosCamposInvalidos.join(", "));
+  } catch (excepcion) {
+    throw tratarExcepcionesEnLaValidacionDeSolicitudes(excepcion);
   }
 };

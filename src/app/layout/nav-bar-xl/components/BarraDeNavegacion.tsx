@@ -44,7 +44,7 @@ const ContenedorParaLaBarraDeNavegacion = ({
 );
 
 const AvatarParaSesionActiva = ({ nombre }: { nombre: string }) => (
-  <Avatar style={{ backgroundColor: "#8b8b8b" }}>
+  <Avatar style={{ backgroundColor: "#5DAFD6", fontWeight: "bold" }}>
     {nombre.split(" ").map((palabra) => palabra[0].toUpperCase())}
   </Avatar>
 );
@@ -65,22 +65,25 @@ const BotonParaSesion = ({
   label: string;
 }) => {
   return (
-    <Button
-      variant="text"
-      onClick={alPresionar}
-      style={{
-        fontFamily: "Montserrat",
-        fontSize: ".75rem",
-        backgroundColor: "transparent",
-        width: "7rem",
-        lineHeight: "1.3",
-        padding: "0",
-        textAlign: "left",
-      }}
-    >
-      {label}
+    <>
+      <Button
+        variant="text"
+        onClick={alPresionar}
+        style={{
+          fontFamily: "Montserrat",
+          fontSize: ".75rem",
+          backgroundColor: "transparent",
+          width: "4rem",
+          lineHeight: "1.3",
+          padding: "0",
+          textAlign: "left",
+        }}
+      >
+        {label}
+      </Button>
+
       {children}
-    </Button>
+    </>
   );
 };
 

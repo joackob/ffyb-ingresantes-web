@@ -1,4 +1,5 @@
-import z, { ZodError } from "zod";
+import z from "zod";
+import { tratarExcepcionesEnLaValidacionDeSolicitudes } from "../../excepciones/tratar-excepciones-en-la-validacion-de-solicitudes";
 
 export const EsquemaDeLaSolicitudParaRegistrarUnNuevoUsuario = z.object({
   nombre: z.string(),
@@ -17,22 +18,11 @@ export type SolicitudParaRegistrarUnNuevoUsuario = z.infer<
 >;
 
 export const validarSolicitud = (
-  datos: any,
+  datos: any
 ): SolicitudParaRegistrarUnNuevoUsuario => {
   try {
     return EsquemaDeLaSolicitudParaRegistrarUnNuevoUsuario.parse(datos);
-  } catch (error) {
-    const erroresEncontradosAlChequearDatosDeLaConsulta = (
-      error as ZodError
-    ).issues.map((problema) => {
-      return `El campo ${problema?.path.at(
-        0,
-      )} no se encuentra en el formato correcto: ${problema?.message}`;
-    });
-    console.error(
-      "Error al chequear los datos necesarios para registrar a un nuevo usuario",
-    );
-    console.table(erroresEncontradosAlChequearDatosDeLaConsulta);
-    throw new Error(erroresEncontradosAlChequearDatosDeLaConsulta.join("\n"));
+  } catch (excepcion) {
+    throw tratarExcepcionesEnLaValidacionDeSolicitudes(excepcion);
   }
 };

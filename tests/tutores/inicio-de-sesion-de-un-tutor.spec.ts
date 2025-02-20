@@ -1,15 +1,6 @@
 import { test, expect } from "@playwright/test";
-import { eliminarCualquierUsuario, registrarAUnTutor } from "./utils";
 
 test.describe("Como tutor registrado, deseo acceder al sistema a través de mi correo y mi constraseña para poder operar con el sistema", () => {
-  test.beforeAll(async () => {
-    await registrarAUnTutor();
-  });
-
-  test.afterAll(async () => {
-    await eliminarCualquierUsuario();
-  });
-
   test.beforeEach(async ({ page }) => {
     await page.goto("http://localhost:3000/");
     await page.getByRole("button", { name: "iniciar sesión" }).click();
@@ -24,7 +15,7 @@ test.describe("Como tutor registrado, deseo acceder al sistema a través de mi c
     page,
   }) => {
     await expect(
-      page.getByRole("button", { name: "cerrar sesión" })
+      page.getByRole("button", { name: "cerrar sesión" }),
     ).toBeVisible();
   });
 
@@ -38,7 +29,6 @@ test.describe("Como tutor registrado, deseo acceder al sistema a través de mi c
     page,
   }) => {
     await page.getByRole("button", { name: "cerrar sesión" }).click();
-    // await page.getByText("cerrar sesión").click();
     await expect(page.getByRole("banner")).toContainText("iniciar sesión");
   });
 });

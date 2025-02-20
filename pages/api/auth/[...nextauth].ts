@@ -1,6 +1,6 @@
 import NextAuth, { AuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials"; //quiero hacer login con usaurio y contraseña
-import { intentarAutenticarAlUsuarioLigadoALasCredenciales } from "@/src/api/usuarios/autenticar";
+import { autenticarAlUsuarioLigadoALasCredenciales } from "@/src/api/usuarios/autenticar";
 
 export const nextAuthOptions: AuthOptions = {
   providers: [
@@ -15,7 +15,7 @@ export const nextAuthOptions: AuthOptions = {
         },
       },
       authorize: async (credentials) => {
-        return intentarAutenticarAlUsuarioLigadoALasCredenciales(credentials);
+        return await autenticarAlUsuarioLigadoALasCredenciales(credentials);
       },
     }),
   ],

@@ -9,10 +9,14 @@ export const validarContrasena = async ({
   credenciales: CredencialesParaAutenticarAUnUsuario;
   usuario: Usuarios;
 }): Promise<void> => {
-  const contrasenaValida = await bcrypt.compare(
-    credenciales.contrasena,
-    usuario.contrasena,
-  );
+  try {
+    const contrasenaValida = await bcrypt.compare(
+      credenciales.contrasena,
+      usuario.contrasena
+    );
 
-  if (!contrasenaValida) throw new Error("Contraseña incorrecta");
+    if (!contrasenaValida) throw new Error("Contraseña incorrecta");
+  } catch {
+    throw new Error("No se logro validar la contraseña");
+  }
 };

@@ -1,5 +1,15 @@
 import z from "zod";
-import { tratarExcepcionesEnLaValidacionDeSolicitudes } from "../excepciones/tratar-excepciones-en-la-validacion-de-solicitudes";
+import { tratarExcepcionesEnLaValidacionDeSolicitudes } from "@/src/api/excepciones/tratar-excepciones-en-la-validacion-de-solicitudes";
+
+export const validarSolicitudDeCarrera = (
+  solicitud: any,
+): SolicitudDeCarrera => {
+  try {
+    return EsquemaDeSolicitudDeCarrera.parse(solicitud);
+  } catch (excepcion) {
+    throw tratarExcepcionesEnLaValidacionDeSolicitudes(excepcion);
+  }
+};
 
 const EsquemaDeSolicitudDeCarrera = z.object({
   carrera: z.union(
@@ -19,11 +29,3 @@ const EsquemaDeSolicitudDeCarrera = z.object({
 });
 
 export type SolicitudDeCarrera = z.infer<typeof EsquemaDeSolicitudDeCarrera>;
-
-export const validarSolicitud = (solicitud: any): SolicitudDeCarrera => {
-  try {
-    return EsquemaDeSolicitudDeCarrera.parse(solicitud);
-  } catch (excepcion) {
-    throw tratarExcepcionesEnLaValidacionDeSolicitudes(excepcion);
-  }
-};

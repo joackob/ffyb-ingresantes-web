@@ -7,17 +7,21 @@ export const tratarExcepciones = ({
   excepcion: unknown;
   respuesta: NextApiResponse;
 }): void => {
-  try {
-    console.error("Error a descubrir", excepcion);
-    (excepcion as Excepcion).brindarUnaRespuestaAdecuada(respuesta);
-  } catch (error) {
-    console.error("Error desconocido", error);
-    const excepcionDesconocida = new Excepcion({
-      codigoHttp: 500,
-      mensaje: "Algo inesperado ocurrio con el servicio",
-    });
-    return excepcionDesconocida.brindarUnaRespuestaAdecuada(respuesta);
+  if (excepcion instanceof Excepcion) {
+    return excepcion.brindarUnaRespuestaAdecuada(respuesta);
   }
+  if (excepcion instanceof Error) {
+    const error = new Excepcion({
+      codigoHttp: 500,
+      mensaje: excepcion.message,
+    });
+    return error.brindarUnaRespuestaAdecuada(respuesta);
+  }
+  const excepcionDesconocida = new Excepcion({
+    codigoHttp: 500,
+    mensaje: "Algo inesperado ocurrio con el servicio",
+  });
+  return excepcionDesconocida.brindarUnaRespuestaAdecuada(respuesta);
 };
 
 type PropiedadesDeUnaExcepcion = {
