@@ -32,10 +32,10 @@ export const linksParaTutorandos = [
   },
 ];
 
-export const linksParaTutores = [
+export const linksParaTutores = (id: string) => [
   {
     label: `Tus <br/> tutorandos`,
-    url: "/tutorandos",
+    url: `/tutores/${id}/tutorandos`,
   },
 ];
 

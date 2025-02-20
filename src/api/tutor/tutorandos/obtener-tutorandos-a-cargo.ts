@@ -3,10 +3,9 @@ import { tratarExcepcionesEnConsultasALaBdd } from "@/src/api/excepciones/tratar
 
 export const obtenerTutorandosACargoDeUnTutorPorSuId = async (id: string) => {
   try {
-    const tutor = await db.tutores.findUniqueOrThrow({
+    const tutor = await db.tutores.findFirstOrThrow({
       where: {
-        // id: id,
-        usuarioId: id,
+        OR: [{ id: id }, { usuarioId: id }],
       },
       select: {
         tutorandos: {

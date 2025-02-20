@@ -51,7 +51,7 @@ export const registrarTutorYTutorandosACargo = async () => {
           ...tutorando,
           tipo: "tutorando",
           contrasena: await encriptarContrasena(tutorando.contrasena),
-        })),
+        }))
       ),
     });
 
@@ -68,6 +68,7 @@ export const registrarTutorYTutorandosACargo = async () => {
 
     await db.tutores.create({
       data: {
+        id: tutorSinTutorandos.id,
         usuarioId: tutorSinTutorandos.id,
         tutorandos: {
           create: tutorandosSinTutor.map((tutorando) => ({

@@ -1,27 +1,26 @@
 import React, { useEffect, useState } from "react";
 import { Avatar, Box, Container, Stack, Typography } from "@mui/material";
 import Banner from "@/src/components/Banner";
-
-// Definimos la interfaz para cada tutorando
-interface Tutorando {
-  nombre: string;
-  correo: string;
-}
+import { Usuarios } from "@prisma/client";
+import { useRouter } from "next/router";
+import axios from "axios";
 
 const Index = () => {
   // Tipamos el estado para que contenga un arreglo de objetos de tipo Tutorando
-  const [tutorandosFetch, setTutorandosFetch] = useState<Tutorando[]>([]);
+  const [tutorandosFetch, setTutorandosFetch] = useState<Usuarios[]>([]);
+  const router = useRouter();
+  const { id } = router.query;
 
   useEffect(() => {
-    // Hacemos la solicitud a la API
-    fetch("/api/tutor/tutorandos")
-      .then((data) => data.json())
-      .then((response) => setTutorandosFetch(response.personas)); // Suponiendo que la respuesta tiene "personas"
-  }, []);
+    axios
+      .get<Usuarios[]>(`/api/tutores/${id}/tutorandos`)
+      .then((response) => setTutorandosFetch(response.data))
+      .catch((error) => console.error(error));
+  }, [id]);
 
   return (
     <>
-      <Banner titulo={"Tutorandos"} />
+      <Banner titulo={"Tus Tutorandos"} />
       {/* Lista de tutorandos en dos columnas */}
       <Container>
         <Box
@@ -54,9 +53,9 @@ const Index = () => {
               <Stack spacing={"12px"}>
                 <Box>
                   <Typography variant="h6" fontWeight={700}>
-                    {tutorando.nombre}
+                    {`${tutorando.nombre} ${tutorando.apellido}`}
                   </Typography>
-                  <Typography variant="body2">{tutorando.correo}</Typography>
+                  <Typography variant="body2">{tutorando.email}</Typography>
                 </Box>
 
                 {/* Enlaces */}

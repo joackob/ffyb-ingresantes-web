@@ -16,7 +16,7 @@ export const useSesion = () => {
   >("inactiva");
 
   return {
-    enlaces: () => {
+    enlaces: (): { label: string; url: string }[] => {
       try {
         switch ((sesion.data?.user as Usuarios).tipo) {
           case "tutorando":
@@ -24,7 +24,7 @@ export const useSesion = () => {
           case "coordinador":
             return linksParaCoordinadores;
           case "tutor":
-            return linksParaTutores;
+            return linksParaTutores((sesion.data?.user as Usuarios).id);
           default:
             return links;
         }
