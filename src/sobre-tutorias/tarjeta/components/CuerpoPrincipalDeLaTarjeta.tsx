@@ -11,7 +11,7 @@ const CuerpoPrincipalDeLaTarjeta = (
 ) => {
   return (
     <Stack
-      spacing={"20px"}
+      spacing={"30px"}
       flexBasis={"390px"}
       flexGrow={1}
       marginBottom={"20px"}
