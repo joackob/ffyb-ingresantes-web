@@ -21,19 +21,25 @@ const Integrantes = () => {
       </Typography>
       <Stack spacing={2}>
         {integrantes.map((integrante, index) => (
-          <Typography key={index} variant="h10">
+          <Typography key={index} variant="h6">
             {integrante.nombre} - {integrante.email}
           </Typography>
         ))}
       </Stack>
 
       {/* Sección de Líderes de Equipo */}
-      <Typography variant="h4" fontWeight="bold" gutterBottom mt={4} color="#FF8700">
+      <Typography
+        variant="h4"
+        fontWeight="bold"
+        gutterBottom
+        mt={4}
+        color="#FF8700"
+      >
         Líderes de Equipo
       </Typography>
       <Stack spacing={2}>
         {lideres.map((lider, index) => (
-          <Typography key={index} variant="h10">
+          <Typography key={index} variant="h6">
             {lider.nombre} - {lider.email}
           </Typography>
         ))}
